@@ -16,7 +16,7 @@ Dicionário descritivo elaborado a partir da estrutura e dos valores observados 
 | Variável | Classe R | Explicação | Formato/domínio | Ausência |
 |---|---|---|---|---|
 | `id_sinistro` | `character` | Identificador único do registro de sinistro. | código identificador; Valor único por linha | Sem valores ausentes observados |
-| `tipo_registro` | `character` | Classificação geral do registro quanto ao tipo de ocorrência cadastrada. | categoria; NOTIFICACAO \| SINISTRO FATAL \| SINISTRO NAO FATAL | Sem valores ausentes observados |
+| `tipo_registro` | `factor` | Classificação geral do registro quanto ao tipo de ocorrência cadastrada. | categoria; NOTIFICACAO \| SINISTRO FATAL \| SINISTRO NAO FATAL | Sem valores ausentes observados |
 
 ## Tempo
 
@@ -24,12 +24,12 @@ Dicionário descritivo elaborado a partir da estrutura e dos valores observados 
 |---|---|---|---|---|
 | `data_sinistro` | `Date` | Data em que o sinistro ocorreu. | DD/MM/AAAA | Sem valores ausentes observados |
 | `ano_sinistro` | `integer` | Ano de ocorrência do sinistro. | AAAA; 2025 \| 2026 | Sem valores ausentes observados |
-| `mes_sinistro` | `character` | Mês de ocorrência do sinistro, com dois dígitos. | MM; 01 a 12 | Sem valores ausentes observados |
-| `dia_sinistro` | `character` | Dia do mês em que o sinistro ocorreu, com dois dígitos. | DD; 01 a 31 | Sem valores ausentes observados |
+| `mes_sinistro` | `integer` | Mês de ocorrência do sinistro, com dois dígitos. | MM; 01 a 12 | Sem valores ausentes observados |
+| `dia_sinistro` | `integer` | Dia do mês em que o sinistro ocorreu, com dois dígitos. | DD; 01 a 31 | Sem valores ausentes observados |
 | `hora_sinistro` | `character` | Horário registrado para a ocorrência do sinistro. | HH:MM; 00:00 a 23:59 | NA = informação ausente/não preenchida |
 | `ano_mes_sinistro` | `character` | Competência temporal formada pelo ano e pelo mês do sinistro. | AAAA/MM | Sem valores ausentes observados |
-| `dia_da_semana` | `character` | Dia da semana correspondente à data do sinistro. | categoria; Domingo \| Segunda-feira \| Terça-feira \| Quarta-feira \| Quinta-feira \| Sexta-feira \| Sábado | Sem valores ausentes observados |
-| `turno` | `character` | Faixa do dia associada ao horário do sinistro. | categoria; MADRUGADA \| MANHA \| TARDE \| NOITE \| NAO DISPONIVEL | Sem valores ausentes observados |
+| `dia_da_semana` | `factor` | Dia da semana correspondente à data do sinistro. | categoria; Domingo \| Segunda-feira \| Terça-feira \| Quarta-feira \| Quinta-feira \| Sexta-feira \| Sábado | Sem valores ausentes observados |
+| `turno` | `factor` | Faixa do dia associada ao horário do sinistro. | categoria; MADRUGADA \| MANHA \| TARDE \| NOITE \| NAO DISPONIVEL | Sem valores ausentes observados |
 
 ## Localização
 
@@ -37,27 +37,27 @@ Dicionário descritivo elaborado a partir da estrutura e dos valores observados 
 |---|---|---|---|---|
 | `logradouro` | `character` | Nome do logradouro informado para o local do sinistro. | texto livre | NA = informação ausente/não preenchida |
 | `numero_logradouro` | `character` | Número ou referência numérica do endereço do sinistro. | endereço / referência | NA = informação ausente/não preenchida |
-| `tipo_via` | `character` | Classificação geral da via onde ocorreu o sinistro. | categoria; VIAS URBANAS \| ESTRADAS E RODOVIAS \| NAO DISPONIVEL | Sem valores ausentes observados |
-| `tipo_local` | `character` | Classificação do local do sinistro quanto ao caráter público ou privado. | categoria; PUBLICO \| PRIVADO \| NAO DISPONIVEL | NA = informação ausente/não preenchida |
-| `latitude` | `numeric` | Latitude geográfica registrada para o sinistro. | graus decimais | NA = informação ausente/não preenchida |
-| `longitude` | `numeric` | Longitude geográfica registrada para o sinistro. | graus decimais | NA = informação ausente/não preenchida |
+| `tipo_via` | `factor` | Classificação geral da via onde ocorreu o sinistro. | categoria; VIAS URBANAS \| ESTRADAS E RODOVIAS \| NAO DISPONIVEL | Sem valores ausentes observados |
+| `tipo_local` | `factor` | Classificação do local do sinistro quanto ao caráter público ou privado. | categoria; PUBLICO \| PRIVADO \| NAO DISPONIVEL | NA = informação ausente/não preenchida |
+| `latitude` | `double` | Latitude geográfica registrada para o sinistro. | graus decimais | NA = informação ausente/não preenchida |
+| `longitude` | `double` | Longitude geográfica registrada para o sinistro. | graus decimais | NA = informação ausente/não preenchida |
 | `cod_ibge` | `character` | Código IBGE do município associado ao sinistro. | código IBGE municipal | Sem valores ausentes observados |
-| `municipio` | `character` | Município associado ao local do sinistro. | categoria territorial | Sem valores ausentes observados |
-| `regiao_administrativa` | `character` | Região administrativa do Estado de São Paulo associada ao município do sinistro. | categoria territorial | Sem valores ausentes observados |
+| `municipio` | `factor` | Município associado ao local do sinistro. | categoria territorial | Sem valores ausentes observados |
+| `regiao_administrativa` | `factor` | Região administrativa do Estado de São Paulo associada ao município do sinistro. | categoria territorial | Sem valores ausentes observados |
 
 ## Gestão da via
 
 | Variável | Classe R | Explicação | Formato/domínio | Ausência |
 |---|---|---|---|---|
-| `administracao` | `character` | Tipo de entidade responsável pela administração da via. | categoria; CONCESSIONÁRIA \| DER \| DNIT \| PREFEITURA \| NAO DISPONIVEL | Sem valores ausentes observados |
-| `conservacao` | `character` | Responsável ou referência de conservação/manutenção da via, conforme registrado na base. | categoria / código | Sem valores ausentes observados |
-| `circunscricao` | `character` | Esfera de circunscrição da via onde ocorreu o sinistro. | categoria; MUNICIPAL \| ESTADUAL \| FEDERAL \| NAO DISPONIVEL | Sem valores ausentes observados |
+| `administracao` | `factor` | Tipo de entidade responsável pela administração da via. | categoria; CONCESSIONÁRIA \| DER \| DNIT \| PREFEITURA \| NAO DISPONIVEL | Sem valores ausentes observados |
+| `conservacao` | `factor` | Responsável ou referência de conservação/manutenção da via, conforme registrado na base. | categoria / código | Sem valores ausentes observados |
+| `circunscricao` | `factor` | Esfera de circunscrição da via onde ocorreu o sinistro. | categoria; MUNICIPAL \| ESTADUAL \| FEDERAL \| NAO DISPONIVEL | Sem valores ausentes observados |
 
 ## Características do sinistro
 
 | Variável | Classe R | Explicação | Formato/domínio | Ausência |
 |---|---|---|---|---|
-| `tp_sinistro_primario` | `character` | Tipo principal atribuído ao sinistro. | categoria; ATROPELAMENTO \| CHOQUE \| COLISAO \| OUTROS \| NAO DISPONIVEL | Sem valores ausentes observados |
+| `tp_sinistro_primario` | `factor` | Tipo principal atribuído ao sinistro. | categoria; ATROPELAMENTO \| CHOQUE \| COLISAO \| OUTROS \| NAO DISPONIVEL | Sem valores ausentes observados |
 
 ## Envolvidos e veículos
 
@@ -162,7 +162,7 @@ A tabela abaixo registra cardinalidade e ausência observadas, sem qualquer tran
 
 - **`id_sinistro`:** Tratado como identificador, não como medida numérica.
 - **`data_sinistro`:** No arquivo original está representada como texto no formato DD/MM/AAAA; o dicionário apenas documenta a classe temporal esperada.
-- **`mes_sinistro` e `dia_sinistro`:** Mantidos como `character` no dicionário para preservar o zero à esquerda.
+- **`mes_sinistro` e `dia_sinistro`:** Tipados como `integer`; o zero à esquerda é apenas uma forma de exibição do valor.
 - **`hora_sinistro`:** Pode estar ausente no arquivo original.
 - **`ano_mes_sinistro`:** Campo derivado temporal já presente na fonte; não é recalculado neste dicionário.
 - **`logradouro`:** Pode estar ausente.
