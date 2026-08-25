@@ -21,7 +21,74 @@
 
 ---
 
-## 2. Boletins x notificações
+## 2. Classificação das variáveis
+
+| Variável | Tipo | Subtipo |
+| :--- | :--- | :--- |
+| `id_sinistro` | Qualitativa | Nominal — identificador |
+| `tipo_registro` | Qualitativa | Nominal |
+| `data_sinistro` | Quantitativa | Temporal |
+| `ano_sinistro` | Quantitativa | Temporal discreta |
+| `mes_sinistro` | Quantitativa | Temporal discreta |
+| `dia_sinistro` | Quantitativa | Temporal discreta |
+| `hora_sinistro` | Quantitativa | Temporal |
+| `ano_mes_sinistro` | Quantitativa | Temporal |
+| `dia_da_semana` | Qualitativa | Nominal |
+| `turno` | Qualitativa | Ordinal |
+| `logradouro` | Qualitativa | Nominal |
+| `numero_logradouro` | Qualitativa | Nominal — referência de endereço |
+| `tipo_via` | Qualitativa | Nominal |
+| `tipo_local` | Qualitativa | Nominal |
+| `latitude` | Quantitativa | Contínua |
+| `longitude` | Quantitativa | Contínua |
+| `cod_ibge` | Qualitativa | Nominal — identificador territorial |
+| `municipio` | Qualitativa | Nominal |
+| `regiao_administrativa` | Qualitativa | Nominal |
+| `administracao` | Qualitativa | Nominal |
+| `conservacao` | Qualitativa | Nominal |
+| `circunscricao` | Qualitativa | Nominal |
+| `tp_sinistro_primario` | Qualitativa | Nominal |
+| `qtd_pedestre` | Quantitativa | Discreta |
+| `qtd_bicicleta` | Quantitativa | Discreta |
+| `qtd_motocicleta` | Quantitativa | Discreta |
+| `qtd_automovel` | Quantitativa | Discreta |
+| `qtd_onibus` | Quantitativa | Discreta |
+| `qtd_caminhao` | Quantitativa | Discreta |
+| `qtd_veic_outros` | Quantitativa | Discreta |
+| `qtd_veic_nao_disponivel` | Quantitativa | Discreta |
+| `qtd_gravidade_fatal` | Quantitativa | Discreta |
+| `qtd_gravidade_grave` | Quantitativa | Discreta |
+| `qtd_gravidade_leve` | Quantitativa | Discreta |
+| `qtd_gravidade_ileso` | Quantitativa | Discreta |
+| `qtd_gravidade_nao_disponivel` | Quantitativa | Discreta |
+| `tp_sinistro_atrop_pedestre` | Qualitativa | Binária |
+| `tp_sinistro_atrop_vitima_fora_veic` | Qualitativa | Binária |
+| `tp_sinistro_colisao_frontal` | Qualitativa | Binária |
+| `tp_sinistro_colisao_traseira` | Qualitativa | Binária |
+| `tp_sinistro_colisao_lateral` | Qualitativa | Binária |
+| `tp_sinistro_colisao_transversal` | Qualitativa | Binária |
+| `tp_sinistro_colisao_outros` | Qualitativa | Binária |
+| `tp_sinistro_choque` | Qualitativa | Binária |
+| `tp_sinistro_atrop_animal` | Qualitativa | Binária |
+| `tp_sinistro_capotamento` | Qualitativa | Binária |
+| `tp_sinistro_engavetamento` | Qualitativa | Binária |
+| `tp_sinistro_tombamento` | Qualitativa | Binária |
+| `tp_sinistro_outros` | Qualitativa | Binária |
+| `tp_sinistro_nao_disponivel` | Qualitativa | Binária |
+
+### Resumo
+
+| Tipo de variável | Quantidade |
+| :--- | ---: |
+| Quantitativas | 21 |
+| Qualitativas | 29 |
+| **Total** | **50** |
+
+> Os campos temporais foram classificados como quantitativos por representarem posição no tempo e permitirem ordenação e operações temporais. Identificadores como `id_sinistro`, `cod_ibge` e `numero_logradouro` permanecem qualitativos, mesmo quando possuem aparência numérica, pois não representam medidas.
+
+---
+
+## 3. Boletins x notificações
 
 ![Composição do Dataset por Tipo de Registro](https://i.imgur.com/UplJCTY.png)
 
@@ -45,7 +112,7 @@
 
 ---
 
-## 3. Tipo de via
+## 4. Tipo de via
 
 ![Comparativo de Letalidade: Rodovias vs. Vias Urbanas](https://i.imgur.com/IAQJcvJ.png)
 
@@ -74,7 +141,7 @@
 
 ---
 
-## 4. Horário e turno
+## 5. Horário e turno
 
 ![Taxa de Letalidade por Turno da Ocorrência](https://i.imgur.com/1r5TvLY.png)
 
@@ -102,7 +169,7 @@
 
 ---
 
-## 5. Distribuição regional
+## 6. Distribuição regional
 
 | Região Administrativa | Registros | Percentual |
 | :--- | ---: | ---: |
@@ -120,7 +187,7 @@
 
 ---
 
-## 6. Combinações de veículos e usuários
+## 7. Combinações de veículos e usuários
 
 ![Vulnerabilidade Modal: Taxa de Letalidade por Configuração](https://i.imgur.com/rHSLVJi.png)
 
@@ -140,7 +207,7 @@
 
 ---
 
-## 7. Motocicletas
+## 8. Motocicletas
 
 | Indicador | Valor |
 | :--- | ---: |
@@ -156,7 +223,7 @@
 
 ---
 
-## 8. Pedestres e ciclistas
+## 9. Pedestres e ciclistas
 
 ### Pedestres
 
@@ -175,7 +242,7 @@
 
 ---
 
-## 9. Qualidade e disponibilidade dos dados
+## 10. Qualidade e disponibilidade dos dados
 
 | Indicador | Valor |
 | :--- | ---: |
