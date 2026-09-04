@@ -1,9 +1,50 @@
-# Teoria do Aprendizado Estatístico
+# Teoria do Aprendizado Estatistico
 
-Este repositório reúne os materiais e dados utilizados na matéria de Teoria do Aprendizado Estatístico.
+Este repositorio reune os materiais, dados e analises desenvolvidos para a disciplina de **Teoria do Aprendizado Estatistico** do curso superior de tecnologia em Ciencia de Dados da FATEC. O foco central deste estudo e a analise exploratoria, compreensao de variaveis e modelagem estatistica sobre dados de sinistralidade de transito.
 
-## Alunos
+---
 
-- Pedro Henrique
-- Ailana
-- Arthur Galvão
+## Identificacao do Grupo
+
+* **Grupo:** APPA
+* **Integrantes:**
+  * Arthur Galvao
+  * Pedro Henrique
+  * Ailana
+
+---
+
+## Estrutura do Repositorio
+
+A organizacao das pastas segue a padronizacao estrutural adotada pelo grupo:
+
+```text
+aprendizado-estatistico/
+├── estrutura/
+│   ├── corpus/
+│   │   ├── 2026-08-11-appa-DicionarioDados.md
+│   │   └── 2026-08-12-appa-Sinistros_2025_2026.csv
+│   └── código/
+│       └── .gitkeep
+├── consolidado - entrega1-AnaliseExploratoria.md
+├── readme.md
+└── to delete/
+    └── .gitkeep
+```
+
+---
+
+## Descricao dos Componentes
+
+1. **[estrutura/corpus/](estrutura/corpus/):**
+   * **[2026-08-11-appa-DicionarioDados.md](estrutura/corpus/2026-08-11-appa-DicionarioDados.md):** Dicionario completo de metadados das 50 variaveis da base de sinistros, contemplando tipos estatisticos, tipos de dados em R, formatos, dominios e valores especiais.
+   * **[2026-08-12-appa-Sinistros_2025_2026.csv](estrutura/corpus/2026-08-12-appa-Sinistros_2025_2026.csv):** Base historica de dados com 273.371 ocorrencias registradas entre janeiro de 2025 e junho de 2026 no estado de Sao Paulo.
+
+2. **[estrutura/código/](estrutura/código/):**
+   * Diretorio reservado para scripts estatisticos, rotinas em R e notebooks de analise e modelagem.
+
+3. **[consolidado - entrega1-AnaliseExploratoria.md](consolidado - entrega1-AnaliseExploratoria.md):**
+   * Documento consolidado contendo a analise exploratoria univariada e bivariada de sinistralidade, classificacao de atributos e distribuicoes temporais e territoriais.
+
+4. **[to delete/](to delete/):**
+   * Pasta para descarte de artefatos temporarios ou versoes intermediarias descontinuadas.
