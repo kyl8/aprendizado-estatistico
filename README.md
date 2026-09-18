@@ -1,51 +1,42 @@
-# Teoria do Aprendizado Estatistico
+# Teoria do Aprendizado Estatístico
 
-Este repositorio reune os materiais, dados e analises desenvolvidos para a disciplina de **Teoria do Aprendizado Estatistico** do curso superior de tecnologia em Ciencia de Dados da FATEC. O foco central deste estudo e a analise exploratoria, compreensao de variaveis e modelagem estatistica sobre dados de sinistralidade de transito.
+Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatístico da FATEC. O projeto analisa registros de sinistros de trânsito no Estado de São Paulo.
 
----
+## Conteúdo
 
-## Identificacao do Grupo
+- [consolidado](consolidado/): atividades e relatórios organizados por etapa;
+- [estrutura/corpus](estrutura/corpus/): dicionário e base de sinistros;
+- [estrutura/codigos](estrutura/codigos/): scripts de modelagem em R;
+- [estrutura/resultados](estrutura/resultados/): métricas e previsões geradas pelos scripts;
+- [materiais-aulas](materiais-aulas/): PDFs usados nas aulas.
 
-* **Grupo:** APPA
-* **Integrantes:**
-  * Arthur Galvao
-  * Pedro Henrique
-  * Ailana
+Os scripts e os resultados usam nomes próprios do grupo, com a data da atualização em 15 de setembro de 2026.
 
----
+## Base
 
-## Estrutura do Repositorio
+O arquivo [Sinistros_2025_2026.csv](estrutura/corpus/2026-08-12-appa-Sinistros_2025_2026.csv) reúne 273.371 registros e 50 variáveis, de janeiro de 2025 a junho de 2026.
 
-A organizacao das pastas segue a padronizacao estrutural adotada pelo grupo:
+O [dicionário de dados](estrutura/corpus/2026-08-11-appa-DicionarioDados.md) explica as colunas, categorias e regras usadas para tratar valores ausentes.
+
+## Atividades
+
+- [01: dados e variáveis](consolidado/2026-09-15-appa-Atividade01-DadosVariaveis.md)
+- [02a: análise exploratória ampla](consolidado/2026-09-15-appa-Atividade02a-AnaliseExploratoriaAmpla.md)
+- [02b: análise exploratória segmentada](consolidado/2026-09-15-appa-Atividade02b-AnaliseExploratoriaSegmentada.md)
+- [03a: regressão linear](consolidado/2026-09-15-appa-Atividade03a-RegressaoLinear.md)
+- [03b: previsão](consolidado/2026-09-15-appa-Atividade03b-Previsao.md)
+- [04: regressão logística](consolidado/2026-09-15-appa-Atividade04-RegressaoLogistica.md)
+- [05: avaliação e seleção de modelos](consolidado/2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.md)
+- [06: métodos de reamostragem](consolidado/2026-09-15-appa-Atividade06-MetodosReamostragem.md)
+
+O relatório original da análise exploratória continua disponível em [2026-08-25-appa-AnaliseExploratoria.md](consolidado/2026-08-25-appa-AnaliseExploratoria.md).
+
+Os scripts de modelagem devem ser executados a partir da raiz:
 
 ```text
-aprendizado-estatistico/
-├── consolidado/
-│   └── 2026-08-25-appa-entrega1-AnaliseExploratoria.md
-├── estrutura/
-│   ├── corpus/
-│   │   ├── 2026-08-11-appa-DicionarioDados.md
-│   │   └── 2026-08-12-appa-Sinistros_2025_2026.csv
-│   └── código/
-│       └── .gitkeep
-├── readme.md
-└── to delete/
-    └── .gitkeep
+Rscript estrutura/codigos/2026-09-15-appa-Atividade03a-RegressaoLinear.R
+Rscript estrutura/codigos/2026-09-15-appa-Atividade03b-Previsao.R
+Rscript estrutura/codigos/2026-09-15-appa-Atividade04-RegressaoLogistica.R
+Rscript estrutura/codigos/2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.R
+Rscript estrutura/codigos/2026-09-15-appa-Atividade06-MetodosReamostragem.R
 ```
-
----
-
-## Descricao dos Componentes
-
-1. **[consolidado/](consolidado/):**
-   * **[2026-08-25-appa-entrega1-AnaliseExploratoria.md](consolidado/2026-08-25-appa-entrega1-AnaliseExploratoria.md):** Documento consolidado contendo a analise exploratoria univariada e bivariada de sinistralidade, classificacao de atributos e distribuicoes temporais e territoriais.
-
-2. **[estrutura/corpus/](estrutura/corpus/):**
-   * **[2026-08-11-appa-DicionarioDados.md](estrutura/corpus/2026-08-11-appa-DicionarioDados.md):** Dicionario completo de metadados das 50 variaveis da base de sinistros, contemplando tipos estatisticos, tipos de dados em R, formatos, dominios e valores especiais.
-   * **[2026-08-12-appa-Sinistros_2025_2026.csv](estrutura/corpus/2026-08-12-appa-Sinistros_2025_2026.csv):** Base historica de dados com 273.371 ocorrencias registradas entre janeiro de 2025 e junho de 2026 no estado de Sao Paulo.
-
-3. **[estrutura/código/](estrutura/código/):**
-   * Diretorio reservado para scripts estatisticos, rotinas em R e notebooks de analise e modelagem.
-
-4. **[to delete/](to delete/):**
-   * Pasta para descarte de artefatos temporarios ou versoes intermediarias descontinuadas.

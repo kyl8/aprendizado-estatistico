@@ -261,3 +261,22 @@
 ---
 
 ![Matriz de Priorização das Oportunidades Analíticas](https://i.imgur.com/E02p6eq.png)
+
+---
+
+## Atualização do projeto
+
+Este relatório continua sendo a análise exploratória principal da primeira entrega. A partir dele, o projeto passou a separar os boletins policiais das notificações e a usar os recortes descritos nas atividades seguintes.
+
+As novas etapas estão organizadas em:
+
+- [Atividade 01: dados e variáveis](2026-09-15-appa-Atividade01-DadosVariaveis.md);
+- [Atividade 02a: análise exploratória ampla](2026-09-15-appa-Atividade02a-AnaliseExploratoriaAmpla.md);
+- [Atividade 02b: análise exploratória segmentada](2026-09-15-appa-Atividade02b-AnaliseExploratoriaSegmentada.md);
+- [Atividade 03a: regressão linear](2026-09-15-appa-Atividade03a-RegressaoLinear.md);
+- [Atividade 03b: previsão](2026-09-15-appa-Atividade03b-Previsao.md);
+- [Atividade 04: regressão logística](2026-09-15-appa-Atividade04-RegressaoLogistica.md);
+- [Atividade 05: avaliação e seleção de modelos](2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.md);
+- [Atividade 06: métodos de reamostragem](2026-09-15-appa-Atividade06-MetodosReamostragem.md).
+
+Os ajustes de regressão e os resultados reproduzíveis ficam em [estrutura/codigos](../estrutura/codigos/) e [estrutura/resultados](../estrutura/resultados/).
