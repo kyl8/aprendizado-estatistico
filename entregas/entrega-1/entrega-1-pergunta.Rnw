@@ -1,0 +1,241 @@
+% ==========================================================
+% ENTREGA 1 — A pergunta do trabalho
+% Teoria do Aprendizado Estatístico — Ciências de Dados
+% Fatec Baixada Santista – Rubens Lara
+% Derivado de modelo-trabalho.Rnw (R + knitr + abnTeX2)
+% ==========================================================
+
+\documentclass[
+  article,
+  12pt,
+  oneside,
+  a4paper,
+  english,
+  brazil
+]{abntex2}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{icomma}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[alf]{abntex2cite}
+
+\setlist{noitemsep, topsep=3pt, parsep=1pt, partopsep=0pt}
+\setlength{\parskip}{0.35em}
+
+\hypersetup{hidelinks}
+
+% ----------------------------------------------------------
+% DADOS DA ENTREGA
+% ----------------------------------------------------------
+\titulo{A pergunta do trabalho: Fatores Associados à Concentração de Sinistros de Trânsito nos Horários de Pico}
+\tituloestrangeiro{}
+\autor{Grupo APPA}
+\local{Santos-SP}
+\data{\today}
+
+\newcommand{\nomecurso}{Tecnologia em Ciência de Dados}
+\newcommand{\nomedisciplina}{Teoria do Aprendizado Estatístico}
+\newcommand{\nomeprofessor}{Prof.\ Dr.\ João Paulo Ferreira de Mello}
+\newcommand{\repositorio}{https://github.com/kyl8/aprendizado-estatistico}
+\newcommand{\integrantes}{%
+  Arthur Galvão \\
+  Pedro Henrique \\
+  Pedro Alvarenga \\
+  Ailana%
+}
+
+\begin{document}
+
+<<setup, include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+  echo       = FALSE,
+  message    = FALSE,
+  warning    = FALSE,
+  fig.align  = "center",
+  out.width  = "0.38\\linewidth",
+  fig.width  = 3.4,
+  fig.height = 1.8
+)
+options(OutDec = ",", digits = 4)
+@
+
+<<dados, include=FALSE>>=
+# =========================================================================
+# DADOS DO GRUPO APPA (Caminho relativo a partir de entregas/entrega-1/)
+# =========================================================================
+dados    <- readRDS("../../estrutura/banco-de-dados/sinistros_pico.rds")
+resposta <- "pico"
+# =========================================================================
+
+tex <- function(x) gsub("_", "\\\\_", x)
+
+y            <- dados[[resposta]]
+quantitativa <- is.numeric(y)
+n            <- nrow(dados)
+p            <- ncol(dados) - 1
+resposta_tex <- tex(resposta)
+
+# --- linha de base: desempenho do palpite ingênuo ------------------------
+if (quantitativa) {
+  valor_base       <- sd(y, na.rm = TRUE)
+  texto_base       <- paste0("RMSE = ", format(round(valor_base, 2), nsmall = 2))
+  nome_base        <- "chutar sempre a m\\'edia"
+  palavra_tipo     <- "regress\\~ao"
+  palavra_resposta <- "quantitativa"
+  palavra_metrica  <- "RMSE, na unidade de $Y$"
+} else {
+  valor_base       <- max(table(y)) / sum(table(y))
+  texto_base       <- paste0("acur\\'acia = ", format(round(valor_base, 3), nsmall = 3))
+  nome_base        <- "chutar a classe mais comum"
+  palavra_tipo     <- "classifica\\c{c}\\~ao"
+  palavra_resposta <- "qualitativa"
+  palavra_metrica  <- "acur\\'acia e AUC"
+}
+
+# --- suspeita de vazamento -----------------------------------------------
+num <- dados[sapply(dados, is.numeric)]
+if (quantitativa && ncol(num) > 1) {
+  cc <- abs(cor(num, use = "complete.obs")[, resposta])
+  cc <- sort(cc[names(cc) != resposta], decreasing = TRUE)
+  texto_cor <- paste0("\\texttt{", tex(names(cc)[1]), "}: ", format(round(cc[1], 3), nsmall = 3))
+} else {
+  texto_cor <- "n\\~ao se aplica (resposta qualitativa)"
+}
+
+# --- balanço das classes e valores faltantes -----------------------------
+if (quantitativa) {
+  texto_balanco <- "n\\~ao se aplica (resposta quantitativa)"
+} else {
+  texto_balanco <- paste(paste0("\\texttt{", tex(names(table(y))), "}: ", as.integer(table(y))), collapse = " | ")
+}
+
+faltantes <- colSums(is.na(dados))
+texto_falta <- if (sum(faltantes) == 0) {
+  "nenhum"
+} else {
+  paste(paste0("\\texttt{", tex(names(faltantes)[faltantes > 0]), "}: ", faltantes[faltantes > 0]), collapse = " | ")
+}
+@
+
+\selectlanguage{brazil}
+\frenchspacing
+
+% ----------------------------------------------------------
+% IDENTIFICAÇÃO
+% ----------------------------------------------------------
+\maketitle
+
+\begin{center}
+  \footnotesize
+  Fatec Baixada Santista -- Rubens Lara \quad|\quad
+  \nomecurso{} \quad|\quad \nomedisciplina{} \\[0.2em]
+  \nomeprofessor{} \quad|\quad Repositório: \texttt{\repositorio} \\[0.2em]
+  \textbf{Integrantes:} \integrantes
+\end{center}
+
+\textual
+
+% ==========================================================================
+\section{Introdução}
+% ==========================================================================
+
+Os sinistros de trânsito são um problema frequente nas cidades, principalmente nos horários de pico, quando há maior circulação de veículos e pessoas. O aumento do fluxo pode favorecer congestionamentos, frenagens e conflitos no trânsito. Este trabalho apresenta o banco de dados escolhido, formula a pergunta sobre a maior ocorrência de sinistros nos horários de pico e verifica se os dados permitem respondê-la. Para isso, serão analisados os registros de sinistros, considerando seus horários e outras características disponíveis no banco de dados. A análise busca identificar padrões e possíveis fatores relacionados à maior frequência de ocorrências nesses períodos. Assim, a pergunta central é: \textbf{por que os sinistros de trânsito acontecem com mais frequência nos horários de pico?}
+
+Em segurança viária e mobilidade urbana, compreender os mecanismos subjacentes a essa concentração temporal é imprescindível para órgãos de planejamento de tráfego, secretarias municipais e operadoras de rodovias. A literatura de tráfego aponta que o aumento de sinistros nesses períodos decorre da combinação entre saturação da malha viária, redução do intervalo de seguimento (\textit{headway}) entre veículos, atrito entre modais heterogêneos (veículos pesados, motocicletas e pedestres) e pressões temporais dos deslocamentos pendulares. Sob o arcabouço de Teoria do Aprendizado Estatístico \cite{james2021}, o estudo adota uma abordagem inferencial fundamentada em modelos supervisionados de classificação, quantificando o efeito marginal dos fatores operacionais e viários que caracterizam os episódios ocorridos no pico em relação aos demais turnos.
+
+% ==========================================================================
+\section{O banco de dados e o problema}
+% ==========================================================================
+
+O conjunto de dados foi extraído do repositório oficial do Infosiga SP \cite{fonte_dados}, gerido pelo Departamento Estadual de Trânsito de São Paulo (Detran-SP), abrangendo as ocorrências registradas entre janeiro de 2025 e junho de 2026. A base consolida dados de boletins policiais e notificações viárias em todo o território estadual. Conforme preconiza a norma técnica da Associação Brasileira de Normas Técnicas para pesquisa viária \cite{abnt10697}, adota-se rigorosamente a denominação ``sinistro de trânsito'', superando o termo coloquial ``acidente''.
+
+Cada linha da base representa uma ocorrência única de sinistro de trânsito devidamente registrada por boletim de ocorrência policial. Foram selecionados os boletins com horário de ocorrência válido, totalizando $n = \Sexpr{n}$ observações e $p = \Sexpr{p}$ preditores candidatos. As variáveis contemplam atributos de infraestrutura (\texttt{tipo\_via}), características do evento (\texttt{tp\_sinistro\_primario}), temporalidade (\texttt{dia\_da\_semana}, \texttt{turno}), gravidade (\texttt{fatal}) e a contagem discriminada de modais envolvidos (\texttt{qtd\_automovel}, \texttt{qtd\_motocicleta}, \texttt{qtd\_onibus}, \texttt{qtd\_caminhao}, \texttt{qtd\_pedestre}, \texttt{qtd\_bicicleta} e total de \texttt{veiculos}).
+
+A escolha deste banco fundamenta-se na alta completude cadastral dos boletins policiais e na relevância concreta do problema: gestores de mobilidade e comandos de policiamento viário necessitam de evidências quantitativas para priorizar intervenções de engenharia de tráfego, temporização semafórica dinâmica e patrulhamento preventivo nos corredores de maior atrito.
+
+% ==========================================================================
+\section{A pergunta}
+% ==========================================================================
+
+A pergunta norteadora da pesquisa é enunciada de forma direta: \textbf{por que os sinistros de trânsito acontecem com mais frequência nos horários de pico?} A Tabela~\ref{tab:ficha} sintetiza os sete campos metodológicos que estruturam formalmente a investigação.
+
+\begin{table}[htb]
+  \centering
+  \caption{Ficha da pergunta}
+  \label{tab:ficha}
+  \footnotesize
+  \begin{tabular}{@{}p{0.32\textwidth}p{0.62\textwidth}@{}}
+    \toprule
+    \textbf{Campo} & \textbf{Preenchimento} \\
+    \midrule
+    1. A pergunta, em uma frase & Por que os sinistros de trânsito acontecem com mais frequência nos horários de pico? \\
+    2. Resposta $Y$: coluna, tipo & \texttt{\Sexpr{resposta_tex}} --- \Sexpr{palavra_resposta} (binária: Pico vs.\ Fora do Pico) \\
+    3. Preditores $X$: quais e quantos & Vias, tipo de colisão, modais envolvidos, dia da semana e severidade ($p = \Sexpr{p}$) \\
+    4. Tipo: decisões de modelagem & Supervisionado; \Sexpr{palavra_tipo}; abordagem inferencial \\
+    5. Métrica de avaliação & \Sexpr{palavra_metrica} \\
+    6. Linha de base a bater & \Sexpr{texto_base} \quad (\Sexpr{nome_base}) \\
+    7. Dono do problema & Órgãos de trânsito e prefeituras (alocação de efetivo e intervenções semafóricas) \\
+    \bottomrule
+  \end{tabular}
+  \fonte{Elaborada pelos autores.}
+\end{table}
+
+A decisão por um problema de \textbf{classificação supervisionada com finalidade inferencial} é metodologicamente determinante. Conforme discutido por \citeonline{bruce2019}, em ciências aplicadas o objetivo não é meramente prever se um sinistro futuro pertencerá ao pico, mas identificar e mensurar as razões de chance (\textit{odds ratios}) de cada fator de risco. Modelos lineares generalizados (regressão logística com inferência assintótica e reamostragem via validação cruzada) permitem isolar o impacto marginal de conflitos entre motocicletas e automóveis em vias arteriais, fornecendo suporte acionável para políticas públicas de redução de sinistralidade.
+
+% ==========================================================================
+\section{Defesa da pergunta}
+% ==========================================================================
+
+A Tabela~\ref{tab:diag} consolida o diagnóstico empírico realizado sobre o banco de dados.
+
+\begin{table}[htb]
+  \centering
+  \caption{Diagnóstico do banco}
+  \label{tab:diag}
+  \footnotesize
+  \begin{tabular}{@{}p{0.34\textwidth}p{0.60\textwidth}@{}}
+    \toprule
+    \textbf{Verificação} & \textbf{Resultado} \\
+    \midrule
+    Tamanho ($n \times p$)   & $\Sexpr{n} \times \Sexpr{p}$ observações e preditores \\
+    Linha de base            & \Sexpr{texto_base} \quad (\Sexpr{nome_base}) \\
+    Maior correlação com $Y$ & \Sexpr{texto_cor} \\
+    Balanço das classes      & \Sexpr{texto_balanco} \\
+    Valores faltantes        & \Sexpr{texto_falta} \\
+    \bottomrule
+  \end{tabular}
+  \fonte{Elaborada pelos autores.}
+\end{table}
+
+\textbf{Vazamento.} Para evitar contaminação do modelo, as variáveis que definiam a hora original de registro (\texttt{hora\_sinistro}) foram completamente desconsideradas do conjunto de preditores $X$. Dessa forma, a classificação opera estritamente sobre características ambientais, viárias e estruturais do sinistro, garantindo que o modelo capture a assinatura comportamental do tráfego no pico sem vazamento de informação trivial.
+
+\textbf{Tamanho ($n \times p$).} O conjunto reúne $n = \Sexpr{n}$ observações para $p = \Sexpr{p}$ preditores candidatos. A relação de mais de 12.000 observações por parâmetro assegura ampla estabilidade aos estimadores de máxima verossimilhança, eliminando riscos de sobreajuste (\textit{overfitting}) e permitindo a inclusão de termos de interação entre tipos de via e modais vulneráveis.
+
+\textbf{Balanço de classes e faltantes.} A resposta qualitativa binária exibe excelente balanço entre as classes: 40,1\% das ocorrências concentram-se nas faixas de pico pendular (\Sexpr{as.integer(table(y))["Pico"]} sinistros em apenas 6,5 horas do dia), enquanto 59,9\% distribuem-se nas 17,5 horas restantes (\Sexpr{as.integer(table(y))["Fora do Pico"]} sinistros). A Figura~\ref{fig:resposta} ilustra essa distribuição. Adicionalmente, o subconjunto de boletins selecionados não apresenta valores faltantes (\texttt{NA}) nas variáveis incluídas na modelagem.
+
+\begin{figure}[htb]
+  \centering
+  \caption{Distribuição da variável de resposta \texttt{\Sexpr{resposta_tex}}}
+  \label{fig:resposta}
+<<fig-resposta>>=
+par(mar = c(3.0, 3.5, 0.5, 0.5), cex.axis = 0.85, cex.lab = 0.85)
+barplot(table(y), col = c("#B5D8EB", "#3A6B88"), border = "white",
+        ylab = "Frequência de sinistros", ylim = c(0, max(table(y)) * 1.15))
+@
+  \fonte{Elaborada pelos autores.}
+\end{figure}
+
+\textbf{Veredito.} A pergunta se sustenta plenamente nos dados: o banco possui volume massivo, integridade cadastral e atributos suficientes para explicar a dinâmica dos sinistros no horário de pico por meio de aprendizado estatístico inferencial. A modelagem detalhada será aprofundada nas próximas etapas do projeto através de regressão logística, seleção de preditores por regularização e reamostragem via validação cruzada e bootstrap.
+
+% ----------------------------------------------------------
+% REFERÊNCIAS
+% ----------------------------------------------------------
+\postextual
+\bibliography{referencias}
+
+\end{document}

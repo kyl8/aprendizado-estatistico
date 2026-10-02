@@ -4,13 +4,19 @@ Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatísti
 
 ## Conteúdo
 
+- [entregas](entregas/): relatórios formais e entregas acadêmicas em LaTeX/Sweave;
 - [consolidado](consolidado/): atividades e relatórios organizados por etapa;
+- [estrutura/banco-de-dados](estrutura/banco-de-dados/): bases preparadas e dados serializados para modelagem;
 - [estrutura/corpus](estrutura/corpus/): dicionário e base de sinistros;
 - [estrutura/codigos](estrutura/codigos/): scripts de modelagem em R;
 - [estrutura/resultados](estrutura/resultados/): métricas e previsões geradas pelos scripts;
 - [materiais-aulas](materiais-aulas/): PDFs usados nas aulas.
 
 Os scripts e os resultados usam nomes próprios do grupo, com a data da atualização em 15 de setembro de 2026.
+
+## Entregas Formais
+
+- [Entrega 1: A Pergunta do Trabalho (PDF compilado)](entregas/entrega-1/entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/entrega-1/entrega-1-pergunta.Rnw))
 
 ## Base
 

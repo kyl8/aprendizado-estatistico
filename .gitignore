@@ -1,2 +1,11 @@
 # Materiais de aula mantidos fora do versionamento
 slides/
+
+# Arquivos temporários LaTeX
+*.aux
+*.log
+*.blg
+*.bbl
+*.synctex.gz
+*.out
+
