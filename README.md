@@ -19,7 +19,7 @@ Os scripts e os resultados usam nomes próprios do grupo, com a data da atualiza
 A pasta [entregas/](entregas/) está organizada em duas divisões principais:
 
 - **[entregas/finalizada/](entregas/finalizada/):** versão final consolidada do grupo APPA:
-  - [Entrega 1: A Pergunta do Trabalho (PDF)](entregas/finalizada/entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/finalizada/entrega-1-pergunta.Rnw))
+  - [Entrega 1: A Pergunta do Trabalho (PDF)](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.Rnw))
 - **[entregas/modelo_base/](entregas/modelo_base/):** modelo e template original fornecido pela disciplina:
   - [Modelo Base: Pergunta do Trabalho](entregas/modelo_base/entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/modelo_base/entrega-1-pergunta.Rnw))
 
