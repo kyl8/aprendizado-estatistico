@@ -44,7 +44,6 @@
 \newcommand{\integrantes}{%
   Arthur Galvão \\
   Pedro Henrique \\
-  Pedro Alvarenga \\
   Ailana%
 }
 
