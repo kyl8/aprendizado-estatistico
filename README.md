@@ -40,6 +40,7 @@ O [dicionário de dados](estrutura/corpus/2026-08-11-appa-DicionarioDados.md) ex
 - [05: avaliação e seleção de modelos](consolidado/2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.md)
 - [06: métodos de reamostragem](consolidado/2026-09-15-appa-Atividade06-MetodosReamostragem.md)
 - [07: expansão e regularização](consolidado/2026-10-05-appa-Atividade07-ExpansaoRegularizacao.md)
+- [08: métodos de suavização](consolidado/2026-10-09-appa-Atividade08-MetodosSuavizacao.md)
 
 O relatório original da análise exploratória continua disponível em [2026-08-25-appa-AnaliseExploratoria.md](consolidado/2026-08-25-appa-AnaliseExploratoria.md).
 

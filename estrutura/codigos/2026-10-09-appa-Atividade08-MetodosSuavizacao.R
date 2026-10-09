@@ -50,7 +50,7 @@ erro_nw <- min(erros_nw, na.rm=TRUE)
 cat("Erro CV (MSE) - Melhor Kernel (h =", melhor_h, "):", erro_nw, "\n")
 
 # Salvando a figura
-png("estrutura/resultados/2026-10-09-appa-09-Suavizacao.png", width=800, height=600, res=100)
+png("estrutura/resultados/2026-10-09-appa-08-Suavizacao.png", width=800, height=600, res=100)
 g <- seq(min(x), max(x), length = 200)
 plot(x, y, col = "gray60", xlab="Total de Veiculos Envolvidos", ylab="Vitimas Fatais", main="Metodos de Suavizacao - Aula 9")
 lines(g, sapply(g, nw, x = x, y = y, h = melhor_h), lwd = 2, col="darkgreen")

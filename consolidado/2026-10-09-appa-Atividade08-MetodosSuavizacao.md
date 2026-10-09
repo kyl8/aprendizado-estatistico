@@ -1,4 +1,4 @@
-# Atividade 09: Métodos de Suavização
+# Atividade 08: Métodos de Suavização
 
 Esta atividade aplica três métodos preditivos para um preditor numérico e a variável resposta, explorando Reta, KNN e Kernel Smoothing para identificar formas funcionais não-lineares nos dados do projeto.
 
@@ -19,7 +19,7 @@ O modelo utilizou **`veiculos`** (quantidade de veículos envolvidos) como predi
 
 A curva resultante do suavizador Kernel, configurada com a banda ótima identificada pelo CV, pode ser vista abaixo contra a base de pontos (em cinza).
 
-![Suavização](../estrutura/resultados/2026-10-09-appa-09-Suavizacao.png)
+![Suavização](../estrutura/resultados/2026-10-09-appa-08-Suavizacao.png)
 
 ## Conclusão de Forma
 
