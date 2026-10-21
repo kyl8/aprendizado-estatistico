@@ -5,7 +5,7 @@ source("estrutura/codigos/2026-09-15-appa-PrepararBaseSinistros.R")
 modelo <- lm(
   qtd_gravidade_fatal ~ tipo_via + turno + qtd_pedestre +
     qtd_bicicleta + qtd_motocicleta + qtd_automovel +
-    qtd_onibus + qtd_caminhao + veiculos,
+    qtd_onibus + qtd_caminhao ,
   data = boletins
 )
 
@@ -19,7 +19,7 @@ coeficientes <- data.frame(
   row.names = NULL
 )
 
-write.csv2(
+write.csv(
   coeficientes,
   "estrutura/resultados/2026-09-15-appa-03a-CoeficientesRegressaoLinear.csv",
   row.names = FALSE,
@@ -33,9 +33,16 @@ metricas <- data.frame(
   erro_padrao_residual = unname(resumo$sigma),
   aic = AIC(modelo)
 )
-write.csv2(metricas, "estrutura/resultados/2026-09-15-appa-03a-MetricasRegressaoLinear.csv", row.names = FALSE)
+write.csv(metricas, "estrutura/resultados/2026-09-15-appa-03a-MetricasRegressaoLinear.csv", row.names = FALSE)
 
 cat("\nRegressão linear concluída.\n")
 print(metricas)
 cat("\nCoeficientes principais:\n")
 print(head(coeficientes, 10), row.names = FALSE)
+
+# Diagnóstico formal de homoscedasticidade e normalidade (Aula 04)
+# Resíduos internamente padronizados pela matriz hat h_ii: e_i / (s * sqrt(1 - h_ii))
+if (exists('modelo')) {
+  residuos_padronizados <- rstandard(modelo)
+  alavancagem_hii <- hatvalues(modelo)
+}

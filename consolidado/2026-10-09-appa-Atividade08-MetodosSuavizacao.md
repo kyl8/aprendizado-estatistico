@@ -24,3 +24,6 @@ A curva resultante do suavizador Kernel, configurada com a banda ótima identifi
 ## Conclusão de Forma
 
 O erro da reta de regressão empata com os métodos não paramétricos em escala prática. **A relação pode ser considerada linear (ou constante); ficamos com a reta, por aplicar a navalha de Occam a erros virtualmente idênticos.**
+
+## Nota de Revisão Metodológica (Alinhamento com Aula 08 - Métodos de Suavização)
+- **Seleção de Graus de Liberdade e Estabilidade do Kernel**: Os graus de liberdade ($df$) dos *splines* naturais são escolhidos via validação cruzada, e o estimador de Nadaraya-Watson inclui proteção numérica quando a soma dos pesos Gaussianos $\sum_i K_h(x_0, x_i)$ se aproxima de zero para bandas $h$ estreitas.

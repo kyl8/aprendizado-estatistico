@@ -19,7 +19,7 @@ knn_reg <- function(x0, x, y, k) mean(y[order(abs(x - x0))[1:k]])
 nw <- function(x0, x, y, h) { 
   w <- dnorm((x - x0) / h)
   if (sum(w) == 0) return(NA) # Evita divisao por zero
-  sum(w * y) / sum(w) 
+  ifelse(sum(w) == 0, NA_real_, sum(w * y) / sum(w)) 
 }
 reta <- function(x0, x, y) sum(coef(lm(y ~ x)) * c(1, x0))
 

@@ -8,7 +8,7 @@ teste <- boletins[-indices_treino, ]
 modelo <- lm(
   qtd_gravidade_fatal ~ tipo_via + turno + qtd_pedestre +
     qtd_bicicleta + qtd_motocicleta + qtd_automovel +
-    qtd_onibus + qtd_caminhao + veiculos,
+    qtd_onibus + qtd_caminhao ,
   data = treino
 )
 
@@ -19,7 +19,7 @@ metricas <- data.frame(
   teste = nrow(teste),
   mae = mean(abs(erros)),
   rmse = sqrt(mean(erros^2)),
-  r2_teste = 1 - sum(erros^2) / sum((teste$qtd_gravidade_fatal - mean(treino$qtd_gravidade_fatal))^2)
+  r2_teste = 1 - sum(erros^2) / sum((teste$qtd_gravidade_fatal - mean(teste$qtd_gravidade_fatal))^2)
 )
 
 amostra <- data.frame(

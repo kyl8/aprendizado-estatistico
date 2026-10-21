@@ -32,3 +32,6 @@ O código está em [2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.R](../es
 ## Material
 
 [Aula 06: avaliação e seleção de modelos](../materiais-aulas/Aula%2006%20-%20Avalia%C3%A7%C3%A3o%20e%20Sele%C3%A7%C3%A3o%20de%20Modelos.PDF).
+
+## Nota de Revisão Metodológica (Alinhamento com Aula 06 - Avaliação e Seleção de Modelos)
+- **Penalização de Complexidade ($AIC$, $BIC$, $C_p$ e $R^2_{\text{ajustado}}$)**: Os critérios de seleção penalizam o número de parâmetros $p$ sobre a soma de quadrados dos resíduos de treino ($AIC = n\log(RSS/n) + 2p$ e $BIC = n\log(RSS/n) + p\log(n)$), enquanto a avaliação direta em validação utiliza o $R^2_{\text{teste}}$ referenciado em $\bar{y}_{\text{teste}}$.

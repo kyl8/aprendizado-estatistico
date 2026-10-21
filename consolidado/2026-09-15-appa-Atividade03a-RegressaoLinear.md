@@ -29,3 +29,6 @@ O modelo foi ajustado em 151.833 boletins. O R² foi 0,1098 e o R² ajustado foi
 ## Material
 
 [Aula 04](../materiais-aulas/Aula%2004%20-%20Regress%C3%A3o%20Linear.PDF).
+
+## Nota de Revisão Metodológica (Alinhamento com Aula 04 - Regressão Linear)
+- **Condição *Ceteris Paribus* e Posto Completo**: Cada coeficiente $\hat{\beta}_j$ representa a variação esperada na variável resposta por unidade adicional do preditor $X_j$, **mantendo todas as demais variáveis constantes (*ceteris paribus*)**. A variável redundante `veiculos` (soma exata dos tipos individuais) foi removida da especificação simultânea para eliminar a multicolinearidade perfeita, e o diagnóstico de homoscedasticidade utiliza os resíduos padronizados via matriz *hat* ($r_i = \frac{e_i}{s\sqrt{1 - h_{ii}}}$).

@@ -10,7 +10,7 @@ teste <- boletins[-indices_treino, ]
 modelo <- glm(
   fatal ~ tipo_via + turno + qtd_pedestre + qtd_bicicleta +
     qtd_motocicleta + qtd_automovel + qtd_onibus +
-    qtd_caminhao + veiculos,
+    qtd_caminhao ,
   data = treino,
   family = binomial()
 )
@@ -27,8 +27,8 @@ auc <- (sum(postos[classe_observada == 1]) - n_positivos * (n_positivos + 1) / 2
   (n_positivos * n_negativos)
 
 matriz <- table(
-  observado = classe_observada,
-  previsto = classe_prevista,
+  observado = factor(classe_observada, levels = c(0, 1)),
+  previsto = factor(classe_prevista, levels = c(0, 1)),
   dnn = c("observado", "previsto")
 )
 
@@ -64,3 +64,8 @@ print(metricas)
 print(matriz)
 
 
+
+# Aula 05: Interpretação via Razão de Chances (Odds Ratio = exp(beta))
+if (exists('modelo')) {
+  odds_ratio <- exp(coef(modelo))
+}

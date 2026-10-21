@@ -1,4 +1,3 @@
-setwd("c:/Users/Arthur/Documents/IA_workspace/programacao/aprendizado-estatistico")
 source("estrutura/codigos/2026-09-15-appa-PrepararBaseSinistros.R")
 
 # Converte hora_sinistro em minutos desde 00:00

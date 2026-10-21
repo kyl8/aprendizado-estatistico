@@ -11,7 +11,7 @@ m2 <- lm(qtd_gravidade_fatal ~ tipo_via + turno + qtd_pedestre +
            qtd_motocicleta + qtd_automovel + qtd_onibus + qtd_caminhao,
          data = treino)
 m3 <- lm(qtd_gravidade_fatal ~ tipo_via * turno + qtd_pedestre +
-           qtd_motocicleta + qtd_automovel + qtd_onibus + qtd_caminhao + veiculos,
+           qtd_motocicleta + qtd_automovel + qtd_onibus + qtd_caminhao ,
          data = treino)
 
 avaliar <- function(modelo, nome) {
@@ -23,7 +23,7 @@ avaliar <- function(modelo, nome) {
     rmse_treino = sqrt(mean((treino$qtd_gravidade_fatal - previsto_treino)^2)),
     rmse_teste = sqrt(mean(erro^2)),
     mae_teste = mean(abs(erro)),
-    r2_teste = 1 - sum(erro^2) / sum((teste$qtd_gravidade_fatal - mean(treino$qtd_gravidade_fatal))^2)
+    r2_teste = 1 - sum(erro^2) / sum((teste$qtd_gravidade_fatal - mean(teste$qtd_gravidade_fatal))^2)
   )
 }
 

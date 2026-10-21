@@ -1,11 +1,21 @@
-# Materiais de aula mantidos fora do versionamento
+# Slides e materiais externos temporários
 slides/
 
-# Arquivos temporários LaTeX
+# Artefatos temporários e gerados do LaTeX / Knitr / Sweave
 *.aux
 *.log
-*.blg
-*.bbl
-*.synctex.gz
 *.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.concordance.tex
+entregas/finalizada/*.tex
+entregas/modelo_base/*.tex
 
+# Histórico e sessão do R
+.Rhistory
+.RData
+.Rproj.user/

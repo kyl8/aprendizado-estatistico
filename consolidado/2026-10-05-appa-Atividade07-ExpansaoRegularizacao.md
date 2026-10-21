@@ -27,3 +27,6 @@ O modelo escolhido não deve ser definido pelo erro de treino. A comparação us
 ## Material
 
 A Aula 08 trata de expansão de atributos e regularização.
+
+## Nota de Revisão Metodológica (Alinhamento com Aula 08 - Expansão e Regularização)
+- **Padronização e Regra de Parcimônia (`lambda.1se`)**: Os preditores são padronizados antes da penalização Ridge ($L_2$) e Lasso ($L_1$), a seleção do hiperparâmetro segue a regra de um erro-padrão (`s = "lambda.1se"`) e os coeficientes reportados pelo `glmnet` são devidamente apresentados na escala original das variáveis.

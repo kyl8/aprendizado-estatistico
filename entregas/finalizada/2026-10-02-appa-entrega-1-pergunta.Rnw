@@ -65,7 +65,7 @@ options(OutDec = ",", digits = 4)
 
 <<dados, include=FALSE>>=
 # =========================================================================
-# DADOS DO GRUPO APPA (Caminho relativo a partir de entregas/entrega-1/)
+# DADOS DO GRUPO APPA (Caminho relativo a partir de entregas/finalizada/)
 # =========================================================================
 dados    <- readRDS("../../estrutura/banco-de-dados/sinistros_pico.rds")
 resposta <- "pico"

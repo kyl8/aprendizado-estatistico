@@ -33,3 +33,6 @@ A acurácia alta esconde a quantidade de casos fatais que o modelo não encontro
 ## Material
 
 [Aula 05](../materiais-aulas/Aula%2005%20-%20Classifica%C3%A7%C3%A3o%20e%20Regress%C3%A3o%20Log%C3%ADstica.PDF).
+
+## Nota de Revisão Metodológica (Alinhamento com Aula 05 - Regressão Logística)
+- **Interpretação via *Odds Ratio* e Matriz de Confusão**: No modelo logit $\log\left(\frac{p}{1-p}\right) = \beta_0 + \sum \beta_j X_j$, o parâmetro $\beta_j$ atua linearmente sobre o logito; na escala da chance (*odds*), o efeito multiplicativo *ceteris paribus* é dado pela Razão de Chances (*Odds Ratio*) $OR_j = e^{\beta_j}$. Na matriz de confusão com limiar $0,5$, a classe positiva é `fatal == TRUE` ($Y=1$), de modo que $\text{Sensibilidade} = \frac{VP}{VP + FN}$ e $\text{Especificidade} = \frac{VN}{VN + FP}$.

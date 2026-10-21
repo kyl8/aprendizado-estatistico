@@ -27,3 +27,6 @@ Foram usados 121.466 registros no treino e 30.367 no teste. O erro absoluto méd
 ## Material
 
 [Aula 04](../materiais-aulas/Aula%2004%20-%20Regress%C3%A3o%20Linear.PDF).
+
+## Nota de Revisão Metodológica (Alinhamento com Aula 04 - Previsão Fora da Amostra)
+- **Cálculo Correto do $R^2$ de Teste**: O coeficiente de determinação no conjunto de teste é calculado tomando como referência a média amostral do próprio conjunto de teste: $R^2_{\text{teste}} = 1 - \frac{\sum (y_{i,\text{teste}} - \hat{y}_{i,\text{teste}})^2}{\sum (y_{i,\text{teste}} - \bar{y}_{\text{teste}})^2}$.

@@ -50,3 +50,7 @@ dir.create(file.path("estrutura", "resultados"), showWarnings = FALSE, recursive
 cat("Registros totais:", nrow(dados), "\n")
 cat("Boletins analisados:", nrow(boletins), "\n")
 cat("Fatais:", sum(boletins$fatal), "\n")
+
+# Persistência da base tratada exigida pelos scripts subsequentes
+dir.create('estrutura/resultados', showWarnings = FALSE, recursive = TRUE)
+saveRDS(boletins, file = 'estrutura/resultados/sinistros_prontos.rds')

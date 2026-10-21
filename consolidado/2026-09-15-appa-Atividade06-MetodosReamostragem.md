@@ -33,3 +33,6 @@ O código está em [2026-09-15-appa-Atividade06-MetodosReamostragem.R](../estrut
 ## Material
 
 [Aula 07: métodos de reamostragem](../materiais-aulas/Aula%2007%20-%20M%C3%A9todos%20de%20Reamostragem.PDF).
+
+## Nota de Revisão Metodológica (Alinhamento com Aula 07 - Métodos de Reamostragem)
+- **Reprodutibilidade em Validação Cruzada ($k$-fold CV)**: A partição das dobras utiliza semente fixa (`set.seed(42)`) e passagem explícita de argumentos para garantir reprodutibilidade exata do erro estimado $CV_{(k)} = \frac{1}{k}\sum_{j=1}^k MSE_j$.

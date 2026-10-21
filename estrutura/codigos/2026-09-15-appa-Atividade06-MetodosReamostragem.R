@@ -10,7 +10,7 @@ formulas <- list(
   m2_veiculos = qtd_gravidade_fatal ~ tipo_via + turno + qtd_pedestre +
     qtd_motocicleta + qtd_automovel + qtd_onibus + qtd_caminhao,
   m3_interacoes = qtd_gravidade_fatal ~ tipo_via * turno + qtd_pedestre +
-    qtd_motocicleta + qtd_automovel + qtd_onibus + qtd_caminhao + veiculos
+    qtd_motocicleta + qtd_automovel + qtd_onibus + qtd_caminhao 
 )
 
 cv_lm <- function(formula) {

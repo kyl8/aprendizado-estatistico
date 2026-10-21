@@ -31,3 +31,6 @@ O dicionário serve como referência para escolher fatores, respostas numéricas
 ## Material
 
 [Aula 01](../materiais-aulas/Aula%2001%20-%20Introdu%C3%A7%C3%A3o%20ao%20Aprendizado%20Estat%C3%ADstico.PDF) e [Aula 02](../materiais-aulas/Aula%2002%20-%20Dados%20e%20Vari%C3%A1veis.PDF).
+
+## Nota de Revisão Metodológica (Alinhamento com Aula 02 - Dados e Variáveis)
+- **Classificação Formal das Variáveis**: As variáveis binárias indicadoras (como ocorrência de fatalidade) e categóricas de condição climática/turno são classificadas estritamente como **Qualitativas Nominais** (ou **Ordinais** quando há hierarquia de severidade), enquanto as contagens de veículos e vítimas pertencem à classe **Quantitativa Discreta**.
