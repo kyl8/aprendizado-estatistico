@@ -19,3 +19,6 @@ entregas/modelo_base/*.tex
 .Rhistory
 .RData
 .Rproj.user/
+
+Rplots.pdf
+estrutura/resultados/sinistros_prontos.rds

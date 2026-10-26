@@ -1,27 +1,2 @@
-source("estrutura/codigos/2026-09-15-appa-PrepararBaseSinistros.R")
-dados <- boletins[, c("ano_mes_sinistro", "regiao_administrativa", "turno")]
-names(dados) <- c("mes", "regiao", "turno")
-dados <- dados[complete.cases(dados) & dados$mes != "" & dados$regiao != "" & dados$turno != "", ]
-dados$mes <- factor(dados$mes); dados$regiao <- factor(dados$regiao); dados$turno <- factor(dados$turno)
-contagens <- as.data.frame(table(dados$mes, dados$regiao, dados$turno), stringsAsFactors = FALSE)
-names(contagens) <- c("mes", "regiao", "turno", "n")
-contagens$mes <- factor(contagens$mes); contagens$regiao <- factor(contagens$regiao); contagens$turno <- factor(contagens$turno)
-modelo_poisson <- glm(n ~ mes + regiao + turno, family = poisson(), data = contagens)
-phi <- sum(residuals(modelo_poisson, type = "pearson")^2) / df.residual(modelo_poisson)
-modelo_quasi <- glm(n ~ mes + regiao + turno, family = quasipoisson(), data = contagens)
-set.seed(20261025); dobra <- sample(rep(1:5, length.out = nrow(contagens)))
-rmse <- function(y, p) sqrt(mean((y - p)^2))
-avaliar <- function(ajusta, prever) { p <- numeric(nrow(contagens)); for (j in 1:5) { tr <- contagens[dobra != j, ]; va <- contagens[dobra == j, ]; p[dobra == j] <- pmax(0, prever(ajusta(tr), va)) }; list(rmse = rmse(contagens$n, p), previsto = p) }
-base_cv <- rep(mean(contagens$n), nrow(contagens))
-lm_cv <- avaliar(function(tr) lm(n ~ mes + regiao + turno, data = tr), function(m, va) predict(m, newdata = va))
-poisson_cv <- avaliar(function(tr) glm(n ~ mes + regiao + turno, family = poisson(), data = tr), function(m, va) predict(m, newdata = va, type = "response"))
-metricas <- data.frame(modelo = c("media", "mqo", "poisson"), rmse_cv5 = c(rmse(contagens$n, base_cv), lm_cv$rmse, poisson_cv$rmse), dispersao_pearson = c(NA, NA, phi))
-coeficientes <- data.frame(termo = names(coef(modelo_quasi)), coeficiente = unname(coef(modelo_quasi)), razao_taxas = exp(unname(coef(modelo_quasi))), erro_padrao_quasi = coef(summary(modelo_quasi))[, "Std. Error"], row.names = NULL)
-dir.create("estrutura/resultados", showWarnings = FALSE, recursive = TRUE)
-write.csv(contagens, "estrutura/resultados/2026-10-25-appa-05b-ContagensSinistros.csv", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv(metricas, "estrutura/resultados/2026-10-25-appa-05b-MetricasPoisson.csv", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv(coeficientes, "estrutura/resultados/2026-10-25-appa-05b-CoeficientesPoisson.csv", row.names = FALSE, fileEncoding = "UTF-8")
-png("estrutura/resultados/2026-10-25-appa-05b-ObservadoPrevistoPoisson.png", width = 1000, height = 700, res = 120)
-plot(contagens$n, poisson_cv$previsto, pch = 16, cex = .55, col = rgb(.05, .35, .45, .28), xlab = "Sinistros observados", ylab = "Previsao Poisson (CV 5)", main = "APPA: contagens observadas e previstas")
-abline(0, 1, lty = 2, col = "firebrick", lwd = 2); dev.off()
-cat("Celulas:", nrow(contagens), "| zeros:", sum(contagens$n == 0), "| phi:", round(phi, 3), "\n"); print(metricas)
+# R | Atividade05b-RegressaoPoisson.R | executar na raiz do repositorio.
+source("estrutura/codigo/aula05b_poisson.R", encoding = "UTF-8") # Executa teoria, parte D e verificacoes.

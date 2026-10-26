@@ -34,9 +34,10 @@ X <- model.matrix(y ~ ., data = dados_modelo)[, -1]
 y <- dados_modelo$y
 
 set.seed(20261005)
-lasso <- glmnet::cv.glmnet(X, y, alpha = 1, nfolds = 5)
-ridge <- glmnet::cv.glmnet(X, y, alpha = 0, nfolds = 5)
-elastic <- glmnet::cv.glmnet(X, y, alpha = 0.5, nfolds = 5)
+dobras_comuns <- sample(rep(1:5, length.out = length(y)))
+lasso <- glmnet::cv.glmnet(X, y, alpha = 1, foldid = dobras_comuns)
+ridge <- glmnet::cv.glmnet(X, y, alpha = 0, foldid = dobras_comuns)
+elastic <- glmnet::cv.glmnet(X, y, alpha = 0.5, foldid = dobras_comuns)
 
 indice_min <- which.min(lasso$cvm)
 indice_1se <- which.min(abs(lasso$lambda - lasso$lambda.1se))

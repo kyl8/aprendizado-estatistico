@@ -1,16 +1,16 @@
 # Leitura comum da base usada nas atividades de modelagem.
+if (.Platform$OS.type == "windows") invisible(Sys.setlocale("LC_CTYPE", "English_United States.utf8"))
 
 arquivo_base <- file.path("estrutura", "corpus", "2026-08-12-appa-Sinistros_2025_2026.csv")
 if (!file.exists(arquivo_base)) {
   arquivo_base <- file.path("..", "corpus", "2026-08-12-appa-Sinistros_2025_2026.csv")
 }
 
-# A base possui alguns bytes fora do UTF-8. Ler as linhas como latin1
-# permite preservar a estrutura das 50 colunas sem interromper a leitura.
-linhas_base <- readLines(arquivo_base, encoding = "latin1", warn = FALSE)
-linhas_base <- linhas_base[nzchar(trimws(linhas_base))]
+# A fonte e Latin-1: a conversao na conexao preserva as 50 colunas e os acentos.
+# Evita perder a marcacao do encoding ao passar por uma conexao de texto.
 dados <- read.csv2(
-  textConnection(linhas_base),
+  arquivo_base,
+  fileEncoding = "latin1",
   stringsAsFactors = FALSE,
   na.strings = c("", "NA"),
   fill = TRUE,

@@ -35,3 +35,15 @@ O código está em [2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.R](../es
 
 ## Nota de Revisão Metodológica (Alinhamento com Aula 06 - Avaliação e Seleção de Modelos)
 - **Penalização de Complexidade ($AIC$, $BIC$, $C_p$ e $R^2_{\text{ajustado}}$)**: Os critérios de seleção penalizam o número de parâmetros $p$ sobre a soma de quadrados dos resíduos de treino ($AIC = n\log(RSS/n) + 2p$ e $BIC = n\log(RSS/n) + p\log(n)$), enquanto a avaliação direta em validação utiliza o $R^2_{\text{teste}}$ referenciado em $\bar{y}_{\text{teste}}$.
+
+## Reexecução em 25/10/2026
+
+Refiz o script sobre o banco APPA com a leitura Latin-1 corrigida. Os valores atuais são os das tabelas abaixo; os CSVs mantêm a precisão completa.
+
+[2026-09-15-appa-05-AvaliacoesModelos.csv](../estrutura/resultados/2026-09-15-appa-05-AvaliacoesModelos.csv)
+
+| modelo | rmse_treino | rmse_teste | mae_teste | r2_teste | vencedor |
+|---|---|---|---|---|---|
+| m1_tipo_via_turno | 0.239489 | 0.24468 | 0.101524 | 0.0857767 | FALSE |
+| m2_veiculos | 0.237527 | 0.242436 | 0.100295 | 0.102468 | FALSE |
+| m3_interacoes | 0.23674 | 0.241775 | 0.0994829 | 0.107357 | TRUE |

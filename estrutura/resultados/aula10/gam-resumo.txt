@@ -1,0 +1,24 @@
+
+Family: gaussian
+Link function: identity
+
+Formula:
+y ~ s(x, k = 10) + s(x2, k = 5) + tipo_via
+
+Parametric coefficients:
+                        Estimate Std. Error t value Pr(>|t|)
+(Intercept)             0.141890   0.005412   26.22   <2e-16 ***
+tipo_viaNAO DISPONIVEL  0.797238   0.042672   18.68   <2e-16 ***
+tipo_viaVIAS URBANAS   -0.103329   0.005951  -17.36   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+       edf Ref.df     F p-value
+s(x)  7.34  8.319 16.02  <2e-16 ***
+s(x2) 2.94  3.344 22.00  <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.0821   Deviance explained =  8.3%
+-REML = -2.431  Scale est. = 0.058211  n = 12000

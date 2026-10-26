@@ -1,0 +1,27 @@
+Registros totais: 273372
+Boletins analisados: 151833
+Fatais: 8501
+Amostra: 50000 boletins
+Colunas do modelo: 16
+            modelo alpha       lambda     mse_cv   rmse_cv preditores_ativos
+1            Ridge   0.0 5.036317e-03 0.05707496 0.2389037                NA
+2 Lasso_lambda_min   1.0 6.209006e-05 0.05711196 0.2389811                16
+3 Lasso_lambda_1se   1.0 1.369167e-02 0.05868440 0.2422486                 7
+4      Elastic_Net   0.5 1.801641e-04 0.05710982 0.2389766                NA
+
+Variaveis ativas no Lasso 1se:
+                    termo  coeficiente
+12 tipo_viaNAO DISPONIVEL  0.571104375
+15    turnoNAO DISPONIVEL  0.531199602
+13   tipo_viaVIAS URBANAS -0.067229605
+2            log_pedestre  0.050753955
+7            log_caminhao  0.033623879
+8            log_veiculos -0.016652061
+5           log_automovel -0.001924112
+
+Execucao final apos fixar foldid comum (Ridge, Lasso, Elastic Net):
+"modelo";"alpha";"lambda";"mse_cv";"rmse_cv";"preditores_ativos"
+"Ridge";0;0,00503631653742284;0,0571149449251071;0,238987332143583;NA
+"Lasso_lambda_min";1;6,20900642195989e-05;0,0571119609104734;0,238981089022695;16
+"Lasso_lambda_1se";1;0,0136916709253192;0,0586843963591738;0,242248625092432;7
+"Elastic_Net";0,5;0,000164158821605572;0,0571120556916719;0,23898128732533;NA

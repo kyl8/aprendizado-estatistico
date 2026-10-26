@@ -36,3 +36,13 @@ A acurácia alta esconde a quantidade de casos fatais que o modelo não encontro
 
 ## Nota de Revisão Metodológica (Alinhamento com Aula 05 - Regressão Logística)
 - **Interpretação via *Odds Ratio* e Matriz de Confusão**: No modelo logit $\log\left(\frac{p}{1-p}\right) = \beta_0 + \sum \beta_j X_j$, o parâmetro $\beta_j$ atua linearmente sobre o logito; na escala da chance (*odds*), o efeito multiplicativo *ceteris paribus* é dado pela Razão de Chances (*Odds Ratio*) $OR_j = e^{\beta_j}$. Na matriz de confusão com limiar $0,5$, a classe positiva é `fatal == TRUE` ($Y=1$), de modo que $\text{Sensibilidade} = \frac{VP}{VP + FN}$ e $\text{Especificidade} = \frac{VN}{VN + FP}$.
+
+## Reexecução em 25/10/2026
+
+Refiz o script sobre o banco APPA com a leitura Latin-1 corrigida. Os valores atuais são os das tabelas abaixo; os CSVs mantêm a precisão completa.
+
+[2026-09-15-appa-04-MetricasRegressaoLogistica.csv](../estrutura/resultados/2026-09-15-appa-04-MetricasRegressaoLogistica.csv)
+
+| registros_treino | registros_teste | acuracia | sensibilidade | especificidade | precisao | auc |
+|---|---|---|---|---|---|---|
+| 121466 | 30367 | 0.947081 | 0.0783862 | 0.999721 | 0.944444 | 0.769897 |

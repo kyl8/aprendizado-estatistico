@@ -30,3 +30,18 @@ A Aula 08 trata de expansão de atributos e regularização.
 
 ## Nota de Revisão Metodológica (Alinhamento com Aula 08 - Expansão e Regularização)
 - **Padronização e Regra de Parcimônia (`lambda.1se`)**: Os preditores são padronizados antes da penalização Ridge ($L_2$) e Lasso ($L_1$), a seleção do hiperparâmetro segue a regra de um erro-padrão (`s = "lambda.1se"`) e os coeficientes reportados pelo `glmnet` são devidamente apresentados na escala original das variáveis.
+
+## Reexecução em 25/10/2026
+
+Refiz o script sobre o banco APPA com a leitura Latin-1 corrigida. Os valores atuais são os das tabelas abaixo; os CSVs mantêm a precisão completa.
+
+[2026-10-05-appa-07-ModelosRegularizados.csv](../estrutura/resultados/2026-10-05-appa-07-ModelosRegularizados.csv)
+
+| modelo | alpha | lambda | mse_cv | rmse_cv | preditores_ativos |
+|---|---|---|---|---|---|
+| Ridge | 0 | 0.00503632 | 0.0571149 | 0.238987 | NA |
+| Lasso_lambda_min | 1 | 6.20901e-05 | 0.057112 | 0.238981 | 16 |
+| Lasso_lambda_1se | 1 | 0.0136917 | 0.0586844 | 0.242249 | 7 |
+| Elastic_Net | 0.5 | 0.000164159 | 0.0571121 | 0.238981 | NA |
+
+Ridge, Lasso e elastic net compartilham exatamente o mesmo `foldid`. Esta é a comparação válida após a revisão; os escores não usam sorteios distintos por método.

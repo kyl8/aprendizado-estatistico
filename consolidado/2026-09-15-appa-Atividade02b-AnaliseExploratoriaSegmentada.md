@@ -25,3 +25,7 @@ O recorte por horário depende de `hora_sinistro`. As linhas sem horário precis
 ## Material
 
 [Aula 03](../materiais-aulas/Aula%2003%20-%20An%C3%A1lise%20Explorat%C3%B3ria%20e%20Vari%C3%A1veis%20Aleat%C3%B3rias.PDF) e [relatório exploratório](2026-08-25-appa-AnaliseExploratoria.md).
+
+## Execução complementar — 25/10/2026
+
+O diagnóstico das 50 colunas, as 12 figuras amplas e as cinco figuras do recorte urbano estão em [estrutura/resultados/exploratoria](../estrutura/resultados/exploratoria/). O [script atualizado](../estrutura/codigos/2026-10-25-appa-Atividades01_02.R) documenta os recortes e diferencia contagem de eventos, participação de modais e proporção de boletins fatais.

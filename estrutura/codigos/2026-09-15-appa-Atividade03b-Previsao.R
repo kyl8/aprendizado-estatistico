@@ -24,7 +24,7 @@ metricas <- data.frame(
 
 amostra <- data.frame(
   observado = teste$qtd_gravidade_fatal,
-  previsto = pmax(0, previsoes),
+  previsto = previsoes,
   erro = erros
 )
 

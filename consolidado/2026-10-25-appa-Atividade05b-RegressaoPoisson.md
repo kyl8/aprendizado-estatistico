@@ -1,22 +1,17 @@
-﻿# Atividade 05b: Regressão de Poisson
+# Atividade 05b — Regressão de Poisson
 
-A atividade agrega os boletins APPA por mês, região administrativa e turno. A resposta é o número de sinistros em cada combinação, preservando as 157 células sem ocorrência.
+A entrega foi refeita com a teoria e os nove módulos do guia.
 
-## Modelo e validação
+- [Resolução individual](../resolucoes/Pedro_Henrique/aula05b_resolvido.md)
+- [Consolidado individual](../consolidados/Pedro_Henrique/aula05b_consolidado.md)
+- [Parte D completa](../consolidados/aula05b_parteD_consolidado.md)
+- [Ficha](../consolidados/00_FICHA_PERGUNTA.md)
+- [Código solicitado](../estrutura/codigo/aula05b_poisson.R)
 
-O ajuste usa regressão de Poisson com mês, região e turno como preditores. A dispersão de Pearson foi 2,223, acima de 1; por isso os erros padrão também são disponibilizados pelo ajuste quase-Poisson.
+| modelo | RMSE CV(5) |
+|---|---|
+| media | 27,024 |
+| mqo | 14,229 |
+| poisson | 13,713 |
 
-| modelo | RMSE em validação cruzada de 5 dobras |
-|---|---:|
-| média | 206,345 |
-| MQO | 104,888 |
-| Poisson | 20,011 |
-
-O Poisson teve o menor erro e preserva a escala não negativa. O resultado descreve associações na tabela agregada; não deve ser usado para atribuir causalidade a turno ou região.
-
-## Saídas
-
-- `2026-10-25-appa-05b-ContagensSinistros.csv`
-- `2026-10-25-appa-05b-MetricasPoisson.csv`
-- `2026-10-25-appa-05b-CoeficientesPoisson.csv`
-- `2026-10-25-appa-05b-ObservadoPrevistoPoisson.png`
+A versão anterior usava outra agregação e uma linha de base calculada sobre toda a base. A versão atual usa exposição de calendário, preserva todas as células e aprende cada previsão apenas no treino da dobra.

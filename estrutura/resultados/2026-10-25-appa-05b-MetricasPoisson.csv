@@ -1,4 +1,4 @@
-"modelo","rmse_cv5","dispersao_pearson"
-"media",206.344689953603,NA
-"mqo",104.887577770217,NA
-"poisson",20.0108528072669,2.22314642210717
+"modelo","rmse_cv5","previsoes_negativas","dispersao_pearson"
+"media",27.0237338345885,0,NA
+"mqo",14.2293311229011,6,NA
+"poisson",13.7131109917079,0,3.99880592741175

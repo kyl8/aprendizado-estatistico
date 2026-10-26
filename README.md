@@ -12,7 +12,7 @@ Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatísti
 - [estrutura/resultados](estrutura/resultados/): métricas e previsões geradas pelos scripts;
 - [materiais-aulas](materiais-aulas/): PDFs usados nas aulas.
 
-Os scripts e os resultados usam nomes próprios do grupo, com a data da atualização em 15 de setembro de 2026.
+Os scripts e resultados usam o prefixo de data e grupo `YYYY-MM-DD-appa`.
 
 ## Entregas Formais
 
@@ -25,7 +25,7 @@ A pasta [entregas/](entregas/) está organizada em duas divisões principais:
 
 ## Base
 
-O arquivo [Sinistros_2025_2026.csv](estrutura/corpus/2026-08-12-appa-Sinistros_2025_2026.csv) reúne 273.371 registros e 50 variáveis, de janeiro de 2025 a junho de 2026.
+O arquivo [Sinistros_2025_2026.csv](estrutura/corpus/2026-08-12-appa-Sinistros_2025_2026.csv) reúne 273.372 registros e 50 variáveis, de janeiro de 2025 a junho de 2026.
 
 O [dicionário de dados](estrutura/corpus/2026-08-11-appa-DicionarioDados.md) explica as colunas, categorias e regras usadas para tratar valores ausentes.
 
@@ -53,3 +53,28 @@ Rscript estrutura/codigos/2026-09-15-appa-Atividade04-RegressaoLogistica.R
 Rscript estrutura/codigos/2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.R
 Rscript estrutura/codigos/2026-09-15-appa-Atividade06-MetodosReamostragem.R
 ```
+
+
+## Atualização de 25/10/2026
+
+- [Mapa completo da atualização](sincronizacao/2026-10-25-atualizacao.md)
+- [05b: teoria de Poisson resolvida](resolucoes/Pedro_Henrique/aula05b_resolvido.md)
+- [05b: consolidado individual](consolidados/Pedro_Henrique/aula05b_consolidado.md)
+- [05b: Parte D no banco APPA](consolidados/aula05b_parteD_consolidado.md)
+- [Ficha da pergunta](consolidados/00_FICHA_PERGUNTA.md)
+- [09: splines, GAM e exercícios](consolidado/2026-10-25-appa-Atividade09-SplinesModelosAditivos.md)
+- [Guias originais de Poisson](guias-estudo/)
+
+```powershell
+Rscript estrutura/codigo/aula05b_poisson.R
+Rscript estrutura/codigos/aula10_splines.R
+```
+
+As três bases simuladas do guia reproduzem os números esperados. Na prática, a exposição
+é de calendário; não há fluxo de tráfego disponível para estimar risco por veículo.
+
+[Oficina: duas perguntas e escolha com CV](consolidados/entrega1_duas_perguntas.md) · [Exploração atualizada](estrutura/resultados/exploratoria/)
+
+Reexecutar as novas etapas: `Rscript estrutura/codigos/executar_atualizacao.R`. Dependências: SnowballC e ggplot2 (PI); mgcv e glmnet (Estatística). Os PDFs históricos permanecem preservados; revisões atuais estão nos consolidados em Markdown.
+
+No Windows desta workspace, `powershell -ExecutionPolicy Bypass -File .\executar_atualizacao.ps1` localiza o R preparado em `../tmp/R/bin` automaticamente. Em outro clone, use R instalado no PATH.

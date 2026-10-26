@@ -1,0 +1,13 @@
+Registros totais: 273372
+Boletins analisados: 151833
+Fatais: 8501
+
+RegressÃ£o logÃ­stica concluÃ­da.
+  registros_treino registros_teste  acuracia sensibilidade especificidade
+1           121466           30367 0.9470807    0.07838617      0.9997206
+   precisao      auc
+1 0.9444444 0.769897
+         previsto
+observado     0     1
+        0 28624     8
+        1  1599   136

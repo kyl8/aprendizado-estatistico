@@ -1,0 +1,6 @@
+Registros totais: 273372
+Boletins analisados: 151833
+Fatais: 8501
+Erro CV (MSE) - Reta: 0.07663759
+Erro CV (MSE) - Melhor KNN (k = 20 ): 0.0767945
+Erro CV (MSE) - Melhor Kernel (h = 0.2924709 ): 0.07616569

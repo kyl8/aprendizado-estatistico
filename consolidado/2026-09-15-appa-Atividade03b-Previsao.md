@@ -30,3 +30,15 @@ Foram usados 121.466 registros no treino e 30.367 no teste. O erro absoluto méd
 
 ## Nota de Revisão Metodológica (Alinhamento com Aula 04 - Previsão Fora da Amostra)
 - **Cálculo Correto do $R^2$ de Teste**: O coeficiente de determinação no conjunto de teste é calculado tomando como referência a média amostral do próprio conjunto de teste: $R^2_{\text{teste}} = 1 - \frac{\sum (y_{i,\text{teste}} - \hat{y}_{i,\text{teste}})^2}{\sum (y_{i,\text{teste}} - \bar{y}_{\text{teste}})^2}$.
+
+## Reexecução em 25/10/2026
+
+Refiz o script sobre o banco APPA com a leitura Latin-1 corrigida. Os valores atuais são os das tabelas abaixo; os CSVs mantêm a precisão completa.
+
+[2026-09-15-appa-03b-MetricasPrevisao.csv](../estrutura/resultados/2026-09-15-appa-03b-MetricasPrevisao.csv)
+
+| treino | teste | mae | rmse | r2_teste |
+|---|---|---|---|---|
+| 121466 | 30367 | 0.100815 | 0.246091 | 0.104908 |
+
+As previsões exportadas agora ficam na mesma escala dos resíduos e das métricas: não aplico truncagem apenas no CSV.

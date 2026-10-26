@@ -1,6 +1,6 @@
 # Atividade 01: dados e variáveis
 
-Esta atividade organiza a base de sinistros usada pelo grupo APPA. O arquivo tem 273.371 registros e 50 variáveis, com ocorrências registradas entre janeiro de 2025 e junho de 2026.
+Esta atividade organiza a base de sinistros usada pelo grupo APPA. O arquivo tem 273.372 registros e 50 variáveis, com ocorrências registradas entre janeiro de 2025 e junho de 2026.
 
 ## O que foi feito
 
@@ -34,3 +34,7 @@ O dicionário serve como referência para escolher fatores, respostas numéricas
 
 ## Nota de Revisão Metodológica (Alinhamento com Aula 02 - Dados e Variáveis)
 - **Classificação Formal das Variáveis**: As variáveis binárias indicadoras (como ocorrência de fatalidade) e categóricas de condição climática/turno são classificadas estritamente como **Qualitativas Nominais** (ou **Ordinais** quando há hierarquia de severidade), enquanto as contagens de veículos e vítimas pertencem à classe **Quantitativa Discreta**.
+
+## Execução complementar — 25/10/2026
+
+O diagnóstico das 50 colunas, as 12 figuras amplas e as cinco figuras do recorte urbano estão em [estrutura/resultados/exploratoria](../estrutura/resultados/exploratoria/). O [script atualizado](../estrutura/codigos/2026-10-25-appa-Atividades01_02.R) documenta os recortes e diferencia contagem de eventos, participação de modais e proporção de boletins fatais.

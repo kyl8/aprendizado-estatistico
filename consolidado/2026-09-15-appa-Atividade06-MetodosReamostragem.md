@@ -36,3 +36,21 @@ O código está em [2026-09-15-appa-Atividade06-MetodosReamostragem.R](../estrut
 
 ## Nota de Revisão Metodológica (Alinhamento com Aula 07 - Métodos de Reamostragem)
 - **Reprodutibilidade em Validação Cruzada ($k$-fold CV)**: A partição das dobras utiliza semente fixa (`set.seed(42)`) e passagem explícita de argumentos para garantir reprodutibilidade exata do erro estimado $CV_{(k)} = \frac{1}{k}\sum_{j=1}^k MSE_j$.
+
+## Reexecução em 25/10/2026
+
+Refiz o script sobre o banco APPA com a leitura Latin-1 corrigida. Os valores atuais são os das tabelas abaixo; os CSVs mantêm a precisão completa.
+
+[2026-09-15-appa-06-ValidacaoCruzada.csv](../estrutura/resultados/2026-09-15-appa-06-ValidacaoCruzada.csv)
+
+| modelo | mse_cv5 | rmse_cv5 |
+|---|---|---|
+| m1_tipo_via_turno | 0.0581198 | 0.24108 |
+| m2_veiculos | 0.0571435 | 0.239047 |
+| m3_interacoes | 0.0567865 | 0.238299 |
+
+[2026-09-15-appa-06-BootstrapMotocicleta.csv](../estrutura/resultados/2026-09-15-appa-06-BootstrapMotocicleta.csv)
+
+| coeficiente_observado | erro_padrao_bootstrap | ic_95_inferior | ic_95_superior | replicacoes |
+|---|---|---|---|---|
+| -0.017502 | 0.0016399 | -0.0208771 | -0.0142076 | 300 |
