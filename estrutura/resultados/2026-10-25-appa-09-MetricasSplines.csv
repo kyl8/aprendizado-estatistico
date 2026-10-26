@@ -1,0 +1,7 @@
+"modelo","rmse_cv5"
+"reta",0.25001524331931
+"polinomio_grau_2",0.250259551080912
+"spline_natural_df3",0.249369068458153
+"spline_natural_df5",0.249071570454733
+"spline_natural_df7",0.249071570454733
+"gam",0.249035242301788
