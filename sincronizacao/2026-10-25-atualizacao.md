@@ -19,7 +19,7 @@ Referência: [Danilo, Estatística](https://github.com/danilopradooficial/teoria
 ## Guias fornecidos em D:
 As três fontes permanecem em `guias-estudo/`, com hashes registrados no manifesto.
 O LEIAME é uma orientação ao professor: não o apresentei como uma atividade respondida por aluno.
-As entregas indicadas nele foram criadas nos caminhos exatos: `consolidados/Pedro_Henrique/`,
+As entregas indicadas nele ficam diretamente nas pastas do projeto: `consolidados/`,
 `consolidados/aula05b_parteD_consolidado.md` e `estrutura/codigo/aula05b_poisson.R`.
 
 ## Correções verificadas

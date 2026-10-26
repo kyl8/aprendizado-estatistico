@@ -61,8 +61,8 @@ Rscript estrutura/codigos/2026-09-15-appa-Atividade06-MetodosReamostragem.R
 ## Atualização de 25/10/2026
 
 - [Mapa completo da atualização](sincronizacao/2026-10-25-atualizacao.md)
-- [05b: teoria de Poisson resolvida](resolucoes/Pedro_Henrique/aula05b_resolvido.md)
-- [05b: consolidado individual](consolidados/Pedro_Henrique/aula05b_consolidado.md)
+- [05b: teoria de Poisson resolvida](resolucoes/aula05b_resolvido.md)
+- [05b: consolidado individual](consolidados/aula05b_consolidado.md)
 - [05b: Parte D no banco APPA](consolidados/aula05b_parteD_consolidado.md)
 - [Ficha da pergunta](consolidados/00_FICHA_PERGUNTA.md)
 - [09: splines, GAM e exercícios](consolidado/2026-10-25-appa-Atividade09-SplinesModelosAditivos.md)
