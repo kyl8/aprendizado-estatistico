@@ -12,8 +12,6 @@ slides/
 *.fls
 *.fdb_latexmk
 *.concordance.tex
-entregas/finalizada/*.tex
-entregas/modelo_base/*.tex
 
 # Histórico e sessão do R
 .Rhistory

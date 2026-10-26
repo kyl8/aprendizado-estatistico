@@ -22,9 +22,9 @@ Os scripts e resultados usam o prefixo de data e grupo `YYYY-MM-DD-appa`.
 A pasta [entregas/](entregas/) reúne a entrega final e os modelos da disciplina:
 
 - **[entregas/finalizada/](entregas/finalizada/):** versão final consolidada do grupo APPA:
-  - [Entrega 1: A Pergunta do Trabalho (PDF)](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.Rnw))
+  - [Entrega 1: A Pergunta do Trabalho (PDF)](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.Rnw), [LaTeX](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.tex))
 - **[entregas/modelo_base/](entregas/modelo_base/):** modelo e template original fornecido pela disciplina:
-  - [Modelo Base: Pergunta do Trabalho](entregas/modelo_base/entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/modelo_base/entrega-1-pergunta.Rnw))
+  - [Modelo Base: Pergunta do Trabalho](entregas/modelo_base/entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/modelo_base/entrega-1-pergunta.Rnw), [LaTeX](entregas/modelo_base/entrega-1-pergunta.tex))
 
 ## Base
 
