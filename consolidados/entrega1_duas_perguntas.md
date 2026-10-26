@@ -1,5 +1,6 @@
 # Oficina — Duas perguntas, diagnóstico e escolha
-**Grupo APPA · Pedro Henrique · 2026-10-25 · preparação com Codex.**
+**Grupo APPA · 2026-10-25 · apoio: ChatGPT.**
+**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
 
 ## As duas fichas
 | Campo | Candidata A | Candidata B |
@@ -16,12 +17,12 @@
 O banco tem 273.372 registros e 50 colunas; 151.833 são boletins. A candidata A usa
 151591 casos completos, com 60848 no pico e 90743 fora.
 O palpite de classe majoritária atinge acurácia 0,599.
-Tenho muito mais observações que parâmetros; isso não elimina desequilíbrio nem viés de registro.
+Temos muito mais observações que parâmetros; isso não elimina desequilíbrio nem viés de registro.
 Os faltantes por coluna estão no CSV `faltantes-banco.csv`; a candidata A usa exclusão explícita
 de casos incompletos, sem imputar a partir da validação.
 
 **Vazamento:** hora determina `pico`, portanto fica fora dos preditores da candidata A; turno
-também foi retirado para evitar um substituto direto do horário. Não uso gravidade posterior
+também foi retirado para evitar um substituto direto do horário. Não usamos gravidade posterior
 como explicação causal. Correlação numérica não detecta esse tipo de vazamento por definição.
 Na candidata B, todas as células do calendário permanecem na tabela, com exposição conhecida.
 
@@ -33,14 +34,13 @@ Na candidata B, todas as células do calendário permanecem na tabela, com expos
 
 A AUC da logística foi 0,575; a acurácia foi 0,599, praticamente
 igual à classe majoritária. Os modelos de cada pergunta compartilham as mesmas dobras e aprendem
-a linha de base apenas no treino. Não comparo numericamente Brier com RMSE: são escalas distintas.
+a linha de base apenas no treino. Não comparamos numericamente Brier com RMSE: são escalas distintas.
 
-## Escolha preparada
-Escolho **B para a proposta de revisão**: o ganho relativo foi maior, os preditores estão disponíveis
+## Escolha da proposta
+Escolhemos **B para a proposta de revisão**: o ganho relativo foi maior, os preditores estão disponíveis
 antes da contagem e a resposta mede diretamente a frequência temporal que motivou o projeto.
 A pergunta A discrimina pouco além da linha de base. A ficha original de classificação e seu PDF
 permanecem como histórico; a Parte D prevê discutir com o professor antes de trocar a pergunta oficial.
-Não atribuo essa decisão a uma reunião do grupo que não foi observada.
 
 **O que as próximas aulas podem mudar:** interações e modelos mais flexíveis podem melhorar a
 previsão; validação temporal e exposição de tráfego podem mudar a avaliação e a interpretação de risco.

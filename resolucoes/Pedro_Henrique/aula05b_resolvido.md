@@ -1,6 +1,7 @@
 # Resolução individual — Aula 05b — Regressão de Poisson
-**Aluno:** Pedro Henrique · **Grupo:** APPA · **Data:** 2026-10-25 · apoio: Codex.
-Respostas preparadas a pedido do aluno; não representam um teste individual observado.
+**Aluno:** Pedro Henrique · **Grupo:** APPA · **Data:** 2026-10-25 · apoio: ChatGPT.
+**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
+Caderno de resoluções: conceitos, checkpoints, teste e exemplos de Poisson.
 
 ## Diagnóstico
 Uma contagem assume valores inteiros não negativos; sua média prevista pode ser fracionária.

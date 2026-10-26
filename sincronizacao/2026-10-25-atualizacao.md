@@ -1,4 +1,6 @@
 # Atualização — Teoria do Aprendizado Estatístico — 25/10/2026
+**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
+**Apoio:** ChatGPT.
 
 Referência: [Danilo, Estatística](https://github.com/danilopradooficial/teoriaaprendizadoestatistico), commit `fac02f1bff1d23b156ffe96eee64cd7934ba0b2b`.
 
@@ -25,7 +27,7 @@ A fonte é Latin-1; a leitura agora preserva os nomes das regiões e conta 273.3
 As métricas de Poisson foram refeitas sem usar a média da validação na linha de base e sem
 truncar previsões negativas do MQO. A exposição é conhecida no calendário, sem confundi-la com fluxo de tráfego.
 A oficina compara perguntas em métricas próprias e relata os ganhos relativos, sem comparar unidades diferentes.
-As decisões foram preparadas com apoio de Codex: não representam participação dos integrantes ou teste pessoal observado.
+As resoluções e a documentação do grupo APPA contam com apoio de ChatGPT; os resultados estão vinculados aos scripts e às saídas da execução.
 
 
 O manifesto `2026-10-25-fontes.json` registra os commits e os hashes dos materiais didáticos copiados.

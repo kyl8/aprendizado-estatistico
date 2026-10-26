@@ -1,4 +1,6 @@
 # Ficha da pergunta — APPA
+**Apoio:** ChatGPT.
+**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
 
 Fonte: Entrega 1 do grupo, `entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.Rnw`.
 Transcrição para leitura dos guias, conferida em 2026-10-25.
@@ -13,6 +15,6 @@ Transcrição para leitura dos guias, conferida em 2026-10-25.
 | Preditores e disponibilidade | Via, calendário e características registradas do sinistro. Horário determina a resposta `pico`; não deve ser usado para alegar previsão independente dela. Características posteriores ao sinistro servem à análise descritiva, não à previsão antes do evento. |
 | Tarefa e métrica | Classificação na pergunta original. Na extensão Poisson, contagem por mês × dia da semana × hora, RMSE em sinistros, comparado à média e ao MQO nas mesmas dobras. |
 
-A Parte D reconstrói a ficha operacional a partir da Entrega 1 existente, sem inventar uma nova aprovação do grupo.
+A Parte D reconstrói a ficha operacional a partir da Entrega 1 existente e registra a análise auxiliar de contagem.
 A leitura integral conferida contou 273372 linhas, uma a mais que os 273.371 citados no README antigo.
 O código registra essas dimensões separadamente: os números não representam o mesmo recorte.

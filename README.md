@@ -1,5 +1,8 @@
 # Teoria do Aprendizado Estatístico
 
+**Grupo:** APPA — Arthur Galvão, Pedro Henrique e Ailana.
+**Apoio:** ChatGPT.
+
 Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatístico da FATEC. O projeto analisa registros de sinistros de trânsito no Estado de São Paulo.
 
 ## Conteúdo
