@@ -1,7 +1,0 @@
-Registros totais: 273372
-Boletins analisados: 151833
-Fatais: 8501
-
-Previsão concluída.
-  treino teste       mae      rmse  r2_teste
-1 121466 30367 0.1008149 0.2460913 0.1049082

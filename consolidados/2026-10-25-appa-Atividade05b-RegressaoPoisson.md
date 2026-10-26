@@ -3,9 +3,9 @@
 A entrega foi refeita com a teoria e os nove módulos do guia.
 
 - [Resolução individual](../resolucoes/aula05b_resolvido.md)
-- [Consolidado individual](../consolidados/aula05b_consolidado.md)
-- [Parte D completa](../consolidados/aula05b_parteD_consolidado.md)
-- [Ficha](../consolidados/00_FICHA_PERGUNTA.md)
+- [Consolidado individual](aula05b_consolidado.md)
+- [Parte D completa](aula05b_parteD_consolidado.md)
+- [Ficha](00_FICHA_PERGUNTA.md)
 - [Código solicitado](../estrutura/codigo/aula05b_poisson.R)
 
 | modelo | RMSE CV(5) |

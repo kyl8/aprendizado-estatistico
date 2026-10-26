@@ -1,8 +1,0 @@
-Registros totais: 273372
-Boletins analisados: 151833
-Fatais: 8501
-Modelo escolhido: m3_interacoes
-             modelo rmse_treino rmse_teste  mae_teste   r2_teste vencedor
-1 m1_tipo_via_turno   0.2394888  0.2446799 0.10152361 0.08577666    FALSE
-2       m2_veiculos   0.2375271  0.2424360 0.10029463 0.10246805    FALSE
-3     m3_interacoes   0.2367398  0.2417748 0.09948295 0.10735729     TRUE

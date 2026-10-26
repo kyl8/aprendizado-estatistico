@@ -22,3 +22,7 @@ entregas/modelo_base/*.tex
 
 Rplots.pdf
 estrutura/resultados/sinistros_prontos.rds
+
+# Registros locais de execucao
+estrutura/resultados/reexecucao/
+estrutura/resultados/*-SessionInfo.txt
