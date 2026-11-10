@@ -81,5 +81,4 @@ Executar todas as etapas: `Rscript estrutura/codigos/executar_atualizacao.R`. De
 No Windows, execute `powershell -ExecutionPolicy Bypass -File .\executar_atualizacao.ps1`. Em outro ambiente, use R instalado no PATH.
 
 ## Referências
-
-Materiais da disciplina: [Danilo — Teoria do Aprendizado Estatístico](https://github.com/danilopradooficial/teoriaaprendizadoestatistico), versão `fac02f1`. Os guias de Poisson estão em [guias-estudo/](guias-estudo/).
+Os guias de Poisson estão em [guias-estudo/](guias-estudo/).
