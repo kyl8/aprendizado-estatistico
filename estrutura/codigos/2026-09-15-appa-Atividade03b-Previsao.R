@@ -1,9 +1,9 @@
 source("estrutura/codigos/2026-09-15-appa-PrepararBaseSinistros.R")
 
 set.seed(20260915)
-indices_treino <- sample(seq_len(nrow(boletins)), size = floor(0.8 * nrow(boletins)))
-treino <- boletins[indices_treino, ]
-teste <- boletins[-indices_treino, ]
+indices_treino <- sample(seq_len(nrow(boletins_modelo)), size = floor(0.8 * nrow(boletins_modelo)))
+treino <- boletins_modelo[indices_treino, ]
+teste <- boletins_modelo[-indices_treino, ]
 
 modelo <- lm(
   qtd_gravidade_fatal ~ tipo_via + turno + qtd_pedestre +
@@ -19,7 +19,8 @@ metricas <- data.frame(
   teste = nrow(teste),
   mae = mean(abs(erros)),
   rmse = sqrt(mean(erros^2)),
-  r2_teste = 1 - sum(erros^2) / sum((teste$qtd_gravidade_fatal - mean(teste$qtd_gravidade_fatal))^2)
+  r2_teste = 1 - sum(erros^2) / sum((teste$qtd_gravidade_fatal - mean(teste$qtd_gravidade_fatal))^2),
+  previsoes_negativas = sum(previsoes < 0)
 )
 
 amostra <- data.frame(

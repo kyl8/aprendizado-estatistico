@@ -3,7 +3,7 @@ source("estrutura/codigos/2026-09-15-appa-PrepararBaseSinistros.R")
 # Validação cruzada para os mesmos candidatos da Atividade 05.
 set.seed(20260915)
 k <- 5
-dobras <- sample(rep(seq_len(k), length.out = nrow(boletins)))
+dobras <- sample(rep(seq_len(k), length.out = nrow(boletins_modelo)))
 
 formulas <- list(
   m1_tipo_via_turno = qtd_gravidade_fatal ~ tipo_via + turno,
@@ -15,8 +15,8 @@ formulas <- list(
 
 cv_lm <- function(formula) {
   erros <- sapply(seq_len(k), function(dobra) {
-    treino <- boletins[dobras != dobra, ]
-    validacao <- boletins[dobras == dobra, ]
+    treino <- boletins_modelo[dobras != dobra, ]
+    validacao <- boletins_modelo[dobras == dobra, ]
     modelo <- lm(formula, data = treino)
     mean((validacao$qtd_gravidade_fatal - predict(modelo, validacao))^2)
   })
@@ -29,13 +29,13 @@ rownames(cv_resultados) <- NULL
 cv_resultados <- cv_resultados[, c("modelo", "mse_cv5", "rmse_cv5")]
 
 # Bootstrap do coeficiente de motocicletas no modelo com veículos.
-modelo_base <- lm(formulas$m2_veiculos, data = boletins)
+modelo_base <- lm(formulas$m2_veiculos, data = boletins_modelo)
 coef_observado <- coef(modelo_base)[["qtd_motocicleta"]]
 set.seed(20260915)
 B <- 300
 coef_bootstrap <- replicate(B, {
-  indices <- sample.int(nrow(boletins), nrow(boletins), replace = TRUE)
-  coef(lm(formulas$m2_veiculos, data = boletins[indices, ]))[["qtd_motocicleta"]]
+  indices <- sample.int(nrow(boletins_modelo), nrow(boletins_modelo), replace = TRUE)
+  coef(lm(formulas$m2_veiculos, data = boletins_modelo[indices, ]))[["qtd_motocicleta"]]
 })
 intervalo <- quantile(coef_bootstrap, c(0.025, 0.975), na.rm = TRUE)
 

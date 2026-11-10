@@ -27,10 +27,10 @@
 
 \definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
 \newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
-\newcommand{\hlsng}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
 \newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
 \newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hldef}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
 \newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
 \newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
 \newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
@@ -82,11 +82,11 @@
 % ----------------------------------------------------------
 % DADOS DA ENTREGA
 % ----------------------------------------------------------
-\titulo{A pergunta do trabalho: Fatores Associados à Concentração de Sinistros de Trânsito nos Horários de Pico}
+\titulo{A pergunta do trabalho: Características Associadas aos Sinistros de Trânsito nos Horários de Pico}
 \tituloestrangeiro{}
 \autor{Grupo APPA}
 \local{Santos-SP}
-\data{\today}
+\data{Outubro de 2026}
 
 \newcommand{\nomecurso}{Tecnologia em Ciência de Dados}
 \newcommand{\nomedisciplina}{Teoria do Aprendizado Estatístico}
@@ -126,9 +126,9 @@
 \section{Introdução}
 % ==========================================================================
 
-Os sinistros de trânsito são um problema frequente nas cidades, principalmente nos horários de pico, quando há maior circulação de veículos e pessoas. O aumento do fluxo pode favorecer congestionamentos, frenagens e conflitos no trânsito. Este trabalho apresenta o banco de dados escolhido, formula a pergunta sobre a maior ocorrência de sinistros nos horários de pico e verifica se os dados permitem respondê-la. Para isso, serão analisados os registros de sinistros, considerando seus horários e outras características disponíveis no banco de dados. A análise busca identificar padrões e possíveis fatores relacionados à maior frequência de ocorrências nesses períodos. Assim, a pergunta central é: \textbf{por que os sinistros de trânsito acontecem com mais frequência nos horários de pico?}
+Os sinistros de trânsito são um problema frequente nas cidades, principalmente nos horários de pico, quando há maior circulação de veículos e pessoas. O aumento do fluxo pode favorecer congestionamentos, frenagens e conflitos no trânsito. Este trabalho apresenta o banco de dados escolhido, formula a pergunta sobre a maior ocorrência de sinistros nos horários de pico e verifica se os dados permitem respondê-la. Para isso, serão analisados os registros de sinistros, considerando seus horários e outras características disponíveis no banco de dados. A análise busca identificar padrões e possíveis fatores relacionados à maior frequência de ocorrências nesses períodos. Assim, a pergunta central é: \textbf{que características registradas dos sinistros de trânsito estão associadas à sua ocorrência nos horários de pico?} A base descreve apenas sinistros que aconteceram, sem o volume de tráfego em circulação; por isso a análise identifica associações e não permite concluir causas.
 
-Em segurança viária e mobilidade urbana, compreender os mecanismos subjacentes a essa concentração temporal é imprescindível para órgãos de planejamento de tráfego, secretarias municipais e operadoras de rodovias. A literatura de tráfego aponta que o aumento de sinistros nesses períodos decorre da combinação entre saturação da malha viária, redução do intervalo de seguimento (\textit{headway}) entre veículos, atrito entre modais heterogêneos (veículos pesados, motocicletas e pedestres) e pressões temporais dos deslocamentos pendulares. Sob o arcabouço de Teoria do Aprendizado Estatístico \cite{james2021}, o estudo adota uma abordagem inferencial fundamentada em modelos supervisionados de classificação, quantificando o efeito marginal dos fatores operacionais e viários que caracterizam os episódios ocorridos no pico em relação aos demais turnos.
+Em segurança viária e mobilidade urbana, compreender os mecanismos subjacentes a essa concentração temporal é imprescindível para órgãos de planejamento de tráfego, secretarias municipais e operadoras de rodovias. A literatura de tráfego aponta que o aumento de sinistros nesses períodos decorre da combinação entre saturação da malha viária, redução do intervalo de seguimento (\textit{headway}) entre veículos, atrito entre modais heterogêneos (veículos pesados, motocicletas e pedestres) e pressões temporais dos deslocamentos pendulares. Sob o arcabouço de Teoria do Aprendizado Estatístico \cite{james2021}, o estudo adota uma abordagem inferencial fundamentada em modelos supervisionados de classificação, estimando a associação entre as características viárias e operacionais dos sinistros e a ocorrência no pico, sem interpretá-la como efeito causal.
 
 % ==========================================================================
 \section{O banco de dados e o problema}
@@ -136,7 +136,7 @@ Em segurança viária e mobilidade urbana, compreender os mecanismos subjacentes
 
 O conjunto de dados foi extraído do repositório oficial do Infosiga SP \cite{fonte_dados}, gerido pelo Departamento Estadual de Trânsito de São Paulo (Detran-SP), abrangendo as ocorrências registradas entre janeiro de 2025 e junho de 2026. A base consolida dados de boletins policiais e notificações viárias em todo o território estadual. Conforme preconiza a norma técnica da Associação Brasileira de Normas Técnicas para pesquisa viária \cite{abnt10697}, adota-se rigorosamente a denominação ``sinistro de trânsito'', superando o termo coloquial ``acidente''.
 
-Cada linha da base representa uma ocorrência única de sinistro de trânsito devidamente registrada por boletim de ocorrência policial. Foram selecionados os boletins com horário de ocorrência válido, totalizando $n = \text{151591}$ observações e $p = \text{12}$ preditores candidatos. As variáveis contemplam atributos de infraestrutura (\texttt{tipo\_via}), características do evento (\texttt{tp\_sinistro\_primario}), temporalidade (\texttt{dia\_da\_semana}, \texttt{turno}), gravidade (\texttt{fatal}) e a contagem discriminada de modais envolvidos (\texttt{qtd\_automovel}, \texttt{qtd\_motocicleta}, \texttt{qtd\_onibus}, \texttt{qtd\_caminhao}, \texttt{qtd\_pedestre}, \texttt{qtd\_bicicleta} e total de \texttt{veiculos}).
+Cada linha da base representa uma ocorrência única de sinistro de trânsito devidamente registrada por boletim de ocorrência policial. Foram selecionados os boletins com horário de ocorrência válido e tipo de via informado, totalizando $n = \text{151175}$ observações e $p = \text{11}$ preditores candidatos. As variáveis contemplam atributos de infraestrutura (\texttt{tipo\_via}), características do evento (\texttt{tp\_sinistro\_primario}), temporalidade (\texttt{dia\_da\_semana}), gravidade (\texttt{fatal}) e a contagem discriminada de modais envolvidos (\texttt{qtd\_automovel}, \texttt{qtd\_motocicleta}, \texttt{qtd\_onibus}, \texttt{qtd\_caminhao}, \texttt{qtd\_pedestre}, \texttt{qtd\_bicicleta} e total de \texttt{veiculos}).
 
 A escolha deste banco fundamenta-se na alta completude cadastral dos boletins policiais e na relevância concreta do problema: gestores de mobilidade e comandos de policiamento viário necessitam de evidências quantitativas para priorizar intervenções de engenharia de tráfego, temporização semafórica dinâmica e patrulhamento preventivo nos corredores de maior atrito.
 
@@ -144,7 +144,7 @@ A escolha deste banco fundamenta-se na alta completude cadastral dos boletins po
 \section{A pergunta}
 % ==========================================================================
 
-A pergunta norteadora da pesquisa é enunciada de forma direta: \textbf{por que os sinistros de trânsito acontecem com mais frequência nos horários de pico?} A Tabela~\ref{tab:ficha} sintetiza os sete campos metodológicos que estruturam formalmente a investigação.
+A pergunta norteadora da pesquisa é enunciada de forma direta: \textbf{que características registradas dos sinistros de trânsito estão associadas à sua ocorrência nos horários de pico?} A Tabela~\ref{tab:ficha} sintetiza os sete campos metodológicos que estruturam formalmente a investigação.
 
 \begin{table}[htb]
   \centering
@@ -157,17 +157,17 @@ A pergunta norteadora da pesquisa é enunciada de forma direta: \textbf{por que 
     \midrule
     1. A pergunta, em uma frase & Por que os sinistros de trânsito acontecem com mais frequência nos horários de pico? \\
     2. Resposta $Y$: coluna, tipo & \texttt{pico} --- qualitativa (binária: Pico vs.\ Fora do Pico) \\
-    3. Preditores $X$: quais e quantos & Vias, tipo de colisão, modais envolvidos, dia da semana e severidade ($p = \text{12}$) \\
-    4. Tipo: decisões de modelagem & Supervisionado; classifica\c{c}\~ao; abordagem inferencial \\
+    3. Preditores $X$: quais e quantos & Vias, tipo de colisão, modais envolvidos, dia da semana e gravidade ($p = \text{11}$); \texttt{turno} e \texttt{hora\_sinistro} excluídos \\
+    4. Tipo: decisões de modelagem & Supervisionado; classifica\c{c}\~ao; abordagem inferencial (associações) \\
     5. Métrica de avaliação & acur\'acia e AUC \\
-    6. Linha de base a bater & acur\'acia = 0,599 \quad (chutar a classe mais comum) \\
+    6. Linha de base a bater & acur\'acia = 0,598 \quad (chutar a classe mais comum) \\
     7. Dono do problema & Órgãos de trânsito e prefeituras (alocação de efetivo e intervenções semafóricas) \\
     \bottomrule
   \end{tabular}
   \fonte{Elaborada pelos autores.}
 \end{table}
 
-A decisão por um problema de \textbf{classificação supervisionada com finalidade inferencial} é metodologicamente determinante. Conforme discutido por \citeonline{bruce2019}, em ciências aplicadas o objetivo não é meramente prever se um sinistro futuro pertencerá ao pico, mas identificar e mensurar as razões de chance (\textit{odds ratios}) de cada fator de risco. Modelos lineares generalizados (regressão logística com inferência assintótica e reamostragem via validação cruzada) permitem isolar o impacto marginal de conflitos entre motocicletas e automóveis em vias arteriais, fornecendo suporte acionável para políticas públicas de redução de sinistralidade.
+A decisão por um problema de \textbf{classificação supervisionada com finalidade inferencial} é metodologicamente determinante. Conforme discutido por \citeonline{bruce2019}, em ciências aplicadas o objetivo não é meramente prever se um sinistro pertencerá ao pico, mas identificar e mensurar as razões de chance (\textit{odds ratios}) associadas a cada característica. Modelos lineares generalizados (regressão logística com validação cruzada) permitem descrever essas associações. Como não há dado de fluxo de veículos, elas não medem risco por veículo nem efeito causal; servem para descrever o perfil dos sinistros registrados no pico.
 
 % ==========================================================================
 \section{Defesa da pergunta}
@@ -184,21 +184,21 @@ A Tabela~\ref{tab:diag} consolida o diagnóstico empírico realizado sobre o ban
     \toprule
     \textbf{Verificação} & \textbf{Resultado} \\
     \midrule
-    Tamanho ($n \times p$)   & $\text{151591} \times \text{12}$ observações e preditores \\
-    Linha de base            & acur\'acia = 0,599 \quad (chutar a classe mais comum) \\
+    Tamanho ($n \times p$)   & $\text{151175} \times \text{11}$ observações e preditores \\
+    Linha de base            & acur\'acia = 0,598 \quad (chutar a classe mais comum) \\
     Maior correlação com $Y$ & n\~ao se aplica (resposta qualitativa) \\
-    Balanço das classes      & \texttt{Fora do Pico}: 90743 | \texttt{Pico}: 60848 \\
+    Balanço das classes      & \texttt{Fora do Pico}: 90451 | \texttt{Pico}: 60724 \\
     Valores faltantes        & nenhum \\
     \bottomrule
   \end{tabular}
   \fonte{Elaborada pelos autores.}
 \end{table}
 
-\textbf{Vazamento.} Para evitar contaminação do modelo, as variáveis que definiam a hora original de registro (\texttt{hora\_sinistro}) foram completamente desconsideradas do conjunto de preditores $X$. Dessa forma, a classificação opera estritamente sobre características ambientais, viárias e estruturais do sinistro, garantindo que o modelo capture a assinatura comportamental do tráfego no pico sem vazamento de informação trivial.
+\textbf{Vazamento.} A resposta é definida pela hora do sinistro; por isso \texttt{hora\_sinistro} e também \texttt{turno}, que é derivado dela e separa a resposta (nenhum sinistro da madrugada pertence ao pico), foram retirados dos preditores $X$. Variáveis como \texttt{fatal}, \texttt{tp\_sinistro\_primario} e as contagens de modais são registradas após o evento: servem à descrição do perfil dos sinistros, não à previsão antes de ele ocorrer.
 
-\textbf{Tamanho ($n \times p$).} O conjunto reúne $n = \text{151591}$ observações para $p = \text{12}$ preditores candidatos. A relação de mais de 12.000 observações por parâmetro assegura ampla estabilidade aos estimadores de máxima verossimilhança, eliminando riscos de sobreajuste (\textit{overfitting}) e permitindo a inclusão de termos de interação entre tipos de via e modais vulneráveis.
+\textbf{Tamanho ($n \times p$).} O conjunto reúne $n = \text{151175}$ observações para $p = \text{11}$ preditores candidatos. Há muito mais observações do que coeficientes (as variáveis categóricas geram dezenas de termos), o que reduz o risco de sobreajuste (\textit{overfitting}) sem eliminá-lo nem corrigir vieses de registro; a validação cruzada avalia esse risco.
 
-\textbf{Balanço de classes e faltantes.} A resposta qualitativa binária exibe excelente balanço entre as classes: 40,1\% das ocorrências concentram-se nas faixas de pico pendular (\text{NA} sinistros em apenas 6,5 horas do dia), enquanto 59,9\% distribuem-se nas 17,5 horas restantes (\text{NA} sinistros). A Figura~\ref{fig:resposta} ilustra essa distribuição. Adicionalmente, o subconjunto de boletins selecionados não apresenta valores faltantes (\texttt{NA}) nas variáveis incluídas na modelagem.
+\textbf{Balanço de classes e faltantes.} A resposta binária tem desbalanceamento moderado: 40,2\% das ocorrências estão nas faixas de pico (\text{60724} sinistros em 6,5 horas do dia), enquanto 59,8\% distribuem-se nas 17,5 horas restantes (\text{90451} sinistros). A classe majoritária já acerta cerca de 59,8\% dos casos, e é essa a linha de base a superar. A Figura~\ref{fig:resposta} ilustra essa distribuição. O subconjunto de boletins selecionados não apresenta valores faltantes (\texttt{NA}) nas variáveis incluídas; nas contagens de modais, o campo em branco da fonte foi interpretado como zero.
 
 \begin{figure}[htb]
   \centering
@@ -216,7 +216,7 @@ A Tabela~\ref{tab:diag} consolida o diagnóstico empírico realizado sobre o ban
   \fonte{Elaborada pelos autores.}
 \end{figure}
 
-\textbf{Veredito.} A pergunta se sustenta plenamente nos dados: o banco possui volume massivo, integridade cadastral e atributos suficientes para explicar a dinâmica dos sinistros no horário de pico por meio de aprendizado estatístico inferencial. A modelagem detalhada será aprofundada nas próximas etapas do projeto através de regressão logística, seleção de preditores por regularização e reamostragem via validação cruzada e bootstrap.
+\textbf{Veredito.} A pergunta, formulada como associação, é respondível com o banco: há volume e completude suficientes. Ela não permite afirmar causas nem comparar risco entre horários, pois falta o volume de tráfego. Em testes preliminares, um modelo logístico com apenas via, dia da semana e região discriminou pouco (AUC próxima de 0,57) e acertou tanto quanto a classe majoritária; portanto, espera-se associações modestas. As próximas etapas aplicam regressão logística, regularização e validação cruzada, e avaliam uma pergunta alternativa de contagem de sinistros por hora com exposição de calendário.
 
 % ----------------------------------------------------------
 % REFERÊNCIAS

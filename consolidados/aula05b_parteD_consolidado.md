@@ -4,7 +4,7 @@
 
 ## Antes de tudo: ficha e teoria
 APPA investiga a concentração de sinistros nos horários de pico.
-O banco bruto tem 273372 linhas e 50 colunas; o recorte de boletins tem 151833.
+O banco bruto tem 273371 linhas e 50 colunas; o recorte de boletins tem 151833.
 O consolidado teórico cobre M1–M6, com checkpoints, teste e exemplos resolvidos.
 
 ## 1. O que foi feito

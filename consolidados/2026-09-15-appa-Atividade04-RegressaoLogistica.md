@@ -26,9 +26,11 @@ Também é preciso separar treinamento e teste e definir o ponto de corte da pro
 
 ## Resultado obtido
 
-Com ponto de corte 0,5, a acurácia foi 0,9471, mas a sensibilidade foi apenas 0,0818. A especificidade foi 0,9995, a precisão foi 0,9161 e a AUC foi 0,7704. A matriz teve 28.619 verdadeiros negativos, 13 falsos positivos, 1.593 falsos negativos e 142 verdadeiros positivos.
+Com ponto de corte 0,5, a acurácia foi 0,9472, praticamente igual à da classe majoritária (0,9474, "nunca fatal"). A sensibilidade foi só 0,0044: o modelo acertou 7 dos 1.591 boletins fatais do teste. A especificidade foi 0,9995, a precisão foi 0,35 e a AUC foi 0,7587. A matriz teve 28.631 verdadeiros negativos, 13 falsos positivos, 1.584 falsos negativos e 7 verdadeiros positivos.
 
-A acurácia alta esconde a quantidade de casos fatais que o modelo não encontrou. O resultado foi calculado no conjunto de teste, separado antes do ajuste. Para uso sério, será preciso ajustar o ponto de corte e avaliar outros limiares.
+A AUC de 0,76 mostra que o modelo ordena os casos melhor que o acaso, mas o corte de 0,5 é inadequado para uma classe de 5,3%. Escolhendo o corte que maximiza o F1 no **treino** (0,10), a sensibilidade sobe para 0,326, a especificidade cai para 0,917 e a precisão é 0,179, com acurácia de 0,886. O corte foi escolhido no treino, e não no teste, para não usar o conjunto de teste na decisão.
+
+A versão anterior (sensibilidade 0,078; AUC 0,77; razão de chances de 776 para `tipo_via = NAO DISPONIVEL`) incluía os marcadores `NAO DISPONIVEL` como preditores. Eles quase só aparecem em fatais e inflavam o desempenho; foram retirados (ver Atividade 03a).
 
 ## Material
 
@@ -37,12 +39,19 @@ A acurácia alta esconde a quantidade de casos fatais que o modelo não encontro
 ## Nota de Revisão Metodológica (Alinhamento com Aula 05 - Regressão Logística)
 - **Interpretação via *Odds Ratio* e Matriz de Confusão**: No modelo logit $\log\left(\frac{p}{1-p}\right) = \beta_0 + \sum \beta_j X_j$, o parâmetro $\beta_j$ atua linearmente sobre o logito; na escala da chance (*odds*), o efeito multiplicativo *ceteris paribus* é dado pela Razão de Chances (*Odds Ratio*) $OR_j = e^{\beta_j}$. Na matriz de confusão com limiar $0,5$, a classe positiva é `fatal == TRUE` ($Y=1$), de modo que $\text{Sensibilidade} = \frac{VP}{VP + FN}$ e $\text{Especificidade} = \frac{VN}{VN + FP}$.
 
-## Reexecução em 25/10/2026
-
-Refiz o script sobre o banco APPA com a leitura Latin-1 corrigida. Os valores atuais são os das tabelas abaixo; os CSVs mantêm a precisão completa.
+## Reexecução em 06/11/2026
 
 [2026-09-15-appa-04-MetricasRegressaoLogistica.csv](../estrutura/resultados/2026-09-15-appa-04-MetricasRegressaoLogistica.csv)
 
-| registros_treino | registros_teste | acuracia | sensibilidade | especificidade | precisao | auc |
-|---|---|---|---|---|---|---|
-| 121466 | 30367 | 0.947081 | 0.0783862 | 0.999721 | 0.944444 | 0.769897 |
+| registros_treino | registros_teste | acuracia_majoritaria | acuracia | sensibilidade | especificidade | precisao | auc |
+|---|---|---|---|---|---|---|---|
+| 120940 | 30235 | 0.947379 | 0.94718 | 0.0044 | 0.999546 | 0.35 | 0.758672 |
+
+Com o corte de 0,10 (F1 máximo no treino): sensibilidade 0,3262, especificidade 0,9170, precisão 0,1792, acurácia 0,8859.
+
+Matriz de confusão no corte 0,5 (linhas: observado; colunas: previsto):
+
+| | 0 | 1 |
+|---|---|---|
+| 0 | 28631 | 13 |
+| 1 | 1584 | 7 |

@@ -24,7 +24,13 @@ Também é necessário verificar resíduos e observar se há concentração de v
 
 ## Resultado obtido
 
-O modelo foi ajustado em 151.833 boletins. O R² foi 0,1098 e o R² ajustado foi 0,1097. O erro padrão residual foi 0,2387. O resultado indica associação limitada entre as variáveis escolhidas e a quantidade de vítimas fatais, então os coeficientes não devem ser usados sozinhos para previsão.
+O modelo foi ajustado em 151.175 boletins. O R² foi 0,0506 e o R² ajustado foi 0,0506. O erro padrão residual foi 0,2387. O resultado indica associação limitada entre as variáveis escolhidas e a quantidade de vítimas fatais, então os coeficientes não devem ser usados sozinhos para previsão.
+
+A resposta é uma contagem com cerca de 94% de zeros, o que viola as suposições da regressão linear. O diagnóstico dos resíduos confirma isso (arquivos `03a-DiagnosticoResiduos.csv` e `.png`): 5,1% dos resíduos padronizados passam de 3 em módulo, a assimetria é 5,4 e a curtose é 75 (a normal teria 0 e 3), e o gráfico Q-Q se afasta muito da reta. A alavancagem máxima é baixa (0,0055), então nenhum ponto isolado domina o ajuste. A regressão linear é usada aqui como exercício da aula; a Atividade 05b mostra o modelo adequado a contagens (Poisson).
+
+## Recorte dos modelos
+
+Os modelos usam 151.175 dos 151.833 boletins: ficam de fora os 447 com `tipo_via = NAO DISPONIVEL` e os 242 com `turno = NAO DISPONIVEL` (658 boletins no total, pois há sobreposição). Esse valor quase só aparece em boletins fatais (445 dos 447 em `tipo_via`) e funciona como marcador de óbito, não como característica da via; mantê-lo nos modelos fazia a razão de chances chegar a 776 (via) e a 28 milhões (turno) e inflava o ajuste. A preparação da base também passou a respeitar as aspas do CSV: a leitura anterior desalinhava 3 linhas e criava um registro fantasma (273.372 em vez de 273.371 registros).
 
 ## Material
 
@@ -33,12 +39,10 @@ O modelo foi ajustado em 151.833 boletins. O R² foi 0,1098 e o R² ajustado foi
 ## Nota de Revisão Metodológica (Alinhamento com Aula 04 - Regressão Linear)
 - **Condição *Ceteris Paribus* e Posto Completo**: Cada coeficiente $\hat{\beta}_j$ representa a variação esperada na variável resposta por unidade adicional do preditor $X_j$, **mantendo todas as demais variáveis constantes (*ceteris paribus*)**. A variável redundante `veiculos` (soma exata dos tipos individuais) foi removida da especificação simultânea para eliminar a multicolinearidade perfeita, e o diagnóstico de homoscedasticidade utiliza os resíduos padronizados via matriz *hat* ($r_i = \frac{e_i}{s\sqrt{1 - h_{ii}}}$).
 
-## Reexecução em 25/10/2026
+## Reexecução em 06/11/2026
 
-Refiz o script sobre o banco APPA com a leitura Latin-1 corrigida. Os valores atuais são os das tabelas abaixo; os CSVs mantêm a precisão completa.
-
-[2026-09-15-appa-03a-MetricasRegressaoLinear.csv](../estrutura/resultados/2026-09-15-appa-03a-MetricasRegressaoLinear.csv)
+Os valores abaixo vêm de [2026-09-15-appa-03a-MetricasRegressaoLinear.csv](../estrutura/resultados/2026-09-15-appa-03a-MetricasRegressaoLinear.csv) e foram obtidos após as correções de leitura da base e de recorte descritas acima.
 
 | registros | r2 | r2_ajustado | erro_padrao_residual | aic |
 |---|---|---|---|---|
-| 151833 | 0.108061 | 0.10799 | 0.238929 | -3826.95 |
+| 151175 | 0.0506294 | 0.0505666 | 0.238703 | -4098.04 |

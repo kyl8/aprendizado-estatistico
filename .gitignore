@@ -1,5 +1,3 @@
-# Slides e materiais externos temporários
-slides/
 
 # Artefatos temporários e gerados do LaTeX / Knitr / Sweave
 *.aux
@@ -24,3 +22,7 @@ estrutura/resultados/sinistros_prontos.rds
 # Registros locais de execucao
 estrutura/resultados/reexecucao/
 estrutura/resultados/*-SessionInfo.txt
+
+# Artefatos do knitr
+figure/
+cache/

@@ -15,14 +15,17 @@ eh_pico <- (minutos_totais >= 390 & minutos_totais <= 510) |
 
 boletins$pico <- factor(ifelse(eh_pico, "Pico", "Fora do Pico"))
 
-# Seleciona preditores essenciais para o modelo inferencial
+# Seleciona preditores. `turno` e `hora_sinistro` ficam FORA: `turno` e derivado da hora
+# e separa a resposta (madrugada nunca e "Pico"), o que seria vazamento.
 colunas_modelo <- c(
-  "pico", "tipo_via", "tp_sinistro_primario", "turno",
+  "pico", "tipo_via", "tp_sinistro_primario",
   "dia_da_semana", "fatal", "qtd_automovel", "qtd_motocicleta",
   "qtd_onibus", "qtd_caminhao", "qtd_pedestre", "qtd_bicicleta", "veiculos"
 )
 
-dados_pico <- boletins[!is.na(boletins$pico), colunas_modelo]
+# Mantem so boletins com horario valido; tipo_via "NAO DISPONIVEL" tambem sai (artefato de registro).
+hora_valida <- !is.na(minutos_totais) & as.numeric(horas) <= 23 & as.numeric(minutos) <= 59
+dados_pico <- boletins[hora_valida & boletins$tipo_via != "NAO DISPONIVEL", colunas_modelo]
 dados_pico$tipo_via <- as.factor(dados_pico$tipo_via)
 dados_pico$tp_sinistro_primario <- as.factor(dados_pico$tp_sinistro_primario)
 dados_pico$dia_da_semana <- as.factor(dados_pico$dia_da_semana)

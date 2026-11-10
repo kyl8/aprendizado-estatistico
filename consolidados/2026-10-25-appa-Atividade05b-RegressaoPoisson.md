@@ -2,8 +2,8 @@
 
 A entrega foi refeita com a teoria e os nove módulos do guia.
 
-- [Resolução individual](../resolucoes/aula05b_resolvido.md)
-- [Consolidado individual](aula05b_consolidado.md)
+- [Resolução individual](../resolucoes/Pedro_Henrique/aula05b_resolvido.md)
+- [Consolidado individual](Pedro_Henrique/aula05b_consolidado.md)
 - [Parte D completa](aula05b_parteD_consolidado.md)
 - [Ficha](00_FICHA_PERGUNTA.md)
 - [Código solicitado](../estrutura/codigo/aula05b_poisson.R)

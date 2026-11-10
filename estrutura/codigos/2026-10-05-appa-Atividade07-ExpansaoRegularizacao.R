@@ -10,9 +10,9 @@ dir.create("estrutura/resultados", showWarnings = FALSE, recursive = TRUE)
 
 # Amostra fixa para manter a atividade reproduzivel e a CV viavel no computador local.
 set.seed(20261005)
-n_amostra <- min(50000L, nrow(boletins))
-indice <- sample(seq_len(nrow(boletins)), n_amostra)
-dados <- boletins[indice, ]
+n_amostra <- min(50000L, nrow(boletins_modelo))
+indice <- sample(seq_len(nrow(boletins_modelo)), n_amostra)
+dados <- boletins_modelo[indice, ]
 
 dados_modelo <- data.frame(
   y = dados$qtd_gravidade_fatal,
@@ -40,6 +40,7 @@ ridge <- glmnet::cv.glmnet(X, y, alpha = 0, foldid = dobras_comuns)
 elastic <- glmnet::cv.glmnet(X, y, alpha = 0.5, foldid = dobras_comuns)
 
 indice_min <- which.min(lasso$cvm)
+indice_min_en <- which.min(elastic$cvm)
 indice_1se <- which.min(abs(lasso$lambda - lasso$lambda.1se))
 coef_1se <- as.matrix(coef(lasso, s = "lambda.1se"))
 selecionados <- data.frame(
@@ -56,7 +57,7 @@ placar <- data.frame(
   lambda = c(ridge$lambda.min, lasso$lambda.min, lasso$lambda.1se, elastic$lambda.min),
   mse_cv = c(min(ridge$cvm), min(lasso$cvm), lasso$cvm[indice_1se], min(elastic$cvm)),
   rmse_cv = sqrt(c(min(ridge$cvm), min(lasso$cvm), lasso$cvm[indice_1se], min(elastic$cvm))),
-  preditores_ativos = c(NA_integer_, lasso$nzero[indice_min], lasso$nzero[indice_1se], NA_integer_)
+  preditores_ativos = c(ridge$nzero[which.min(ridge$cvm)], lasso$nzero[indice_min], lasso$nzero[indice_1se], elastic$nzero[indice_min_en])
 )
 
 png("estrutura/resultados/2026-10-05-appa-07-CvLasso.png", width = 1100, height = 800, res = 130)

@@ -1,4 +1,4 @@
-# R | entrega1_duas_perguntas.R | executar na raiz de aprendizado-estatistico.
+# R | 2026-10-25-appa-OficinaDuasPerguntas.R | executar na raiz de aprendizado-estatistico.
 if (.Platform$OS.type == "windows") invisible(Sys.setlocale("LC_CTYPE", "English_United States.utf8")) # Habilita as fontes UTF-8.
 source("estrutura/codigos/2026-09-15-appa-PrepararBaseSinistros.R", encoding = "UTF-8") # Carrega os boletins reais.
 hh <- suppressWarnings(as.numeric(substr(boletins$hora_sinistro, 1, 2))); mm <- suppressWarnings(as.numeric(substr(boletins$hora_sinistro, 4, 5))) # Valida a construcao do horario.

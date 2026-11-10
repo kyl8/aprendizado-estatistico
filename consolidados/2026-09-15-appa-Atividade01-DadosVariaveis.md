@@ -1,6 +1,6 @@
 # Atividade 01: dados e variáveis
 
-Esta atividade organiza a base de sinistros usada pelo grupo APPA. O arquivo tem 273.372 registros e 50 variáveis, com ocorrências registradas entre janeiro de 2025 e junho de 2026.
+Esta atividade organiza a base de sinistros usada pelo grupo APPA. O arquivo tem 273.371 registros e 50 variáveis, com ocorrências registradas entre janeiro de 2025 e junho de 2026.
 
 ## O que foi feito
 

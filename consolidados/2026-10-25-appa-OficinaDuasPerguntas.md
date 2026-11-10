@@ -14,7 +14,7 @@
 | Dono do problema | Gestor de mobilidade que descreve o perfil dos boletins no pico | Gestor que distribui fiscalização e acompanha a frequência temporal dos sinistros |
 
 ## Diagnóstico do banco
-O banco tem 273.372 registros e 50 colunas; 151.833 são boletins. A candidata A usa
+O banco tem 273.371 registros e 50 colunas; 151.833 são boletins. A candidata A usa
 151591 casos completos, com 60848 no pico e 90743 fora.
 O palpite de classe majoritária atinge acurácia 0,599.
 Temos muito mais observações que parâmetros; isso não elimina desequilíbrio nem viés de registro.
@@ -45,6 +45,6 @@ permanecem como histórico; a Parte D prevê discutir com o professor antes de t
 **O que as próximas aulas podem mudar:** interações e modelos mais flexíveis podem melhorar a
 previsão; validação temporal e exposição de tráfego podem mudar a avaliação e a interpretação de risco.
 
-**Reprodução:** `Rscript estrutura/codigo/entrega1_duas_perguntas.R` e
+**Reprodução:** `Rscript estrutura/codigo/2026-10-25-appa-OficinaDuasPerguntas.R` e
 `Rscript estrutura/codigo/aula05b_poisson.R`. Métricas e previsões em `estrutura/resultados/entrega1/`
 e `estrutura/resultados/2026-10-25-appa-05b-*`. Duas páginas aproximadamente em formato de relatório.
