@@ -1,2 +1,2 @@
-"n","melhor_df","y_media","y_zeros","modelo_menor_erro"
-12000,8,0.0585,11339,"gam"
+"n","melhor_df","y_media","y_zeros","modelo_menor_erro","dif_melhor_vs_reta_em_ep"
+12000,8,0.0550833333333333,11379,"gam_ciclico",0.186255108974611

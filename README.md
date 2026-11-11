@@ -66,8 +66,8 @@ Convenções de dados: os CSVs de métricas usam `write.csv2` (ponto e vírgula,
 
 ## Guias e aplicações
 
-- [05b: teoria de Poisson resolvida](resolucoes/Pedro_Henrique/aula05b_resolvido.md)
-- [05b: consolidado individual](consolidados/Pedro_Henrique/aula05b_consolidado.md)
+- [05b: teoria de Poisson resolvida](resolucoes/aula05b_resolvido.md)
+- [05b: consolidado individual](consolidados/aula05b_consolidado.md)
 - [05b: Parte D no banco APPA](consolidados/aula05b_parteD_consolidado.md)
 - [Ficha da pergunta](consolidados/00_FICHA_PERGUNTA.md)
 - [09: splines, GAM e exercícios](consolidados/2026-10-25-appa-Atividade09-SplinesModelosAditivos.md)
@@ -83,3 +83,10 @@ No Windows, execute `powershell -ExecutionPolicy Bypass -File .\executar_atualiz
 
 ## Referências
 Os guias de Poisson estão em [guias-estudo/](guias-estudo/).
+
+## Situação em 11/11/2026
+
+Referência conferida: [Danilo, Estatística (`5c8198e`)](https://github.com/danilopradooficial/teoriaaprendizadoestatistico/tree/5c8198e).
+Os PDFs das Aulas 11 (árvores/random forest) e 12 (agrupamento/PCA) foram incorporados.
+As aplicações ao APPA e a recompilação do PDF da Entrega 1 estão na [lista de pendências](PENDENCIAS_GRUPO.md).
+O pipeline completo foi reexecutado, incluindo a regeneração das métricas, dos gráficos e da base de pico conforme as correções de 06/11.

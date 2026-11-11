@@ -1,2 +1,2 @@
-"modelo_escolhido";"treino";"teste"
-"m3_interacoes";106283;45550
+"modelo_escolhido";"treino";"validacao";"teste";"rmse_teste";"mae_teste";"r2_teste"
+"m3_interacoes";90767;30066;30342;0,229382957648686;0,0967232963662044;0,0519615126176743

@@ -1,2 +1,2 @@
-"registros_treino";"registros_teste";"acuracia";"sensibilidade";"especificidade";"precisao";"auc"
-121466;30367;0,947080712615668;0,0783861671469741;0,99972059234423;0,944444444444444;0,769896955342282
+"registros_treino";"registros_teste";"acuracia_classe_majoritaria";"acuracia";"sensibilidade";"especificidade";"precisao";"auc";"corte_f1_treino";"sensibilidade_corte_f1";"especificidade_corte_f1";"precisao_corte_f1";"acuracia_corte_f1"
+120940;30235;0,947378865553167;0,947180420042997;0,0043997485857951;0,999546152771959;0,35;0,758671580408265;0,1;0,326209930861094;0,916980868593772;0,179150845702451;0,885893831652059
