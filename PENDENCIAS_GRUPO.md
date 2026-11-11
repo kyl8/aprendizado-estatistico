@@ -1,8 +1,7 @@
-# Pendências que dependem do grupo ou do professor — Estatística
+# Situação das pendências — Estatística
 
 As atividades de árvores, floresta, agrupamento e PCA estão no [consolidado](consolidados/2026-11-11-appa-Atividades10_11.md), com [exercícios resolvidos](resolucoes/2026-11-11-appa-Atividades10_11.md). A Entrega 1 foi recompilada a partir do `.tex` corrigido e conferida visualmente; o `.Rnw` mantém a mesma pergunta na tabela.
 
-- Confirmar com o grupo e o professor a redação por associação e a manutenção da pergunta A (Pico/Fora do Pico) ou adoção da proposta B (contagens). A aprovação de mudança não está documentada.
-- Confirmar a exclusão dos 658 boletins com via/turno `NAO DISPONIVEL`, pois o recorte altera a população estudada.
-- Confirmar as entregas individuais e os registros reais de tutoria, se exigidos. Resoluções com apoio de IA não comprovam avaliação individual.
-- Se a versão antiga do PDF já foi entregue, confirmar com o professor a necessidade de reenviar a versão corrigida.
+Em 11/11/2026, o solicitante informou que as confirmações pendentes estavam resolvidas. Mantém-se a pergunta A, por associação, e o recorte que exclui os 658 boletins com via/turno `NAO DISPONIVEL`; a proposta B permanece como análise auxiliar. Não há pendência administrativa aberta nesta lista segundo essa informação.
+
+O registro da confirmação é a declaração do solicitante, sem transcrição de decisão do professor, comprovante de reenvio ou evidência de sessões individuais. Os materiais assistidos não demonstram desempenho individual.
