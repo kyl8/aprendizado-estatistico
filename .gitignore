@@ -17,11 +17,11 @@
 .Rproj.user/
 
 Rplots.pdf
-estrutura/resultados/sinistros_prontos.rds
+estrutura/codigos/resultados/sinistros_prontos.rds
 
 # Registros locais de execucao
-estrutura/resultados/reexecucao/
-estrutura/resultados/*-SessionInfo.txt
+estrutura/codigos/resultados/reexecucao/
+estrutura/codigos/resultados/*-SessionInfo.txt
 
 # Artefatos do knitr
 figure/

@@ -30,9 +30,9 @@ dados_pico$tipo_via <- as.factor(dados_pico$tipo_via)
 dados_pico$tp_sinistro_primario <- as.factor(dados_pico$tp_sinistro_primario)
 dados_pico$dia_da_semana <- as.factor(dados_pico$dia_da_semana)
 
-dir.create("estrutura/banco-de-dados", showWarnings = FALSE, recursive = TRUE)
-saveRDS(dados_pico, "estrutura/banco-de-dados/sinistros_pico.rds")
-write.csv(dados_pico[1:5000, ], "estrutura/banco-de-dados/sinistros_pico_amostra.csv", row.names = FALSE)
+dir.create("estrutura/corpus/banco-de-dados", showWarnings = FALSE, recursive = TRUE)
+saveRDS(dados_pico, "estrutura/corpus/banco-de-dados/sinistros_pico.rds")
+write.csv(dados_pico[1:5000, ], "estrutura/corpus/banco-de-dados/sinistros_pico_amostra.csv", row.names = FALSE)
 
 cat("Dados processados com sucesso!\n")
 cat("Total de linhas:", nrow(dados_pico), "\n")

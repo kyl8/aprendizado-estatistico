@@ -47,9 +47,9 @@ bootstrap_resultados <- data.frame(
   replicacoes = B
 )
 
-write.csv2(cv_resultados, "estrutura/resultados/2026-09-15-appa-06-ValidacaoCruzada.csv", row.names = FALSE)
-write.csv2(bootstrap_resultados, "estrutura/resultados/2026-09-15-appa-06-BootstrapMotocicleta.csv", row.names = FALSE)
-write.csv2(data.frame(coeficiente = coef_bootstrap), "estrutura/resultados/2026-09-15-appa-06-CoeficientesBootstrap.csv", row.names = FALSE)
+write.csv2(cv_resultados, "estrutura/codigos/resultados/2026-09-15-appa-06-ValidacaoCruzada.csv", row.names = FALSE)
+write.csv2(bootstrap_resultados, "estrutura/codigos/resultados/2026-09-15-appa-06-BootstrapMotocicleta.csv", row.names = FALSE)
+write.csv2(data.frame(coeficiente = coef_bootstrap), "estrutura/codigos/resultados/2026-09-15-appa-06-CoeficientesBootstrap.csv", row.names = FALSE)
 
 cat("\nValidação cruzada:\n")
 print(cv_resultados)

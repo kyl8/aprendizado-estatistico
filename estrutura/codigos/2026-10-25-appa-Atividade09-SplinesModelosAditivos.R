@@ -28,7 +28,7 @@ melhor_df <- dfs[which.min(erros_ns)] # Escolhe a flexibilidade na validacao do 
 m_ns <- lm(y ~ splines::ns(x, df = melhor_df) + x2 + tipo_via, d) # Ajusta a curva escolhida para visualizacao.
 m_poly <- lm(y ~ poly(x, 5) + x2 + tipo_via, d) # Ajusta o polinomio de comparacao.
 m_gam <- mgcv::gam(y ~ s(x, k = 10) + s(x2, k = 5) + tipo_via, data = d, method = "REML") # Ajusta o GAM para examinar curvas parciais.
-out <- "estrutura/resultados/aula10"; dir.create(out, recursive = TRUE, showWarnings = FALSE) # Cria a pasta de figuras do mesmo escopo da referencia.
+out <- "estrutura/codigos/resultados/aula10"; dir.create(out, recursive = TRUE, showWarnings = FALSE) # Cria a pasta de figuras do mesmo escopo da referencia.
 fig <- function(nome, desenho) { png(file.path(out, nome), width = 1100, height = 750, res = 120); force(desenho); dev.off() } # Exporta graficos R completos.
 g <- seq(0, 24, length.out = 250) # Define a grade do horario.
 novo <- data.frame(x = g, x2 = median(d$x2), tipo_via = factor(names(sort(table(d$tipo_via), decreasing = TRUE))[1], levels = levels(d$tipo_via))) # Fixa os outros preditores.
@@ -39,9 +39,9 @@ fig("04-smooth-spline.png", { sp <- smooth.spline(d$x, d$y); plot(g, predict(sp,
 fig("05-gam-curvas-parciais.png", { par(mfrow = c(1, 2)); plot(m_gam, select = 1, shade = TRUE, residuals = FALSE, xlab = "Hora do sinistro", main = "Efeito parcial do horario"); plot(m_gam, select = 2, shade = TRUE, residuals = FALSE, xlab = "log(1 + veiculos)", main = "Efeito parcial dos veiculos") }) # Nomeia os efeitos e suas bandas de incerteza.
 fig("06-placar-cv.png", { par(mar = c(10, 4, 3, 1)); barplot(metricas$rmse_cv5, names.arg = metricas$modelo, las = 2, col = "steelblue", ylab = "RMSE CV(5)", main = "APPA: comparacao de candidatos") }) # Inclui a linha de base no placar.
 fig("07-bs-vs-ns-pontas.png", { mg <- lm(y ~ splines::bs(x, df = 5) + x2 + tipo_via, d); mn <- lm(y ~ splines::ns(x, df = 5) + x2 + tipo_via, d); ext <- novo; ext$x <- seq(-2, 26, length.out = nrow(novo)); plot(ext$x, suppressWarnings(predict(mg, ext)), type = "l", col = "firebrick", lwd = 2, xlab = "Hora estendida apenas para diagnostico", ylab = "Media prevista", main = "Nas pontas: B-spline e spline natural"); lines(ext$x, predict(mn, ext), col = "steelblue", lwd = 2); abline(v = c(0, 24), lty = 2); legend("topright", c("B-spline", "Natural"), col = c("firebrick", "steelblue"), lty = 1) }) # Ilustra extrapolacao sem tratar horas invalidas como operacao real.
-write.csv(metricas, "estrutura/resultados/2026-10-25-appa-09-MetricasSplines.csv", row.names = FALSE, fileEncoding = "UTF-8") # Atualiza o resultado principal.
+write.csv(metricas, "estrutura/codigos/resultados/2026-10-25-appa-09-MetricasSplines.csv", row.names = FALSE, fileEncoding = "UTF-8") # Atualiza o resultado principal.
 write.csv(data.frame(d, dobra, lapply(resultados, `[[`, "previsao")), file.path(out, "previsoes-cv.csv"), row.names = FALSE, fileEncoding = "UTF-8") # Registra dados e previsoes da amostra.
 write.csv(data.frame(n = nrow(d), melhor_df = melhor_df, y_media = mean(d$y), y_zeros = sum(d$y == 0), modelo_menor_erro = metricas$modelo[which.min(metricas$rmse_cv5)], dif_melhor_vs_reta_em_ep = (metricas$rmse_cv5[metricas$modelo == "reta"] - min(metricas$rmse_cv5)) / max(metricas$ep_entre_dobras[which.min(metricas$rmse_cv5)], 1e-12)), file.path(out, "auditoria.csv"), row.names = FALSE) # Explicita o desequilibrio da resposta auxiliar.
 writeLines(capture.output(summary(m_gam)), file.path(out, "gam-resumo.txt")) # Registra graus efetivos e incerteza.
-file.copy(file.path(out, "05-gam-curvas-parciais.png"), "estrutura/resultados/2026-10-25-appa-09-SplinesGAM.png", overwrite = TRUE) # Preserva o caminho historico da figura.
+file.copy(file.path(out, "05-gam-curvas-parciais.png"), "estrutura/codigos/resultados/2026-10-25-appa-09-SplinesGAM.png", overwrite = TRUE) # Preserva o caminho historico da figura.
 print(metricas) # Mostra o placar real da execucao.

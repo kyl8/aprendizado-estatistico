@@ -62,5 +62,5 @@ cat("Fatais:", sum(boletins$fatal), "\n")
 cat("Boletins para modelagem (sem NAO DISPONIVEL):", nrow(boletins_modelo), "\n")
 
 # Persistencia da base tratada (ignorada pelo git)
-dir.create(file.path("estrutura", "resultados"), showWarnings = FALSE, recursive = TRUE)
-saveRDS(boletins, file = 'estrutura/resultados/sinistros_prontos.rds')
+dir.create(file.path("estrutura", "codigos", "resultados"), showWarnings = FALSE, recursive = TRUE)
+saveRDS(boletins, file = 'estrutura/codigos/resultados/sinistros_prontos.rds')

@@ -21,7 +21,7 @@ for (j in 1:5) {
   pred[fold == j, ] <- cbind(mean(tr$y), predict(tree, va), predict(forest, va))
 }
 stopifnot(all(is.finite(pred)))
-out <- "estrutura/resultados/aulas11_12"; dir.create(out, recursive = TRUE, showWarnings = FALSE)
+out <- "estrutura/codigos/resultados/aulas11_12"; dir.create(out, recursive = TRUE, showWarnings = FALSE)
 met <- data.frame(modelo = colnames(pred), rmse_cv5 = apply(pred, 2, function(p) sqrt(mean((d$y-p)^2))))
 write.csv(met, file.path(out, "arvores_metricas.csv"), row.names = FALSE)
 write.csv(data.frame(d, fold, pred), file.path(out, "arvores_previsoes.csv"), row.names = FALSE)

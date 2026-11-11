@@ -29,8 +29,8 @@ amostra <- data.frame(
   erro = erros
 )
 
-write.csv2(metricas, "estrutura/resultados/2026-09-15-appa-03b-MetricasPrevisao.csv", row.names = FALSE)
-write.csv2(amostra, "estrutura/resultados/2026-09-15-appa-03b-Previsoes.csv", row.names = FALSE)
+write.csv2(metricas, "estrutura/codigos/resultados/2026-09-15-appa-03b-MetricasPrevisao.csv", row.names = FALSE)
+write.csv2(amostra, "estrutura/codigos/resultados/2026-09-15-appa-03b-Previsoes.csv", row.names = FALSE)
 
 cat("\nPrevisão concluída.\n")
 print(metricas)

@@ -86,9 +86,9 @@ coeficientes <- data.frame(
   row.names = NULL
 )
 
-write.csv2(metricas, "estrutura/resultados/2026-09-15-appa-04-MetricasRegressaoLogistica.csv", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv2(coeficientes, "estrutura/resultados/2026-09-15-appa-04-CoeficientesRegressaoLogistica.csv", row.names = FALSE, fileEncoding = "UTF-8")
-write.csv2(matriz, "estrutura/resultados/2026-09-15-appa-04-MatrizConfusao.csv", fileEncoding = "UTF-8")
+write.csv2(metricas, "estrutura/codigos/resultados/2026-09-15-appa-04-MetricasRegressaoLogistica.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv2(coeficientes, "estrutura/codigos/resultados/2026-09-15-appa-04-CoeficientesRegressaoLogistica.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv2(matriz, "estrutura/codigos/resultados/2026-09-15-appa-04-MatrizConfusao.csv", fileEncoding = "UTF-8")
 
 cat("\nRegressão logística concluída.\n")
 print(metricas)

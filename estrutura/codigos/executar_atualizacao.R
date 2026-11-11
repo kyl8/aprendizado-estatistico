@@ -11,8 +11,8 @@ etapas <- c(
   "estrutura/codigos/2026-10-05-appa-Atividade07-ExpansaoRegularizacao.R",
   "estrutura/codigos/2026-10-09-appa-Atividade08-MetodosSuavizacao.R",
   "estrutura/codigos/2026-10-02-appa-gerar-base-pico.R",
-  "estrutura/codigo/2026-10-25-appa-OficinaDuasPerguntas.R",
-  "estrutura/codigo/aula05b_poisson.R",
+  "estrutura/codigos/2026-10-25-appa-OficinaDuasPerguntas.R",
+  "estrutura/codigos/aula05b_poisson.R",
   "estrutura/codigos/2026-10-25-appa-Atividade09-SplinesModelosAditivos.R",
   "estrutura/codigos/2026-11-11-appa-Atividades10_11.R"
 )

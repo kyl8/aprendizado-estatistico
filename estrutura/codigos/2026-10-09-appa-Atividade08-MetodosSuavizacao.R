@@ -58,15 +58,15 @@ resumo <- data.frame(
   melhor_k = melhor_k, mse_knn = min(erros_knn),
   melhor_h = melhor_h, mse_kernel = min(erros_nw, na.rm = TRUE)
 )
-write.csv2(placar, "estrutura/resultados/2026-10-09-appa-08-PlacarSuavizacao.csv", row.names = FALSE)
-write.csv2(resumo, "estrutura/resultados/2026-10-09-appa-08-ResumoSuavizacao.csv", row.names = FALSE)
+write.csv2(placar, "estrutura/codigos/resultados/2026-10-09-appa-08-PlacarSuavizacao.csv", row.names = FALSE)
+write.csv2(resumo, "estrutura/codigos/resultados/2026-10-09-appa-08-ResumoSuavizacao.csv", row.names = FALSE)
 
 cat("MSE CV - media:", erro_media, "\n")
 cat("MSE CV - Reta:", erro_reta, "\n")
 cat("MSE CV - Melhor KNN (k =", melhor_k, "):", min(erros_knn), "\n")
 cat("MSE CV - Melhor Kernel (h =", melhor_h, "):", min(erros_nw, na.rm = TRUE), "\n")
 
-png("estrutura/resultados/2026-10-09-appa-08-Suavizacao.png", width = 800, height = 600, res = 100)
+png("estrutura/codigos/resultados/2026-10-09-appa-08-Suavizacao.png", width = 800, height = 600, res = 100)
 g <- seq(min(x), max(x), length = 200)
 plot(jitter(x), jitter(y, amount = .05), col = rgb(.4, .4, .4, .3), pch = 16, cex = .5,
      xlab = "Total de veiculos envolvidos", ylab = "Vitimas fatais",

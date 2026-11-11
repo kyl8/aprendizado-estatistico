@@ -1,6 +1,6 @@
 # R | Atividades01_02.R | executar na raiz de aprendizado-estatistico.
 source("estrutura/codigos/2026-09-15-appa-PrepararBaseSinistros.R", encoding = "UTF-8") # Carrega o banco completo e o recorte de boletins.
-out <- "estrutura/resultados/exploratoria"; dir.create(out, recursive = TRUE, showWarnings = FALSE) # Organiza o diagnostico da base.
+out <- "estrutura/codigos/resultados/exploratoria"; dir.create(out, recursive = TRUE, showWarnings = FALSE) # Organiza o diagnostico da base.
 dic <- data.frame(coluna = names(dados), tipo_R = vapply(dados, function(x) class(x)[1], character(1)), distintos = vapply(dados, function(x) length(unique(x)), integer(1)), ausentes = colSums(is.na(dados))) # Mede estrutura, cardinalidade e faltantes.
 write.csv(dic, file.path(out, "01-dicionario-diagnostico.csv"), row.names = FALSE, fileEncoding = "UTF-8") # Complementa o dicionario descritivo existente.
 data_evento <- as.Date(boletins$data_sinistro, "%d/%m/%Y"); mes <- format(data_evento, "%Y/%m") # Interpreta o calendario.

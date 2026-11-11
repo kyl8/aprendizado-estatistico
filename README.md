@@ -8,12 +8,14 @@ Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatísti
 ## Conteúdo
 
 - [entregas](entregas/): relatórios formais e entregas acadêmicas em LaTeX/Sweave;
-- [consolidados](consolidados/): atividades e relatórios organizados por etapa;
-- [estrutura/banco-de-dados](estrutura/banco-de-dados/): bases preparadas e dados serializados para modelagem;
+- [consolidados-aulas](consolidados-aulas/): atividades e relatórios organizados por etapa;
+- [consolidados-tutora](consolidados-tutora/): estudos e resoluções dos guias;
+- [estrutura/corpus/banco-de-dados](estrutura/corpus/banco-de-dados/): bases preparadas e dados serializados para modelagem;
 - [estrutura/corpus](estrutura/corpus/): dicionário e base de sinistros;
 - [estrutura/codigos](estrutura/codigos/): scripts de modelagem em R;
-- [estrutura/resultados](estrutura/resultados/): métricas e previsões geradas pelos scripts;
-- [materiais-aulas](materiais-aulas/): PDFs usados nas aulas.
+- [estrutura/codigos/resultados](estrutura/codigos/resultados/): métricas e previsões geradas pelos scripts;
+- [materiais-aulas](materiais-aulas/): PDFs usados nas aulas;
+- [materiais-tutora](materiais-tutora/): guias de estudo.
 
 Os scripts e resultados usam o prefixo de data e grupo `YYYY-MM-DD-appa`.
 
@@ -21,10 +23,10 @@ Os scripts e resultados usam o prefixo de data e grupo `YYYY-MM-DD-appa`.
 
 A pasta [entregas/](entregas/) reúne a entrega final e os modelos da disciplina:
 
-- **[entregas/finalizada/](entregas/finalizada/):** versão final consolidada do grupo APPA:
-  - [Entrega 1: A Pergunta do Trabalho (PDF)](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.Rnw), [LaTeX](entregas/finalizada/2026-10-02-appa-entrega-1-pergunta.tex))
-- **[entregas/modelo_base/](entregas/modelo_base/):** modelo e template original fornecido pela disciplina:
-  - [Modelo Base: Pergunta do Trabalho](entregas/modelo_base/entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/modelo_base/entrega-1-pergunta.Rnw), [LaTeX](entregas/modelo_base/entrega-1-pergunta.tex))
+- **[entregas/entrega-1/](entregas/entrega-1/):** versão final consolidada do grupo APPA:
+  - [Entrega 1: A Pergunta do Trabalho (PDF)](entregas/entrega-1/2026-10-02-appa-entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/entrega-1/2026-10-02-appa-entrega-1-pergunta.Rnw), [LaTeX](entregas/entrega-1/2026-10-02-appa-entrega-1-pergunta.tex))
+- **[entregas/entrega-1/modelo-professor/](entregas/entrega-1/modelo-professor/):** modelo e template original fornecido pela disciplina:
+  - [Modelo Base: Pergunta do Trabalho](entregas/entrega-1/modelo-professor/entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/entrega-1/modelo-professor/entrega-1-pergunta.Rnw), [LaTeX](entregas/entrega-1/modelo-professor/entrega-1-pergunta.tex))
 
 ## Base
 
@@ -34,20 +36,20 @@ O [dicionário de dados](estrutura/corpus/2026-08-11-appa-DicionarioDados.md) ex
 
 ## Atividades
 
-- [01: dados e variáveis](consolidados/2026-09-15-appa-Atividade01-DadosVariaveis.md)
-- [02a: análise exploratória ampla](consolidados/2026-09-15-appa-Atividade02a-AnaliseExploratoriaAmpla.md)
-- [02b: análise exploratória segmentada](consolidados/2026-09-15-appa-Atividade02b-AnaliseExploratoriaSegmentada.md)
-- [03a: regressão linear](consolidados/2026-09-15-appa-Atividade03a-RegressaoLinear.md)
-- [03b: previsão](consolidados/2026-09-15-appa-Atividade03b-Previsao.md)
-- [04: regressão logística](consolidados/2026-09-15-appa-Atividade04-RegressaoLogistica.md)
-- [05: avaliação e seleção de modelos](consolidados/2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.md)
-- [06: métodos de reamostragem](consolidados/2026-09-15-appa-Atividade06-MetodosReamostragem.md)
-- [07: expansão e regularização](consolidados/2026-10-05-appa-Atividade07-ExpansaoRegularizacao.md)
-- [08: métodos de suavização](consolidados/2026-10-09-appa-Atividade08-MetodosSuavizacao.md)
-- [05b: regressão de Poisson](consolidados/2026-10-25-appa-Atividade05b-RegressaoPoisson.md)
-- [09: splines e modelos aditivos](consolidados/2026-10-25-appa-Atividade09-SplinesModelosAditivos.md)
+- [01: dados e variáveis](consolidados-aulas/2026-09-15-appa-Atividade01-DadosVariaveis.md)
+- [02a: análise exploratória ampla](consolidados-aulas/2026-09-15-appa-Atividade02a-AnaliseExploratoriaAmpla.md)
+- [02b: análise exploratória segmentada](consolidados-aulas/2026-09-15-appa-Atividade02b-AnaliseExploratoriaSegmentada.md)
+- [03a: regressão linear](consolidados-aulas/2026-09-15-appa-Atividade03a-RegressaoLinear.md)
+- [03b: previsão](consolidados-aulas/2026-09-15-appa-Atividade03b-Previsao.md)
+- [04: regressão logística](consolidados-aulas/2026-09-15-appa-Atividade04-RegressaoLogistica.md)
+- [05: avaliação e seleção de modelos](consolidados-aulas/2026-09-15-appa-Atividade05-AvaliacaoSelecaoModelos.md)
+- [06: métodos de reamostragem](consolidados-aulas/2026-09-15-appa-Atividade06-MetodosReamostragem.md)
+- [07: expansão e regularização](consolidados-aulas/2026-10-05-appa-Atividade07-ExpansaoRegularizacao.md)
+- [08: métodos de suavização](consolidados-aulas/2026-10-09-appa-Atividade08-MetodosSuavizacao.md)
+- [05b: regressão de Poisson](consolidados-aulas/2026-10-25-appa-Atividade05b-RegressaoPoisson.md)
+- [09: splines e modelos aditivos](consolidados-aulas/2026-10-25-appa-Atividade09-SplinesModelosAditivos.md)
 
-O relatório original da análise exploratória continua disponível em [2026-08-25-appa-AnaliseExploratoria.md](consolidados/2026-08-25-appa-AnaliseExploratoria.md).
+O relatório original da análise exploratória continua disponível em [2026-08-25-appa-AnaliseExploratoria.md](consolidados-aulas/2026-08-25-appa-AnaliseExploratoria.md).
 
 Todos os scripts devem ser executados a partir da raiz do repositório. Para rodar todas as etapas na ordem:
 
@@ -55,35 +57,32 @@ Todos os scripts devem ser executados a partir da raiz do repositório. Para rod
 Rscript estrutura/codigos/executar_atualizacao.R
 ```
 
-Dependências: `glmnet` e `mgcv`.
+Dependências: `glmnet`, `mgcv`, `rpart`, `randomForest` e `cluster`.
 
-Há duas pastas de código, de propósito:
-
-- [`estrutura/codigos/`](estrutura/codigos/README.md) (plural): scripts de cada atividade, com o padrão `YYYY-MM-DD-appa-<Nome>.R`.
-- [`estrutura/codigo/`](estrutura/codigo/README.md) (singular): arquivos da Aula 05b e da oficina; o nome e o caminho vêm do guia da disciplina, que manda salvar `estrutura/codigo/aula05b_poisson.R`.
+Os scripts de atividades, da Aula 05b e da oficina ficam em [`estrutura/codigos/`](estrutura/codigos/README.md); as instruções dos guias estão em [README-guias](estrutura/codigos/README-guias.md).
 
 Convenções de dados: os CSVs de métricas usam `write.csv2` (ponto e vírgula, vírgula decimal) nas Atividades 03b a 08; os demais (03a, 05b, 09, exploratória, entrega1) usam `write.csv` (vírgula, ponto decimal). O recorte de modelagem (`boletins_modelo`) exclui boletins com `tipo_via` ou `turno` iguais a `NAO DISPONIVEL`, que quase só ocorrem em fatais.
 
 ## Guias e aplicações
 
-- [05b: teoria de Poisson resolvida](resolucoes/aula05b_resolvido.md)
-- [05b: consolidado individual](consolidados/aula05b_consolidado.md)
-- [05b: Parte D no banco APPA](consolidados/aula05b_parteD_consolidado.md)
-- [Ficha da pergunta](consolidados/00_FICHA_PERGUNTA.md)
-- [09: splines, GAM e exercícios](consolidados/2026-10-25-appa-Atividade09-SplinesModelosAditivos.md)
-- [Guias originais de Poisson](guias-estudo/)
+- [05b: teoria de Poisson resolvida](consolidados-tutora/aula05b_resolvido.md)
+- [05b: consolidado individual](consolidados-tutora/aula05b_consolidado.md)
+- [05b: Parte D no banco APPA](consolidados-tutora/aula05b_parteD_consolidado.md)
+- [Ficha da pergunta](consolidados-aulas/00_FICHA_PERGUNTA.md)
+- [09: splines, GAM e exercícios](consolidados-aulas/2026-10-25-appa-Atividade09-SplinesModelosAditivos.md)
+- [Guias originais de Poisson](materiais-tutora/)
 - Nota de numeração: as atividades 04 a 09 correspondem às aulas 05 a 10 (a Atividade 05b é da aula 05b).
 
 As três bases simuladas do guia reproduzem os números esperados. Na prática, a exposição
 é de calendário; não há fluxo de tráfego disponível para estimar risco por veículo.
 
-[Oficina: duas perguntas e escolha com CV](consolidados/2026-10-25-appa-OficinaDuasPerguntas.md) · [Exploração atualizada](estrutura/resultados/exploratoria/)
+[Oficina: duas perguntas e escolha com CV](consolidados-aulas/2026-10-25-appa-OficinaDuasPerguntas.md) · [Exploração atualizada](estrutura/codigos/resultados/exploratoria/)
 
 No Windows, execute `powershell -ExecutionPolicy Bypass -File .\executar_atualizacao.ps1`. Em outro ambiente, use R instalado no PATH.
 
 ## Referências
-Os guias de Poisson estão em [guias-estudo/](guias-estudo/).
+Os guias de Poisson estão em [materiais-tutora/](materiais-tutora/).
 
 ## Situação em 11/11/2026
 
-As aplicações das Aulas 11 e 12 estão no [consolidado das atividades 10 e 11](consolidados/2026-11-11-appa-Atividades10_11.md), com [exercícios](resolucoes/2026-11-11-appa-Atividades10_11.md). A Entrega 1 foi recompilada e revisada; decisões que dependem do grupo e do professor constam na [lista de pendências](PENDENCIAS_GRUPO.md).
+As aplicações das Aulas 11 e 12 estão no [consolidado das atividades 10 e 11](consolidados-aulas/2026-11-11-appa-Atividades10_11.md), com [exercícios](consolidados-tutora/2026-11-11-appa-Atividades10_11.md). A Entrega 1 foi recompilada e revisada; decisões que dependem do grupo e do professor constam na [lista de pendências](PENDENCIAS_GRUPO.md).

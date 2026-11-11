@@ -6,7 +6,7 @@ if (!requireNamespace("glmnet", quietly = TRUE)) {
 }
 
 source("estrutura/codigos/2026-09-15-appa-PrepararBaseSinistros.R")
-dir.create("estrutura/resultados", showWarnings = FALSE, recursive = TRUE)
+dir.create("estrutura/codigos/resultados", showWarnings = FALSE, recursive = TRUE)
 
 # Amostra fixa para manter a atividade reproduzivel e a CV viavel no computador local.
 set.seed(20261005)
@@ -60,21 +60,21 @@ placar <- data.frame(
   preditores_ativos = c(ridge$nzero[which.min(ridge$cvm)], lasso$nzero[indice_min], lasso$nzero[indice_1se], elastic$nzero[indice_min_en])
 )
 
-png("estrutura/resultados/2026-10-05-appa-07-CvLasso.png", width = 1100, height = 800, res = 130)
+png("estrutura/codigos/resultados/2026-10-05-appa-07-CvLasso.png", width = 1100, height = 800, res = 130)
 plot(lasso, main = "Lasso: erro por lambda na validacao cruzada")
 abline(v = log(lasso$lambda.min), col = "#0c6170", lwd = 2)
 abline(v = log(lasso$lambda.1se), col = "#c45c26", lwd = 2, lty = 2)
 legend("topright", c("lambda.min", "lambda.1se"), col = c("#0c6170", "#c45c26"), lty = c(1, 2), lwd = 2, bty = "n")
 dev.off()
 
-png("estrutura/resultados/2026-10-05-appa-07-CaminhosRegularizacao.png", width = 1400, height = 700, res = 120)
+png("estrutura/codigos/resultados/2026-10-05-appa-07-CaminhosRegularizacao.png", width = 1400, height = 700, res = 120)
 par(mfrow = c(1, 2))
 plot(glmnet::glmnet(X, y, alpha = 0), xvar = "lambda", main = "Ridge")
 plot(glmnet::glmnet(X, y, alpha = 1), xvar = "lambda", main = "Lasso")
 dev.off()
 
-write.csv2(placar, "estrutura/resultados/2026-10-05-appa-07-ModelosRegularizados.csv", row.names = FALSE)
-write.csv2(selecionados, "estrutura/resultados/2026-10-05-appa-07-VariaveisLasso.csv", row.names = FALSE)
+write.csv2(placar, "estrutura/codigos/resultados/2026-10-05-appa-07-ModelosRegularizados.csv", row.names = FALSE)
+write.csv2(selecionados, "estrutura/codigos/resultados/2026-10-05-appa-07-VariaveisLasso.csv", row.names = FALSE)
 
 cat("Amostra:", n_amostra, "boletins\n")
 cat("Colunas do modelo:", ncol(X), "\n")

@@ -22,7 +22,7 @@ coeficientes <- data.frame(
 
 write.csv(
   coeficientes,
-  "estrutura/resultados/2026-09-15-appa-03a-CoeficientesRegressaoLinear.csv",
+  "estrutura/codigos/resultados/2026-09-15-appa-03a-CoeficientesRegressaoLinear.csv",
   row.names = FALSE,
   fileEncoding = "UTF-8"
 )
@@ -34,7 +34,7 @@ metricas <- data.frame(
   erro_padrao_residual = unname(resumo$sigma),
   aic = AIC(modelo)
 )
-write.csv(metricas, "estrutura/resultados/2026-09-15-appa-03a-MetricasRegressaoLinear.csv", row.names = FALSE)
+write.csv(metricas, "estrutura/codigos/resultados/2026-09-15-appa-03a-MetricasRegressaoLinear.csv", row.names = FALSE)
 
 cat("\nRegressão linear concluída.\n")
 print(metricas)
@@ -53,8 +53,8 @@ diagnostico <- data.frame(
   assimetria_residuos = mean(residuos_padronizados^3),
   curtose_residuos = mean(residuos_padronizados^4)
 )
-write.csv(diagnostico, "estrutura/resultados/2026-09-15-appa-03a-DiagnosticoResiduos.csv", row.names = FALSE)
-png("estrutura/resultados/2026-09-15-appa-03a-DiagnosticoResiduos.png", width = 1400, height = 700, res = 120)
+write.csv(diagnostico, "estrutura/codigos/resultados/2026-09-15-appa-03a-DiagnosticoResiduos.csv", row.names = FALSE)
+png("estrutura/codigos/resultados/2026-09-15-appa-03a-DiagnosticoResiduos.png", width = 1400, height = 700, res = 120)
 par(mfrow = c(1, 2))
 amostra_diag <- sample(length(residuos_padronizados), min(20000, length(residuos_padronizados)))
 plot(fitted(modelo)[amostra_diag], residuos_padronizados[amostra_diag], pch = 16, cex = .3,

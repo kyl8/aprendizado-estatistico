@@ -36,8 +36,8 @@ te <- erros(modelos[[vencedor]], teste)
 final <- data.frame(modelo_escolhido = vencedor, treino = nrow(treino), validacao = nrow(validacao),
                     teste = nrow(teste), rmse_teste = te[["rmse"]], mae_teste = te[["mae"]], r2_teste = te[["r2"]])
 
-write.csv2(avaliacoes, "estrutura/resultados/2026-09-15-appa-05-AvaliacoesModelos.csv", row.names = FALSE)
-write.csv2(final, "estrutura/resultados/2026-09-15-appa-05-ModeloEscolhido.csv", row.names = FALSE)
+write.csv2(avaliacoes, "estrutura/codigos/resultados/2026-09-15-appa-05-AvaliacoesModelos.csv", row.names = FALSE)
+write.csv2(final, "estrutura/codigos/resultados/2026-09-15-appa-05-ModeloEscolhido.csv", row.names = FALSE)
 
 cat("Modelo escolhido na validação:", vencedor, "\n")
 print(avaliacoes)
