@@ -36,6 +36,8 @@ O [dicionário de dados](estrutura/corpus/2026-08-11-appa-DicionarioDados.md) ex
 
 ## Atividades
 
+- [Estudo principal de pico: problema, alvo, modelos, hipótese e teste temporal](consolidados-aulas/2026-11-11-appa-EstudoPicoRelatorio.md)
+
 - [01: dados e variáveis](consolidados-aulas/2026-09-15-appa-Atividade01-DadosVariaveis.md)
 - [02a: análise exploratória ampla](consolidados-aulas/2026-09-15-appa-Atividade02a-AnaliseExploratoriaAmpla.md)
 - [02b: análise exploratória segmentada](consolidados-aulas/2026-09-15-appa-Atividade02b-AnaliseExploratoriaSegmentada.md)

@@ -14,7 +14,8 @@ etapas <- c(
   "estrutura/codigos/2026-10-25-appa-OficinaDuasPerguntas.R",
   "estrutura/codigos/aula05b_poisson.R",
   "estrutura/codigos/2026-10-25-appa-Atividade09-SplinesModelosAditivos.R",
-  "estrutura/codigos/2026-11-11-appa-Atividades10_11.R"
+  "estrutura/codigos/2026-11-11-appa-Atividades10_11.R",
+  "estrutura/codigos/2026-11-11-appa-EstudoPico.R"
 )
 for (e in etapas) {
   cat("\n=== ", e, " ===\n", sep = "")
