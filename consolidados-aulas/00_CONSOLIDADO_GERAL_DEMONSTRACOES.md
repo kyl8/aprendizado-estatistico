@@ -1,5 +1,5 @@
-# Aplicações de ferramentas estatísticas em registros de sinistros de trânsito
-## Relatório consolidado das demonstrações
+# Regressão logística aplicada à classificação de sinistros em horários de pico
+## Relatório consolidado da demonstração
 
 **Disciplina:** Teoria do Aprendizado Estatístico
 
@@ -7,11 +7,11 @@
 
 **Apoio à elaboração:** ChatGPT
 
-Este relatório documenta a preparação dos dados, a definição das variáveis e a aplicação de ferramentas da disciplina a registros de sinistros de trânsito de São Paulo. São apresentados os procedimentos de ajuste, a separação entre treino e teste e as saídas obtidas nas execuções. O escopo é demonstrativo e exploratório, sem estabelecer conclusões definitivas sobre o fenômeno.
+Este relatório adota **uma ferramenta principal: a regressão logística**, apresentada na Aula 05. Documenta sua aplicação ao alvo binário `pico`, com preparação dos dados, definição das preditoras, treino/teste e registro das saídas. A escolha se fundamenta na correspondência entre a ferramenta e o tipo de resposta, sem afirmar superioridade geral ou estabelecer conclusões definitivas sobre o fenômeno. As aplicações anteriores de PCA e Poisson estão localizadas na seção 8 como atividades complementares.
 
 ## 1. Motivação e pergunta de trabalho
 
-Registros de sinistros permitem examinar a distribuição temporal e as características dos eventos documentados. Esse contexto oferece uma aplicação para ferramentas de classificação, regressão de contagem e análise não supervisionada, relacionadas ao estudo da mobilidade e da fiscalização.
+Registros de sinistros permitem examinar a distribuição temporal e as características dos eventos documentados. Neste trabalho, esse contexto é utilizado para demonstrar uma ferramenta de classificação relacionada ao estudo da mobilidade e da fiscalização.
 
 A demonstração principal utiliza a seguinte pergunta:
 
@@ -47,7 +47,7 @@ As janelas são uma regra adotada para construir a resposta, não um resultado e
 
 ## 4. Variáveis preditoras
 
-A demonstração atual utiliza **três preditoras categóricas**, comuns à regressão logística e à árvore de classificação:
+A regressão logística utiliza **três preditoras categóricas**:
 
 | Preditora | Campo de origem | Nome no código | Representação na aplicação |
 |---|---|---|---|
@@ -67,28 +67,22 @@ O conjunto empregado na demonstração atual é restrito às três variáveis da
 
 Hora e turno ficam fora da modelagem porque determinam ou revelam diretamente parte da resposta. Fatalidade, tipo de sinistro e quantidades de envolvidos não integram essa especificação; são características do evento utilizadas em outras atividades. A data completa organiza a partição temporal, enquanto apenas o dia da semana entra como preditora.
 
-## 5. Ferramentas aplicadas
+## 5. Ferramenta escolhida e justificativa
 
-| Ferramenta ou procedimento | Referência nos materiais | Aplicação |
-|---|---|---|
-| Linha de base | Avaliação de modelos | Probabilidade constante igual à frequência de pico no treino. |
-| Regressão logística | Aula 05 | Estimação de probabilidades para o alvo binário. |
-| Árvore de classificação e poda | Aula 11 | Particionamento dos perfis e ajuste da complexidade. |
-| Treino, validação e teste | Aula 06 | Separação das etapas de ajuste e avaliação. |
-| Bootstrap | Aula 07 | Reamostragem para exemplificar a variabilidade dos resultados. |
+A **regressão logística** é a ferramenta selecionada para esta demonstração. Sua resposta é uma probabilidade para um alvo de duas categorias, compatível com `pico = 1` e `pico = 0`. Ela permite incluir as três preditoras categóricas e registrar coeficientes e razões de chances condicionadas aos demais termos do ajuste.
 
-O [mapa de ferramentas](FERRAMENTAS-E-DEMONSTRACOES.md) relaciona os materiais às demais aplicações existentes: regressão linear, regularização, suavização, splines/GAM, floresta, agrupamento e PCA. Essas atividades não foram todas ajustadas ao mesmo alvo de pico e seus resultados não compõem um único placar comparativo.
+A especificação é `y ~ via + dia + regiao`, com família binomial no R. A seleção é metodológica: está vinculada ao alvo definido, e não à busca de uma ferramenta vencedora a partir das saídas do teste.
 
-## 6. Protocolo de treino, validação e teste
+Treino/teste, métricas, testes de hipótese e reamostragem são procedimentos de preparação e avaliação dessa ferramenta. A frequência de pico no treino é uma referência constante para as métricas, não uma segunda ferramenta escolhida. Árvore, Poisson e PCA permanecem como atividades anteriormente executadas, sem integrar a especificação principal deste relatório.
+
+## 6. Protocolo de treino e teste
 
 | Partição | Período | Boletins | Finalidade |
 |---|---|---:|---|
-| Treino principal | Janeiro–dezembro/2025 | 101.666 | Ajuste da logística, da linha de base e da árvore final da demonstração. |
-| Teste | Janeiro–junho/2026 | 49.509 | Aplicação dos ajustes e cálculo das métricas. |
-| Ajuste interno da árvore | Janeiro–setembro/2025 | 76.266 | Construção da árvore para comparação dos parâmetros de poda. |
-| Validação interna da árvore | Outubro–dezembro/2025 | 25.400 | Avaliação da grade de complexidade. |
+| Treino | Janeiro–dezembro/2025 | 101.666 | Ajuste dos coeficientes da logística e cálculo da frequência de referência. |
+| Teste | Janeiro–junho/2026 | 49.509 | Aplicação da logística e registro de probabilidades e métricas. |
 
-As partições internas da árvore são subdivisões do treino principal. A grade de poda contém `cp` de 0,01; 0,005; 0,001; 0,0005 e 0,0001. Na execução registrada, o menor Brier de validação ocorreu em `cp = 0,0001`; a árvore foi então reajustada em todo o treino principal com esse parâmetro. A escolha está na borda da grade e não representa uma busca exaustiva.
+A fórmula da logística é mantida fixa nesta demonstração, sem busca de parâmetros de poda ou seleção de outros modelos no teste.
 
 O limiar de classificação foi fixado em 0,5 e não foi escolhido pelo teste. Os níveis das variáveis categóricas são definidos no treino e conferidos no teste. A divisão respeita a ordem das datas; como a base já foi explorada em atividades anteriores, a aplicação tem caráter retrospectivo.
 
@@ -98,17 +92,17 @@ O limiar de classificação foi fixado em 0,5 e não foi escolhido pelo teste. O
 |---|---:|---:|---:|---:|
 | Frequência do treino | 0,241157 | 0,5000 | 0,5942 | 0,0000 |
 | Regressão logística | 0,237184 | 0,5757 | 0,5943 | 0,0185 |
-| Árvore de classificação | 0,237563 | 0,5682 | 0,5944 | 0,0539 |
 
-O Brier registra o erro quadrático das probabilidades; a AUC descreve a ordenação dos escores; acurácia e sensibilidade dependem das classes produzidas pelo limiar adotado. As medidas representam aspectos distintos da mesma execução. A tabela documenta a aplicação, sem definir uma ferramenta final para o trabalho ou atestar eficácia operacional.
+O Brier registra o erro quadrático das probabilidades; a AUC descreve a ordenação dos escores; acurácia e sensibilidade dependem das classes produzidas pelo limiar adotado. As medidas representam aspectos distintos da mesma execução. A tabela documenta a aplicação da ferramenta selecionada, sem afirmar superioridade geral ou atestar eficácia operacional.
 
-O [relatório de classificação](2026-11-11-appa-EstudoPicoRelatorio.md) contém gráficos, coeficientes, diagnósticos e links para as saídas completas. As [métricas](../estrutura/codigos/resultados/estudo-pico/metricas.csv) e [probabilidades registradas](../estrutura/codigos/resultados/estudo-pico/pred.csv) permitem conferir os cálculos.
+O [relatório de classificação](2026-11-11-appa-EstudoPicoRelatorio.md) conserva também a comparação com árvore realizada na etapa anterior. Neste consolidado, são utilizados somente os resultados da **logística**, acompanhados da referência constante. No arquivo de [métricas](../estrutura/codigos/resultados/estudo-pico/metricas.csv), a linha correspondente é `logistica`; no arquivo de [probabilidades](../estrutura/codigos/resultados/estudo-pico/pred.csv), é a coluna `logistica`. A tabela de [coeficientes](../estrutura/codigos/resultados/estudo-pico/coeficientes.csv) e o [gráfico de calibração](../estrutura/codigos/resultados/estudo-pico/calibracao-teste.png) também pertencem a esse ajuste.
 
-## 8. Aplicações complementares: contagem e análise não supervisionada
+## 8. Localização das aplicações complementares
+
+As ferramentas abaixo foram aplicadas nas atividades da disciplina e são registradas para rastreabilidade. **Não são ferramentas adicionais selecionadas para responder à pergunta principal deste relatório.**
 
 | Aplicação | Unidade e alvo | Variáveis utilizadas |
 |---|---|---|
-| Classificação de pico | Um boletim; alvo `pico` 0/1. | Tipo de via, dia da semana e região. |
 | Poisson e quase-Poisson | Uma data × hora; alvo número de boletins na célula. | Hora do dia e dia da semana. |
 | PCA e agrupamento | Um boletim na amostra; sem variável-alvo no ajuste. | Quantidades de pedestres, motocicletas, automóveis, ônibus e caminhões, padronizadas. |
 
@@ -118,9 +112,13 @@ Na regressão de contagem, o horário pode integrar as preditoras porque a respo
 
 O [guia 05b](../materiais-tutora/GUIA_ESTUDO_aula05b.md) identifica Poisson como tema extra, não dado em aula. A aplicação e o ajuste de quase-Poisson estão documentados no [relatório de contagem temporal](2026-11-11-appa-ContagemTemporalRelatorio.md).
 
+**Local da aplicação:** o [script de contagem](../estrutura/codigos/2026-11-11-appa-ContagemTemporal.R) agrega os boletins em data × hora e ajusta `glm(n ~ hora + dia, family = poisson())`. As saídas incluem [métricas](../estrutura/codigos/resultados/contagem-temporal/met.csv), [previsões](../estrutura/codigos/resultados/contagem-temporal/prev.csv) e [gráfico do perfil horário](../estrutura/codigos/resultados/contagem-temporal/perfil-horario-teste.png).
+
 ### 8.2. PCA e agrupamento
 
 PCA, K-médias e agrupamento hierárquico correspondem à Aula 12. A PCA resume as variáveis em componentes; os métodos de agrupamento utilizam suas características para formar grupos. O alvo `pico` não integra a matriz usada nesses ajustes. As saídas estão no [relatório das atividades 10/11](2026-11-11-appa-Atividades10_11.md).
+
+**Local da aplicação:** o [script das atividades 10/11](../estrutura/codigos/2026-11-11-appa-Atividades10_11.R) seleciona uma amostra de 1.500 boletins, padroniza as cinco quantidades de modais com `scale()` e aplica `prcomp()` à matriz padronizada. A [variância por componente](../estrutura/codigos/resultados/aulas11_12/pca_variancia.csv), as [cargas das variáveis](../estrutura/codigos/resultados/aulas11_12/pca_cargas.csv) e o [gráfico das duas primeiras componentes](../estrutura/codigos/resultados/aulas11_12/pca_grupos.png) registram essa aplicação. O gráfico usa cores de grupos de K-médias; os grupos não foram produzidos pela PCA.
 
 ## 9. Demonstrações de testes de hipótese e incerteza
 

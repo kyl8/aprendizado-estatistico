@@ -5,7 +5,7 @@
 
 Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatístico da FATEC. O projeto analisa registros de sinistros de trânsito no Estado de São Paulo.
 
-**Comece pelo [consolidado geral das demonstrações](consolidados-aulas/00_CONSOLIDADO_GERAL_DEMONSTRACOES.md):** pergunta, banco, alvo, preditoras, ferramentas, treino/teste e leitura das saídas reunidos em um documento.
+**Comece pelo [relatório consolidado](consolidados-aulas/00_CONSOLIDADO_GERAL_DEMONSTRACOES.md):** regressão logística como única ferramenta principal para o alvo pico, com preditoras, treino/teste e saídas. O documento também localiza as aplicações complementares de Poisson e PCA.
 
 ## Conteúdo
 

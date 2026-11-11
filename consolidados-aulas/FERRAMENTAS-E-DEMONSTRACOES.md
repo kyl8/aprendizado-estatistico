@@ -1,6 +1,6 @@
 # Ferramentas dos materiais e demonstrações do APPA
 
-Conferência direta dos PDFs das Aulas 01–12 e do guia 05b. Esta etapa serve para **demonstrar a aplicação das ferramentas**, com entradas, parâmetros, treino/teste e saídas registradas. Não fecha conclusões sobre o trânsito nem escolhe uma ferramenta definitiva para o artigo.
+Conferência direta dos PDFs das Aulas 01–12 e do guia 05b. Este mapa registra as ferramentas demonstradas nas atividades. Para o [relatório principal](00_CONSOLIDADO_GERAL_DEMONSTRACOES.md), foi selecionada **somente a regressão logística**, adequada ao alvo binário de pico. As demais aplicações permanecem como atividades complementares. A escolha metodológica não estabelece conclusões sobre o trânsito ou superioridade definitiva de uma ferramenta.
 
 | Material | Ferramenta apresentada | Aplicação existente |
 |---|---|---|

@@ -12,6 +12,7 @@ Transcrição para leitura dos guias, conferida em 2026-10-25.
 | Unidade original | Um boletim de sinistro fatal ou não fatal, após a seleção por tipo de registro. Notificações ficam fora do recorte de boletins. |
 | Banco e dimensão | 273371 registros brutos, 50 colunas; 151833 boletins; 151591 eventos com data e horário válidos na Parte D. A preparação de pico (sem `turno` e sem tipo de via "NAO DISPONIVEL") mantém 12 colunas, sendo 11 preditores candidatos e a resposta, em 151175 boletins. |
 | Resposta original | `pico`: classificação Pico/Fora do Pico nas janelas da Entrega 1. |
+| Ferramenta principal selecionada | **Regressão logística**, em função do alvo binário. Poisson, PCA e árvore permanecem em atividades complementares documentadas. |
 | Preditores candidatos da preparação original | 11 candidatas: via, tipo de sinistro, dia da semana, fatalidade, seis quantidades de envolvidos e total de veículos. Não são todas usadas na demonstração atual. |
 | Preditoras da demonstração atual de pico | **Tipo de via, dia da semana e região administrativa** (`via`, `dia`, `regiao` no script). Hora e turno ficam fora porque revelam o alvo. |
 | Tarefa e métrica | Classificação na pergunta original. Na extensão Poisson, contagem por mês × dia da semana × hora, RMSE em sinistros, comparado à média e ao MQO nas mesmas dobras. |
