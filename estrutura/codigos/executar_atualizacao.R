@@ -1,6 +1,7 @@
 # R | executar_atualizacao.R | executar na raiz do repositorio.
-# Reexecuta TODAS as etapas na ordem. Dependencias: glmnet, mgcv, rpart, randomForest, cluster.
+# Reexecuta TODAS as etapas na ordem. Dependencias: glmnet, mgcv, rpart, randomForest, cluster, sandwich.
 if (.Platform$OS.type == "windows") invisible(Sys.setlocale("LC_CTYPE", "English_United States.utf8"))
+source("estrutura/codigos/testar_estudo_pico.R", local=new.env(parent=globalenv()), encoding="UTF-8")
 etapas <- c(
   "estrutura/codigos/2026-10-25-appa-Atividades01_02.R",
   "estrutura/codigos/2026-09-15-appa-Atividade03a-RegressaoLinear.R",
@@ -15,7 +16,8 @@ etapas <- c(
   "estrutura/codigos/aula05b_poisson.R",
   "estrutura/codigos/2026-10-25-appa-Atividade09-SplinesModelosAditivos.R",
   "estrutura/codigos/2026-11-11-appa-Atividades10_11.R",
-  "estrutura/codigos/2026-11-11-appa-EstudoPico.R"
+  "estrutura/codigos/2026-11-11-appa-EstudoPico.R",
+  "estrutura/codigos/2026-11-11-appa-ContagemTemporal.R"
 )
 for (e in etapas) {
   cat("\n=== ", e, " ===\n", sep = "")

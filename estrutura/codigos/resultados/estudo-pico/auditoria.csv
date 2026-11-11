@@ -1,2 +1,2 @@
-"n_fonte","n_boletins","n_validos","n_excluidos_preditores","n_treino","n_teste","inicio_treino","fim_treino","inicio_teste","fim_teste","pico_treino","pico_teste","cp_arvore"
-273371,151833,151175,0,101666,49509,2025-01-01,2025-12-31,2026-01-01,2026-06-30,0.399691145515708,0.405764608455028,0.000221483942414175
+"n_fonte","n_boletins","n_validos","n_excluidos_preditores","n_treino","n_teste","inicio_treino","fim_treino","inicio_teste","fim_teste","pico_treino","pico_teste","cp_arvore","n_ajuste_interno","n_validacao_interna","dias_treino","dias_teste","ids_duplicados","divergencias_dia"
+273371,151833,151175,0,101666,49509,2025-01-01,2025-12-31,2026-01-01,2026-06-30,0.399691145515708,0.405764608455028,1e-04,76266,25400,365,181,0,0

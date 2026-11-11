@@ -37,6 +37,7 @@ O [dicionário de dados](estrutura/corpus/2026-08-11-appa-DicionarioDados.md) ex
 ## Atividades
 
 - [Estudo principal de pico: problema, alvo, modelos, hipótese e teste temporal](consolidados-aulas/2026-11-11-appa-EstudoPicoRelatorio.md)
+- [Contagem por hora: Poisson, sobredispersão e teste temporal](consolidados-aulas/2026-11-11-appa-ContagemTemporalRelatorio.md)
 
 - [01: dados e variáveis](consolidados-aulas/2026-09-15-appa-Atividade01-DadosVariaveis.md)
 - [02a: análise exploratória ampla](consolidados-aulas/2026-09-15-appa-Atividade02a-AnaliseExploratoriaAmpla.md)
@@ -59,7 +60,9 @@ Todos os scripts devem ser executados a partir da raiz do repositório. Para rod
 Rscript estrutura/codigos/executar_atualizacao.R
 ```
 
-Dependências: `glmnet`, `mgcv`, `rpart`, `randomForest` e `cluster`.
+Dependências: `glmnet`, `mgcv`, `rpart`, `randomForest`, `cluster` e `sandwich`.
+
+As verificações do alvo e das métricas podem ser executadas com `Rscript estrutura/codigos/testar_estudo_pico.R`. Os estudos atuais incluem inferência agrupada por data, ajuste de Holm, diagnóstico de calibração e intervalos de incerteza por blocos semanais; os limites estão descritos nos relatórios de pico e de contagem temporal.
 
 Os scripts de atividades, da Aula 05b e da oficina ficam em [`estrutura/codigos/`](estrutura/codigos/README.md); as instruções dos guias estão em [README-guias](estrutura/codigos/README-guias.md).
 

@@ -1,0 +1,3 @@
+"contraste","estimativa","ic95_inferior","ic95_superior","repeticoes","bloco_dias"
+"Brier base - logistica",0.0039724990100346,0.00342064218600018,0.00447152551966988,1000,7
+"Brier arvore - logistica",0.000378775274362586,0.000171558831179469,0.000570536482606822,1000,7
