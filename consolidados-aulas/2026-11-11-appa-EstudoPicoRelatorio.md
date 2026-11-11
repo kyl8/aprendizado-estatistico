@@ -1,79 +1,74 @@
-# Estudo de sinistros nos horários de pico — APPA
+# Demonstração de classificação de pico — APPA
 
-**Grupo:** Arthur Galvão, Pedro Henrique e Ailana. **Apoio:** ChatGPT. Este relatório reúne resultados reproduzíveis para orientar o futuro artigo; não registra avaliação individual nem identifica efeitos causais.
+**Grupo:** Arthur Galvão, Pedro Henrique e Ailana. **Apoio:** ChatGPT. O objetivo é demonstrar a aplicação de logística e árvore: definir entradas, ajustar, testar e registrar saídas. Não fechamos conclusões sobre o problema nem escolhemos uma ferramenta definitiva para o artigo. Consulte o [mapa dos materiais e aplicações](FERRAMENTAS-E-DEMONSTRACOES.md).
 
-## 1. Motivação e problema
+## 1. Motivação, problema e pergunta de trabalho
 
-O planejamento de fiscalização e mobilidade precisa conhecer padrões nos registros de sinistros. Os períodos de pico concentram deslocamentos e podem apresentar perfis distintos de ocorrência. Os dados disponíveis, porém, contêm apenas eventos registrados: não informam quantos veículos ou pessoas circularam sem sofrer sinistro. Assim, permitem comparar características **entre boletins**, mas não estimar risco por viagem ou por veículo, nem concluir que uma característica causou um acidente.
+Os registros de sinistros permitem montar exemplos de classificação e discutir perfis associados a horários de pico. A pergunta usada como contexto é: **que características registradas dos sinistros estão associadas à ocorrência em horários de pico?**
 
-## 2. Pergunta e hipótese
+Nesta etapa, ela orienta a demonstração; não será respondida de maneira definitiva. A base contém eventos registrados e não informa o volume de tráfego sem sinistro. O exercício não mede risco por veículo nem estabelece causas.
 
-**Pergunta principal:** que características registradas dos sinistros estão associadas à ocorrência em horários de pico?
+## 2. Banco, alvo e preditoras
 
-Hipótese examinada no treino: **H₀:** após ajustar por dia da semana e região administrativa, os coeficientes associados ao tipo de via são zero; **H₁:** pelo menos um desses coeficientes é diferente de zero. A revisão usa Wald com covariância HC1 agrupada por data e nível de referência de 5%; o teste de razão de verossimilhanças convencional permanece como comparação. Há 365 datas de treino. As três hipóteses por grupos de coeficientes (via, dia e região) recebem correção de Holm. Todas as análises são retrospectivas e exploratórias, sem pré-registro.
+A base Infosiga/SP tem 273.371 registros brutos de 50 colunas, de janeiro/2025 a junho/2026, sendo 151.833 boletins de sinistros fatais ou não fatais. O exemplo de classificação usa 151.175 boletins: foram excluídos 242 sem data/hora válidas e, entre os restantes, 416 com via indisponível. Não houve exclusão adicional por ausência nas três preditoras. A auditoria desta leitura não encontrou IDs duplicados nem divergências entre dia da semana e calendário. [Fluxo de seleção](../estrutura/codigos/resultados/estudo-pico/coorte.csv).
 
-A covariância permite dependência entre boletins da mesma data, mas ainda supõe independência entre datas e depende da especificação do modelo. Não corrige automaticamente dependência espacial, autocorrelação entre dias nem viés de registro. Método: [documentação de vcovCL](https://sandwich.r-forge.r-project.org/reference/vcovCL.html); multiplicidade: [p.adjust do R](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html).
+- **Alvo:** `pico`, igual a 1 em 06:30–08:30, 11:30–13:30 e 17:00–19:30, incluindo os extremos; 0 fora dessas janelas.
+- **Preditoras:** tipo de via, dia da semana e região administrativa, todas categóricas.
+- **Preparação:** validação do formato do horário, derivação do alvo e do dia pelo calendário, seleção dos registros e definição dos níveis categóricos no treino.
+- **Disponibilidade:** hora e turno ficam fora dos preditores por revelarem o alvo; gravidade, tipo de sinistro e quantidades de envolvidos não entram neste exemplo.
 
-## 3. Banco, alvo e preditoras
+## 3. Ferramentas dos materiais e sequência da demonstração
 
-A fonte é a base de sinistros de trânsito de São Paulo do Infosiga, de janeiro de 2025 a junho de 2026: 273.371 registros brutos de 50 colunas, sendo 151.833 boletins de sinistros fatais ou não fatais. Notificações não são a unidade deste estudo. O fluxo de exclusões é: **242** boletins sem data/hora válidas e, entre os restantes, **416** com via indisponível; restaram **151.175 boletins**. Não houve exclusão adicional por campos ausentes entre as três preditoras. A auditoria não encontrou identificadores de sinistro duplicados nem divergência entre dia da semana informado e o calendário. A exclusão da via indisponível altera a população analisada. [Coorte](../estrutura/codigos/resultados/estudo-pico/coorte.csv).
+Logística corresponde à Aula 05; árvore e poda, à Aula 11; divisão de dados e métricas, à Aula 06; bootstrap, à Aula 07. Não aplicamos PCA como classificador: a demonstração não supervisionada está nas [atividades 10/11](2026-11-11-appa-Atividades10_11.md), com outra matriz de dados.
 
-O **alvo** `pico` vale 1 para 06:30–08:30, 11:30–13:30 ou 17:00–19:30, incluindo os extremos; fora dessas janelas vale 0. Foram usadas três **preditoras** categóricas: tipo de via, dia da semana e região administrativa. Hora e turno ficam fora por determinarem ou revelarem diretamente o alvo. Gravidade, tipo de sinistro e modais envolvidos também não entram neste experimento, pois são características registradas após o evento e respondem a outra pergunta. O modelo classifica o horário de um boletim existente: não é um sistema de previsão antecipada de sinistros.
+1. Separar 2025 para treino (**101.666 boletins**) e janeiro–junho/2026 para teste (**49.509**).
+2. Calcular a frequência de pico no treino como linha de base e ajustar a logística `y ~ via + dia + regiao`.
+3. Demonstrar a escolha de poda da árvore: janeiro–setembro/2025 para ajuste interno (**76.266**), outubro–dezembro para validação (**25.400**).
+4. Avaliar cp em 0,01; 0,005; 0,001; 0,0005; 0,0001. Nesta execução, o menor Brier de validação ocorreu em 0,0001, na borda da grade. Reajustar a árvore em todo 2025 com esse parâmetro.
+5. Aplicar os ajustes ao teste e registrar probabilidades, métricas e gráficos. O limiar de classe permanece em 0,5.
 
-## 4. Ferramentas e desenho de avaliação
+Os níveis de teste são conferidos contra os de treino. A prevalência registrada foi 39,97% no treino e 40,58% no teste. Os dados já foram usados em atividades anteriores: a divisão é uma demonstração retrospectiva, não um teste historicamente intocado. [Grade de poda](../estrutura/codigos/resultados/estudo-pico/poda.csv) e [auditoria](../estrutura/codigos/resultados/estudo-pico/auditoria.csv).
 
-| Ferramenta | Papel neste estudo | Limite |
-|---|---|---|
-| Frequência de pico no treino | Linha de base para probabilidades e classe majoritária. | Não diferencia os perfis. |
-| Regressão logística | Modelo principal; fornece probabilidades, razões de chances e teste ajustado. | Exige cuidado com especificação e dependência; associação não é causa. |
-| Árvore de classificação | Comparação flexível; poda escolhida por validação temporal interna. | Pode ser instável e não fornece causalidade. |
-| PCA | Exploração não supervisionada de variáveis numéricas; existe em [relatório separado](2026-11-11-appa-Atividades10_11.md). | Não usa o alvo e não substitui um classificador. |
-| Poisson/quase-Poisson | Análise alternativa de contagens por calendário, agora com [teste temporal](2026-11-11-appa-ContagemTemporalRelatorio.md). | Tem outro alvo e outra unidade; RMSE de contagens não é comparável ao Brier da classificação. |
+## 4. Saídas observadas
 
-Usamos divisão **temporal**, sem embaralhar: 01/01–31/12/2025 para treino (**101.666**) e 01/01–30/06/2026 para teste (**49.509**). Os níveis das categorias são aprendidos no treino; o script para se aparecer categoria inédita no teste. A probabilidade constante da linha de base, o ajuste da logística e a poda da árvore usam apenas o treino. O limiar de classe de 0,5 é fixo; não foi escolhido pelo teste. A prevalência de pico foi 39,97% no treino e 40,58% no teste.
-
-Para a árvore, janeiro a setembro de 2025 fornece 76.266 observações de ajuste interno; outubro a dezembro fornece 25.400 de validação. A grade de cp foi 0,01; 0,005; 0,001; 0,0005; 0,0001; o menor Brier de validação ocorreu em 0,0001. A árvore foi então reajustada em todo 2025 com esse cp. Como a escolha está na borda da grade, isso não estabelece um ótimo global. Não usamos validação aleatória por boletim para escolher a poda. [Grade](../estrutura/codigos/resultados/estudo-pico/poda.csv).
-
-Essa é uma avaliação retrospectiva, feita depois de estudos anteriores com a mesma base; não constitui um teste historicamente intocado. A validação cruzada anterior da análise de Poisson dividiu células do mesmo período e não demonstra previsão para meses futuros.
-
-## 5. Relatório das ferramentas no teste temporal
-
-| Modelo | Brier ↓ | AUC ↑ | Acurácia | Sensibilidade ao pico | Especificidade |
+| Ajuste | Brier | AUC | Acurácia | Sensibilidade ao pico | Especificidade |
 |---|---:|---:|---:|---:|---:|
 | Frequência do treino | 0,241157 | 0,5000 | 0,5942 | 0,0000 | 1,0000 |
 | Logística | 0,237184 | 0,5757 | 0,5943 | 0,0185 | 0,9875 |
 | Árvore | 0,237563 | 0,5682 | 0,5944 | 0,0539 | 0,9635 |
 
-O Brier mede o erro quadrático médio das probabilidades; menor é melhor. A logística melhora **0,003972** em relação à base, cerca de **1,65%** do Brier da base. Um bootstrap pareado por dia no teste, com 1.000 reamostragens, deu intervalo percentílico de **0,003353 a 0,004567** para essa diferença. O intervalo descreve a variabilidade entre dias observados no período de teste e não garante desempenho em outros anos ou fontes.
+Brier e log-loss exemplificam a avaliação das probabilidades; AUC usa a ordenação dos escores; acurácia, sensibilidade e especificidade usam o limiar. A acurácia balanceada calculada foi 0,5030 para logística e 0,5087 para árvore; a log-loss foi 0,6671 e 0,6678, contra 0,6754 da base. A tabela serve para discutir essas diferentes leituras, sem declarar um modelo vencedor ou certificar eficácia.
 
-Como sensibilidade à dependência entre dias consecutivos, o bootstrap circular em blocos de **sete dias**, também com 1.000 repetições, deu **0,003421 a 0,004472**. Para Brier da árvore menos Brier da logística, o ganho desta última foi **0,000379**, intervalo **0,000172 a 0,000571**. A comparação é exploratória, pois os modelos e seus resultados já foram examinados. O bootstrap considera os ajustes fixos, sem reestimar modelos ou seleção, e assume estabilidade aproximada dos blocos; não captura toda a incerteza de desenvolvimento. [Intervalos em blocos](../estrutura/codigos/resultados/estudo-pico/incerteza_semanal.csv).
+[Métricas](../estrutura/codigos/resultados/estudo-pico/metricas.csv), [probabilidades](../estrutura/codigos/resultados/estudo-pico/pred.csv), [gráfico de Brier](../estrutura/codigos/resultados/estudo-pico/brier-teste.png) e [gráfico de calibração](../estrutura/codigos/resultados/estudo-pico/calibracao-teste.png).
 
-A AUC de 0,576 indica discriminação modesta. A acurácia quase não melhora sobre a classe majoritária e, com limiar 0,5, a logística identifica somente **1,85%** dos boletins de pico. Não seria adequado apresentá-la como classificador operacional eficaz. A árvore também tem discriminação modesta; sua comparação é descritiva, pois o mesmo teste foi visto para os dois modelos.
+## 5. Exemplos de hipóteses e complementos opcionais
 
-A acurácia balanceada foi **0,5030** para logística e **0,5087** para árvore, próximas de 0,5. A log-loss foi 0,6671 e 0,6678, contra 0,6754 da base. As métricas mostram ganho pequeno de probabilidade e desempenho fraco de classificação, apesar do tamanho da amostra.
+Hipótese usada para demonstrar o cálculo: **H₀:** os coeficientes de tipo de via são zero após ajustar por dia e região; **H₁:** pelo menos um deles difere de zero. O teste convencional registrou p = 0,0515. A razão de chances calculada para vias urbanas em relação a estradas/rodovias foi 0,966.
 
-Gráficos de [Brier](../estrutura/codigos/resultados/estudo-pico/brier-teste.png) e [calibração](../estrutura/codigos/resultados/estudo-pico/calibracao-teste.png), além das [métricas](../estrutura/codigos/resultados/estudo-pico/metricas.csv), [probabilidades](../estrutura/codigos/resultados/estudo-pico/pred.csv) e [auditoria](../estrutura/codigos/resultados/estudo-pico/auditoria.csv), permitem conferir os resultados.
+HC1 agrupada por data, Wald agrupado, Holm, diagnóstico conjunto de calibração e bootstrap em blocos semanais são **complementos acrescentados com IA**, não identificados como procedimentos apresentados nos PDFs conferidos. Permanecem como exemplos opcionais de cálculo e registro da incerteza.
 
-## 6. Teste de hipótese e interpretação
+| Exemplo complementar | Saída registrada |
+|---|---|
+| Wald para via, agrupado por data | χ²(1) = 3,6182; p = 0,0572; p após Holm = 0,0572 |
+| Intervalo agrupado para a razão de chances de via | 0,9328 a 1,0010 |
+| Wald conjunto para dia | χ²(6) = 952,36; p após Holm < 0,001 |
+| Wald conjunto para região | χ²(15) = 284,84; p após Holm < 0,001 |
+| Diagnóstico de calibração: intercepto 0 e inclinação 1 | χ²(2) = 10,7884; p = 0,00454; intercepto calculado 0,0221 e inclinação 0,9756 |
 
-No treino, o teste convencional para via continua com **p = 0,0515**. A revisão robusta por data produz $\chi^2(1)=3,6182$, **p = 0,0572** (também 0,0572 após Holm). Ao nível de 5%, não rejeitamos H₀; isso não prova igualdade nem ausência de associação. A razão de chances estimada de vias urbanas em relação a estradas e rodovias é **0,966**, com intervalo robusto de 95% **0,9328 a 1,0010**. É uma razão de chances **entre boletins registrados**, não uma razão de riscos de sinistro. [Testes robustos](../estrutura/codigos/resultados/estudo-pico/testes_robustos.csv) e [coeficientes](../estrutura/codigos/resultados/estudo-pico/coeficientes.csv).
+Os valores são saídas dos procedimentos sob suas suposições. Não encerramos aqui uma conclusão sobre associação, calibração ou o fenômeno real. O agrupamento usa 365 datas de treino e permite dependência dentro da data; não elimina automaticamente autocorrelação entre datas, dependência espacial ou viés da fonte. Holm foi aplicado à família das três comparações de coeficientes; o diagnóstico de calibração é separado e não foi usado para reajustar previsões.
 
-Nos testes conjuntos robustos ajustados pelos demais preditores, dia da semana apresentou $\chi^2(6)=952,36$ e região $\chi^2(15)=284,84$; ambos permanecem com **p ajustado por Holm < 0,001**. Há associação sob as suposições descritas, mas a discriminação fraca no teste mostra que significância estatística não implica grande utilidade preditiva. Os [testes convencionais](../estrutura/codigos/resultados/estudo-pico/testes.csv) foram preservados como comparação, agora também com Holm.
+O exemplo de bootstrap diário produziu intervalo de 0,003353 a 0,004567 para a diferença de Brier base menos logística. Com blocos circulares de sete dias, o intervalo foi 0,003421 a 0,004472. Para Brier da árvore menos logística, foi 0,000172 a 0,000571. Foram usadas 1.000 reamostragens e ajustes fixos; os exemplos não capturam toda a incerteza de desenvolvimento.
 
-## 7. Calibração e estabilidade
+[Testes convencionais](../estrutura/codigos/resultados/estudo-pico/testes.csv), [testes agrupados](../estrutura/codigos/resultados/estudo-pico/testes_robustos.csv), [coeficientes](../estrutura/codigos/resultados/estudo-pico/coeficientes.csv), [intervalos em blocos](../estrutura/codigos/resultados/estudo-pico/incerteza_semanal.csv) e [diagnóstico de calibração](../estrutura/codigos/resultados/estudo-pico/calibracao_teste.csv). Referências dos complementos: [vcovCL](https://sandwich.r-forge.r-project.org/reference/vcovCL.html) e [p.adjust](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html).
 
-No teste, a regressão diagnóstica de calibração estimou intercepto **0,0221** e inclinação **0,9756**. O teste de Wald com agrupamento por data para H₀ conjunta (intercepto 0, inclinação 1) deu $\chi^2(2)=10,7884$, **p = 0,00454**. Isso sugere um pequeno desvio estatisticamente detectável de calibração perfeita. A análise é diagnóstica após observar o teste e não foi usada para recalibrar previsões nem mudar o limiar. [Diagnóstico](../estrutura/codigos/resultados/estudo-pico/calibracao_teste.csv).
+## 6. Roteiro para discutir a aplicação
 
-As faixas do gráfico agora informam o número de boletins; faixas vazias não aparecem. A AUC mensal variou de **0,560 a 0,583**, mantendo discriminação modesta nos seis meses. Os resultados por região são descritivos e não foram usados para escolher modelos ou declarar diferenças significativas entre regiões. [Resultados mensais](../estrutura/codigos/resultados/estudo-pico/por_mes.csv), [por região](../estrutura/codigos/resultados/estudo-pico/por_regiao.csv) e [gráfico mensal](../estrutura/codigos/resultados/estudo-pico/estabilidade-mensal.png).
+Mostrar a preparação do alvo, justificar a exclusão de hora/turno, localizar treino e teste no calendário e explicar os parâmetros. Depois, ler as tabelas e gráficos, distinguindo saída de uma execução, interpretação da métrica e conclusão de pesquisa. A AUC mensal registrada variou de 0,560 a 0,583; as tabelas por região são descritivas. Nenhuma delas foi usada para declarar diferenças entre regiões ou definir uma ferramenta final.
 
-## 8. Discussão e análise final
+[Resultados mensais](../estrutura/codigos/resultados/estudo-pico/por_mes.csv), [por região](../estrutura/codigos/resultados/estudo-pico/por_regiao.csv) e [gráfico mensal](../estrutura/codigos/resultados/estudo-pico/estabilidade-mensal.png). A demonstração de [contagem com Poisson](2026-11-11-appa-ContagemTemporalRelatorio.md) tem outro alvo e outra unidade; seus resultados não compõem um placar único com esta classificação.
 
-A logística é adequada como primeiro instrumento para a pergunta binária e facilita a interpretação, mas as três características escolhidas oferecem pouco poder discriminativo. A árvore confirma que flexibilidade por si só não garantiu melhora neste teste. PCA ajuda a resumir perfis de modais, mas usa outro conjunto de variáveis e não valida a pergunta de pico. A [nova avaliação temporal de Poisson](2026-11-11-appa-ContagemTemporalRelatorio.md) atende à pergunta alternativa de frequência e deve ser discutida separadamente, com sua unidade e limitações.
+## 7. Reprodução
 
-Antes do artigo, vale documentar as regras de seleção, as definições das janelas, as limitações da fonte, as suposições e a natureza retrospectiva do teste. Qualquer novo modelo ou mudança de limiar deve ser desenvolvido sem reutilizar o mesmo teste como se fosse inédito. O conjunto não informa fluxo de tráfego, e registros agregados ou incompletos podem limitar a generalização.
+Na raiz: `Rscript estrutura/codigos/testar_estudo_pico.R` e `Rscript estrutura/codigos/2026-11-11-appa-EstudoPico.R`. Dependências: R, `rpart` e `sandwich`. [Versões](../estrutura/codigos/resultados/estudo-pico/versoes.csv).
 
-## 9. Correções e reprodução
-
-A revisão corrigiu a aceitação de horários malformados, preveniu overflow no cálculo de AUC em grandes amostras e substituiu a validação aleatória da poda por validação temporal. A base atual não tinha identificadores duplicados ou divergências de calendário; as proteções adicionais foram testadas também com entradas sintéticas inválidas e com 100.000 rótulos para a AUC.
-
-Executar na raiz: `Rscript estrutura/codigos/testar_estudo_pico.R` e `Rscript estrutura/codigos/2026-11-11-appa-EstudoPico.R`. As saídas ficam em `estrutura/codigos/resultados/estudo-pico/`. Dependências: R, `rpart` e `sandwich`; as versões estão em [versoes.csv](../estrutura/codigos/resultados/estudo-pico/versoes.csv).
+As verificações cobrem horários inválidos, limites do alvo, AUC em 100.000 rótulos, datas, categorias e conservação dos totais. Elas verificam o funcionamento do código, sem comprovar hipóteses sobre o trânsito.

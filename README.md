@@ -36,6 +36,7 @@ O [dicionário de dados](estrutura/corpus/2026-08-11-appa-DicionarioDados.md) ex
 
 ## Atividades
 
+- [Ferramentas dos materiais e onde foram demonstradas](consolidados-aulas/FERRAMENTAS-E-DEMONSTRACOES.md)
 - [Estudo principal de pico: problema, alvo, modelos, hipótese e teste temporal](consolidados-aulas/2026-11-11-appa-EstudoPicoRelatorio.md)
 - [Contagem por hora: Poisson, sobredispersão e teste temporal](consolidados-aulas/2026-11-11-appa-ContagemTemporalRelatorio.md)
 
@@ -62,7 +63,7 @@ Rscript estrutura/codigos/executar_atualizacao.R
 
 Dependências: `glmnet`, `mgcv`, `rpart`, `randomForest`, `cluster` e `sandwich`.
 
-As verificações do alvo e das métricas podem ser executadas com `Rscript estrutura/codigos/testar_estudo_pico.R`. Os estudos atuais incluem inferência agrupada por data, ajuste de Holm, diagnóstico de calibração e intervalos de incerteza por blocos semanais; os limites estão descritos nos relatórios de pico e de contagem temporal.
+As verificações do alvo e das métricas podem ser executadas com `Rscript estrutura/codigos/testar_estudo_pico.R`. Esta etapa demonstra aplicações e registra saídas, sem fechar conclusões sobre o problema. HC1, Wald agrupado, Holm e bootstrap por blocos semanais são complementos opcionais acrescentados na revisão e distinguidos das ferramentas dos materiais no mapa acima.
 
 Os scripts de atividades, da Aula 05b e da oficina ficam em [`estrutura/codigos/`](estrutura/codigos/README.md); as instruções dos guias estão em [README-guias](estrutura/codigos/README-guias.md).
 
