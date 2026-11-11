@@ -1,5 +1,5 @@
 # R | executar_atualizacao.R | executar na raiz do repositorio.
-# Reexecuta TODAS as etapas na ordem. Dependencias: glmnet, mgcv.
+# Reexecuta TODAS as etapas na ordem. Dependencias: glmnet, mgcv, rpart, randomForest, cluster.
 if (.Platform$OS.type == "windows") invisible(Sys.setlocale("LC_CTYPE", "English_United States.utf8"))
 etapas <- c(
   "estrutura/codigos/2026-10-25-appa-Atividades01_02.R",
@@ -13,7 +13,8 @@ etapas <- c(
   "estrutura/codigos/2026-10-02-appa-gerar-base-pico.R",
   "estrutura/codigo/2026-10-25-appa-OficinaDuasPerguntas.R",
   "estrutura/codigo/aula05b_poisson.R",
-  "estrutura/codigos/2026-10-25-appa-Atividade09-SplinesModelosAditivos.R"
+  "estrutura/codigos/2026-10-25-appa-Atividade09-SplinesModelosAditivos.R",
+  "estrutura/codigos/2026-11-11-appa-Atividades10_11.R"
 )
 for (e in etapas) {
   cat("\n=== ", e, " ===\n", sep = "")
