@@ -5,6 +5,8 @@
 
 Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatístico da FATEC. O projeto analisa registros de sinistros de trânsito no Estado de São Paulo.
 
+**Comece pelo [consolidado geral das demonstrações](consolidados-aulas/00_CONSOLIDADO_GERAL_DEMONSTRACOES.md):** pergunta, banco, alvo, preditoras, ferramentas, treino/teste e leitura das saídas reunidos em um documento.
+
 ## Conteúdo
 
 - [entregas](entregas/): relatórios formais e entregas acadêmicas em LaTeX/Sweave;
