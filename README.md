@@ -3,13 +3,15 @@
 **Grupo:** APPA — Arthur Galvão, Pedro Henrique e Ailana.
 **Apoio:** ChatGPT.
 
+**Entrega de 18/11:** [artigo da Entrega 2 (PDF)](entregas/entrega-2/artigo-final.pdf) · [apresentação interativa offline](entregas/apresentacao-final/apresentacao-final-appa.html) · [slides em PDF](entregas/apresentacao-final/apresentacao-final-appa.pdf) · [código completo e reprodução da apresentação](entregas/apresentacao-final/README.md).
+
 Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatístico da FATEC. O projeto analisa registros de sinistros de trânsito no Estado de São Paulo.
 
 **Comece pelo [relatório consolidado](consolidados-aulas/00_CONSOLIDADO_GERAL_DEMONSTRACOES.md):** regressão logística como única ferramenta principal para o alvo pico, com preditoras, treino/teste e saídas. O documento também localiza as aplicações complementares de Poisson e PCA.
 
 ## Conteúdo
 
-- [entregas](entregas/): relatórios formais e entregas acadêmicas em LaTeX/Sweave;
+- [entregas](entregas/): artigos em LaTeX/Sweave e apresentação final em Remotion;
 - [consolidados-aulas](consolidados-aulas/): atividades e relatórios organizados por etapa;
 - [consolidados-tutora](consolidados-tutora/): estudos e resoluções dos guias;
 - [estrutura/corpus/banco-de-dados](estrutura/corpus/banco-de-dados/): bases preparadas e dados serializados para modelagem;
@@ -19,11 +21,14 @@ Repositório do grupo APPA para a disciplina de Teoria do Aprendizado Estatísti
 - [materiais-aulas](materiais-aulas/): PDFs usados nas aulas;
 - [materiais-tutora](materiais-tutora/): guias de estudo.
 
-Os scripts e resultados usam o prefixo de data e grupo `YYYY-MM-DD-appa`.
+Os scripts e resultados das atividades usam o prefixo de data e grupo `YYYY-MM-DD-appa`. As entregas formais seguem os nomes do modelo da disciplina.
 
 ## Entregas Formais
 
 A pasta [entregas/](entregas/) reúne a entrega final e os modelos da disciplina:
+
+- **[entregas/entrega-2/](entregas/entrega-2/README.md):** artigo da demonstração de regressão logística, com PDF, fontes Rnw/LaTeX, código R, banco preparado, tabelas, figuras e modelo da disciplina. Treino em 2025 e teste em 2026; uma ferramenta principal.
+- **[entregas/apresentacao-final/](entregas/apresentacao-final/README.md):** 16 slides principais e um de apoio para 10–12 minutos, implementados em Remotion/React. HTML offline, PDF e todo o código para regenerar os arquivos. Interações de horário, perfil e limiar, além de notas, índice e teclado.
 
 - **[entregas/entrega-1/](entregas/entrega-1/):** versão final consolidada do grupo APPA:
   - [Entrega 1: A Pergunta do Trabalho (PDF)](entregas/entrega-1/2026-10-02-appa-entrega-1-pergunta.pdf) ([Fonte Sweave](entregas/entrega-1/2026-10-02-appa-entrega-1-pergunta.Rnw), [LaTeX](entregas/entrega-1/2026-10-02-appa-entrega-1-pergunta.tex))
@@ -91,6 +96,8 @@ No Windows, execute `powershell -ExecutionPolicy Bypass -File .\executar_atualiz
 ## Referências
 Os guias de Poisson estão em [materiais-tutora/](materiais-tutora/).
 
-## Situação em 11/11/2026
+## Situação em 17/11/2026
 
 As aplicações das Aulas 11 e 12 estão no [consolidado das atividades 10 e 11](consolidados-aulas/2026-11-11-appa-Atividades10_11.md), com [exercícios](consolidados-tutora/2026-11-11-appa-Atividades10_11.md). A Entrega 1 foi recompilada e revisada; decisões que dependem do grupo e do professor constam na [lista de pendências](PENDENCIAS_GRUPO.md).
+
+A [comparação atualizada das referências](consolidados-aulas/2026-11-17-appa-ComparacaoReferencias.md) registra a nova Entrega 2 e a apresentação final na referência de Estatística; a referência do PI permaneceu em `fafe046`. A preparação de Estatística está em [Entrega 2](entregas/entrega-2/README.md) e [apresentação final](entregas/apresentacao-final/README.md).

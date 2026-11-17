@@ -1,0 +1,559 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T04:04:38.689104Z",
+  "title": "Design System: APPA",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Tinta azul escura",
+        "tonalRamp": [
+          "oklch(15.00% 0.04605 271.20)",
+          "oklch(26.43% 0.04605 271.20)",
+          "oklch(37.86% 0.04605 271.20)",
+          "oklch(49.29% 0.04605 271.20)",
+          "oklch(60.71% 0.04605 271.20)",
+          "oklch(72.14% 0.04605 271.20)",
+          "oklch(83.57% 0.04605 271.20)",
+          "oklch(95.00% 0.04605 271.20)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel quente",
+        "tonalRamp": [
+          "oklch(15.00% 0.01147 84.58)",
+          "oklch(26.43% 0.01147 84.58)",
+          "oklch(37.86% 0.01147 84.58)",
+          "oklch(49.29% 0.01147 84.58)",
+          "oklch(60.71% 0.01147 84.58)",
+          "oklch(72.14% 0.01147 84.58)",
+          "oklch(83.57% 0.01147 84.58)",
+          "oklch(95.00% 0.01147 84.58)"
+        ]
+      },
+      "mint": {
+        "role": "primary",
+        "displayName": "Menta luminosa",
+        "tonalRamp": [
+          "oklch(15.00% 0.09563 166.12)",
+          "oklch(26.43% 0.09563 166.12)",
+          "oklch(37.86% 0.09563 166.12)",
+          "oklch(49.29% 0.09563 166.12)",
+          "oklch(60.71% 0.09563 166.12)",
+          "oklch(72.14% 0.09563 166.12)",
+          "oklch(83.57% 0.09563 166.12)",
+          "oklch(95.00% 0.09563 166.12)"
+        ]
+      },
+      "lav": {
+        "role": "secondary",
+        "displayName": "Lavanda",
+        "tonalRamp": [
+          "oklch(15.00% 0.12188 294.65)",
+          "oklch(26.43% 0.12188 294.65)",
+          "oklch(37.86% 0.12188 294.65)",
+          "oklch(49.29% 0.12188 294.65)",
+          "oklch(60.71% 0.12188 294.65)",
+          "oklch(72.14% 0.12188 294.65)",
+          "oklch(83.57% 0.12188 294.65)",
+          "oklch(95.00% 0.12188 294.65)"
+        ]
+      },
+      "indigo": {
+        "role": "primary",
+        "displayName": "Índigo",
+        "tonalRamp": [
+          "oklch(15.00% 0.22112 269.54)",
+          "oklch(26.43% 0.22112 269.54)",
+          "oklch(37.86% 0.22112 269.54)",
+          "oklch(49.29% 0.22112 269.54)",
+          "oklch(60.71% 0.22112 269.54)",
+          "oklch(72.14% 0.22112 269.54)",
+          "oklch(83.57% 0.22112 269.54)",
+          "oklch(95.00% 0.22112 269.54)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Apoio sobre tinta",
+        "tonalRamp": [
+          "oklch(15.00% 0.04735 270.32)",
+          "oklch(26.43% 0.04735 270.32)",
+          "oklch(37.86% 0.04735 270.32)",
+          "oklch(49.29% 0.04735 270.32)",
+          "oklch(60.71% 0.04735 270.32)",
+          "oklch(72.14% 0.04735 270.32)",
+          "oklch(83.57% 0.04735 270.32)",
+          "oklch(95.00% 0.04735 270.32)"
+        ]
+      },
+      "ink-fg": {
+        "role": "neutral",
+        "displayName": "Texto sobre tinta",
+        "tonalRamp": [
+          "oklch(15.00% 0.01350 277.07)",
+          "oklch(26.43% 0.01350 277.07)",
+          "oklch(37.86% 0.01350 277.07)",
+          "oklch(49.29% 0.01350 277.07)",
+          "oklch(60.71% 0.01350 277.07)",
+          "oklch(72.14% 0.01350 277.07)",
+          "oklch(83.57% 0.01350 277.07)",
+          "oklch(95.00% 0.01350 277.07)"
+        ]
+      },
+      "ink-line": {
+        "role": "neutral",
+        "displayName": "Linha sobre tinta",
+        "tonalRamp": [
+          "oklch(15.00% 0.05048 267.48)",
+          "oklch(26.43% 0.05048 267.48)",
+          "oklch(37.86% 0.05048 267.48)",
+          "oklch(49.29% 0.05048 267.48)",
+          "oklch(60.71% 0.05048 267.48)",
+          "oklch(72.14% 0.05048 267.48)",
+          "oklch(83.57% 0.05048 267.48)",
+          "oklch(95.00% 0.05048 267.48)"
+        ]
+      },
+      "paper-fg": {
+        "role": "neutral",
+        "displayName": "Texto sobre papel",
+        "tonalRamp": [
+          "oklch(15.00% 0.04305 268.59)",
+          "oklch(26.43% 0.04305 268.59)",
+          "oklch(37.86% 0.04305 268.59)",
+          "oklch(49.29% 0.04305 268.59)",
+          "oklch(60.71% 0.04305 268.59)",
+          "oklch(72.14% 0.04305 268.59)",
+          "oklch(83.57% 0.04305 268.59)",
+          "oklch(95.00% 0.04305 268.59)"
+        ]
+      },
+      "paper-muted": {
+        "role": "neutral",
+        "displayName": "Apoio sobre papel",
+        "tonalRamp": [
+          "oklch(15.00% 0.04141 265.58)",
+          "oklch(26.43% 0.04141 265.58)",
+          "oklch(37.86% 0.04141 265.58)",
+          "oklch(49.29% 0.04141 265.58)",
+          "oklch(60.71% 0.04141 265.58)",
+          "oklch(72.14% 0.04141 265.58)",
+          "oklch(83.57% 0.04141 265.58)",
+          "oklch(95.00% 0.04141 265.58)"
+        ]
+      },
+      "paper-line": {
+        "role": "neutral",
+        "displayName": "Linha sobre papel",
+        "tonalRamp": [
+          "oklch(15.00% 0.01428 272.66)",
+          "oklch(26.43% 0.01428 272.66)",
+          "oklch(37.86% 0.01428 272.66)",
+          "oklch(49.29% 0.01428 272.66)",
+          "oklch(60.71% 0.01428 272.66)",
+          "oklch(72.14% 0.01428 272.66)",
+          "oklch(83.57% 0.01428 272.66)",
+          "oklch(95.00% 0.01428 272.66)"
+        ]
+      },
+      "mint-bg": {
+        "role": "neutral",
+        "displayName": "Menta de fundo",
+        "tonalRamp": [
+          "oklch(15.00% 0.03182 169.20)",
+          "oklch(26.43% 0.03182 169.20)",
+          "oklch(37.86% 0.03182 169.20)",
+          "oklch(49.29% 0.03182 169.20)",
+          "oklch(60.71% 0.03182 169.20)",
+          "oklch(72.14% 0.03182 169.20)",
+          "oklch(83.57% 0.03182 169.20)",
+          "oklch(95.00% 0.03182 169.20)"
+        ]
+      },
+      "mint-fg": {
+        "role": "neutral",
+        "displayName": "Texto sobre menta",
+        "tonalRamp": [
+          "oklch(15.00% 0.03863 211.79)",
+          "oklch(26.43% 0.03863 211.79)",
+          "oklch(37.86% 0.03863 211.79)",
+          "oklch(49.29% 0.03863 211.79)",
+          "oklch(60.71% 0.03863 211.79)",
+          "oklch(72.14% 0.03863 211.79)",
+          "oklch(83.57% 0.03863 211.79)",
+          "oklch(95.00% 0.03863 211.79)"
+        ]
+      },
+      "mint-muted": {
+        "role": "neutral",
+        "displayName": "Apoio sobre menta",
+        "tonalRamp": [
+          "oklch(15.00% 0.04078 204.97)",
+          "oklch(26.43% 0.04078 204.97)",
+          "oklch(37.86% 0.04078 204.97)",
+          "oklch(49.29% 0.04078 204.97)",
+          "oklch(60.71% 0.04078 204.97)",
+          "oklch(72.14% 0.04078 204.97)",
+          "oklch(83.57% 0.04078 204.97)",
+          "oklch(95.00% 0.04078 204.97)"
+        ]
+      },
+      "mint-accent": {
+        "role": "secondary",
+        "displayName": "Violeta sobre menta",
+        "tonalRamp": [
+          "oklch(15.00% 0.17515 290.94)",
+          "oklch(26.43% 0.17515 290.94)",
+          "oklch(37.86% 0.17515 290.94)",
+          "oklch(49.29% 0.17515 290.94)",
+          "oklch(60.71% 0.17515 290.94)",
+          "oklch(72.14% 0.17515 290.94)",
+          "oklch(83.57% 0.17515 290.94)",
+          "oklch(95.00% 0.17515 290.94)"
+        ]
+      },
+      "mint-line": {
+        "role": "neutral",
+        "displayName": "Linha sobre menta",
+        "tonalRamp": [
+          "oklch(15.00% 0.04195 172.97)",
+          "oklch(26.43% 0.04195 172.97)",
+          "oklch(37.86% 0.04195 172.97)",
+          "oklch(49.29% 0.04195 172.97)",
+          "oklch(60.71% 0.04195 172.97)",
+          "oklch(72.14% 0.04195 172.97)",
+          "oklch(83.57% 0.04195 172.97)",
+          "oklch(95.00% 0.04195 172.97)"
+        ]
+      },
+      "indigo-fg": {
+        "role": "neutral",
+        "displayName": "Texto sobre índigo",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "indigo-muted": {
+        "role": "neutral",
+        "displayName": "Apoio sobre índigo",
+        "tonalRamp": [
+          "oklch(15.00% 0.03688 278.96)",
+          "oklch(26.43% 0.03688 278.96)",
+          "oklch(37.86% 0.03688 278.96)",
+          "oklch(49.29% 0.03688 278.96)",
+          "oklch(60.71% 0.03688 278.96)",
+          "oklch(72.14% 0.03688 278.96)",
+          "oklch(83.57% 0.03688 278.96)",
+          "oklch(95.00% 0.03688 278.96)"
+        ]
+      },
+      "indigo-line": {
+        "role": "neutral",
+        "displayName": "Linha sobre índigo",
+        "tonalRamp": [
+          "oklch(15.00% 0.14757 275.84)",
+          "oklch(26.43% 0.14757 275.84)",
+          "oklch(37.86% 0.14757 275.84)",
+          "oklch(49.29% 0.14757 275.84)",
+          "oklch(60.71% 0.14757 275.84)",
+          "oklch(72.14% 0.14757 275.84)",
+          "oklch(83.57% 0.14757 275.84)",
+          "oklch(95.00% 0.14757 275.84)"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "Amarelo luminoso",
+        "tonalRamp": [
+          "oklch(15.00% 0.15691 92.99)",
+          "oklch(26.43% 0.15691 92.99)",
+          "oklch(37.86% 0.15691 92.99)",
+          "oklch(49.29% 0.15691 92.99)",
+          "oklch(60.71% 0.15691 92.99)",
+          "oklch(72.14% 0.15691 92.99)",
+          "oklch(83.57% 0.15691 92.99)",
+          "oklch(95.00% 0.15691 92.99)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Azul de painel",
+        "tonalRamp": [
+          "oklch(15.00% 0.05031 264.99)",
+          "oklch(26.43% 0.05031 264.99)",
+          "oklch(37.86% 0.05031 264.99)",
+          "oklch(49.29% 0.05031 264.99)",
+          "oklch(60.71% 0.05031 264.99)",
+          "oklch(72.14% 0.05031 264.99)",
+          "oklch(83.57% 0.05031 264.99)",
+          "oklch(95.00% 0.05031 264.99)"
+        ]
+      },
+      "nav-border": {
+        "role": "neutral",
+        "displayName": "Borda de navegação",
+        "tonalRamp": [
+          "oklch(15.00% 0.05252 266.83)",
+          "oklch(26.43% 0.05252 266.83)",
+          "oklch(37.86% 0.05252 266.83)",
+          "oklch(49.29% 0.05252 266.83)",
+          "oklch(60.71% 0.05252 266.83)",
+          "oklch(72.14% 0.05252 266.83)",
+          "oklch(83.57% 0.05252 266.83)",
+          "oklch(95.00% 0.05252 266.83)"
+        ]
+      },
+      "nav-hover": {
+        "role": "neutral",
+        "displayName": "Hover de navegação",
+        "tonalRamp": [
+          "oklch(15.00% 0.05550 266.07)",
+          "oklch(26.43% 0.05550 266.07)",
+          "oklch(37.86% 0.05550 266.07)",
+          "oklch(49.29% 0.05550 266.07)",
+          "oklch(60.71% 0.05550 266.07)",
+          "oklch(72.14% 0.05550 266.07)",
+          "oklch(83.57% 0.05550 266.07)",
+          "oklch(95.00% 0.05550 266.07)"
+        ]
+      },
+      "next-fg": {
+        "role": "neutral",
+        "displayName": "Texto sobre ação menta",
+        "tonalRamp": [
+          "oklch(15.00% 0.02793 211.30)",
+          "oklch(26.43% 0.02793 211.30)",
+          "oklch(37.86% 0.02793 211.30)",
+          "oklch(49.29% 0.02793 211.30)",
+          "oklch(60.71% 0.02793 211.30)",
+          "oklch(72.14% 0.02793 211.30)",
+          "oklch(83.57% 0.02793 211.30)",
+          "oklch(95.00% 0.02793 211.30)"
+        ]
+      },
+      "next-hover": {
+        "role": "primary",
+        "displayName": "Menta no hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.06415 168.89)",
+          "oklch(26.43% 0.06415 168.89)",
+          "oklch(37.86% 0.06415 168.89)",
+          "oklch(49.29% 0.06415 168.89)",
+          "oklch(60.71% 0.06415 168.89)",
+          "oklch(72.14% 0.06415 168.89)",
+          "oklch(83.57% 0.06415 168.89)",
+          "oklch(95.00% 0.06415 168.89)"
+        ]
+      },
+      "nav-active": {
+        "role": "secondary",
+        "displayName": "Violeta de painel aberto",
+        "tonalRamp": [
+          "oklch(15.00% 0.08869 281.60)",
+          "oklch(26.43% 0.08869 281.60)",
+          "oklch(37.86% 0.08869 281.60)",
+          "oklch(49.29% 0.08869 281.60)",
+          "oklch(60.71% 0.08869 281.60)",
+          "oklch(72.14% 0.08869 281.60)",
+          "oklch(83.57% 0.08869 281.60)",
+          "oklch(95.00% 0.08869 281.60)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Título de abertura no quadro Remotion."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Título padrão de slide, com ajustes locais nas composições densas."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Subtítulos de agrupamentos no quadro."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Introdução de leitura no quadro; não representa todos os parágrafos do deck."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Legenda do quadro."
+      },
+      "body-reading": {
+        "displayName": "Body reading",
+        "purpose": "Texto complementar na página móvel."
+      },
+      "headline-reading": {
+        "displayName": "Headline reading",
+        "purpose": "Título da leitura complementar móvel."
+      },
+      "label-ui": {
+        "displayName": "Label UI",
+        "purpose": "Texto dos controles do apresentador no desktop."
+      }
+    },
+    "shadows": [
+      {
+        "name": "presenter-panel",
+        "value": "0 20px 55px #0005",
+        "purpose": "Sombra de notas, ajuda e índice; não aparece no conteúdo dos slides."
+      }
+    ],
+    "motion": [
+      {
+        "name": "slide-entrance",
+        "value": "28 frames @ 30 fps; translateY(16px -> 0); opacity(0.45 -> 1); easing t => 1 - (1 - t)^4",
+        "purpose": "Entrada determinística do conteúdo. O aplicativo pausa no frame local 45 e não avança o slide."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce; entrada = 1; seekTo(start + 45); pause(); transition:none!important; animation:none!important; scroll-behavior:auto!important",
+        "purpose": "Conteúdo completo sem entrada animada; preferência acompanhada por matchMedia."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "700px",
+        "purpose": "@media(max-width:700px): página rolável, leitura móvel, navegação aderente e painéis com largura automática."
+      }
+    ],
+    "tonalRampProvenance": "Rampas de oito passos sintetizadas em OKLCH a partir das cores canônicas do frontmatter, de 15% a 95% de luminosidade com matiz e croma preservados. Servem à inspeção da paleta; não são tokens de tema implementados.",
+    "componentPreviewNote": "Snippets sem runtime, extraídos dos componentes existentes. Variáveis CSS possuem fallback. Painéis são mostrados em fluxo para inspeção isolada; estados, sincronização, foco por JavaScript e controles de apresentação pertencem ao app real. As fontes locais não são redistribuídas pelos snippets.",
+    "focus": {
+      "value": "outline:3px solid #ffd84d;outline-offset:5px",
+      "purpose": "Foco visível compartilhado por button, a, input e select."
+    },
+    "sourceFiles": [
+      "entregas/apresentacao-final/src/style.css",
+      "entregas/apresentacao-final/src/Deck.tsx",
+      "entregas/apresentacao-final/src/main.tsx",
+      "entregas/apresentacao-final/src/slides.ts",
+      "entregas/apresentacao-final/src/remotion.tsx"
+    ],
+    "referenceEvidence": [
+      ".impeccable/review/desktop.png",
+      ".impeccable/review/mobile-8.png"
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão de navegação",
+      "kind": "button",
+      "refersTo": "button-nav",
+      "description": "Controle secundário do apresentador; rótulo opcional oculto no celular.",
+      "html": "<button class=\"ds-nav\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 3h14v18H5z M8 7h8 M8 11h8 M8 15h5\"/></svg><span>Notas</span></button>",
+      "css": ".ds-nav{border:1px solid #53607f;border-radius:8px;color:#f3f5ff;background:transparent;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;}.ds-nav:hover{background:var(--nav-hover,#202c49)}.ds-nav:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}.ds-nav:disabled{cursor:default;opacity:.35}"
+    },
+    {
+      "name": "Próximo slide",
+      "kind": "button",
+      "refersTo": "button-next",
+      "description": "Ação principal menta da barra do apresentador.",
+      "html": "<button class=\"ds-next\">Próximo<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m10 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-next{border:1px solid #53607f;border-radius:8px;color:#f3f5ff;background:transparent;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;background:var(--mint,#9cf0cd);color:#102529;border-color:var(--mint,#9cf0cd)}.ds-next:hover{background:#c0f8e2}.ds-next:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}.ds-next:disabled{cursor:default;opacity:.35}"
+    },
+    {
+      "name": "Navegação com painel aberto",
+      "kind": "button",
+      "refersTo": "button-nav-active",
+      "description": "Estado aberto dos botões de índice e notas.",
+      "html": "<button class=\"ds-nav-active\" aria-expanded=\"true\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 3h14v18H5z M8 7h8 M8 11h8 M8 15h5\"/></svg>Notas</button>",
+      "css": ".ds-nav-active{border:1px solid #53607f;border-radius:8px;color:#f3f5ff;background:transparent;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;background:#333266;border-color:var(--lav,#bea9ff)}.ds-nav-active:hover{background:#202c49}.ds-nav-active:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}"
+    },
+    {
+      "name": "Select de perfil no quadro",
+      "kind": "input",
+      "refersTo": "select-profile",
+      "description": "Campo nativo do perfil no slide; as cores seguem o tom do quadro. A amostra mostra papel.",
+      "html": "<div class=\"ds-profile\"><label>Tipo de via<select class=\"ds-profile-select\"><option>VIAS URBANAS</option><option>ESTRADAS E RODOVIAS</option></select></label></div>",
+      "css": ".ds-profile{--bg:var(--paper,#f5f1e9);--fg:#10172c;--muted:#505b73;--line:#c4c7d1;background:var(--bg);color:var(--muted);font-size:22px;font-family:'DM Sans',sans-serif;}.ds-profile-select{display:block;width:100%;margin-top:10px;padding:16px 15px;border-radius:8px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font-family:inherit;font-size:25px;line-height:1.5;caret-color:var(--mint,#9cf0cd)}.ds-profile-select:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}.ds-profile-select:disabled{opacity:1}"
+    },
+    {
+      "name": "Select de perfil móvel",
+      "kind": "input",
+      "refersTo": "select-profile-mobile",
+      "description": "Representação móvel com altura mínima de 52 px, sincronizada com o perfil do quadro.",
+      "html": "<div class=\"ds-mobile-field\"><label>Tipo de via<select class=\"ds-mobile-select\"><option>VIAS URBANAS</option><option>ESTRADAS E RODOVIAS</option></select></label></div>",
+      "css": ".ds-mobile-field{font-size:17px;color:#d9e0f3;line-height:1.5;font-family:'DM Sans',sans-serif;}.ds-mobile-select{display:block;width:100%;min-height:52px;margin-top:10px;font-family:inherit;font-size:17px;line-height:1.5;padding:13px 12px;border:1px solid #65728d;border-radius:8px;color:#f3f5ff;background:#152039;caret-color:var(--mint,#9cf0cd)}.ds-mobile-select:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}"
+    },
+    {
+      "name": "Range da demonstração móvel",
+      "kind": "input",
+      "refersTo": "range-demo-mobile",
+      "description": "Controle nativo de horário, com altura de 48 px. O app real sincroniza o valor com o relógio e a saída.",
+      "html": "<label class=\"ds-range-label\" for=\"ds-hour\">Horário do boletim<input class=\"ds-range\" id=\"ds-hour\" type=\"range\" min=\"0\" max=\"1439\" step=\"1\" value=\"1080\"></label>",
+      "css": ".ds-range-label{display:block;font-size:17px;color:#d9e0f3;line-height:1.5;font-family:'DM Sans',sans-serif;}.ds-range{display:block;width:100%;height:48px;accent-color:var(--mint,#9cf0cd);margin:10px 0 0;cursor:pointer;background:transparent}.ds-range:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}.ds-range:disabled{opacity:1;cursor:default}"
+    },
+    {
+      "name": "Painel do apresentador",
+      "kind": "card",
+      "refersTo": "presenter-panel",
+      "description": "Superfície flutuante de notas, ajuda e índice; amostra em fluxo para inspeção isolada.",
+      "html": "<aside class=\"ds-panel\"><button class=\"ds-close\" aria-label=\"Fechar painel\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 5 14 14 M19 5 5 19\"/></svg></button><h2>Controle o ritmo</h2><p>Use os controles dentro dos slides para explorar horário, perfil e limiar.</p></aside>",
+      "css": ".ds-panel{position:relative;width:min(360px,100%);background:#152039;color:#f3f5ff;padding:24px;overflow:auto;border-radius:12px;box-shadow:0 20px 55px #0005;font-family:'DM Sans',sans-serif;}.ds-panel h2{font:600 28px/1.15 \"Space Grotesk\",sans-serif;letter-spacing:-.025em;max-width:100%;padding-right:30px;margin:15px 0}.ds-panel p{font-size:18px;line-height:1.65;color:#cdd5ea}.ds-close{border:1px solid #53607f;border-radius:8px;color:#f3f5ff;background:transparent;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;position:absolute;right:14px;top:14px;padding:8px;min-width:40px;min-height:40px}.ds-close:hover{background:#202c49}.ds-close:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}"
+    },
+    {
+      "name": "Índice de slides",
+      "kind": "nav",
+      "refersTo": "index-item",
+      "description": "Lista numerada com hover e indicação do slide atual.",
+      "html": "<nav class=\"ds-index\" aria-label=\"Índice de slides\"><button class=\"ds-index-item\" aria-current=\"true\"><small>01</small>Sinistros em horários de pico</button><button class=\"ds-index-item\"><small>02</small>A pergunta que orienta o estudo</button></nav>",
+      "css": ".ds-index{display:grid;gap:6px;background:#152039;font-family:'DM Sans',sans-serif;}.ds-index-item{display:flex;gap:17px;text-align:left;padding:13px;background:transparent;color:#e9eeff;border:1px solid transparent;border-radius:8px;font-family:inherit;font-size:16px;line-height:1.35;cursor:pointer}.ds-index-item:hover{background:#24324f}.ds-index-item[aria-current=true]{background:var(--indigo,#3042d4);border-color:#8795ff}.ds-index-item:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}.ds-index-item small{color:#bfc9e2;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Relógio de 24 horas",
+      "kind": "custom",
+      "description": "Geometria de assinatura da apresentação; amostra estática no horário inicial de 18:00, sem o runtime React.",
+      "html": "<div class=\"ds-clock-field\"><svg viewBox=\"0 0 600 600\" class=\"ds-clock\" role=\"img\" aria-label=\"Relógio de 24 horas com três janelas de pico\"><circle cx=\"300\" cy=\"300\" r=\"220\" fill=\"none\" stroke=\"currentColor\" opacity=\".13\" stroke-width=\"38\"/><path d=\"M518.1179,328.7158 A220,220 0 0 1 474.5377,433.9275\" fill=\"none\" stroke=\"var(--mint,#9cf0cd)\" stroke-width=\"38\"/><path d=\"M328.7158,518.1179 A220,220 0 0 1 215.8096,503.2535\" fill=\"none\" stroke=\"var(--lav,#bea9ff)\" stroke-width=\"38\"/><path d=\"M87.4963,356.9402 A220,220 0 0 1 96.7465,215.8096\" fill=\"none\" stroke=\"#ffd84d\" stroke-width=\"38\"/><line x1=\"300.0000\" y1=\"50.0000\" x2=\"300.0000\" y2=\"30.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"364.7048\" y1=\"58.5185\" x2=\"366.7753\" y2=\"50.7911\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"425.0000\" y1=\"83.4936\" x2=\"429.0000\" y2=\"76.5654\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"476.7767\" y1=\"123.2233\" x2=\"482.4335\" y2=\"117.5665\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"516.5064\" y1=\"175.0000\" x2=\"523.4346\" y2=\"171.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"541.4815\" y1=\"235.2952\" x2=\"549.2089\" y2=\"233.2247\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"550.0000\" y1=\"300.0000\" x2=\"570.0000\" y2=\"300.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"541.4815\" y1=\"364.7048\" x2=\"549.2089\" y2=\"366.7753\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"516.5064\" y1=\"425.0000\" x2=\"523.4346\" y2=\"429.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"476.7767\" y1=\"476.7767\" x2=\"482.4335\" y2=\"482.4335\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"425.0000\" y1=\"516.5064\" x2=\"429.0000\" y2=\"523.4346\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"364.7048\" y1=\"541.4815\" x2=\"366.7753\" y2=\"549.2089\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"300.0000\" y1=\"550.0000\" x2=\"300.0000\" y2=\"570.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"235.2952\" y1=\"541.4815\" x2=\"233.2247\" y2=\"549.2089\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"175.0000\" y1=\"516.5064\" x2=\"171.0000\" y2=\"523.4346\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"123.2233\" y1=\"476.7767\" x2=\"117.5665\" y2=\"482.4335\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"83.4936\" y1=\"425.0000\" x2=\"76.5654\" y2=\"429.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"58.5185\" y1=\"364.7048\" x2=\"50.7911\" y2=\"366.7753\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"50.0000\" y1=\"300.0000\" x2=\"30.0000\" y2=\"300.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"58.5185\" y1=\"235.2952\" x2=\"50.7911\" y2=\"233.2247\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"83.4936\" y1=\"175.0000\" x2=\"76.5654\" y2=\"171.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"123.2233\" y1=\"123.2233\" x2=\"117.5665\" y2=\"117.5665\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"175.0000\" y1=\"83.4936\" x2=\"171.0000\" y2=\"76.5654\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"235.2952\" y1=\"58.5185\" x2=\"233.2247\" y2=\"50.7911\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><text x=\"300.0000\" y=\"14.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"18\">00h</text><text x=\"586.0000\" y=\"300.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"18\">06h</text><text x=\"300.0000\" y=\"586.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"18\">12h</text><text x=\"14.0000\" y=\"300.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"18\">18h</text><line x1=\"300\" y1=\"300\" x2=\"125\" y2=\"300\" stroke=\"currentColor\" stroke-width=\"3\"/><circle cx=\"300\" cy=\"300\" r=\"7\" fill=\"currentColor\"/><text x=\"300\" y=\"390\" fill=\"currentColor\" font-size=\"26\" text-anchor=\"middle\">18:00</text></svg></div>",
+      "css": ".ds-clock-field{color:#f3f5ff;background:var(--ink,#090e24);font-family:'DM Sans',sans-serif;}.ds-clock{display:block;width:100%;max-height:490px;overflow:visible}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Identidade herdada dos HTMLs de referência",
+    "overview": "A apresentação combina o caráter expressivo dos dois HTMLs indicados pelo solicitante com organização acadêmica: títulos grandes, evidência numérica legível e gráficos como parte da explicação. Tinta azul escura, papel claro, menta, lavanda e índigo formam a identidade observada; este documento registra sua aplicação no código final, sem criar uma identidade adicional.\n\nO conteúdo projetado ocupa um quadro de apresentação. Os controles do apresentador ficam fora desse quadro. Na tela pequena, uma área de leitura e controles próprios acompanham a miniatura do slide; as duas representações compartilham o mesmo estado. Diagramas e gráficos são SVG gerados por geometria e dados em runtime. Não há imagens externas geradas por IA na apresentação.",
+    "keyCharacteristics": [
+      "Tipografia geométrica nos títulos e leitura contínua em DM Sans.",
+      "Alternância entre fundos escuros, papel, menta e campos índigo.",
+      "Números e gráficos em destaque, com linhas finas para organizar a evidência.",
+      "Navegação manual, entrada breve por frames e leitura complementar no celular."
+    ],
+    "rules": [
+      {
+        "name": "The Tone Pairing Rule",
+        "body": "Ao usar um dos quatro tons implementados, mantenha juntos seu fundo, primeiro plano, texto de apoio, destaque e linha; os pares são definidos no stylesheet.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Contexts Rule",
+        "body": "Os tamanhos do quadro são coordenadas da composição Remotion; o texto de leitura e os controles do aplicativo são dimensionados no viewport. Não aplique o tamanho de um contexto ao outro.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "**Do** manter a combinação de cores completa do tom escolhido.",
+      "**Do** usar Space Grotesk nos títulos e DM Sans na leitura, com os arquivos locais já incluídos.",
+      "**Do** manter os controles do apresentador fora do quadro projetado e exportado.",
+      "**Do** compartilhar o estado entre a demonstração no quadro e a demonstração móvel.",
+      "**Do** conservar foco visível e a apresentação imediata com movimento reduzido.",
+      "**Do** rotular os valores, referências e unidades das visualizações junto dos dados."
+    ],
+    "donts": [
+      "**Don't** reduzir os campos móveis ao tamanho resultante da escala da miniatura.",
+      "**Don't** aplicar os tamanhos de texto da composição diretamente à interface do aplicativo.",
+      "**Don't** atribuir sombras aos slides como se fossem painéis flutuantes.",
+      "**Don't** transformar os ajustes locais de um slide em uma escala tipográfica global inexistente."
+    ]
+  }
+}

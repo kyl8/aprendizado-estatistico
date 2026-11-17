@@ -26,3 +26,11 @@ estrutura/codigos/resultados/*-SessionInfo.txt
 # Artefatos do knitr
 figure/
 cache/
+
+# Dependencias e capturas locais da apresentacao Remotion
+node_modules/
+entregas/apresentacao-final/.remotion/
+entregas/apresentacao-final/.capturas/
+.impeccable/review/
+.impeccable/live/
+entregas/apresentacao-final/apresentacao-final-appa.mp4

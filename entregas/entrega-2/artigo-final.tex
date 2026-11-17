@@ -1,0 +1,310 @@
+% Entrega 2 APPA. Compile na raiz com Rscript entregas/entrega-2/compilar-entrega-2.R.
+% Estrutura adaptada do modelo da disciplina; calculos executados por knitr.
+\documentclass[article,12pt,oneside,a4paper,english,brazil]{abntex2}\usepackage[]{graphicx}\usepackage[]{xcolor}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlsng}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hldef}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{amsmath}
+\usepackage{alltt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,icomma,booktabs,graphicx,longtable}
+\usepackage[alf]{abntex2cite}
+\setlrmarginsandblock{2.5cm}{2cm}{*}
+\setulmarginsandblock{2.2cm}{2.2cm}{*}
+\checkandfixthelayout
+\hypersetup{hidelinks,pdftitle={Regressão logística e sinistros em horários de pico},pdfauthor={Grupo APPA},pdflang={pt-BR}}
+\titulo{Regressão logística aplicada à classificação de sinistros em horários de pico}
+\autor{Grupo APPA}
+\local{Santos-SP}
+\data{18 de novembro de 2026}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\selectlanguage{brazil}\frenchspacing\SingleSpacing
+\begin{center}
+{\Large\bfseries\imprimirtitulo\par}
+\vspace{.6em}
+{\large Grupo APPA\par}
+\vspace{.5em}
+Arthur Galvão \quad Pedro Henrique \quad Ailana\\[.4em]
+\small Fatec Baixada Santista -- Rubens Lara\\
+Tecnologia em Ciência de Dados | Teoria do Aprendizado Estatístico\\
+Prof. Dr. João Paulo Ferreira de Mello\\[.4em]
+\href{https://github.com/kyl8/aprendizado-estatistico}{github.com/kyl8/aprendizado-estatistico}\\
+Santos-SP, 18 de novembro de 2026
+\end{center}
+\vspace{.5em}
+\noindent\textbf{Resumo.} Este artigo documenta uma demonstração de regressão logística para a classificação de boletins de sinistros em horários de pico. O recorte da base Infosiga/SP reúne 151.175 boletins, de janeiro de 2025 a junho de 2026. O alvo binário é construído a partir de três janelas horárias; tipo de via, dia da semana e região administrativa são as três preditoras. Os coeficientes são ajustados em 101.666 registros de 2025 e as probabilidades são avaliadas em 49.509 registros de 2026. São apresentados o relatório do ajuste, métricas, matriz de confusão, diagnósticos e demonstrações de testes de hipótese. As saídas descrevem o procedimento retrospectivo e seus limites, sem estabelecer efeitos causais ou validar utilização operacional.
+
+\smallskip
+\noindent\textbf{Palavras-chave:} regressão logística; sinistros de trânsito; classificação; teste temporal; Infosiga.
+
+\textual
+\section{Introdução}
+O registro de sinistros permite examinar como as características dos eventos documentados se distribuem ao longo do tempo. Esse contexto motiva uma aplicação de aprendizado estatístico relacionada à mobilidade e à segurança viária. A pergunta utilizada é: \textbf{que características registradas dos sinistros estão associadas à ocorrência nos horários de pico?}
+
+O trabalho seleciona uma única ferramenta principal: a regressão logística, estudada na Aula 05. A escolha decorre da resposta binária e da possibilidade de representar preditoras categóricas, interpretar os coeficientes e produzir probabilidades \cite{james2021,rglm}. A entrega organiza a preparação dos dados, a especificação, o ajuste e a leitura das saídas. PCA, Poisson e árvores permanecem nas atividades complementares do repositório e não compõem o modelo deste artigo.
+
+O banco contém sinistros registrados, sem o fluxo de veículos ou o número de viagens sem ocorrência. Assim, a unidade de análise é o boletim, e o objeto é seu perfil temporal. Probabilidade de um boletim pertencer ao pico e risco de um veículo sofrer sinistro são quantidades diferentes.
+
+\section{Os dados}
+\subsection{Fonte e preparação}
+A fonte é o arquivo local \texttt{2026-08-12-appa-Sinistros\_2025\_2026.csv}, associado à base Infosiga/SP \cite{infosiga}. Ele contém 273.371 registros e 50 campos, de janeiro de 2025 a junho de 2026. A análise utiliza boletins fatais e não fatais, excluindo notificações. Não foram identificados IDs duplicados entre os boletins; o dia da semana foi conferido com a data.
+
+\begin{table}[htbp]\centering\small
+\caption{Fluxo de preparação do banco para a demonstração.}\label{tab:coorte}
+
+\begin{tabular}{ll}
+\toprule
+Etapa & Boletins\\
+\midrule
+Registros na fonte & 273.371\\
+Boletins fatais e nao fatais & 151.833\\
+Data e hora validas & 151.591\\
+Via informada & 151.175\\
+Preditoras completas & 151.175\\
+\bottomrule
+\end{tabular}
+
+\fonte{Processamento do arquivo local pelos autores.}
+\end{table}
+
+Foram retirados 242 boletins sem data e hora válidas e, entre os restantes, 416 sem tipo de via informado. Não houve exclusão adicional por ausência nas três preditoras. O recorte completo contém 151.175 boletins. Essas exclusões também delimitam a população descrita; boa completude no recorte não assegura ausência de viés na fonte.
+
+\subsection{Alvo e preditoras}
+O alvo \texttt{pico} assume valor 1 quando o horário registrado está entre 06:30 e 08:30, entre 11:30 e 13:30 ou entre 17:00 e 19:30, com extremos inclusivos; nos demais horários válidos, assume 0. As janelas são uma definição operacional adotada pelo grupo, não uma estimativa de congestionamento obtida com os dados. A inclusão dos extremos faz parte da regra aplicada aos horários em minutos.
+
+\begin{table}[htbp]\centering\small
+\caption{Três preditoras categóricas da regressão logística.}\label{tab:pred}
+\begin{tabular}{@{}p{3.1cm}p{4cm}p{7.9cm}@{}}\toprule
+Preditora & Campo na fonte & Representação no ajuste\\\midrule
+Tipo de via & \texttt{tipo\_via} & \texttt{via}: vias urbanas ou estradas e rodovias.\\
+Dia da semana & Data, conferida com \texttt{dia\_da\_semana} & \texttt{dia}: sete categorias do calendário semanal.\\
+Região administrativa & \texttt{regiao\_\allowbreak administrativa} & \texttt{regiao}: 16 categorias geográficas.\\\bottomrule
+\end{tabular}
+\fonte{Especificação da demonstração.}
+\end{table}
+
+Hora e turno são excluídos das preditoras porque revelam a própria resposta. Identificadores e data completa também não entram na fórmula; a data define a partição temporal. Tipo de sinistro, fatalidade e contagens de envolvidos, considerados em exercícios anteriores, ficam fora desta especificação. Os 11 candidatos da Entrega 1 correspondem a uma preparação histórica; o ajuste atual tem três variáveis, representadas por 22 indicadores e um intercepto.
+
+\section{A pergunta e o modelo}
+\subsection{Especificação e escolha da ferramenta}
+A demonstração é de classificação supervisionada. Para um boletim com características $x$, o modelo estima $p(x)=P(\mathrm{pico}=1\mid x)$ e utiliza a ligação logit:
+\begin{equation}
+\log\!\left(\frac{p(x)}{1-p(x)}\right)=\beta_0+\beta_{\mathrm{via}}^{\mathsf T}x_{\mathrm{via}}+
+\beta_{\mathrm{dia}}^{\mathsf T}x_{\mathrm{dia}}+\beta_{\mathrm{regiao}}^{\mathsf T}x_{\mathrm{regiao}}.
+\end{equation}
+No R, o ajuste é \texttt{glm(pico \textasciitilde{} via + dia + regiao, family = binomial())}. As categorias de referência são estradas e rodovias, domingo e Araçatuba. Os níveis são definidos no treino e conferidos no teste. A fórmula é aditiva, sem interações ou busca de ferramentas no teste. A adequação ao tipo de alvo fundamenta a escolha, sem constituir evidência de superioridade geral.
+
+\subsection{Treino, teste e avaliação}
+\begin{table}[htbp]\centering\small
+\caption{Partição temporal e distribuição do alvo.}\label{tab:particao}
+
+\begin{tabular}{lllll}
+\toprule
+Partição & Período & Boletins & Pico & Pico (\%)\\
+\midrule
+Treino & Jan.-dez./2025 & 101.666 & 40.635 & 39,97\\
+Teste & Jan.-jun./2026 & 49.509 & 20.089 & 40,58\\
+\bottomrule
+\end{tabular}
+
+\fonte{Banco preparado para a Entrega 2.}
+\end{table}
+
+Os coeficientes são ajustados apenas em 2025. O modelo é aplicado a janeiro--junho de 2026 sem refazer o ajuste ou escolher um novo limiar. O limiar de classe é 0,5. Como os dados de 2026 já eram conhecidos em atividades anteriores, a avaliação é retrospectiva e não representa validação prospectiva independente.
+
+A referência constante usa a proporção de pico no treino, 0,399691, para todos os boletins do teste. Ela permite contextualizar as métricas da única ferramenta selecionada. O Brier é a média de $(y-p)^2$; a AUC avalia a ordenação dos escores. Acurácia, sensibilidade e especificidade dependem do limiar de classe.
+
+\section{Resultados}
+\subsection{Relatório do ajuste e razões de chances}
+O ajuste convergiu em \text{4} iterações, utilizando 101.666 boletins. A deviance nula foi 136819,30, a residual 135093,73 e o AIC 135139,73. Essas quantidades descrevem o ajuste no treino; as métricas da Tabela~\ref{tab:met} são calculadas separadamente no teste. O relatório completo produzido por \texttt{summary(modelo)} aparece no Apêndice A.
+
+O coeficiente de vias urbanas em relação a estradas e rodovias é -0,03424. Sua exponencial é a razão de chances ajustada, 0,9663. O intervalo de 95\% com covariância agrupada por data vai de 0,9328 a 1,0010. Trata-se das chances de um boletim pertencer ao pico, condicionadas a dia e região; esse valor não corresponde a uma mudança no risco viário por veículo.
+
+\subsection{Probabilidades e classificação no teste}
+\begin{table}[htbp]\centering\small
+\caption{Saídas no teste temporal, com limiar de classe 0,5.}\label{tab:met}
+
+\begin{tabular}{llllll}
+\toprule
+Ajuste & Brier & AUC & Acurácia & Sensibilidade & Especificidade\\
+\midrule
+Referência constante & 0,241157 & 0,5000 & 0,5942 & 0,0000 & 1,0000\\
+Regressão logística & 0,237184 & 0,5757 & 0,5943 & 0,0185 & 0,9875\\
+\bottomrule
+\end{tabular}
+
+\fonte{Probabilidades calculadas para os 49.509 boletins do teste.}
+\end{table}
+
+Na execução, a logística apresentou AUC de 0,5757 e Brier de 0,237184. A acurácia ficou próxima à da classe majoritária. Com limiar 0,5, a sensibilidade ao pico foi 1,85\%: a matriz de confusão explicita a pequena quantidade de positivos recuperados. A leitura conjunta das medidas evita tratar a acurácia isolada como evidência de boa detecção.
+
+\begin{table}[htbp]\centering\small
+\caption{Matriz de confusão da logística: contagens no teste.}\label{tab:confusao}
+
+\begin{tabular}{lll}
+\toprule
+Observado & Previsto 0 & Previsto 1\\
+\midrule
+Fora do pico (0) & 29.053 & 367\\
+Pico (1) & 19.718 & 371\\
+\bottomrule
+\end{tabular}
+
+\fonte{Limiar 0,5, mantido sem otimização no teste.}
+\end{table}
+
+\begin{figure}[htbp]\centering
+\caption{Ordenação e calibração das probabilidades no teste.}\label{fig:roc}
+\includegraphics[width=\linewidth]{figuras/roc-calibracao.png}
+\fonte{Saídas da logística. Na calibração, o tamanho do ponto representa o número de boletins da faixa.}
+\end{figure}
+
+A Figura~\ref{fig:roc} registra a curva ROC e a calibração por faixas de probabilidade. A proximidade visual de pontos à diagonal depende também das faixas e da concentração das probabilidades. Como complemento, o diagnóstico de calibração estimou intercepto 0,0221 e inclinação 0,9756. O teste conjunto de intercepto zero e inclinação um, com agrupamento por data, retornou p-valor 0,0045. O diagnóstico foi registrado sem recalibrar o modelo no teste.
+
+\subsection{Demonstração de testes de hipótese}
+Para tipo de via, a hipótese nula é $H_0:\beta_{\mathrm{via}}=0$, condicionando a dia e região; a alternativa é um coeficiente diferente de zero. O teste de razão de verossimilhanças, sob a especificação convencional, apresentou p-valor 0,0515. A Tabela~\ref{tab:wald} registra testes conjuntos de Wald com covariância HC1 agrupada nos 365 dias do treino, permitindo dependência entre boletins do mesmo dia. Holm é aplicado à família dos três testes conjuntos.
+
+\begin{table}[htbp]\centering\small
+\caption{Testes conjuntos no treino: demonstração de Wald e Holm.}\label{tab:wald}
+
+\begin{tabular}{llrll}
+\toprule
+Termo & Estatistica & GL & p-valor & Holm\\
+\midrule
+Tipo de via & 3,618 & 1 & 0,0572 & 0,0572\\
+Dia da semana & 952,355 & 6 & < 0,0001 & < 0,0001\\
+Região administrativa & 284,839 & 15 & < 0,0001 & < 0,0001\\
+\bottomrule
+\end{tabular}
+
+\fonte{Covariância HC1 agrupada por data; valores exatos e logaritmos disponíveis em CSV.}
+\end{table}
+
+Esses valores ilustram os procedimentos e suas suposições. Não medem importância operacional, tamanho de efeito nem a probabilidade de uma hipótese ser verdadeira. O agrupamento por data não elimina possível dependência entre dias ou entre localidades.
+
+A diferença de Brier entre a referência e a logística foi 0,003972. Um bootstrap circular com 1.000 repetições e blocos de sete dias registrou intervalo de 95\% de 0,003421 a 0,004472. O intervalo descreve esse contraste e esse esquema de reamostragem; a escolha de sete dias não garante a captura de toda a dependência temporal.
+
+\section{Discussão}
+A ferramenta produziu probabilidades e coeficientes para uma resposta binária, permitindo demonstrar o percurso entre alvo, preditoras, treino e teste. As saídas sugerem pontos para discussão metodológica. A ordenação dos escores permaneceu próxima da referência aleatória e a sensibilidade foi baixa no limiar estabelecido. O Brier registrou uma diferença pequena na escala de erro de probabilidade; ela não equivale à comprovação de uma aplicação operacional útil.
+
+\begin{figure}[htbp]\centering
+\caption{AUC da logística por mês do teste de 2026.}\label{fig:mes}
+\includegraphics[width=.82\linewidth]{figuras/auc-mensal.png}
+\fonte{Mesma fórmula e mesmos coeficientes em todos os meses; linha tracejada em AUC 0,5.}
+\end{figure}
+
+A Figura~\ref{fig:mes} registra variação entre meses, com AUC entre 0,5599 e 0,5832. Os pontos são descrições mensais, sem intervalos simultâneos ou demonstração de estabilidade futura. A partição temporal respeita a ordem das datas, mas a exploração prévia do banco limita a independência da avaliação.
+
+As limitações incluem ausência de exposição ao tráfego, possível subnotificação, exclusão de registros, regras fixas para as janelas de pico, dependência temporal e territorial e uma especificação aditiva com apenas três preditoras. Razões de chances são condicionais ao modelo; valores de p e intervalos dependem das respectivas hipóteses. HC1, Holm e bootstrap por blocos são complementos de avaliação e não novas ferramentas principais. A demonstração não estabelece causas, compara risco por viagem ou encerra uma conclusão sobre a segurança viária.
+
+\section{Conclusão da etapa demonstrativa}
+Foi documentada a aplicação de uma regressão logística, desde a preparação dos boletins e a definição de \texttt{pico} até o ajuste em 2025, a aplicação em 2026 e a leitura de relatórios, tabelas e gráficos. O produto desta etapa é esse procedimento reproduzível e o registro crítico de suas saídas. A pergunta de trabalho permanece como contexto para discussão, com as limitações da fonte e do protocolo explicitadas.
+
+\smallskip
+\noindent\textbf{Reprodutibilidade e apoio.} Os arquivos \texttt{entrega-2-banco.R}, \texttt{entrega-2-sinistros.csv}, \texttt{artigo-final.Rnw}, \texttt{artigo-final.tex}, as figuras e as tabelas estão em \texttt{entregas/entrega-2/}. O script de compilação executa novamente os cálculos e gera o PDF com knitr e abnTeX2. As asserções conferem a separação temporal, os totais, as categorias e a reprodução das métricas já documentadas. Houve apoio de IA na implementação e na redação, identificado como apoio técnico, sem atribuição de validação científica independente.
+
+\postextual
+{\small\bibliography{referencias}}
+\clearpage
+\appendix
+\section*{Apêndice A -- Relatório do ajuste no R}
+\addcontentsline{toc}{section}{Apêndice A -- Relatório do ajuste no R}
+\noindent\small O relatório abaixo corresponde exclusivamente ao treino de 2025. Os erros-padrão e p-valores de \texttt{summary()} são convencionais; os intervalos e testes agrupados por data foram apresentados separadamente no corpo do artigo e nos CSVs. A sigla \texttt{regiao} identifica a região administrativa.
+\begin{flushleft}\fontsize{7.4}{8.9}\selectfont
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+
+Call:
+glm(formula = pico ~ via + dia + regiao, family = binomial(link = "logit"),
+    data = treino)
+
+Coefficients:
+                                 Estimate Std. Error z value Pr(>|z|)
+(Intercept)                      -0.64419    0.04884  -13.19  < 2e-16 ***
+viaVIAS URBANAS                  -0.03424    0.01757   -1.95  0.05133 .
+diaQuarta-feira                   0.60903    0.02547   23.91  < 2e-16 ***
+diaQuinta-feira                   0.56485    0.02575   21.94  < 2e-16 ***
+diaSegunda-feira                  0.53500    0.02565   20.86  < 2e-16 ***
+diaSexta-feira                    0.39267    0.02508   15.66  < 2e-16 ***
+diaSábado                         0.02297    0.02605    0.88  0.37803
+diaTerça-feira                    0.61663    0.02563   24.06  < 2e-16 ***
+regiaoBAIXADA SANTISTA           -0.18820    0.05155   -3.65  0.00026 ***
+regiaoBARRETOS                   -0.22888    0.08232   -2.78  0.00543 **
+regiaoBAURU                      -0.06037    0.05972   -1.01  0.31207
+regiaoCAMPINAS                   -0.06551    0.04582   -1.43  0.15284
+regiaoCENTRAL                     0.01027    0.06107    0.17  0.86646
+regiaoFRANCA                      0.00819    0.06385    0.13  0.89794
+regiaoITAPEVA                     0.03802    0.07724    0.49  0.62252
+regiaoMARÍLIA                    -0.03449    0.05641   -0.61  0.54092
+regiaoMETROPOLITANA DE SÃO PAULO -0.24910    0.04368   -5.70  1.2e-08 ***
+regiaoPRESIDENTE PRUDENTE         0.05557    0.05546    1.00  0.31639
+regiaoREGISTRO                   -0.22553    0.08346   -2.70  0.00689 **
+regiaoRIBEIRÃO PRETO             -0.04860    0.05528   -0.88  0.37929
+regiaoSOROCABA                   -0.12147    0.04956   -2.45  0.01424 *
+regiaoSÃO JOSÉ DO RIO PRETO       0.09872    0.05015    1.97  0.04903 *
+regiaoSÃO JOSÉ DOS CAMPOS        -0.10640    0.05003   -2.13  0.03345 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 136819  on 101665  degrees of freedom
+Residual deviance: 135094  on 101643  degrees of freedom
+AIC: 135140
+
+Number of Fisher Scoring iterations: 4
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{flushleft}
+\end{document}

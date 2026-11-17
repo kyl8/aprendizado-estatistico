@@ -7,6 +7,8 @@
 
 **Apoio à elaboração:** ChatGPT
 
+**Versão para a entrega de 18/11:** [artigo formal da Entrega 2](../entregas/entrega-2/README.md) e [apresentação final com código Remotion](../entregas/apresentacao-final/README.md). O artigo e a apresentação mantêm a especificação e os resultados da logística descritos neste consolidado.
+
 Este relatório adota **uma ferramenta principal: a regressão logística**, apresentada na Aula 05. Documenta sua aplicação ao alvo binário `pico`, com preparação dos dados, definição das preditoras, treino/teste e registro das saídas. A escolha se fundamenta na correspondência entre a ferramenta e o tipo de resposta, sem afirmar superioridade geral ou estabelecer conclusões definitivas sobre o fenômeno. As aplicações anteriores de PCA e Poisson estão localizadas na seção 8 como atividades complementares.
 
 ## 1. Motivação e pergunta de trabalho

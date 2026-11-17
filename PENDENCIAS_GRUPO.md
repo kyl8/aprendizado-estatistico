@@ -5,3 +5,7 @@ As atividades de árvores, floresta, agrupamento e PCA estão no [consolidado](c
 Em 11/11/2026, o solicitante informou que as confirmações pendentes estavam resolvidas. Mantém-se a pergunta A, por associação, e o recorte que exclui os 658 boletins com via/turno `NAO DISPONIVEL`; a proposta B permanece como análise auxiliar. Não há pendência administrativa aberta nesta lista segundo essa informação.
 
 O registro da confirmação é a declaração do solicitante, sem transcrição de decisão do professor, comprovante de reenvio ou evidência de sessões individuais. Os materiais assistidos não demonstram desempenho individual.
+
+## Preparação em 17/11/2026
+
+A [Entrega 2](entregas/entrega-2/README.md) está preparada com artigo, fontes, código R, banco, tabelas e figuras. A [apresentação final](entregas/apresentacao-final/README.md) inclui HTML offline, PDF e código Remotion para 10–12 minutos. Ambos utilizam a regressão logística como única ferramenta principal e registram a aplicação como demonstração. A preparação dos arquivos não constitui comprovante de envio ao professor nem de apresentação realizada.
