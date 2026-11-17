@@ -1,13 +1,13 @@
 # Ficha da pergunta — APPA
 **Apoio:** ChatGPT.
-**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
+**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez.
 
 Fonte: Entrega 1 do grupo, `entregas/entrega-1/2026-10-02-appa-entrega-1-pergunta.Rnw`.
 Transcrição para leitura dos guias, conferida em 2026-10-25.
 
 | Campo | Registro |
 |---|---|
-| Grupo | APPA — Arthur Galvão, Pedro Henrique, Ailana |
+| Grupo | APPA — Arthur Galvão, Pedro Henrique, Ailana Pereira Gonsalez |
 | Pergunta | Que características registradas dos sinistros estão associadas à ocorrência nos horários de pico? A base permite estimar associações, sem identificar causas. |
 | Unidade original | Um boletim de sinistro fatal ou não fatal, após a seleção por tipo de registro. Notificações ficam fora do recorte de boletins. |
 | Banco e dimensão | 273371 registros brutos, 50 colunas; 151833 boletins; 151591 eventos com data e horário válidos na Parte D. A preparação de pico (sem `turno` e sem tipo de via "NAO DISPONIVEL") mantém 12 colunas, sendo 11 preditores candidatos e a resposta, em 151175 boletins. |

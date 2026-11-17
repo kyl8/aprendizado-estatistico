@@ -1,6 +1,6 @@
 # Oficina — Duas perguntas, diagnóstico e escolha
 **Grupo APPA · 2026-10-25 · apoio: ChatGPT.**
-**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
+**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez.
 
 ## As duas fichas
 | Campo | Candidata A | Candidata B |

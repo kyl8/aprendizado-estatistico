@@ -3,7 +3,7 @@
 
 **Disciplina:** Teoria do Aprendizado Estatístico
 
-**Grupo:** APPA — Arthur Galvão, Pedro Henrique e Ailana
+**Grupo:** APPA — Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez
 
 **Apoio à elaboração:** ChatGPT
 

@@ -1,6 +1,6 @@
 # Consolidado — Teoria do Aprendizado Estatístico — Aula 05b — Parte D — 2026-10-25
 *Guia versão 1 · apoio: ChatGPT · aplicação ao banco do APPA.*
-**Grupo:** APPA · **Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
+**Grupo:** APPA · **Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez.
 
 ## Antes de tudo: ficha e teoria
 APPA investiga a concentração de sinistros nos horários de pico.

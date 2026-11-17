@@ -1,6 +1,6 @@
 # Resolução individual — Aula 05b — Regressão de Poisson
 **Aluno:** Pedro Henrique · **Grupo:** APPA · **Data:** 2026-10-25 · apoio: ChatGPT.
-**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
+**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez.
 Caderno de resoluções: conceitos, checkpoints, teste e exemplos de Poisson.
 
 ## Diagnóstico

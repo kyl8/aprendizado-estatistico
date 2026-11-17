@@ -1,6 +1,6 @@
 # Entrega 2: artigo da demonstração
 
-**Grupo APPA:** Arthur Galvão, Pedro Henrique e Ailana. **Professor:** João Paulo Ferreira de Mello. Documento preparado para 18/11/2026.
+**Grupo APPA:** Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez. **Professor:** João Paulo Ferreira de Mello. Documento preparado para 18/11/2026.
 
 - **[Artigo em PDF](artigo-final.pdf)**: sete páginas, com apresentação acadêmica, resultados e relatório completo do R no apêndice.
 - [Fonte Rnw](artigo-final.Rnw), [LaTeX gerado](artigo-final.tex) e [referências](referencias.bib).

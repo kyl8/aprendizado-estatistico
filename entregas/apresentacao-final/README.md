@@ -1,6 +1,6 @@
 # Apresentação final APPA
 
-Apresentação para **10–12 minutos**, com **16 slides principais e um de apoio**. Professor: **João Paulo Ferreira de Mello**. Integrantes: **Arthur Galvão, Pedro Henrique e Ailana**.
+Apresentação para **10–12 minutos**, com **16 slides principais e um de apoio**. Professor: **João Paulo Ferreira de Mello**. Integrantes: **Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez**.
 
 Abra [apresentacao-final-appa.html](apresentacao-final-appa.html) no Chrome ou Edge. O arquivo contém código, dados e fontes e funciona sem internet. O [PDF](apresentacao-final-appa.pdf) é uma alternativa estática para projetar ou enviar; suas páginas foram renderizadas pelo Remotion.
 

@@ -1,7 +1,7 @@
 # Consolidado — Teoria do Aprendizado Estatístico — Aula 05b — 2026-10-25
 *Guia versão 1 · apoio: ChatGPT · estudo teórico e exemplos resolvidos.*
 **Aluno:** Pedro Henrique · **Grupo:** APPA.
-**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana.
+**Solicitante:** Grupo APPA — Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez.
 
 ## 1. O que foi passado
 - M1 — contagens não negativas; probabilidade de zero e variância da Poisson.

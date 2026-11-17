@@ -1,6 +1,6 @@
 # Demonstração de classificação de pico — APPA
 
-**Grupo:** Arthur Galvão, Pedro Henrique e Ailana. **Apoio:** ChatGPT. O objetivo é demonstrar a aplicação de logística e árvore: definir entradas, ajustar, testar e registrar saídas. Não fechamos conclusões sobre o problema nem escolhemos uma ferramenta definitiva para o artigo. Consulte o [mapa dos materiais e aplicações](FERRAMENTAS-E-DEMONSTRACOES.md).
+**Grupo:** Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez. **Apoio:** ChatGPT. O objetivo é demonstrar a aplicação de logística e árvore: definir entradas, ajustar, testar e registrar saídas. Não fechamos conclusões sobre o problema nem escolhemos uma ferramenta definitiva para o artigo. Consulte o [mapa dos materiais e aplicações](FERRAMENTAS-E-DEMONSTRACOES.md).
 
 Para o [relatório consolidado](00_CONSOLIDADO_GERAL_DEMONSTRACOES.md), a ferramenta principal selecionada é a **regressão logística**. As saídas de árvore nesta página são o registro da comparação anterior e permanecem como atividade complementar.
 

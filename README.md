@@ -1,6 +1,6 @@
 # Teoria do Aprendizado Estatístico
 
-**Grupo:** APPA — Arthur Galvão, Pedro Henrique e Ailana.
+**Grupo:** APPA — Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez.
 **Apoio:** ChatGPT.
 
 **Entrega de 18/11:** [artigo da Entrega 2 (PDF)](entregas/entrega-2/artigo-final.pdf) · [apresentação interativa offline](entregas/apresentacao-final/apresentacao-final-appa.html) · [slides em PDF](entregas/apresentacao-final/apresentacao-final-appa.pdf) · [código completo e reprodução da apresentação](entregas/apresentacao-final/README.md).

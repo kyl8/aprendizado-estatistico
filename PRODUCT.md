@@ -24,7 +24,7 @@ Apresentação acadêmica presencial, com controle manual do ritmo. Preparação
 
 ## Capabilities and Constraints
 
-Identificação do professor João Paulo Ferreira de Mello e dos integrantes Arthur Galvão, Pedro Henrique e Ailana. Uma ferramenta principal. Não apresentar efeitos causais ou certeza sobre o problema. Navegação por teclado, visão geral, notas e interações demonstrativas. Não inventar RAs ou nomes completos ausentes.
+Identificação do professor João Paulo Ferreira de Mello e dos integrantes Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez. Uma ferramenta principal. Não apresentar efeitos causais ou certeza sobre o problema. Navegação por teclado, visão geral, notas e interações demonstrativas. Não inventar RAs ou nomes completos ausentes.
 
 ## Brand Commitments
 
