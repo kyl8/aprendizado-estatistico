@@ -16,11 +16,11 @@ O grupo APPA apresenta seu estudo em sala; o professor e os colegas acompanham a
 
 ## Product Purpose
 
-Apresentar uma demonstração de regressão logística sobre sinistros em horários de pico, consistente com a Entrega 2 e com os resultados reproduzidos no repositório.
+Apresentar uma investigação sobre o contraste entre acurácia e sensibilidade da regressão logística para boletins em horários de pico, consistente com a Entrega 2 e com os resultados reproduzidos no repositório. A curadoria solicitada responde à semelhança e rigidez percebidas pelo professor, relatadas pelo grupo.
 
 ## Operating Context
 
-Apresentação acadêmica presencial, com controle manual do ritmo. Preparação solicitada para a entrega de 18/11/2026. Duração de 10–12 minutos confirmada pelo solicitante. Exportação local para uso sem rede.
+Apresentação acadêmica presencial, com controle manual do ritmo. Preparação solicitada para a entrega de 18/11/2026. Duração de 10–12 minutos confirmada pelo solicitante. Exportação local para uso sem rede. Percurso principal de 14 slides, planejado para 11 minutos, e cinco slides técnicos de apoio à arguição.
 
 ## Capabilities and Constraints
 

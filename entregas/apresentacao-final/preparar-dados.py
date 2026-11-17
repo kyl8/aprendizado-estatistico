@@ -61,9 +61,12 @@ for record, observed, probability in zip(test_bank, y, p):
     assert abs(1/(1+math.exp(-score))-probability) < 1e-12
 levels = {key: sorted({row[key] for row in bank}) for key in ('via','dia','regiao')}
 data = dict(coorte=numeric(rows(RESULTS/'coorte.csv')),particoes=numeric(rows(RESULTS/'particoes.csv')),
+    leitura=numeric(rows(RESULTS/'leitura_classificacao.csv')),exclusoes=numeric(rows(RESULTS/'exclusoes.csv')),
     metricas=metrics,coeficientes=coefficients,testes=numeric(rows(RESULTS/'testes.csv')),
     calibracao=numeric(rows(RESULTS/'calibracao.csv')),mensal=numeric(rows(RESULTS/'por_mes.csv')),
     incerteza=numeric(rows(RESULTS/'incerteza.csv')),roc=roc,limiares=thresholds,niveis=levels,
+    relatorio=(RESULTS/'relatorio-logistica.txt').read_text(encoding='utf-8-sig'),
+    diagnostico=numeric(rows(RESULTS/'diagnostico_calibracao.csv')),
     proveniencia=dict(modelo='pico ~ via + dia + regiao; binomial(logit)',
         fonte='entregas/entrega-2/resultados/',
         sha256_banco=hashlib.sha256((HERE.parent/'entrega-2'/'entrega-2-sinistros.csv').read_bytes()).hexdigest()))

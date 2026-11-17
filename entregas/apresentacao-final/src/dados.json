@@ -39,6 +39,50 @@
       "proporcao_pico": 0.405764608455028
     }
   ],
+  "leitura": [
+    {
+      "n": 49509.0,
+      "pico": 20089.0,
+      "fora": 29420.0,
+      "vp": 0.0,
+      "vn": 29420.0,
+      "fp": 0.0,
+      "fn": 20089.0,
+      "acertos": 29420.0,
+      "previstos_pico": 0.0,
+      "acuracia": 0.594235391544972,
+      "sensibilidade": 0.0,
+      "modelo": "base"
+    },
+    {
+      "n": 49509.0,
+      "pico": 20089.0,
+      "fora": 29420.0,
+      "vp": 371.0,
+      "vn": 29053.0,
+      "fp": 367.0,
+      "fn": 19718.0,
+      "acertos": 29424.0,
+      "previstos_pico": 738.0,
+      "acuracia": 0.594316184936072,
+      "sensibilidade": 0.0184678182089701,
+      "modelo": "logistica"
+    }
+  ],
+  "exclusoes": [
+    {
+      "tipo": "Nao fatal",
+      "antes": 143332.0,
+      "excluidos": 2.0,
+      "mantidos": 143330.0
+    },
+    {
+      "tipo": "Fatal",
+      "antes": 8501.0,
+      "excluidos": 656.0,
+      "mantidos": 7845.0
+    }
+  ],
   "metricas": [
     {
       "modelo": "Referencia constante",
@@ -1488,6 +1532,17 @@
       "SÃO JOSÉ DOS CAMPOS"
     ]
   },
+  "relatorio": "\nCall:\nglm(formula = pico ~ via + dia + regiao, family = binomial(link = \"logit\"),\n    data = treino)\n\nCoefficients:\n                                 Estimate Std. Error z value Pr(>|z|)\n(Intercept)                      -0.64419    0.04884  -13.19  < 2e-16 ***\nviaVIAS URBANAS                  -0.03424    0.01757   -1.95  0.05133 .\ndiaQuarta-feira                   0.60903    0.02547   23.91  < 2e-16 ***\ndiaQuinta-feira                   0.56485    0.02575   21.94  < 2e-16 ***\ndiaSegunda-feira                  0.53500    0.02565   20.86  < 2e-16 ***\ndiaSexta-feira                    0.39267    0.02508   15.66  < 2e-16 ***\ndiaSábado                         0.02297    0.02605    0.88  0.37803\ndiaTerça-feira                    0.61663    0.02563   24.06  < 2e-16 ***\nregiaoBAIXADA SANTISTA           -0.18820    0.05155   -3.65  0.00026 ***\nregiaoBARRETOS                   -0.22888    0.08232   -2.78  0.00543 **\nregiaoBAURU                      -0.06037    0.05972   -1.01  0.31207\nregiaoCAMPINAS                   -0.06551    0.04582   -1.43  0.15284\nregiaoCENTRAL                     0.01027    0.06107    0.17  0.86646\nregiaoFRANCA                      0.00819    0.06385    0.13  0.89794\nregiaoITAPEVA                     0.03802    0.07724    0.49  0.62252\nregiaoMARÍLIA                    -0.03449    0.05641   -0.61  0.54092\nregiaoMETROPOLITANA DE SÃO PAULO -0.24910    0.04368   -5.70  1.2e-08 ***\nregiaoPRESIDENTE PRUDENTE         0.05557    0.05546    1.00  0.31639\nregiaoREGISTRO                   -0.22553    0.08346   -2.70  0.00689 **\nregiaoRIBEIRÃO PRETO             -0.04860    0.05528   -0.88  0.37929\nregiaoSOROCABA                   -0.12147    0.04956   -2.45  0.01424 *\nregiaoSÃO JOSÉ DO RIO PRETO       0.09872    0.05015    1.97  0.04903 *\nregiaoSÃO JOSÉ DOS CAMPOS        -0.10640    0.05003   -2.13  0.03345 *\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 136819  on 101665  degrees of freedom\nResidual deviance: 135094  on 101643  degrees of freedom\nAIC: 135140\n\nNumber of Fisher Scoring iterations: 4\n",
+  "diagnostico": [
+    {
+      "intercepto": 0.0221033616416778,
+      "inclinacao": 0.975609563557285,
+      "estatistica": 10.7884101031512,
+      "gl": 2.0,
+      "p_valor": 0.00454283027954907,
+      "log_p_valor": -5.39420505157561
+    }
+  ],
   "proveniencia": {
     "modelo": "pico ~ via + dia + regiao; binomial(logit)",
     "fonte": "entregas/entrega-2/resultados/",

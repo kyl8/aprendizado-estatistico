@@ -2,16 +2,20 @@
 
 **Grupo APPA:** Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez. **Professor:** João Paulo Ferreira de Mello. Documento preparado para 18/11/2026.
 
-- **[Artigo em PDF](artigo-final.pdf)**: sete páginas, com apresentação acadêmica, resultados e relatório completo do R no apêndice.
+- **[Artigo em PDF](artigo-final.pdf)**: nove páginas, com apresentação acadêmica, resultados e relatório completo do R no apêndice.
 - [Fonte Rnw](artigo-final.Rnw), [LaTeX gerado](artigo-final.tex) e [referências](referencias.bib).
 - [Código de preparação e ajuste](entrega-2-banco.R) e [compilação](compilar-entrega-2.R).
 - [Banco preparado](entrega-2-sinistros.csv), [tabelas e relatório](resultados/) e [figuras](figuras/).
 - [Modelo da disciplina preservado](modelo-professor/artigo-final.Rnw).
 - [Apresentação final e código Remotion](../apresentacao-final/README.md).
 
+A [curadoria](../../CURADORIA_APPA.md) registra fontes, correções e auditoria cruzada. O texto revisado explica por que 59,43% de acurácia coexistem com 1,85% de sensibilidade; a logística soma quatro acertos à referência no teste. O novo [gráfico de denominadores](figuras/acuracia-e-sensibilidade.png) usa a mesma escala de 0 a 100%.
+
 ## Especificação desta entrega
 
 Uma única ferramenta: **regressão logística**, `pico ~ via + dia + regiao`. O alvo vem das três janelas de horário; as preditoras são tipo de via, dia da semana e região administrativa. Hora e turno não entram no ajuste.
+
+A auditoria de exclusões está em [exclusoes.csv](resultados/exclusoes.csv): 656 dos 658 excluídos são fatais (8.501 antes e 7.845 depois do filtro). A composição do recorte limita a interpretação.
 
 O banco tem 151.175 boletins: 101.666 de 2025 para treino e 49.509 de janeiro–junho/2026 para teste. O modelo é ajustado **somente no treino**. A frequência do treino é uma referência constante para avaliação. O protocolo adapta o modelo genérico do professor, que ajustava no banco inteiro, para preservar o teste temporal do projeto.
 

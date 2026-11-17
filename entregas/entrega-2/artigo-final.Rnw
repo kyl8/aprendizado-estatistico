@@ -9,7 +9,7 @@
 \setulmarginsandblock{2.2cm}{2.2cm}{*}
 \checkandfixthelayout
 \hypersetup{hidelinks,pdftitle={Regressão logística e sinistros em horários de pico},pdfauthor={Grupo APPA},pdflang={pt-BR}}
-\titulo{Regressão logística aplicada à classificação de sinistros em horários de pico}
+\titulo{Sinistros em horários de pico: acurácia e sensibilidade na regressão logística}
 \autor{Grupo APPA}
 \local{Santos-SP}
 \data{18 de novembro de 2026}
@@ -25,6 +25,10 @@ pv <- function(x) ifelse(x<.0001,"< 0,0001",f(x,4))
 tab <- function(x,nomes=names(x)) cat(knitr::kable(x,format="latex",booktabs=TRUE,row.names=FALSE,col.names=nomes),sep="\n")
 met <- entrega2$metricas
 via <- entrega2$coeficientes[grepl("^via",entrega2$coeficientes$termo),]
+leitura <- entrega2$leitura_classificacao
+ref <- leitura[leitura$modelo=="base",]
+logit <- leitura[leitura$modelo=="logistica",]
+ex <- entrega2$exclusoes
 @
 \selectlanguage{brazil}\frenchspacing\SingleSpacing
 \begin{center}
@@ -40,18 +44,18 @@ Prof. Dr. João Paulo Ferreira de Mello\\[.4em]
 Santos-SP, 18 de novembro de 2026
 \end{center}
 \vspace{.5em}
-\noindent\textbf{Resumo.} Este artigo documenta uma demonstração de regressão logística para a classificação de boletins de sinistros em horários de pico. O recorte da base Infosiga/SP reúne \Sexpr{f0(nrow(entrega2$banco))} boletins, de janeiro de 2025 a junho de 2026. O alvo binário é construído a partir de três janelas horárias; tipo de via, dia da semana e região administrativa são as três preditoras. Os coeficientes são ajustados em \Sexpr{f0(nrow(entrega2$treino))} registros de 2025 e as probabilidades são avaliadas em \Sexpr{f0(nrow(entrega2$teste))} registros de 2026. São apresentados o relatório do ajuste, métricas, matriz de confusão, diagnósticos e demonstrações de testes de hipótese. As saídas descrevem o procedimento retrospectivo e seus limites, sem estabelecer efeitos causais ou validar utilização operacional.
+\noindent\textbf{Resumo.} Uma acurácia de \Sexpr{f(100*logit$acuracia,2)}\% pode ocultar diferenças importantes entre os tipos de erro. Investigamos esse contraste em uma demonstração de regressão logística para classificar boletins de sinistros conforme três janelas operacionais de pico. O recorte Infosiga/SP contém \Sexpr{f0(nrow(entrega2$banco))} boletins; tipo de via, dia da semana e região administrativa são as preditoras. Ajustamos o modelo em 2025 e o aplicamos a \Sexpr{f0(logit$n)} boletins de janeiro--junho de 2026, mantendo limiar 0,5. Foram identificados \Sexpr{f0(logit$vp)} dos \Sexpr{f0(logit$pico)} boletins de pico, com sensibilidade de \Sexpr{f(100*logit$sensibilidade,2)}\%. A logística somou quatro acertos a mais que a referência constante; AUC e Brier foram \Sexpr{f(met$auc[2],4)} e \Sexpr{f(met$brier[2],6)}. A discussão distingue probabilidades, classes, associações e risco viário. As saídas são retrospectivas e não validam uso operacional.
 
 \smallskip
 \noindent\textbf{Palavras-chave:} regressão logística; sinistros de trânsito; classificação; teste temporal; Infosiga.
 
 \textual
 \section{Introdução}
-O registro de sinistros permite examinar como as características dos eventos documentados se distribuem ao longo do tempo. Esse contexto motiva uma aplicação de aprendizado estatístico relacionada à mobilidade e à segurança viária. A pergunta utilizada é: \textbf{que características registradas dos sinistros estão associadas à ocorrência nos horários de pico?}
+Uma classificação pode acertar a maioria dos boletins e, ainda assim, reconhecer poucos daqueles que pertencem à categoria de interesse. Essa diferença orienta a leitura deste trabalho: o número total de acertos precisa ser confrontado com o tipo de erro e com uma referência simples. A pergunta registrada na Entrega 1 permanece: \textbf{que características dos sinistros registrados estão associadas ao pertencimento aos horários de pico?}
 
-O trabalho seleciona uma única ferramenta principal: a regressão logística, estudada na Aula 05. A escolha decorre da resposta binária e da possibilidade de representar preditoras categóricas, interpretar os coeficientes e produzir probabilidades \cite{james2021,rglm}. A entrega organiza a preparação dos dados, a especificação, o ajuste e a leitura das saídas. PCA, Poisson e árvores permanecem nas atividades complementares do repositório e não compõem o modelo deste artigo.
+O arquivo disponível reúne horário, calendário e contexto viário e geográfico no mesmo boletim. Essa combinação permite construir uma resposta binária e examinar como três características se relacionam com ela. Selecionamos a regressão logística, estudada na Aula 05, por sua correspondência com esse alvo e por permitir a leitura de probabilidades e razões de chances \cite{james2021,rglm}. A escolha não resulta de uma busca por um modelo vencedor no teste. PCA, Poisson e árvores pertencem a atividades separadas.
 
-O banco contém sinistros registrados, sem o fluxo de veículos ou o número de viagens sem ocorrência. Assim, a unidade de análise é o boletim, e o objeto é seu perfil temporal. Probabilidade de um boletim pertencer ao pico e risco de um veículo sofrer sinistro são quantidades diferentes.
+O objeto é o perfil temporal dos boletins. A fonte não contém viagens sem sinistro nem exposição ao tráfego; por isso não estima a probabilidade de um veículo sofrer sinistro. Sistemas de segurança viária distinguem registros de ocorrências e medidas de exposição \cite{who2010}. Mantemos essa distinção ao interpretar o ajuste e ao delimitar o alcance da pergunta.
 
 \section{Os dados}
 \subsection{Fonte e preparação}
@@ -65,7 +69,9 @@ tab(data.frame(Etapa=entrega2$coorte$etapa,Boletins=f0(entrega2$coorte$n)))
 \fonte{Processamento do arquivo local pelos autores.}
 \end{table}
 
-Foram retirados 242 boletins sem data e hora válidas e, entre os restantes, 416 sem tipo de via informado. Não houve exclusão adicional por ausência nas três preditoras. O recorte completo contém \Sexpr{f0(nrow(entrega2$banco))} boletins. Essas exclusões também delimitam a população descrita; boa completude no recorte não assegura ausência de viés na fonte.
+Foram retirados 242 boletins sem data e hora válidas e, entre os restantes, 416 sem tipo de via informado. Não houve exclusão adicional por ausência nas três preditoras. Usamos todos os boletins que atendem aos filtros nesse arquivo, não uma amostra aleatória do trânsito paulista. A auditoria das exclusões mostrou uma concentração relevante: \Sexpr{f0(ex$excluidos[ex$tipo=="Fatal"])} dos 658 retirados são fatais; os outros dois são não fatais. Dos 8.501 boletins fatais da fonte, 7.845 permanecem. Não se presume, portanto, que as exclusões sejam neutras quanto ao perfil dos registros.
+
+A seleção atual verifica data, hora e via. Uma comparação por IDs confirmou, neste arquivo, o mesmo conjunto do recorte histórico por via/turno, embora as regras sejam descritas de formas diferentes nos exercícios. A reprodução utiliza o CSV versionado, sem substituí-lo pelo recurso do portal, atualizado mensalmente. Fonte, seleção e população descrita são explicitadas como elementos de transparência do relato \cite{kapoor2024}.
 
 \subsection{Alvo e preditoras}
 O alvo \texttt{pico} assume valor 1 quando o horário registrado está entre 06:30 e 08:30, entre 11:30 e 13:30 ou entre 17:00 e 19:30, com extremos inclusivos; nos demais horários válidos, assume 0. As janelas são uma definição operacional adotada pelo grupo, não uma estimativa de congestionamento obtida com os dados. A inclusão dos extremos faz parte da regra aplicada aos horários em minutos.
@@ -82,6 +88,8 @@ Região administrativa & \texttt{regiao\_\allowbreak administrativa} & \texttt{r
 \end{table}
 
 Hora e turno são excluídos das preditoras porque revelam a própria resposta. Identificadores e data completa também não entram na fórmula; a data define a partição temporal. Tipo de sinistro, fatalidade e contagens de envolvidos, considerados em exercícios anteriores, ficam fora desta especificação. Os 11 candidatos da Entrega 1 correspondem a uma preparação histórica; o ajuste atual tem três variáveis, representadas por 22 indicadores e um intercepto.
+
+Tipo de via descreve o contexto viário; dia da semana representa o calendário; região situa o registro no território. Esse conjunto delimita uma descrição simples e interpretável, sem alegar que sejam as três variáveis mais informativas possíveis. Não foi realizada seleção dessas entradas pela métrica do teste. A definição das janelas foi herdada da Entrega 1; o arquivo não oferece uma medição de congestionamento que a valide para todas as regiões.
 
 \section{A pergunta e o modelo}
 \subsection{Especificação e escolha da ferramenta}
@@ -104,7 +112,9 @@ tab(data.frame(Particao=a$particao,Periodo=c("Jan.-dez./2025","Jan.-jun./2026"),
 \fonte{Banco preparado para a Entrega 2.}
 \end{table}
 
-Os coeficientes são ajustados apenas em 2025. O modelo é aplicado a janeiro--junho de 2026 sem refazer o ajuste ou escolher um novo limiar. O limiar de classe é 0,5. Como os dados de 2026 já eram conhecidos em atividades anteriores, a avaliação é retrospectiva e não representa validação prospectiva independente.
+Os coeficientes são ajustados apenas em 2025. Aplicamos o ajuste a janeiro--junho de 2026 sem refazer os coeficientes ou escolher um novo limiar: a classe prevista é 1 quando a probabilidade é maior ou igual a 0,5. Os níveis dos fatores são aprendidos no treino e conferidos no teste. Não há variáveis numéricas a padronizar nesta especificação.
+
+A ordem temporal evita misturar aleatoriamente os períodos, mas não cria, sozinha, independência entre observações. Além disso, 2026 já havia sido explorado em atividades anteriores. Trata-se de avaliação retrospectiva, sem validação prospectiva independente. Essa restrição é relevante diante dos problemas de dependência e de reutilização do teste discutidos por \citeonline{lones2024}. Alterar o limiar interativamente nos slides ilustra seus efeitos sobre estes mesmos registros; não seleciona um novo limiar válido para reportar desempenho.
 
 A referência constante usa a proporção de pico no treino, \Sexpr{f(mean(entrega2$treino$pico),6)}, para todos os boletins do teste. Ela permite contextualizar as métricas da única ferramenta selecionada. O Brier é a média de $(y-p)^2$; a AUC avalia a ordenação dos escores. Acurácia, sensibilidade e especificidade dependem do limiar de classe.
 
@@ -127,6 +137,8 @@ tab(data.frame(Ajuste=c("Referência constante","Regressão logística"),Brier=f
 
 Na execução, a logística apresentou AUC de \Sexpr{f(met$auc[2],4)} e Brier de \Sexpr{f(met$brier[2],6)}. A acurácia ficou próxima à da classe majoritária. Com limiar 0,5, a sensibilidade ao pico foi \Sexpr{f(100*met$sensibilidade[2],2)}\%: a matriz de confusão explicita a pequena quantidade de positivos recuperados. A leitura conjunta das medidas evita tratar a acurácia isolada como evidência de boa detecção.
 
+Os denominadores explicam o contraste. A acurácia divide todos os \Sexpr{f0(logit$acertos)} acertos por \Sexpr{f0(logit$n)} boletins; a sensibilidade divide os \Sexpr{f0(logit$vp)} verdadeiros positivos pelos \Sexpr{f0(logit$pico)} boletins de pico. O modelo classificou apenas \Sexpr{f0(logit$previstos_pico)} registros como pico. Dos positivos observados, \Sexpr{f0(logit$fn)} receberam classe prevista zero.
+
 \begin{table}[htbp]\centering\small
 \caption{Matriz de confusão da logística: contagens no teste.}\label{tab:confusao}
 <<confusao>>=
@@ -136,6 +148,14 @@ tab(data.frame(Observado=c("Fora do pico (0)","Pico (1)"),
 @
 \fonte{Limiar 0,5, mantido sem otimização no teste.}
 \end{table}
+
+\begin{figure}[htbp]\centering
+\caption{Duas leituras da mesma execução, com denominadores explícitos.}\label{fig:contraste}
+\includegraphics[width=\linewidth]{figuras/acuracia-e-sensibilidade.png}
+\fonte{Mesmas previsões no teste e limiar 0,5. Cada linha usa o denominador indicado, em escala de 0 a 100\%.}
+\end{figure}
+
+A referência, cuja probabilidade fixa fica abaixo de 0,5, classifica todos os boletins como fora do pico e acerta \Sexpr{f0(ref$acertos)} casos. A logística acerta \Sexpr{f0(logit$acertos)}, saldo de quatro: recupera 371 positivos que a referência perde, mas passa a errar 367 negativos. A diferença de acurácia é de \Sexpr{f(100*(logit$acuracia-ref$acuracia),4)} ponto percentual. Isso não significa que as previsões sejam idênticas; mostra como mudanças em tipos distintos de erro quase se compensam na acurácia.
 
 \begin{figure}[htbp]\centering
 \caption{Ordenação e calibração das probabilidades no teste.}\label{fig:roc}
@@ -163,7 +183,11 @@ Esses valores ilustram os procedimentos e suas suposições. Não medem importâ
 A diferença de Brier entre a referência e a logística foi \Sexpr{f(entrega2$incerteza$estimativa,6)}. Um bootstrap circular com 1.000 repetições e blocos de sete dias registrou intervalo de 95\% de \Sexpr{f(entrega2$incerteza$ic95_inferior,6)} a \Sexpr{f(entrega2$incerteza$ic95_superior,6)}. O intervalo descreve esse contraste e esse esquema de reamostragem; a escolha de sete dias não garante a captura de toda a dependência temporal.
 
 \section{Discussão}
-A ferramenta produziu probabilidades e coeficientes para uma resposta binária, permitindo demonstrar o percurso entre alvo, preditoras, treino e teste. As saídas sugerem pontos para discussão metodológica. A ordenação dos escores permaneceu próxima da referência aleatória e a sensibilidade foi baixa no limiar estabelecido. O Brier registrou uma diferença pequena na escala de erro de probabilidade; ela não equivale à comprovação de uma aplicação operacional útil.
+O contraste principal não é uma contradição entre métricas. Acurácia resume acertos em todas as classes; sensibilidade focaliza os boletins de pico. Neste teste, 40,58\% dos boletins pertencem ao pico, enquanto somente \Sexpr{f(100*logit$previstos_pico/logit$n,2)}\% receberam essa previsão. A baixa sensibilidade não deve ser explicada apenas com a palavra ``desbalanceamento'': o pico não é uma classe extremamente rara no recorte. O que está demonstrado é a combinação das probabilidades produzidas com o limiar fixado, não a causa substantiva de seu desempenho.
+
+A logística usa três fatores em uma especificação aditiva. Dois boletins com o mesmo tipo de via, dia e região recebem a mesma probabilidade, mesmo que seus horários e classes observadas sejam distintos. Essa é uma consequência da fórmula; não comprova que acrescentar uma variável ou interação produziria um resultado melhor. Tal avaliação exigiria outro protocolo, sem adaptar escolhas aos registros já usados como teste.
+
+AUC não é porcentagem de acertos, e o Brier avalia probabilidades antes do limiar. A diferença de Brier de \Sexpr{f(entrega2$incerteza$estimativa,6)} registra um aspecto distinto do saldo de quatro acertos. Mesmo acompanhada do intervalo apresentado, ela não demonstra utilidade operacional. Razões de chances descrevem associações condicionadas às demais entradas, e valores de p não medem o tamanho ou a relevância prática dessas associações.
 
 \begin{figure}[htbp]\centering
 \caption{AUC da logística por mês do teste de 2026.}\label{fig:mes}
@@ -173,10 +197,10 @@ A ferramenta produziu probabilidades e coeficientes para uma resposta binária, 
 
 A Figura~\ref{fig:mes} registra variação entre meses, com AUC entre \Sexpr{f(min(entrega2$por_mes$auc),4)} e \Sexpr{f(max(entrega2$por_mes$auc),4)}. Os pontos são descrições mensais, sem intervalos simultâneos ou demonstração de estabilidade futura. A partição temporal respeita a ordem das datas, mas a exploração prévia do banco limita a independência da avaliação.
 
-As limitações incluem ausência de exposição ao tráfego, possível subnotificação, exclusão de registros, regras fixas para as janelas de pico, dependência temporal e territorial e uma especificação aditiva com apenas três preditoras. Razões de chances são condicionais ao modelo; valores de p e intervalos dependem das respectivas hipóteses. HC1, Holm e bootstrap por blocos são complementos de avaliação e não novas ferramentas principais. A demonstração não estabelece causas, compara risco por viagem ou encerra uma conclusão sobre a segurança viária.
+As exclusões concentradas em boletins fatais restringem a extensão das interpretações a todos os boletins da fonte. A ausência de exposição, as janelas comuns a todo o território e a dependência temporal e territorial também delimitam o estudo. Possíveis diferenças de registro ou subnotificação não foram quantificadas aqui. HC1, Holm e bootstrap são complementos de avaliação; não corrigem seleção da amostra, confundimento ou validação retrospectiva. Não há teste de uma intervenção de segurança viária ou estimativa de risco por viagem.
 
 \section{Conclusão da etapa demonstrativa}
-Foi documentada a aplicação de uma regressão logística, desde a preparação dos boletins e a definição de \texttt{pico} até o ajuste em 2025, a aplicação em 2026 e a leitura de relatórios, tabelas e gráficos. O produto desta etapa é esse procedimento reproduzível e o registro crítico de suas saídas. A pergunta de trabalho permanece como contexto para discussão, com as limitações da fonte e do protocolo explicitadas.
+Esta aplicação torna concreta uma distinção metodológica: acertar a maioria dos registros e identificar os boletins de pico são objetivos avaliados por denominadores diferentes. No recorte e no limiar utilizados, \Sexpr{f0(logit$acertos)} acertos totais coexistem com \Sexpr{f0(logit$vp)} identificações entre \Sexpr{f0(logit$pico)} positivos observados. A contribuição desta etapa é explicitar a cadeia entre definição da resposta, entradas permitidas, partição temporal e leitura dos erros. As associações estimadas permanecem condicionadas ao recorte e ao modelo; a pergunta sobre os registros segue aberta à discussão, sem uma conclusão causal ou operacional sobre o trânsito.
 
 \smallskip
 \noindent\textbf{Reprodutibilidade e apoio.} Os arquivos \texttt{entrega-2-banco.R}, \texttt{entrega-2-sinistros.csv}, \texttt{artigo-final.Rnw}, \texttt{artigo-final.tex}, as figuras e as tabelas estão em \texttt{entregas/entrega-2/}. O script de compilação executa novamente os cálculos e gera o PDF com knitr e abnTeX2. As asserções conferem a separação temporal, os totais, as categorias e a reprodução das métricas já documentadas. Houve apoio de IA na implementação e na redação, identificado como apoio técnico, sem atribuição de validação científica independente.

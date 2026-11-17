@@ -9,6 +9,8 @@
 
 **Versão para a entrega de 18/11:** [artigo formal da Entrega 2](../entregas/entrega-2/README.md) e [apresentação final com código Remotion](../entregas/apresentacao-final/README.md). O artigo e a apresentação mantêm a especificação e os resultados da logística descritos neste consolidado.
 
+A [curadoria acadêmica](../CURADORIA_APPA.md) detalha a revisão da narrativa e a rastreabilidade. A comparação por contagens mostra 29.420 acertos da referência e 29.424 da logística: 371 positivos recuperados menos 367 negativos perdidos. Esse saldo não comprova utilidade operacional.
+
 Este relatório adota **uma ferramenta principal: a regressão logística**, apresentada na Aula 05. Documenta sua aplicação ao alvo binário `pico`, com preparação dos dados, definição das preditoras, treino/teste e registro das saídas. A escolha se fundamenta na correspondência entre a ferramenta e o tipo de resposta, sem afirmar superioridade geral ou estabelecer conclusões definitivas sobre o fenômeno. As aplicações anteriores de PCA e Poisson estão localizadas na seção 8 como atividades complementares.
 
 ## 1. Motivação e pergunta de trabalho
@@ -32,7 +34,7 @@ A fonte é a base Infosiga/SP disponível no repositório, com registros de jane
 | Validação de data e hora | 151.591 | Exclusão de 242 boletins sem essas informações válidas. |
 | Seleção para classificação de pico | 151.175 | Exclusão adicional de 416 com tipo de via indisponível. |
 
-Não houve exclusão adicional por ausência nas três preditoras selecionadas. Na leitura utilizada, a auditoria não identificou IDs de sinistro duplicados nem divergências entre o dia da semana informado e o calendário. As exclusões delimitam a população descrita pela aplicação.
+Não houve exclusão adicional por ausência nas três preditoras selecionadas. Na leitura utilizada, a auditoria não identificou IDs de sinistro duplicados nem divergências entre o dia da semana informado e o calendário. As exclusões delimitam a população descrita pela aplicação. A auditoria da Entrega 2 encontrou 656 boletins fatais e dois não fatais entre os 658 excluídos; os fatais passam de 8.501 a 7.845. O recorte contém os mesmos IDs da preparação histórica. Essa concentração impede tratar a retirada como neutra quanto à gravidade. Veja [exclusoes.csv](../entregas/entrega-2/resultados/exclusoes.csv).
 
 O [dicionário de dados](../estrutura/corpus/2026-08-11-appa-DicionarioDados.md) descreve os campos da fonte; o [fluxo de seleção](../estrutura/codigos/resultados/estudo-pico/coorte.csv) registra os totais por etapa.
 

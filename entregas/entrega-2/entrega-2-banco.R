@@ -14,7 +14,9 @@ preparar_entrega2 <- function(raiz) {
   ok <- data_ok & hora_ok & via_ok
   banco <- data.frame(data=data[ok], pico=pico_horario(boletins$hora_sinistro[ok]),
     via=as.character(boletins$tipo_via[ok]), dia=dia[ok], regiao=as.character(boletins$regiao_administrativa[ok]))
-  banco <- banco[complete.cases(banco), ]
+  completas <- complete.cases(banco)
+  ids_incluidos <- boletins$id_sinistro[ok][completas]
+  banco <- banco[completas, ]
   banco$particao <- ifelse(banco$data < as.Date("2026-01-01"), "treino", "teste")
   treino <- banco[banco$particao=="treino",c("pico","via","dia","regiao","data")]
   teste <- banco[banco$particao=="teste",c("pico","via","dia","regiao","data")]
@@ -35,6 +37,27 @@ preparar_entrega2 <- function(raiz) {
   confusao <- as.data.frame(table(observado=factor(teste$pico,levels=0:1),
     previsto=factor(as.integer(prob>=.5),levels=0:1)))
   names(confusao)[3] <- "n"
+  # Decomposicao descritiva das mesmas previsoes; nao e novo ajuste ou limiar.
+  leitura_classificacao <- do.call(rbind,lapply(list(base=base,logistica=prob),function(p) {
+    previsto <- p>=.5; real <- teste$pico==1
+    vp<-sum(previsto & real);vn<-sum(!previsto & !real)
+    fp<-sum(previsto & !real);fn<-sum(!previsto & real)
+    data.frame(n=nrow(teste),pico=sum(real),fora=sum(!real),vp=vp,vn=vn,fp=fp,fn=fn,
+      acertos=vp+vn,previstos_pico=vp+fp,acuracia=(vp+vn)/length(real),sensibilidade=vp/sum(real))
+  }))
+  leitura_classificacao$modelo <- rownames(leitura_classificacao);rownames(leitura_classificacao)<-NULL
+  excluido <- !boletins$id_sinistro %in% ids_incluidos
+  exclusoes <- do.call(rbind,lapply(c(0L,1L),function(fatal) {
+    i<-boletins$fatal==fatal
+    data.frame(tipo=if(fatal==1L)'Fatal' else 'Nao fatal',antes=sum(i),excluidos=sum(i & excluido),mantidos=sum(i & !excluido))
+  }))
+  auditoria_curadoria <- data.frame(item=c('ids_iguais_recorte_historico','notificacoes_fora','ids_duplicados','divergencias_dia'),
+    valor=c(as.integer(setequal(ids_incluidos,boletins_modelo$id_sinistro)),sum(dados$tipo_registro=='NOTIFICACAO'),
+      sum(duplicated(boletins$id_sinistro)),sum(data_ok & !is.na(boletins$dia_da_semana) & dia!=boletins$dia_da_semana)))
+  stopifnot(leitura_classificacao$vp[2]==371,leitura_classificacao$fn[2]==19718,
+    leitura_classificacao$acertos[2]-leitura_classificacao$acertos[1]==4,
+    abs(leitura_classificacao$acuracia[2]-metricas$acuracia[2])<1e-12,
+    sum(exclusoes$excluidos)==nrow(boletins)-nrow(banco))
   coorte <- data.frame(etapa=c("Registros na fonte","Boletins fatais e nao fatais","Data e hora validas","Via informada","Preditoras completas"),
     n=c(nrow(dados),nrow(boletins),sum(data_ok & hora_ok),sum(ok),nrow(banco)))
   particoes <- data.frame(particao=c("Treino","Teste"),
@@ -92,7 +115,7 @@ preparar_entrega2 <- function(raiz) {
   saida <- "entregas/entrega-2"; res <- file.path(saida,"resultados"); figs <- file.path(saida,"figuras")
   dir.create(res,recursive=TRUE,showWarnings=FALSE);dir.create(figs,recursive=TRUE,showWarnings=FALSE)
   write.csv(banco,file.path(saida,"entrega-2-sinistros.csv"),row.names=FALSE,fileEncoding="UTF-8")
-  for (nm in c("coorte","particoes","metricas","confusao","coeficientes","testes","hipotese_via","incerteza","calibracao","diagnostico_calibracao","por_mes"))
+  for (nm in c("coorte","particoes","metricas","confusao","coeficientes","testes","hipotese_via","incerteza","calibracao","diagnostico_calibracao","por_mes","leitura_classificacao","exclusoes","auditoria_curadoria"))
     write.csv(get(nm),file.path(res,paste0(nm,".csv")),row.names=FALSE,fileEncoding="UTF-8")
   write.csv(data.frame(pacote=c("R","sandwich","knitr"),versao=c(as.character(getRversion()),
     as.character(utils::packageVersion("sandwich")),if(requireNamespace("knitr",quietly=TRUE)) as.character(utils::packageVersion("knitr")) else NA)),
@@ -115,10 +138,19 @@ preparar_entrega2 <- function(raiz) {
   plot(seq_len(nrow(por_mes)),por_mes$auc,type="b",pch=19,lwd=2,col="#2549a8",xaxt="n",ylim=c(.45,.65),
     xlab="Mes de 2026",ylab="AUC",main="Logistica no teste temporal")
   axis(1,seq_len(nrow(por_mes)),labels=substr(por_mes$mes,6,7));abline(h=.5,lty=2,col="gray55");dev.off()
+  png(file.path(figs,"acuracia-e-sensibilidade.png"),width=1800,height=850,res=190)
+  par(mar=c(4.5,12,2,2),las=1)
+  v<-c(metricas$acuracia[2],metricas$sensibilidade[2])*100
+  pos<-barplot(rbind(v,100-v),horiz=TRUE,col=c('#235f6c','#d9dee3'),border=NA,xlim=c(0,100),
+    names.arg=c('Acertos entre todos\nos 49.509 boletins','Identificados entre os\n20.089 boletins de pico'),
+    xlab='Percentual dentro do denominador indicado (0 a 100%)',space=.65)
+  text(100,pos,labels=c(sprintf('29.424 / 49.509 = %.2f%%',v[1]),sprintf('371 / 20.089 = %.2f%%',v[2])),pos=2,cex=.95)
+  dev.off()
   cat("Entrega 2: verificacoes de integracao OK\n");print(particoes);print(metricas)
   list(banco=banco,treino=treino,teste=teste,modelo=modelo,prob=prob,metricas=metricas,confusao=confusao,
     coorte=coorte,particoes=particoes,coeficientes=coeficientes,testes=testes,hipotese_via=hipotese_via,
-    incerteza=incerteza,calibracao=calibracao,diagnostico_calibracao=diagnostico_calibracao,por_mes=por_mes,relatorio=relatorio)
+    incerteza=incerteza,calibracao=calibracao,diagnostico_calibracao=diagnostico_calibracao,por_mes=por_mes,relatorio=relatorio,
+    leitura_classificacao=leitura_classificacao,exclusoes=exclusoes,auditoria_curadoria=auditoria_curadoria)
 }
 raiz_entrega2 <- if (dir.exists("estrutura/corpus")) "." else if (dir.exists("../../estrutura/corpus")) "../.." else stop("Execute na raiz ou em entregas/entrega-2.")
 entrega2 <- preparar_entrega2(normalizePath(raiz_entrega2))

@@ -28,16 +28,18 @@ colors:
   next-fg: "#102529"
   next-hover: "#c0f8e2"
   nav-active: "#333266"
+  negative: "#ffb39c"
+  negative-light: "#963d30"
 typography:
   display:
     fontFamily: "Space Grotesk, sans-serif"
-    fontSize: "108px"
+    fontSize: "92px"
     fontWeight: 600
-    lineHeight: 0.98
+    lineHeight: 1.02
     letterSpacing: "-0.035em"
   headline:
     fontFamily: "Space Grotesk, sans-serif"
-    fontSize: "78px"
+    fontSize: "72px"
     fontWeight: 600
     lineHeight: 1.05
     letterSpacing: "-0.035em"
@@ -77,7 +79,7 @@ spacing:
   compact: "12px"
   related: "20px"
   section-compact: "24px"
-  section: "36px"
+  section: "28px"
   columns: "70px"
 components:
   button-nav:
@@ -160,17 +162,18 @@ A paleta alterna campos claros e escuros; a cor de destaque muda com o fundo, pr
 - **Lavanda** (`lav`): segunda janela do relógio, bloco de teste e estado aberto de navegação.
 - **Amarelo luminoso** (`yellow`): terceira janela do relógio, ênfase sobre índigo e contorno de foco visível.
 - **Violeta sobre menta** (`mint-accent`): destaque do conteúdo nos slides com fundo menta.
+- **Salmão para perdas** (`negative`) e **terracota sobre fundos claros** (`negative-light`): distinguem contagens não identificadas e perdas de classificação; o segundo papel substitui o primeiro nos tons papel e menta. São contrapontos à cor de destaque, sem substituir os rótulos dos dados.
 
 ### Neutral
 
-- **Papel quente** (`paper`): fundo claro de perguntas, preditoras e resultados.
+- **Papel quente** (`paper`): fundo claro de evidências, preditoras e resultados.
 - **Menta de fundo** (`mint-bg`): campo claro para regra do alvo e diagnósticos.
 - **Textos de tinta, papel, menta e índigo** (`ink-fg`, `paper-fg`, `mint-fg`, `indigo-fg`): primeiro plano próprio de cada tom.
 - **Textos de apoio** (`muted`, `paper-muted`, `mint-muted`, `indigo-muted`): legendas, explicações e metadados conforme o tom.
 - **Linhas por tom** (`ink-line`, `paper-line`, `mint-line`, `indigo-line`): divisores e limites entre grupos.
 - **Azul de painel** (`panel`): notas, índice e campos da demonstração móvel. Os tokens de navegação registram borda, hover, ação principal e estado aberto.
 
-**The Tone Pairing Rule.** Ao usar um dos quatro tons implementados, mantenha juntos seu fundo, primeiro plano, texto de apoio, destaque e linha; os pares são definidos no stylesheet.
+**The Tone Pairing Rule.** Ao usar um dos quatro tons implementados, mantenha juntos seu fundo, primeiro plano, texto de apoio, destaque, linha e cor de perdas; os pares são definidos no stylesheet.
 
 ## Typography
 
@@ -184,8 +187,8 @@ As fontes são locais, com licenças em `entregas/apresentacao-final/licencas/`.
 
 ### Hierarchy
 
-- **Display:** título de abertura, com quebras explícitas. O fechamento e as afirmações têm ajustes locais de tamanho.
-- **Headline:** títulos de slide; os slides mais densos usam ajustes locais observados, em vez de uma escala proporcional única.
+- **Display:** título efetivo da capa curada, com quebras explícitas.
+- **Headline:** tamanho efetivo padrão dos títulos de slide após a curadoria. Alvo, perfil e limiar têm ajustes locais de tamanho; eles não formam uma escala proporcional única.
 - **Title:** subtítulos e agrupamentos de discussão.
 - **Body:** texto de introdução no quadro; parágrafos de apoio variam de acordo com a composição.
 - **Label:** legendas e explicações curtas dos gráficos. O quadro também usa metadados menores no topo e rodapé.
@@ -196,9 +199,11 @@ As fontes são locais, com licenças em `entregas/apresentacao-final/licencas/`.
 
 ## Layout
 
-A composição tem dimensões de 1600 × 900 e proporção 16:9. O conteúdo usa recuo superior de 108 px, laterais de 90 px e inferior de 100 px. Topo e rodapé usam laterais de 80 px e afastamento de 35 px. O fluxo principal é uma coluna flexível com intervalo padrão de 36 px; slides de maior densidade têm ajustes explícitos.
+A composição tem dimensões de 1600 × 900 e proporção 16:9. O conteúdo usa recuo superior de 108 px, laterais de 90 px e inferior de 100 px. Topo e rodapé usam laterais de 80 px e afastamento de 35 px. O fluxo principal é uma coluna flexível com o intervalo padrão registrado em `spacing.section`; slides de maior densidade têm ajustes explícitos.
 
 As composições internas combinam duas colunas, sequências de três itens, tabelas e gráficos. As proporções respondem ao conteúdo: por exemplo, o perfil usa duas colunas desiguais e a divisão temporal reserva mais espaço ao treino. O sistema usa divisores finos e intervalos amplos entre blocos; não existe uma escala de espaçamento uniforme para todas as composições.
+
+Na capa curada, o título ocupa a coluna mais larga (1,3fr / 0,8fr, com intervalo de 60 px). A coluna de evidência reúne percentual, contagem com denominador e barra proporcional, separada do título por uma linha vertical. Essa composição é local à capa; o relógio circular fica na demonstração da regra do alvo.
 
 No desktop, o aplicativo ocupa a altura dinâmica da janela. O player centralizado ajusta a largura disponível e a altura restante, mantendo a proporção. Cabeçalho e navegação ficam fora dos frames exportados.
 
@@ -208,7 +213,7 @@ Até 700 px, a página passa a rolar, a miniatura ocupa a largura disponível e 
 
 Os slides são planos: fundos, cor, espaço e divisores estabelecem a hierarquia. O código reserva sombra aos painéis flutuantes de notas, ajuda e índice; console e blocos temporais usam superfícies tonais, sem sombra. A sombra exata dos painéis está no sidecar.
 
-A entrada do conteúdo desloca 16 px no eixo vertical e aumenta a opacidade de 0,45 para 1 nos primeiros 28 frames, com curva quartic ease-out. O player pausa após a entrada, no frame local 45. Com preferência de movimento reduzido, mostra diretamente o conteúdo completo. Não há transição automática entre slides.
+A entrada do conteúdo desloca 10 px no eixo vertical e aumenta a opacidade de 0,8 para 1 nos primeiros 25 frames, com curva quartic ease-out. O player pausa após a entrada, no frame local 45. Com preferência de movimento reduzido, mostra diretamente o conteúdo completo. Não há transição automática entre slides.
 
 ## Shapes
 
@@ -222,6 +227,8 @@ Linhas de um pixel separam linhas de dados e grupos de conteúdo. O recorte do s
 
 Os botões do apresentador são discretos, com borda, fundo transparente e o raio de controle. A ação de avançar usa menta e texto escuro. Hover troca o fundo, e os botões de índice e notas indicam painel aberto com fundo violeta e borda lavanda. Botões indisponíveis ficam com opacidade de 0,35. A altura mínima geral é 44 px; o botão de fechar painel tem mínimo de 40 px.
 
+Os comandos locais de fronteira horária e de retorno do limiar têm altura mínima de 48 px. No quadro, herdam fundo, texto e linha do tom; hover e a fronteira selecionada usam o destaque. No celular, usam a superfície escura dos campos da demonstração. São controles das experiências, sem alterar as variantes da navegação do apresentador.
+
 Todos os botões e links possuem contorno amarelo de foco visível, com espessura de 3 px e afastamento de 5 px. Os snippets do sidecar preservam esses estados.
 
 ### Inputs / Fields
@@ -234,6 +241,8 @@ Notas, ajuda e índice aparecem em painéis escuros fixos à direita, com recuo 
 
 O console usa fundo azul escuro, raio de painel e texto monoespaçado. Blocos de treino/teste usam preenchimento tonal e linha superior colorida. Não há componente genérico de cartão ou chip no código atual.
 
+As notas mostram primeiro a orientação breve e mantêm a fala completa em uma seção expansível para ensaio, com divisor superior e rótulo menta.
+
 ### Navigation
 
 A barra persistente reúne índice, notas, ajuda, anterior, progresso, próximo e tela cheia. O índice apresenta linhas numeradas e destaca o slide atual com fundo índigo. A navegação por teclado aceita setas, espaço, Page Up/Down, Home/End e atalhos de painéis; os campos mantêm seu próprio uso das setas. No celular, os ícones permanecem e os rótulos opcionais são ocultados.
@@ -241,6 +250,8 @@ A barra persistente reúne índice, notas, ajuda, anterior, progresso, próximo 
 ### Relógio de 24 horas e gráficos
 
 O relógio usa arcos espessos, marcas horárias e ponteiro. No fundo menta, as três cores dos arcos são substituídas por versões escuras definidas no código para preservar a leitura. As demais visualizações usam SVG, cor de destaque para dados, `currentColor` para eixos e opacidade reduzida para referências. Rótulos, valores e unidades acompanham os gráficos; as barras comparativas usam eixo comum explícito. As figuras R do artigo e o PDF por frames Remotion têm pipelines próprios e não são imagens decorativas deste sistema.
+
+As barras de acertos e identificação de pico preservam as proporções reais, inclusive segmentos pequenos. O total e o denominador aparecem junto à evidência. O papel de perdas também marca o saldo negativo; a célula de falsos negativos da matriz tem um tratamento tonal próprio, local àquela visualização.
 
 ## Do's and Don'ts
 

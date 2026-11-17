@@ -1,0 +1,25 @@
+{
+  "slides": 19,
+  "principais": 14,
+  "apoio": 5,
+  "tempo_planejado_segundos": 660,
+  "verificacoes": [
+    "navegacao",
+    "indice",
+    "notas compactas/completas e Esc",
+    "fronteiras do alvo",
+    "perfil com coeficientes reais",
+    "limiar e restauracao",
+    "proporcao da barra VP",
+    "todos os slides",
+    "1280x800",
+    "390x844",
+    "controles moveis sincronizados",
+    "URL invalida",
+    "fontes e execucao offline"
+  ],
+  "erros": [],
+  "requisicoes_externas": [],
+  "overflow": [],
+  "ensaio_humano_executado": false
+}

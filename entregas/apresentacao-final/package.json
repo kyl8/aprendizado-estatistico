@@ -10,7 +10,9 @@
     "studio": "remotion studio src/remotion.tsx",
     "pdf": "node scripts/exportar-pdf.mjs",
     "video": "remotion render src/remotion.tsx APPA apresentacao-final-appa.mp4",
-    "test": "node scripts/verificar.mjs"
+    "test": "node scripts/verificar.mjs",
+    "roteiro": "node scripts/gerar-roteiro.mjs",
+    "simular": "node scripts/simular-percurso.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "5.3.0",

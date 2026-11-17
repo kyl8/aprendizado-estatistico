@@ -1,8 +1,10 @@
 # Apresentação final APPA
 
-Apresentação para **10–12 minutos**, com **16 slides principais e um de apoio**. Professor: **João Paulo Ferreira de Mello**. Integrantes: **Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez**.
+Apresentação para **10–12 minutos**, com **14 slides principais e cinco de apoio**. Professor: **João Paulo Ferreira de Mello**. Integrantes: **Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez**.
 
 Abra [apresentacao-final-appa.html](apresentacao-final-appa.html) no Chrome ou Edge. O arquivo contém código, dados e fontes e funciona sem internet. O [PDF](apresentacao-final-appa.pdf) é uma alternativa estática para projetar ou enviar; suas páginas foram renderizadas pelo Remotion.
+
+A narrativa parte de um contraste: acertar 59,43% dos boletins não equivale a identificar bem o pico. [Narrativa e dois níveis de roteiro](NARRATIVA_E_ROTEIRO.md), [arguição](ARGUICAO_APPA.md) e [diagnóstico da curadoria](../../CURADORIA_APPA.md) documentam as escolhas. O orçamento é de **11 minutos**: Arthur 3:30, Pedro 3:30 e Ailana 4:00. Trata-se de um planejamento para ensaio, sem medição de fala humana.
 
 ## Controles
 
@@ -27,6 +29,8 @@ As interações demonstram a regra de horário, a probabilidade de um perfil com
 | [scripts/build.mjs](scripts/build.mjs) | Geração do HTML offline com JavaScript, estilos e fontes incorporados. |
 | [scripts/exportar-pdf.mjs](scripts/exportar-pdf.mjs) | Renderização dos frames pelo Remotion. |
 | [scripts/montar-pdf.py](scripts/montar-pdf.py) | Montagem dos frames em um PDF, sem redesenhar os slides. |
+| [scripts/gerar-roteiro.mjs](scripts/gerar-roteiro.mjs) | Gera roteiro completo e compacto a partir da mesma fonte dos slides. |
+| [scripts/simular-percurso.mjs](scripts/simular-percurso.mjs) | Percorre a sequência e as interações, conferindo o orçamento lógico de tempo. |
 | [scripts/verificar.mjs](scripts/verificar.mjs) | Verificações de navegação, interações, celular e execução sem rede. |
 
 O Python importa tabelas e reúne frames; **o conteúdo visual é implementado em React/Remotion**. Não foi gerado com PowerPoint ou com `python-pptx`.
@@ -47,7 +51,9 @@ Depois, em `entregas/apresentacao-final/`:
 npm ci
 npm run dados
 npm run build
+npm run roteiro
 npm test
+npm run simular
 npm run pdf
 ```
 
@@ -57,6 +63,8 @@ Para editar com prévia no navegador: `npm run dev`. Para editar no Remotion Stu
 
 ## Conteúdo e referências visuais
 
-Os números vêm da [Entrega 2](../entrega-2/README.md). Há uma ferramenta principal, a logística. PCA e Poisson aparecem somente no slide de apoio. A narrativa demonstra procedimentos e discute suas limitações, sem encerrar conclusões científicas sobre o problema.
+Os números vêm da [Entrega 2](../entrega-2/README.md). Há uma ferramenta principal, a logística. PCA e Poisson aparecem somente em um dos slides de apoio. A narrativa demonstra procedimentos e discute suas limitações, sem encerrar conclusões científicas sobre o problema.
 
 A estrutura acadêmica acompanha o modelo da disciplina. A direção visual retoma os HTMLs indicados pelo solicitante: `Evento_PLN_FatecRL.html` e `Consciencia_Artificial_Interativa_5_Integrantes.html`, com tipografia expressiva, alternância de superfícies, navegação manual e exemplos interativos. As fontes Space Grotesk e DM Sans são distribuídas pelos pacotes `@fontsource` e incorporadas ao HTML sob suas licenças. Gráficos SVG são calculados a partir das saídas; os frames exportados são gerados pelo Remotion. Apoio de IA na implementação e no texto.
+
+Os relatórios reproduzíveis [validacao-apresentacao.json](validacao-apresentacao.json) e [simulacao-percurso.json](simulacao-percurso.json) registram as verificações técnicas. A simulação é acelerada e sem áudio; não constitui um ensaio oral de 11 minutos. O teste bloqueia requisições externas do HTML. O PDF contém 19 páginas estáticas; a regra do alvo aparece no exemplo 06:30 e a matriz conserva 0,5.

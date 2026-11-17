@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-17T04:04:38.689104Z",
+  "generatedAt": "2026-11-17T05:10:36Z",
   "title": "Design System: APPA",
   "extensions": {
     "colorMeta": {
@@ -367,16 +367,44 @@
           "oklch(83.57% 0.08869 281.60)",
           "oklch(95.00% 0.08869 281.60)"
         ]
+      },
+      "negative": {
+        "role": "secondary",
+        "displayName": "Salmão para perdas",
+        "tonalRamp": [
+          "oklch(15.00% 0.09498 37.54)",
+          "oklch(26.43% 0.09498 37.54)",
+          "oklch(37.86% 0.09498 37.54)",
+          "oklch(49.29% 0.09498 37.54)",
+          "oklch(60.71% 0.09498 37.54)",
+          "oklch(72.14% 0.09498 37.54)",
+          "oklch(83.57% 0.09498 37.54)",
+          "oklch(95.00% 0.09498 37.54)"
+        ]
+      },
+      "negative-light": {
+        "role": "secondary",
+        "displayName": "Terracota sobre fundos claros",
+        "tonalRamp": [
+          "oklch(15.00% 0.12276 30.53)",
+          "oklch(26.43% 0.12276 30.53)",
+          "oklch(37.86% 0.12276 30.53)",
+          "oklch(49.29% 0.12276 30.53)",
+          "oklch(60.71% 0.12276 30.53)",
+          "oklch(72.14% 0.12276 30.53)",
+          "oklch(83.57% 0.12276 30.53)",
+          "oklch(95.00% 0.12276 30.53)"
+        ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Título de abertura no quadro Remotion."
+        "purpose": "Título efetivo da capa curada no quadro Remotion, com quebras explícitas."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Título padrão de slide, com ajustes locais nas composições densas."
+        "purpose": "Título padrão efetivo após a curadoria; alvo, perfil e limiar têm ajustes locais."
       },
       "title": {
         "displayName": "Title",
@@ -413,7 +441,7 @@
     "motion": [
       {
         "name": "slide-entrance",
-        "value": "28 frames @ 30 fps; translateY(16px -> 0); opacity(0.45 -> 1); easing t => 1 - (1 - t)^4",
+        "value": "25 frames @ 30 fps; translateY(10px -> 0); opacity(0.8 -> 1); easing t => 1 - (1 - t)^4",
         "purpose": "Entrada determinística do conteúdo. O aplicativo pausa no frame local 45 e não avança o slide."
       },
       {
@@ -444,7 +472,8 @@
     ],
     "referenceEvidence": [
       ".impeccable/review/desktop.png",
-      ".impeccable/review/mobile-8.png"
+      ".impeccable/review/mobile.png",
+      ".impeccable/review/slide-07.png"
     ]
   },
   "components": [
@@ -509,14 +538,14 @@
       "kind": "nav",
       "refersTo": "index-item",
       "description": "Lista numerada com hover e indicação do slide atual.",
-      "html": "<nav class=\"ds-index\" aria-label=\"Índice de slides\"><button class=\"ds-index-item\" aria-current=\"true\"><small>01</small>Sinistros em horários de pico</button><button class=\"ds-index-item\"><small>02</small>A pergunta que orienta o estudo</button></nav>",
+      "html": "<nav class=\"ds-index\" aria-label=\"Índice de slides\"><button class=\"ds-index-item\" aria-current=\"true\"><small>01</small>Acertar a maioria não é identificar o pico</button><button class=\"ds-index-item\"><small>02</small>Dos 20.089 boletins de pico, identificamos 371</button></nav>",
       "css": ".ds-index{display:grid;gap:6px;background:#152039;font-family:'DM Sans',sans-serif;}.ds-index-item{display:flex;gap:17px;text-align:left;padding:13px;background:transparent;color:#e9eeff;border:1px solid transparent;border-radius:8px;font-family:inherit;font-size:16px;line-height:1.35;cursor:pointer}.ds-index-item:hover{background:#24324f}.ds-index-item[aria-current=true]{background:var(--indigo,#3042d4);border-color:#8795ff}.ds-index-item:focus-visible{outline:3px solid #ffd84d;outline-offset:5px;}.ds-index-item small{color:#bfc9e2;font-variant-numeric:tabular-nums}"
     },
     {
       "name": "Relógio de 24 horas",
       "kind": "custom",
       "description": "Geometria de assinatura da apresentação; amostra estática no horário inicial de 18:00, sem o runtime React.",
-      "html": "<div class=\"ds-clock-field\"><svg viewBox=\"0 0 600 600\" class=\"ds-clock\" role=\"img\" aria-label=\"Relógio de 24 horas com três janelas de pico\"><circle cx=\"300\" cy=\"300\" r=\"220\" fill=\"none\" stroke=\"currentColor\" opacity=\".13\" stroke-width=\"38\"/><path d=\"M518.1179,328.7158 A220,220 0 0 1 474.5377,433.9275\" fill=\"none\" stroke=\"var(--mint,#9cf0cd)\" stroke-width=\"38\"/><path d=\"M328.7158,518.1179 A220,220 0 0 1 215.8096,503.2535\" fill=\"none\" stroke=\"var(--lav,#bea9ff)\" stroke-width=\"38\"/><path d=\"M87.4963,356.9402 A220,220 0 0 1 96.7465,215.8096\" fill=\"none\" stroke=\"#ffd84d\" stroke-width=\"38\"/><line x1=\"300.0000\" y1=\"50.0000\" x2=\"300.0000\" y2=\"30.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"364.7048\" y1=\"58.5185\" x2=\"366.7753\" y2=\"50.7911\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"425.0000\" y1=\"83.4936\" x2=\"429.0000\" y2=\"76.5654\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"476.7767\" y1=\"123.2233\" x2=\"482.4335\" y2=\"117.5665\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"516.5064\" y1=\"175.0000\" x2=\"523.4346\" y2=\"171.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"541.4815\" y1=\"235.2952\" x2=\"549.2089\" y2=\"233.2247\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"550.0000\" y1=\"300.0000\" x2=\"570.0000\" y2=\"300.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"541.4815\" y1=\"364.7048\" x2=\"549.2089\" y2=\"366.7753\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"516.5064\" y1=\"425.0000\" x2=\"523.4346\" y2=\"429.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"476.7767\" y1=\"476.7767\" x2=\"482.4335\" y2=\"482.4335\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"425.0000\" y1=\"516.5064\" x2=\"429.0000\" y2=\"523.4346\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"364.7048\" y1=\"541.4815\" x2=\"366.7753\" y2=\"549.2089\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"300.0000\" y1=\"550.0000\" x2=\"300.0000\" y2=\"570.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"235.2952\" y1=\"541.4815\" x2=\"233.2247\" y2=\"549.2089\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"175.0000\" y1=\"516.5064\" x2=\"171.0000\" y2=\"523.4346\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"123.2233\" y1=\"476.7767\" x2=\"117.5665\" y2=\"482.4335\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"83.4936\" y1=\"425.0000\" x2=\"76.5654\" y2=\"429.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"58.5185\" y1=\"364.7048\" x2=\"50.7911\" y2=\"366.7753\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"50.0000\" y1=\"300.0000\" x2=\"30.0000\" y2=\"300.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"58.5185\" y1=\"235.2952\" x2=\"50.7911\" y2=\"233.2247\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"83.4936\" y1=\"175.0000\" x2=\"76.5654\" y2=\"171.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"123.2233\" y1=\"123.2233\" x2=\"117.5665\" y2=\"117.5665\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"175.0000\" y1=\"83.4936\" x2=\"171.0000\" y2=\"76.5654\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"235.2952\" y1=\"58.5185\" x2=\"233.2247\" y2=\"50.7911\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><text x=\"300.0000\" y=\"14.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"18\">00h</text><text x=\"586.0000\" y=\"300.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"18\">06h</text><text x=\"300.0000\" y=\"586.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"18\">12h</text><text x=\"14.0000\" y=\"300.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"18\">18h</text><line x1=\"300\" y1=\"300\" x2=\"125\" y2=\"300\" stroke=\"currentColor\" stroke-width=\"3\"/><circle cx=\"300\" cy=\"300\" r=\"7\" fill=\"currentColor\"/><text x=\"300\" y=\"390\" fill=\"currentColor\" font-size=\"26\" text-anchor=\"middle\">18:00</text></svg></div>",
+      "html": "<div class=\"ds-clock-field\"><svg viewBox=\"0 0 600 600\" class=\"ds-clock\" role=\"img\" aria-label=\"Relógio de 24 horas com três janelas de pico\"><circle cx=\"300\" cy=\"300\" r=\"220\" fill=\"none\" stroke=\"currentColor\" opacity=\".13\" stroke-width=\"38\"/><path d=\"M518.1179,328.7158 A220,220 0 0 1 474.5377,433.9275\" fill=\"none\" stroke=\"var(--mint,#9cf0cd)\" stroke-width=\"38\"/><path d=\"M328.7158,518.1179 A220,220 0 0 1 215.8096,503.2535\" fill=\"none\" stroke=\"var(--lav,#bea9ff)\" stroke-width=\"38\"/><path d=\"M87.4963,356.9402 A220,220 0 0 1 96.7465,215.8096\" fill=\"none\" stroke=\"#ffd84d\" stroke-width=\"38\"/><line x1=\"300.0000\" y1=\"50.0000\" x2=\"300.0000\" y2=\"30.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"364.7048\" y1=\"58.5185\" x2=\"366.7753\" y2=\"50.7911\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"425.0000\" y1=\"83.4936\" x2=\"429.0000\" y2=\"76.5654\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"476.7767\" y1=\"123.2233\" x2=\"482.4335\" y2=\"117.5665\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"516.5064\" y1=\"175.0000\" x2=\"523.4346\" y2=\"171.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"541.4815\" y1=\"235.2952\" x2=\"549.2089\" y2=\"233.2247\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"550.0000\" y1=\"300.0000\" x2=\"570.0000\" y2=\"300.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"541.4815\" y1=\"364.7048\" x2=\"549.2089\" y2=\"366.7753\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"516.5064\" y1=\"425.0000\" x2=\"523.4346\" y2=\"429.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"476.7767\" y1=\"476.7767\" x2=\"482.4335\" y2=\"482.4335\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"425.0000\" y1=\"516.5064\" x2=\"429.0000\" y2=\"523.4346\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"364.7048\" y1=\"541.4815\" x2=\"366.7753\" y2=\"549.2089\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"300.0000\" y1=\"550.0000\" x2=\"300.0000\" y2=\"570.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"235.2952\" y1=\"541.4815\" x2=\"233.2247\" y2=\"549.2089\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"175.0000\" y1=\"516.5064\" x2=\"171.0000\" y2=\"523.4346\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"123.2233\" y1=\"476.7767\" x2=\"117.5665\" y2=\"482.4335\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"83.4936\" y1=\"425.0000\" x2=\"76.5654\" y2=\"429.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"58.5185\" y1=\"364.7048\" x2=\"50.7911\" y2=\"366.7753\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"50.0000\" y1=\"300.0000\" x2=\"30.0000\" y2=\"300.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"58.5185\" y1=\"235.2952\" x2=\"50.7911\" y2=\"233.2247\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"83.4936\" y1=\"175.0000\" x2=\"76.5654\" y2=\"171.0000\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"123.2233\" y1=\"123.2233\" x2=\"117.5665\" y2=\"117.5665\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"175.0000\" y1=\"83.4936\" x2=\"171.0000\" y2=\"76.5654\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><line x1=\"235.2952\" y1=\"58.5185\" x2=\"233.2247\" y2=\"50.7911\" stroke=\"currentColor\" opacity=\".35\" stroke-width=\"2\"/><text x=\"300.0000\" y=\"14.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"22\">00h</text><text x=\"586.0000\" y=\"300.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"22\">06h</text><text x=\"300.0000\" y=\"586.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"22\">12h</text><text x=\"14.0000\" y=\"300.0000\" fill=\"currentColor\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"22\">18h</text><line x1=\"300\" y1=\"300\" x2=\"125\" y2=\"300\" stroke=\"currentColor\" stroke-width=\"3\"/><circle cx=\"300\" cy=\"300\" r=\"7\" fill=\"currentColor\"/><text x=\"300\" y=\"390\" fill=\"currentColor\" font-size=\"26\" text-anchor=\"middle\">18:00</text></svg></div>",
       "css": ".ds-clock-field{color:#f3f5ff;background:var(--ink,#090e24);font-family:'DM Sans',sans-serif;}.ds-clock{display:block;width:100%;max-height:490px;overflow:visible}"
     }
   ],
@@ -532,7 +561,7 @@
     "rules": [
       {
         "name": "The Tone Pairing Rule",
-        "body": "Ao usar um dos quatro tons implementados, mantenha juntos seu fundo, primeiro plano, texto de apoio, destaque e linha; os pares são definidos no stylesheet.",
+        "body": "Ao usar um dos quatro tons implementados, mantenha juntos seu fundo, primeiro plano, texto de apoio, destaque, linha e cor de perdas; os pares são definidos no stylesheet.",
         "section": "colors"
       },
       {
