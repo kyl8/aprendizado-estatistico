@@ -124,19 +124,21 @@ preparar_entrega2 <- function(raiz) {
   relatorio <- sub("[ \t]+$","",relatorio)
   relatorio <- head(relatorio,max(which(nzchar(relatorio))))
   writeLines(enc2utf8(relatorio),file.path(res,"relatorio-logistica.txt"),useBytes=TRUE)
+  op_fig <- options(OutDec = ",")
+  on.exit(options(op_fig), add = TRUE)
   png(file.path(figs,"roc-calibracao.png"),width=2000,height=950,res=190)
   par(mfrow=c(1,2),mar=c(4.3,4.4,2.6,1),las=1,cex=.88)
   ord <- order(prob,decreasing=TRUE); ys<-teste$pico[ord]; ps<-prob[ord]; fim<-!duplicated(ps,fromLast=TRUE)
   plot(c(0,cumsum(ys==0)[fim]/sum(ys==0),1),c(0,cumsum(ys==1)[fim]/sum(ys==1),1),type="l",lwd=2.5,col="#2549a8",
-    xlab="1 - Especificidade",ylab="Sensibilidade",main="Ordenacao: curva ROC",xlim=0:1,ylim=0:1)
+    xlab="1 - Especificidade",ylab="Sensibilidade",main="Ordenação: curva ROC",xlim=0:1,ylim=0:1)
   abline(0,1,lty=2,col="gray55")
   plot(calibracao$probabilidade,calibracao$frequencia,xlim=0:1,ylim=0:1,pch=19,col="#2549a8",
-    cex=.8+2*sqrt(calibracao$n/max(calibracao$n)),xlab="Probabilidade media prevista",ylab="Frequencia observada",main="Calibracao por faixas")
+    cex=.8+2*sqrt(calibracao$n/max(calibracao$n)),xlab="Probabilidade média prevista",ylab="Frequência observada",main="Calibração por faixas")
   abline(0,1,lty=2,col="gray55");dev.off()
   png(file.path(figs,"auc-mensal.png"),width=1600,height=750,res=190)
   par(mar=c(4.2,4.4,2,1),las=1)
   plot(seq_len(nrow(por_mes)),por_mes$auc,type="b",pch=19,lwd=2,col="#2549a8",xaxt="n",ylim=c(.45,.65),
-    xlab="Mes de 2026",ylab="AUC",main="Logistica no teste temporal")
+    xlab="Mês de 2026",ylab="AUC",main="Logística no teste temporal")
   axis(1,seq_len(nrow(por_mes)),labels=substr(por_mes$mes,6,7));abline(h=.5,lty=2,col="gray55");dev.off()
   png(file.path(figs,"acuracia-e-sensibilidade.png"),width=1800,height=850,res=190)
   par(mar=c(4.5,12,2,2),las=1)
@@ -144,8 +146,13 @@ preparar_entrega2 <- function(raiz) {
   pos<-barplot(rbind(v,100-v),horiz=TRUE,col=c('#235f6c','#d9dee3'),border=NA,xlim=c(0,100),
     names.arg=c('Acertos entre todos\nos 49.509 boletins','Identificados entre os\n20.089 boletins de pico'),
     xlab='Percentual dentro do denominador indicado (0 a 100%)',space=.65)
-  text(100,pos,labels=c(sprintf('29.424 / 49.509 = %.2f%%',v[1]),sprintf('371 / 20.089 = %.2f%%',v[2])),pos=2,cex=.95)
+  rotulos<-c(
+    paste0('29.424 / 49.509 = ',formatC(v[1],format='f',digits=2,decimal.mark=','),'%'),
+    paste0('371 / 20.089 = ',formatC(v[2],format='f',digits=2,decimal.mark=','),'%')
+  )
+  text(100,pos,labels=rotulos,pos=2,cex=.95)
   dev.off()
+  options(op_fig)
   cat("Entrega 2: verificacoes de integracao OK\n");print(particoes);print(metricas)
   list(banco=banco,treino=treino,teste=teste,modelo=modelo,prob=prob,metricas=metricas,confusao=confusao,
     coorte=coorte,particoes=particoes,coeficientes=coeficientes,testes=testes,hipotese_via=hipotese_via,

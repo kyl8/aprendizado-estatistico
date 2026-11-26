@@ -9,9 +9,9 @@ Coefficients:
 viaVIAS URBANAS                  -0.03424    0.01757   -1.95  0.05133 .
 diaQuarta-feira                   0.60903    0.02547   23.91  < 2e-16 ***
 diaQuinta-feira                   0.56485    0.02575   21.94  < 2e-16 ***
+diaSábado                         0.02297    0.02605    0.88  0.37803
 diaSegunda-feira                  0.53500    0.02565   20.86  < 2e-16 ***
 diaSexta-feira                    0.39267    0.02508   15.66  < 2e-16 ***
-diaSábado                         0.02297    0.02605    0.88  0.37803
 diaTerça-feira                    0.61663    0.02563   24.06  < 2e-16 ***
 regiaoBAIXADA SANTISTA           -0.18820    0.05155   -3.65  0.00026 ***
 regiaoBARRETOS                   -0.22888    0.08232   -2.78  0.00543 **
@@ -25,9 +25,9 @@ regiaoMETROPOLITANA DE SÃO PAULO -0.24910    0.04368   -5.70  1.2e-08 ***
 regiaoPRESIDENTE PRUDENTE         0.05557    0.05546    1.00  0.31639
 regiaoREGISTRO                   -0.22553    0.08346   -2.70  0.00689 **
 regiaoRIBEIRÃO PRETO             -0.04860    0.05528   -0.88  0.37929
-regiaoSOROCABA                   -0.12147    0.04956   -2.45  0.01424 *
 regiaoSÃO JOSÉ DO RIO PRETO       0.09872    0.05015    1.97  0.04903 *
 regiaoSÃO JOSÉ DOS CAMPOS        -0.10640    0.05003   -2.13  0.03345 *
+regiaoSOROCABA                   -0.12147    0.04956   -2.45  0.01424 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
