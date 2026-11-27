@@ -571,20 +571,14 @@ Quatro limitações metodológicas principais circunscrevem a interpretação de
 }
 
 % ==============================================================================
-\section{Considerações finais}
+\section{Conclusão}
 % ==============================================================================
 
-\pendenciahumana{Seção 6 deixada em aberto para redação humana}{
-  \textbf{Instrução aos integrantes do Grupo APPA:} Substituir esta caixa pela redação final humana das \textbf{Considerações Finais} (3 a 4 parágrafos, sem inventar métricas além das reportadas na Seção 4).\\
-  \textbf{Estrutura recomendada:}
-  \begin{enumerate}
-    \item \textbf{Retomada do problema:} relembrar a pergunta de pesquisa sobre associações entre características contextuais e a ocorrência nos horários de pico, bem como o papel de uma única ferramenta supervisionada (regressão logística, treino em 2025 e teste em 2026).
-    \item \textbf{Síntese dos achados:} retomar os números centrais verificados (59,43\% de acurácia com saldo líquido de quatro acertos sobre a referência constante de 59,42\%, ante 1,85\% de sensibilidade com 371 de 20.089 boletins de pico, Brier de 0,237184 e AUC de 0,5757) e a associação positiva dos dias úteis contra a ausência de poder operacional isolado.
-    \item \textbf{Limitações e cautela:} reiterar a concentração de boletins fatais nas exclusões (656 de 658) e a impossibilidade de inferência causal ou estimativa de risco por viagem sem dados de fluxo veicular.
-    \item \textbf{Trabalhos futuros:} sugerir validação prospectiva em dados inéditos de períodos posteriores, incorporação de variáveis de exposição de tráfego e comparação controlada com modelos não lineares ou de contagem em protocolo independente.
-  \end{enumerate}
-  {\raggedright Uma \textbf{sugestão de texto-base completo} para adaptação humana encontra-se em \texttt{entregas/entrega-2/SUGESTAO\_CONCLUSAO\_E\_GUIA.md}.\par}
-}
+Este estudo avaliou a associação entre características contextuais básicas (tipo de via, dia da semana e região administrativa) e a ocorrência de sinistros de trânsito em horários de pico no Estado de São Paulo, utilizando 151.175 boletins policiais válidos do Infosiga-SP em uma regressão logística treinada em 2025 ($n = 101.666$) e testada no primeiro semestre de 2026 ($n = 49.509$).
+
+Embora os dias úteis apresentem associação estatisticamente relevante com os registros nos horários de pico em relação ao domingo, os resultados demonstram que a significância estatística em grandes amostras não se traduz em poder preditivo operacional. No teste temporal sob limiar de 0,5, o modelo obteve 59,43\% de acurácia --- apenas quatro acertos acima da referência constante de 59,42\% ($p = 0{,}9121$) --- e apenas 1,85\% de sensibilidade (371 de 20.089 casos identificados), acompanhados por um ganho probabilístico modesto (AUC de 0,5757 e escore de Brier de 0,237184 ante 0,241157).
+
+Por fim, a ausência de dados de fluxo veicular impede inferência causal ou estimativa de risco por veículo em circulação, e a perda concentrada de registros fatais nas exclusões (656 de 658) recomenda cautela na generalização dos achados. Assim, ações de fiscalização e gestão viária não devem se apoiar exclusivamente em um corte binário de 0,5 baseado apenas nessas variáveis, cabendo a estudos futuros incorporar métricas de exposição de tráfego e validações prospectivas em novos períodos.
 
 % ==============================================================================
 % ELEMENTOS PÓS-TEXTUAIS (ABNT NBR 6022:2018 e NBR 6023:2018)

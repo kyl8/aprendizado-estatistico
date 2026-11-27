@@ -4,7 +4,7 @@
 
 - **[Artigo em PDF](artigo-final.pdf)**: 16 páginas, formatado estritamente segundo as normas ABNT (NBR 6022:2018, 10520:2023, 6023:2018, 6024:2012, 6028:2021 e IBGE 1993), com fundamentação teórica, auditoria das exclusões, resultados, referências e relatório completo do R no apêndice.
 - [Fonte Rnw](artigo-final.Rnw), [LaTeX gerado](artigo-final.tex) e [referências](referencias.bib).
-- **[Guia de conclusão humana e edição final](SUGESTAO_CONCLUSAO_E_GUIA.md)**: checklist dos campos deixados propositalmente em aberto para o grupo (sobrenome/RA/e-mail dos autores, parágrafos aplicados da Seção 5 e Considerações Finais da Seção 6) + sugestão-base completa e instruções de recompilação.
+- **[Guia de conclusão humana e edição final](SUGESTAO_CONCLUSAO_E_GUIA.md)**: checklist dos campos ainda reservados para o grupo (sobrenome/RA/e-mail dos autores e parágrafos aplicados da Seção 5; a Seção 6 — `Conclusão` já foi incorporada) e instruções de recompilação.
 - [Código de preparação e ajuste](entrega-2-banco.R) e [compilação](compilar-entrega-2.R).
 - [Banco preparado](entrega-2-sinistros.csv), [tabelas e relatório](resultados/) e [figuras](figuras/).
 - [Modelo da disciplina preservado](modelo-professor/artigo-final.Rnw).
