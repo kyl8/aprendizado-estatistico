@@ -22,14 +22,14 @@ As participações incluem método, decisões e interpretação; a troca de pess
 | 4. O arquivo bruto e o banco do modelo têm tamanhos diferentes | Arthur Galvão | O recorte resulta de filtros explícitos; as exclusões não são neutras quanto à gravidade. | Fluxo de seleção, notificações e duas etapas de exclusão. | 0:50 |
 | 5. Às 06:29 é uma classe; às 06:30, outra | Pedro Henrique | A fronteira é uma decisão operacional, não uma detecção de congestionamento. | Relógio e botões 06:29/06:30, com três janelas. | 1:00 |
 | 6. Três características entram; a hora entrega a resposta | Arthur Galvão | Via, dia e região descrevem contexto; hora e turno revelam o alvo. | Três preditoras e relação hora → pico. | 0:50 |
-| 7. O ajuste usa 2025; a avaliação usa 2026 | Ailana Pereira Gonsalez | A ordem temporal não transforma um teste conhecido em validação prospectiva. | Linha do tempo com períodos, contagens e condição retrospectiva. | 0:45 |
+| 7. Montamos o modelo em 2025 e testamos em 2026 | Ailana Pereira Gonsalez | A ordem temporal não transforma um teste conhecido em validação prospectiva. | Linha do tempo com períodos, contagens e condição retrospectiva. | 0:45 |
 | 8. A logística produz a probabilidade; o limiar produz a classe | Pedro Henrique | Consultar outro perfil no mesmo ajuste não estima uma intervenção causal. | Três seletores, probabilidade, curva logística e classe em 0,5. | 1:05 |
 | 9. Em 0,5, poucos boletins recebem a classe pico | Ailana Pereira Gonsalez | Explorar o teste não seleciona validamente outro limiar para reportar desempenho. | Matriz observada × prevista, limiar e retorno explícito a 0,5. | 1:10 |
 | 10. A logística soma quatro acertos à referência | Arthur Galvão | 371 acertos positivos adicionais menos 367 negativos perdidos deixam saldo de quatro. | Totais e decomposição +371 −367 = +4, sem eixo ampliado. | 0:50 |
-| 11. Ordenação e erro de probabilidade são outras medidas | Ailana Pereira Gonsalez | As métricas descrevem aspectos diferentes das mesmas probabilidades. | ROC com escala completa e Brier com origem comum em zero. | 0:55 |
+| 11. Quanto as probabilidades melhoraram? | Ailana Pereira Gonsalez | As métricas descrevem aspectos diferentes das mesmas probabilidades. | Tabela de erros e valor de AUC. | 0:55 |
 | 12. A razão de chances descreve uma associação condicionada | Pedro Henrique | A OR se refere a pertencer ao pico entre boletins, ajustando por dia e região. | Razão de chances, intervalo e referência em 1. | 0:45 |
 | 13. O alcance depende do recorte, da regra e do protocolo | Arthur Galvão | Limitações se conectam às decisões; não são uma lista genérica de ressalvas. | Exclusões → população; janelas → alvo; teste conhecido → alcance temporal. | 0:35 |
-| 14. Agora os 59,43% têm denominador e contexto | Ailana Pereira Gonsalez | A contribuição da etapa é interpretar a execução e seus limites. | Dois denominadores, pergunta inicial e acesso ao material. | 0:25 |
+| 14. O que os acertos mostram | Ailana Pereira Gonsalez | A contribuição da etapa é interpretar a execução e seus limites. | Dois denominadores, pergunta inicial e acesso ao material. | 0:25 |
 
 ## Roteiro completo para ensaio
 
@@ -51,7 +51,7 @@ Transição: Ailana mostra o que acontece quando olhamos apenas os boletins de p
 
 Fala proposta:
 
-> Quando separamos os boletins que realmente pertencem às janelas de pico, temos 20.089 registros. O modelo identificou 371 e deixou 19.718 na classe fora do pico. A parte pequena da barra representa 1,85% dos positivos. Não é uma contradição com os 59,43%: estamos usando outro denominador. Para entender essa diferença, precisamos voltar ao que a base registra e ao que chamamos de pico.
+> Aqui eu olho só os boletins que aconteceram no pico. Eram 20.089. O modelo achou 371, que são a parte pequena da barra. Os outros 19.718 ficaram no lado errado. Esse 1,85% fala só dos boletins de pico.
 
 Pausa / interação: Apontar total e segmentos, reservando cinco segundos à barra.
 
@@ -105,13 +105,13 @@ Pausa / interação: Distinguir três variáveis da quantidade de coeficientes.
 
 Transição: Ailana apresenta outra decisão: a separação dos períodos.
 
-### 7. O ajuste usa 2025; a avaliação usa 2026
+### 7. Montamos o modelo em 2025 e testamos em 2026
 
 **Ailana Pereira Gonsalez · 4:30–5:15 (45 s)**
 
 Fala proposta:
 
-> Os 101.666 boletins de 2025 servem para ajustar os coeficientes. Depois aplicamos esse mesmo ajuste aos 49.509 boletins de janeiro a junho de 2026. O corte respeita a ordem das datas e o limiar reportado continua em 0,5. Mas há um limite: os dados de 2026 já tinham sido explorados nas atividades anteriores. Chamamos a avaliação de retrospectiva. Ela não é uma experiência prospectiva com registros que ninguém tinha visto.
+> Primeiro usamos os boletins de 2025 para montar o modelo. Depois, conferimos as respostas nos boletins do primeiro semestre de 2026. Mantivemos o mesmo modelo e a mesma regra de decisão. Como já tínhamos explorado 2026, o teste descreve o que aconteceu nesse período.
 
 Pausa / interação: Indicar o corte entre os anos.
 
@@ -135,9 +135,9 @@ Transição: Ailana mostra o efeito dessa conversão na matriz de confusão.
 
 Fala proposta:
 
-> As linhas mostram a classe observada e as colunas, a prevista. Em 0,5, somente 738 boletins recebem previsão de pico. Desses, 371 são positivos corretos e 367 são falsos positivos. Já os 19.718 falsos negativos são boletins de pico que ficaram na previsão fora do pico. Podemos mover o limiar e ver as contagens mudarem. Isso é uma exploração dos mesmos dados de teste, não uma escolha válida de um novo limiar para anunciar um resultado melhor. Para os números do artigo, voltamos a 0,5.
+> Olhem primeiro a linha de baixo. São os boletins que aconteceram no pico. Na direita, estão os 371 que o modelo identificou. Na esquerda, os 19.718 que ele colocou fora do pico por engano. A regra do artigo usa 0,5. Se eu mudar o controle, os números mudam porque estou usando outra regra sobre os mesmos boletins.
 
-Pausa / interação: Ler a orientação da matriz. Alterar para 0,35, pausar e usar Voltar a 0,5. Cerca de 18 segundos de interação.
+Pausa / interação: Aponte a linha de baixo. Se quiser demonstrar, mova para 0,35 e clique em Voltar a 0,5.
 
 Transição: Arthur compara essa matriz com o palpite constante.
 
@@ -153,15 +153,15 @@ Pausa / interação: Ler a decomposição e pausar depois do saldo. Dez segundos
 
 Transição: Ailana distingue essas contagens das medidas sobre probabilidades.
 
-### 11. Ordenação e erro de probabilidade são outras medidas
+### 11. Quanto as probabilidades melhoraram?
 
 **Ailana Pereira Gonsalez · 8:20–9:15 (55 s)**
 
 Fala proposta:
 
-> Antes de converter a saída em classe, avaliamos as probabilidades. A AUC de 0,5757 descreve a ordenação dos escores; não quer dizer 57,57% de acertos. O Brier é o erro quadrático médio dessas probabilidades: 0,237184, contra 0,241157 da referência. As barras usam a mesma escala. Essa diferença é pequena na escala do erro e não comprova utilidade operacional. São leituras complementares à matriz, não formas de esconder os falsos negativos.
+> Antes de dizer pico ou fora do pico, o modelo dá uma probabilidade. O RMSE mede o erro dessas probabilidades. Quanto menor, melhor. O erro caiu de cerca de 0,491 para 0,487. É uma melhora pequena. A AUC responde outra pergunta: se o modelo costuma dar pontuação maior aos boletins de pico.
 
-Pausa / interação: Indicar a diagonal da ROC e a origem comum das barras; cerca de cinco segundos.
+Pausa / interação: Aponte os dois números da coluna RMSE. Explique Brier e AUC se perguntarem.
 
 Transição: Pedro mostra o alcance de uma associação estimada pelo modelo.
 
@@ -189,13 +189,13 @@ Pausa / interação: Pausa curta entre as três condições.
 
 Transição: Ailana retorna ao número com que começamos.
 
-### 14. Agora os 59,43% têm denominador e contexto
+### 14. O que os acertos mostram
 
 **Ailana Pereira Gonsalez · 10:35–11:00 (25 s)**
 
 Fala proposta:
 
-> Voltando ao início: 59,43% resume os acertos entre todos os boletins. Já 371 de 20.089 mostra o que aconteceu com os de pico. O aprendizado desta aplicação está em explicar essas leituras, as decisões que as produziram e seus limites. Artigo e código permitem conferir o percurso.
+> O modelo acertou a maioria quando contamos todos os boletins. Quando olhamos só para quem estava no pico, ele deixou passar quase todos. Por isso o total de acertos, sozinho, dá uma visão incompleta.
 
 Pausa / interação: Pausar antes das perguntas. O tempo principal termina aqui.
 
@@ -206,19 +206,19 @@ Transição: Os próximos slides são apoio para a arguição, fora dos 11 minut
 | Slide | Palavras-chave e observações |
 |---|---|
 | 1 | 59,43% entre todos os boletins. Abrir a pergunta sobre quem foi identificado. |
-| 2 | Denominador: 20.089 boletins de pico. VP 371; FN 19.718; sensibilidade 1,85%. |
+| 2 | Leia só os boletins de pico. De 20.089, o modelo achou 371. A parte pequena da barra mostra isso. |
 | 3 | Unidade: boletim. Não há viagens sem sinistro nem fluxo de veículos. |
 | 4 | 121.538 notificações fora; 242 sem data/hora válida; 416 sem via. Dos 658 excluídos, 656 fatais. |
 | 5 | Clicar 06:29 e 06:30. Extremos inclusivos; regra da Entrega 1, sem validação por fluxo. |
 | 6 | 3 fatores, 22 indicadores + intercepto. Conjunto demonstrado, sem alegar que sejam as melhores entradas. |
-| 7 | 101.666 treino; 49.509 teste; coeficientes fixos; limiar 0,5. Dados de 2026 já explorados. |
+| 7 | Esquerda: 2025, para montar o modelo. Direita: primeiro semestre de 2026, para conferir o resultado. |
 | 8 | pico ~ via + dia + regiao. Mudar segunda para domingo e voltar. Mesmos coeficientes de 2025. |
-| 9 | 738 previstos pico: 371 VP + 367 FP. FN 19.718. Mover a 0,35 e restaurar 0,5. |
+| 9 | Comece pela linha de baixo. Aí estão os boletins que realmente eram de pico. Aponte 19.718 perdidos e 371 identificados. |
 | 10 | Referência: 29.420 acertos. Logística: 29.424. Quatro boletins não são quatro pontos percentuais. |
-| 11 | AUC 0,5757 não é acurácia. Brier 0,237184 versus 0,241157. Sem promessa de eficácia operacional. |
+| 11 | Leia primeiro o RMSE. Quanto menor, menor o erro das probabilidades. A melhora foi pequena. |
 | 12 | Via: OR 0,9663; IC por data 0,9328–1,0010. Não é probabilidade ou risco de sinistro. |
 | 13 | 656 excluídos fatais. Janelas sem fluxo. Teste conhecido. Mesmos X recebem o mesmo p. |
-| 14 | Todos os boletins: 59,43%. Entre positivos: 371/20.089. Encerrar e abrir arguição. |
+| 14 | Todos: 59,43%. Só os de pico: 371 de 20.089. A diferença é o grupo contado. |
 
 ## Contingência e ritmo
 
@@ -228,7 +228,7 @@ Os slides de apoio são consultados apenas na arguição. Se o tempo for reduzid
 
 ## Estimativa de fala e simulação
 
-O texto principal tem 956 palavras por contagem de tokens separados por espaço. A 125 palavras/minuto, a leitura sem pausas levaria aproximadamente 7:39. Números, gestos e interação exigem tempo adicional, já reservado no orçamento de 11:00. Esse cálculo é uma referência de planejamento; não mede a fala de cada integrante.
+O texto principal tem 846 palavras por contagem de tokens separados por espaço. A 125 palavras/minuto, a leitura sem pausas levaria aproximadamente 6:46. Números, gestos e interação exigem tempo adicional, já reservado no orçamento de 11:00. Esse cálculo é uma referência de planejamento; não mede a fala de cada integrante.
 
 O percurso técnico e o orçamento são verificados por npm test e npm run simular. A simulação do navegador é acelerada, sem áudio ou ensaio humano. A duração oral real precisa ser conferida pelo grupo. Não há evidência de que esse ensaio já ocorreu.
 

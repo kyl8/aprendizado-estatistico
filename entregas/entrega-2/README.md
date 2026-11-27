@@ -2,9 +2,9 @@
 
 **Grupo APPA:** Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez. **Professor:** João Paulo Ferreira de Mello. Documento preparado para 18/11/2026.
 
-- **[Artigo em PDF](artigo-final.pdf)**: 16 páginas, formatado estritamente segundo as normas ABNT (NBR 6022:2018, 10520:2023, 6023:2018, 6024:2012, 6028:2021 e IBGE 1993), com fundamentação teórica, auditoria das exclusões, resultados, referências e relatório completo do R no apêndice.
+- **[Artigo em PDF](artigo-final.pdf)**: 15 páginas com fundamentação, auditoria das exclusões, resultados, discussão do RMSE, matriz de confusão e relatório do ajuste.
 - [Fonte Rnw](artigo-final.Rnw), [LaTeX gerado](artigo-final.tex) e [referências](referencias.bib).
-- **[Guia de conclusão humana e edição final](SUGESTAO_CONCLUSAO_E_GUIA.md)**: checklist dos campos deixados propositalmente em aberto para o grupo (sobrenome/RA/e-mail dos autores, parágrafos aplicados da Seção 5 e Considerações Finais da Seção 6) + sugestão-base completa e instruções de recompilação.
+- [Guia de redação da revisão anterior](SUGESTAO_CONCLUSAO_E_GUIA.md), mantido como registro histórico.
 - [Código de preparação e ajuste](entrega-2-banco.R) e [compilação](compilar-entrega-2.R).
 - [Banco preparado](entrega-2-sinistros.csv), [tabelas e relatório](resultados/) e [figuras](figuras/).
 - [Modelo da disciplina preservado](modelo-professor/artigo-final.Rnw).
@@ -42,4 +42,4 @@ Rscript entregas/entrega-2/compilar-entrega-2.R
 
 O script executa a preparação e o ajuste, atualiza CSVs e figuras, gera o `.tex`, compila as referências com `biber`, verifica ausência de citações indefinidas nos logs e substitui o PDF somente após a compilação completa. O banco é lido em Latin-1 e exportado em UTF-8. As asserções conferem totais, níveis, datas, convergência e reprodução das métricas anteriores da logística. A execução desta entrega não ajusta árvore, PCA ou Poisson.
 
-A avaliação é retrospectiva. Os testes de hipótese e intervalos são demonstrações condicionadas às respectivas suposições. O texto registra saídas e limites do procedimento, preservando explicitamente espaço reservado e guia em `SUGESTAO_CONCLUSAO_E_GUIA.md` para a redação humana final dos integrantes.
+A avaliação é retrospectiva. O RMSE das probabilidades, calculado como a raiz do Brier no mesmo teste, foi 0,487015 na logística e 0,491077 na referência. Com corte de 0,5, a logística acertou 29.424 classificações e identificou 371 boletins de pico. A discussão considera a utilidade para descrever associações e as limitações para classificar boletins no corte escolhido.

@@ -23,7 +23,7 @@
 \usepackage[nott]{newtxtext}
 \usepackage{newtxmath}
 \renewcommand{\ttdefault}{lmtt}
-\usepackage{microtype}
+\usepackage[expansion=false]{microtype}
 \usepackage{indentfirst}
 \usepackage{csquotes}
 
@@ -36,7 +36,7 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{xurl}
-\usepackage[skins]{tcolorbox}
+
 
 % --- Legendas ABNT / IBGE e ambiente Quadro (fonte reduzida, alinhamento à esquerda, recuo pendente) ---
 \hangcaption
@@ -99,30 +99,6 @@
   pdftitle={Sinistros de trânsito em horários de pico no Estado de São Paulo: acurácia, sensibilidade e interpretação na regressão logística},
   pdfauthor={Arthur Galvão; Pedro Henrique; Ailana Pereira Gonsalez},
   pdflang={pt-BR}
-}
-
-% --- Caixa discreta para trechos reservados à redação humana ---
-\newtcolorbox{caixahumana}[1]{%
-  enhanced,
-  colback=black!3,
-  colframe=black!45,
-  boxrule=0.6pt,
-  arc=2pt,
-  left=10pt,
-  right=10pt,
-  top=8pt,
-  bottom=8pt,
-  title={\textbf{\footnotesize [RESERVADO PARA REDAÇÃO HUMANA -- #1]}},
-  coltitle=black,
-  colbacktitle=black!10,
-  fontupper=\SingleSpacing\footnotesize
-}
-\newcommand{\pendenciahumana}[2]{%
-  \par\medskip
-  \begin{caixahumana}{#1}
-    #2
-  \end{caixahumana}
-  \par\medskip
 }
 
 \titulo{SINISTROS DE TRÂNSITO EM HORÁRIOS DE PICO NO ESTADO DE SÃO PAULO: ACURÁCIA, SENSIBILIDADE E INTERPRETAÇÃO NA REGRESSÃO LOGÍSTICA}
@@ -202,20 +178,20 @@ inc <- entrega2$incerteza
   \vspace{0.45em}
   {\normalsize
     Arthur Galvão\footnotemark[1] \quad
-    Pedro Henrique [Completar sobrenome]\footnotemark[2] \quad
+    Pedro Henrique\footnotemark[2] \quad
     Ailana Pereira Gonsalez\footnotemark[3]\par}
   \vspace{0.25em}
   {\footnotesize
     Fatec Baixada Santista -- Rubens Lara, Santos-SP \quad|\quad Tecnologia em Ciência de Dados \quad|\quad Grupo: APPA \\
     Disciplina: Teoria do Aprendizado Estatístico \quad|\quad Docente: Prof.\ Dr.\ João Paulo Ferreira de Mello \\
-    Repositório: \url{https://github.com/kyl8/aprendizado-estatistico} \quad|\quad Submetido em: 27 nov.\ 2026%
+    Santos-SP, 27 nov.\ 2026%
   \par}
 \end{center}
 \end{SingleSpace}
 
-\footnotetext[1]{Discente do Curso Superior de Tecnologia em Ciência de Dados, Fatec Baixada Santista -- Rubens Lara, Santos-SP. RA: [Completar RA]. E-mail: [Completar e-mail institucional].}
-\footnotetext[2]{Discente do Curso Superior de Tecnologia em Ciência de Dados, Fatec Baixada Santista -- Rubens Lara, Santos-SP. RA: [Completar RA]. E-mail: [Completar e-mail institucional].}
-\footnotetext[3]{Discente do Curso Superior de Tecnologia em Ciência de Dados, Fatec Baixada Santista -- Rubens Lara, Santos-SP. RA: [Completar RA]. E-mail: [Completar e-mail institucional].}
+\footnotetext[1]{Discente do Curso Superior de Tecnologia em Ciência de Dados, Fatec Baixada Santista -- Rubens Lara, Santos-SP.}
+\footnotetext[2]{Discente do Curso Superior de Tecnologia em Ciência de Dados, Fatec Baixada Santista -- Rubens Lara, Santos-SP.}
+\footnotetext[3]{Discente do Curso Superior de Tecnologia em Ciência de Dados, Fatec Baixada Santista -- Rubens Lara, Santos-SP.}
 
 \vspace{0.25em}
 
@@ -255,9 +231,9 @@ A segurança viária constitui eixo estratégico de saúde pública e gestão da
 
 Essa restrição estrutural dos dados observacionais impõe rigor na formulação do problema de pesquisa. Sem uma medida de exposição em veículos-quilômetro ou contagem de fluxo, não é possível estimar se dirigir em determinado horário é causalmente mais perigoso por veículo em circulação \parencite{who2010}. Em consonância com os princípios do aprendizado estatístico voltado à inferência descritiva \parencite{james2021}, o presente estudo delimita uma questão objetiva e respondível com os registros policiais disponíveis no sistema Infosiga-SP \parencite{infosiga2026}: \textbf{que características registradas dos sinistros de trânsito estão associadas ao pertencimento aos horários de pico?}
 
-Para operacionalizar essa pergunta sem incorrer em vazamento de informação, o alvo binário \texttt{pico} classifica cada boletim policial conforme três janelas operacionais diárias (06h30--08h30, 11h30--13h30 e 17h00--19h30), enquanto o conjunto de preditoras restringe-se ao contexto estrutural anterior ao horário exato: tipo de via, dia da semana e região administrativa. A exclusão da hora do sinistro e do turno é obrigatória porque o próprio rótulo decorre do horário registrado. Além disso, em consonância com o escopo de modelagem supervisionada de uma única ferramenta principal adotado nesta etapa final da disciplina de Teoria do Aprendizado Estatístico, emprega-se exclusivamente a regressão logística binária ajustada sobre o ano de 2025 ($n = \text{\Sexpr{f0(part$n[1])}}$) e avaliada em partição temporal retrospectiva sobre o primeiro semestre de 2026 ($n = \text{\Sexpr{f0(part$n[2])}}$). Atividades complementares desenvolvidas ao longo do semestre --- como modelagem de contagens temporais por regressão de Poisson, poda de árvores de decisão e análise de componentes principais --- integram relatórios paralelos do repositório e não alteram a especificação única aqui analisada.
+Para operacionalizar essa pergunta sem incorrer em vazamento de informação, o alvo binário \texttt{pico} classifica cada boletim policial conforme três janelas operacionais diárias (06h30--08h30, 11h30--13h30 e 17h00--19h30), enquanto o conjunto de preditoras restringe-se ao contexto estrutural anterior ao horário exato: tipo de via, dia da semana e região administrativa. A exclusão da hora do sinistro e do turno é obrigatória porque o próprio rótulo decorre do horário registrado. Ajustou-se uma regressão logística binária com os boletins de 2025 e avaliou-se o modelo nos boletins do primeiro semestre de 2026.
 
-O ponto analítico central deste artigo reside em um aparente paradoxo métrico que sintetiza a importância da avaliação crítica em classificação supervisionada: no conjunto de teste temporal, a regressão logística obtém \Sexpr{f_raw(100 * met$acuracia[2], 2)}\% de acurácia global (\Sexpr{f0(logit$acertos)} acertos em \Sexpr{f0(logit$n)} boletins), superando a referência constante em apenas quatro acertos (diferença estatisticamente indistinguível de ruído; teste exato de McNemar, $p = 0{,}9121$), enquanto identifica somente \Sexpr{f0(logit$vp)} dos \Sexpr{f0(logit$pico)} boletins ocorridos no pico (sensibilidade de \Sexpr{f_raw(100 * met$sensibilidade[2], 2)}\%). Assim, o objetivo deste trabalho é formalizar o fluxo de preparação e auditoria dos dados do Infosiga-SP, estimar as razões de chances condicionadas pela regressão logística, decompor os desempenhos probabilístico e categórico no teste temporal e explicitar os limites metodológicos que separam a descrição de boletins registrados da inferência causal sobre risco viário.
+O ponto analítico central deste artigo reside em um aparente paradoxo métrico que sintetiza a importância da avaliação crítica em classificação supervisionada: no conjunto de teste temporal, a regressão logística obtém \Sexpr{f_raw(100 * met$acuracia[2], 2)}\% de acurácia global (\Sexpr{f0(logit$acertos)} acertos em \Sexpr{f0(logit$n)} boletins), superando a referência constante em apenas quatro acertos (comparação descritiva nos mesmos boletins), enquanto identifica somente \Sexpr{f0(logit$vp)} dos \Sexpr{f0(logit$pico)} boletins ocorridos no pico (sensibilidade de \Sexpr{f_raw(100 * met$sensibilidade[2], 2)}\%). Assim, o objetivo deste trabalho é formalizar o fluxo de preparação e auditoria dos dados do Infosiga-SP, estimar as razões de chances condicionadas pela regressão logística, decompor os desempenhos probabilístico e categórico no teste temporal e explicitar os limites metodológicos que separam a descrição de boletins registrados da inferência causal sobre risco viário.
 
 % ==============================================================================
 \section{Fundamentação teórica}
@@ -283,7 +259,7 @@ Na avaliação de probabilidades estimadas $\hat{p}_i \in [0, 1]$, regras estrit
 \begin{equation}
   \mathrm{Brier} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{p}_i)^2.
 \end{equation}
-A Área sob a Curva ROC (AUC) sintetiza a capacidade de ordenação dos escores, equivalendo à probabilidade de que um registro positivo escolhido aleatoriamente receba probabilidade prevista superior à de um negativo, variando de $0{,}5$ (ausência de discriminação) a $1{,}0$ (separação perfeita) \parencite{james2021,bruce2019}. Contudo, a conversão de $\hat{p}_i$ em classe prevista $\hat{y}_i = \mathbb{I}(\hat{p}_i \ge \tau)$ sob um limiar fixo $\tau$ (usualmente $\tau = 0{,}5$) produz uma matriz de confusão com Verdadeiros Positivos (VP), Verdadeiros Negativos (VN), Falsos Positivos (FP) e Falsos Negativos (FN), cujas métricas respondem a denominadores distintos:
+A Área sob a Curva ROC (AUC) sintetiza a capacidade de ordenação dos escores, equivalendo à probabilidade de que um positivo supere um negativo no escore, contando metade dos empates. O valor $0{,}5$ é a referência de uma ordenação ao acaso e $1{,}0$ é separação perfeita \parencite{james2021,bruce2019}. Contudo, a conversão de $\hat{p}_i$ em classe prevista $\hat{y}_i = \mathbb{I}(\hat{p}_i \ge \tau)$ sob um limiar fixo $\tau$ (usualmente $\tau = 0{,}5$) produz uma matriz de confusão com Verdadeiros Positivos (VP), Verdadeiros Negativos (VN), Falsos Positivos (FP) e Falsos Negativos (FN), cujas métricas respondem a denominadores distintos:
 {\small
 \begin{equation}
   \text{Acurácia} = \frac{\mathrm{VP} + \mathrm{VN}}{\mathrm{VP} + \mathrm{VN} + \mathrm{FP} + \mathrm{FN}}, \quad
@@ -295,7 +271,7 @@ Quando as probabilidades estimadas concentram-se próximas à prevalência de ba
 
 \subsection{Inferência sob dependência temporal: variância agrupada, multiplicidade e bootstrap em blocos}
 
-Estimadores convencionais de erro-padrão em modelos lineares generalizados pressupõem observações independentes. Em registros diários de sinistros viários, condições meteorológicas, feriados e fluxos sazonais induzem correlação intraclasse entre boletins registrados na mesma data. Nesses cenários, estimadores sanduíche de covariância robustos à heterocedasticidade e agrupados por conglomerados (\textit{cluster-robust} HC1) corrigem os erros-padrão para dependência arbitrária dentro de cada dia sem alterar as estimativas pontuais dos coeficientes \parencite{zeileis2020}.
+Estimadores convencionais de erro-padrão em modelos lineares generalizados pressupõem observações independentes. Em registros diários de sinistros viários, condições que variam por data podem gerar dependência entre boletins registrados na mesma data. Nesses cenários, estimadores sanduíche de covariância robustos à heterocedasticidade e agrupados por conglomerados (\textit{cluster-robust} HC1) permitem calcular erros-padrão admitindo dependência dentro de cada dia sem alterar as estimativas pontuais dos coeficientes \parencite{zeileis2020}.
 
 Para testar conjuntamente variáveis categóricas com múltiplos níveis, aplica-se a estatística de Wald multivariada $W = \hat{\boldsymbol{\beta}}_S^{\mathsf{T}} \hat{\mathbf{V}}_{S,\mathrm{CL}}^{-1} \hat{\boldsymbol{\beta}}_S \sim \chi^2_{g}$, utilizando a matriz de covariância agrupada por data. Como o exame simultâneo de múltiplos fatores eleva a probabilidade de erro tipo I no conjunto de testes, o procedimento sequencial rejeitivo de \textcite{holm1979} ajusta os p-valores controlando a taxa de erro familiar (FWER) sem o conservadorismo excessivo de Bonferroni. De modo complementar, para quantificar a incerteza do contraste de Brier entre modelos no teste temporal preservando a autocorrelação semanal de curto prazo, emprega-se o bootstrap circular em blocos de sete dias \parencite{politis1992,efron1993}.
 
@@ -305,7 +281,7 @@ Para testar conjuntamente variáveis categóricas com múltiplos níveis, aplica
 
 \subsection{Fonte de dados, fluxo de seleção e auditoria de exclusões}
 
-Os dados empíricos provêm do registro aberto oficial do Sistema de Informações Gerenciais de Acidentes de Trânsito do Estado de São Paulo (Infosiga-SP), gerido pelo \textcite{infosiga2026}. A análise utiliza a cópia versionada localmente no repositório do projeto (\texttt{2026-08-12-appa-Sinistros\_2025\_2026.csv}), evitando divergências decorrentes de atualizações contínuas do portal público \parencite{kapoor2024}. O arquivo original reúne \Sexpr{f0(entrega2$coorte$n[1])} registros e 50 variáveis, abrangendo o período de 1º de janeiro de 2025 a 30 de junho de 2026 (546 dias) em todos os 645 municípios e 16 regiões administrativas paulistas.
+Os dados empíricos provêm do registro aberto oficial do Sistema de Informações Gerenciais de Acidentes de Trânsito do Estado de São Paulo (Infosiga-SP), gerido pelo \textcite{infosiga2026}. O recorte original reúne \Sexpr{f0(entrega2$coorte$n[1])} registros e 50 variáveis, abrangendo o período de 1º de janeiro de 2025 a 30 de junho de 2026 (546 dias) em todos os 645 municípios e 16 regiões administrativas paulistas.
 
 Na leitura em R, aplicou-se decodificação em \textit{Latin-1} com respeito explícito às aspas duplas para campos de logradouro contendo ponto e vírgula interno, corrigindo o desalinhamento de colunas presente em leituras anteriores (que produziam 273.372 linhas com um registro espúrio). Cada unidade observacional corresponde a um boletim policial único de sinistro fatal ou não fatal (\Sexpr{f0(entrega2$coorte$n[2])} boletins), excluindo-se as \Sexpr{f0(entrega2$auditoria_curadoria$valor[entrega2$auditoria_curadoria$item == "notificacoes_fora"])} notificações administrativas por apresentarem estrutura de preenchimento e grau de detalhamento distintos. Verificações automáticas no código confirmaram zero identificadores duplicados e total concordância entre a coluna de dia da semana e o calendário oficial.
 
@@ -362,7 +338,7 @@ Uma auditoria específica das 658 exclusões realizadas entre os boletins polici
     align = c("l", "r", "r", "r", "r")
   )
   @
-  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026} (\texttt{exclusoes.csv}).}
+  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026}.}
 \end{table}
 
 \subsection{Definição da variável-alvo, preditoras e prevenção de vazamento}
@@ -397,7 +373,7 @@ Dado o alvo binário e a natureza categórica das covariáveis, ajustou-se um mo
 \begin{equation}
   \log\!\left(\frac{p(x)}{1 - p(x)}\right) = \beta_0 + \beta_{\mathrm{via}}^{\mathsf{T}} x_{\mathrm{via}} + \beta_{\mathrm{dia}}^{\mathsf{T}} x_{\mathrm{dia}} + \beta_{\mathrm{regiao}}^{\mathsf{T}} x_{\mathrm{regiao}}.
 \end{equation}
-A partição temporal dividiu o banco entre os boletins ocorridos em 2025 para treino ($n = \text{\Sexpr{f0(part$n[1])}}$) e os ocorridos entre janeiro e junho de 2026 para teste retrospectivo ($n = \text{\Sexpr{f0(part$n[2])}}$), conforme detalhado na Tabela~\ref{tab:particao}. Os coeficientes e os níveis categóricos foram estimados exclusivamente nos dados de 2025 e aplicados sem reajuste ao primeiro semestre de 2026. Como referência constante de comparação, utilizou-se a prevalência observada no treino ($\hat{p}_{\mathrm{base}} = \text{\Sexpr{f_raw(part$proporcao_pico[1], 6)}}$) para todos os registros do teste. O limiar de conversão probabilística foi fixado antecipadamente em $\tau = 0{,}5$, sem otimização pós-hoc no conjunto de teste \parencite{lones2024}.
+A partição temporal dividiu o banco entre os boletins ocorridos em 2025 para treino ($n = \text{\Sexpr{f0(part$n[1])}}$) e os ocorridos entre janeiro e junho de 2026 para teste retrospectivo ($n = \text{\Sexpr{f0(part$n[2])}}$), conforme detalhado na Tabela~\ref{tab:particao}. Os coeficientes e os níveis categóricos foram estimados exclusivamente nos dados de 2025 e aplicados sem reajuste ao primeiro semestre de 2026. Como referência constante de comparação, utilizou-se a prevalência observada no treino ($\hat{p}_{\mathrm{base}} = \text{\Sexpr{f_raw(part$proporcao_pico[1], 6)}}$) para todos os registros do teste. O limiar de conversão probabilística foi mantido em $\tau = 0{,}5$, sem otimização pós-hoc no conjunto de teste \parencite{lones2024}.
 
 \begin{table}[htbp]
   \centering
@@ -420,10 +396,10 @@ A partição temporal dividiu o banco entre os boletins ocorridos em 2025 para t
     align = c("l", "l", "r", "r", "r")
   )
   @
-  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026} (\texttt{particoes.csv}).}
+  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026}.}
 \end{table}
 
-Para a inferência sobre os parâmetros do treino, calcularam-se erros-padrão robustos HC1 agrupados pelos 365 dias de 2025 com auxílio do pacote \texttt{sandwich} \parencite{zeileis2020}, acompanhados de testes conjuntos de Wald, teste de razão de verossimilhanças para o fator \texttt{via}, correção de multiplicidade de \textcite{holm1979} e bootstrap circular em blocos de sete dias (1.000 réplicas) sobre a diferença de escore de Brier no teste \parencite{politis1992,efron1993}. Para fins de rastreabilidade acadêmica, observa-se que o repositório do projeto contém também experimentos auxiliares desenvolvidos em aulas distintas --- incluindo contagem horária por regressão de Poisson, árvores de decisão e análise de componentes principais --- que operam sobre unidades amostrais e respostas diferentes e não competem com a ferramenta única avaliada neste artigo. Todo o fluxo computacional é integralmente reprodutível pelo script \texttt{entregas/entrega-2/compilar-entrega-2.R}.
+Para a inferência sobre os parâmetros do treino, calcularam-se erros-padrão robustos HC1 agrupados pelos 365 dias de 2025 com auxílio do pacote \texttt{sandwich} \parencite{zeileis2020}, acompanhados de testes conjuntos de Wald, teste de razão de verossimilhanças para o fator \texttt{via}, correção de multiplicidade de \textcite{holm1979} e bootstrap circular em blocos de sete dias (1.000 réplicas) sobre a diferença de escore de Brier no teste \parencite{politis1992,efron1993}.
 
 % ==============================================================================
 \section{Resultados}
@@ -485,7 +461,7 @@ A Tabela~\ref{tab:coefs} apresenta os coeficientes estimados, os erros-padrão a
     align = c("l", "r", "r", "r", "r")
   )
   @
-  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026} (\texttt{coeficientes.csv}).}
+  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026}.}
 \end{table}
 
 Em contraste, os dias úteis exibem associação substantiva e consistente com a ocorrência nas faixas de pico relativamente ao domingo: terça-feira ($\mathrm{OR} = 1{,}8527$), quarta-feira ($\mathrm{OR} = 1{,}8386$), quinta-feira ($\mathrm{OR} = 1{,}7592$), segunda-feira ($\mathrm{OR} = 1{,}7074$) e sexta-feira ($\mathrm{OR} = 1{,}4809$) apresentam chances relativas acentuadamente maiores, enquanto o sábado ($\mathrm{OR} = 1{,}0232$; IC~95\% 0,9680--1,0816) praticamente iguala o padrão dominical. Geograficamente, observa-se heterogeneidade regional: a Região Metropolitana de São Paulo ($\mathrm{OR} = 0{,}7795$) e a Baixada Santista ($\mathrm{OR} = 0{,}8284$) exibem menor proporção relativa de registros estritamente dentro das janelas fixadas em comparação à referência (Araçatuba), padrão compatível com maior dispersão temporal de ocorrências ao longo do dia em grandes conurbações. Ainda assim, como o intercepto de base é negativo ($\hat{\beta}_0 = -0{,}6442$), mesmo o somatório dos maiores coeficientes positivos raramente eleva o logito $\eta(x)$ acima de zero (equivalente a $p = 0{,}5$), antecipando o comportamento conservador da classificação binária no teste.
@@ -517,7 +493,7 @@ Aplicado o ajuste congelado aos \Sexpr{f0(logit$n)} boletins do primeiro semestr
     align = c("l", "r", "r", "r", "r", "r", "r")
   )
   @
-  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026} ($n = 49.509$; \texttt{metricas.csv}).}
+  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026} ($n = 49.509$).}
 \end{table}
 
 Quando as probabilidades são convertidas em classes pelo limiar fixo $\tau = 0{,}5$, revela-se o contraste estrutural do problema. A matriz de confusão (Tabela~\ref{tab:confusao}) mostra que o modelo previu a classe \texttt{pico} para apenas \Sexpr{f0(logit$previstos_pico)} registros (1,49\% do teste), acertando \Sexpr{f0(logit$vp)} verdadeiros positivos, cometendo \Sexpr{f0(logit$fp)} falsos positivos e deixando \Sexpr{f0(logit$fn)} ocorrências reais de pico classificadas como fora do pico.
@@ -543,10 +519,10 @@ Quando as probabilidades são convertidas em classes pelo limiar fixo $\tau = 0{
     align = c("l", "r", "r", "r")
   )
   @
-  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026} (\texttt{confusao.csv}).}
+  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026}.}
 \end{table}
 
-A decomposição direta pelas contagens da Tabela~\ref{tab:confusao} explica a proximidade numérica na acurácia global: a referência constante classifica todos os boletins como fora do pico e acerta \Sexpr{f0(ref$acertos)} casos (\Sexpr{f_raw(100 * ref$acuracia, 2)}\%); a regressão logística acerta \Sexpr{f0(logit$acertos)} casos (\Sexpr{f_raw(100 * logit$acuracia, 2)}\%), obtendo saldo líquido de apenas quatro boletins adicionais (ganha 371 acertos positivos e perde 367 negativos, equivalente a \Sexpr{f_raw(100 * (logit$acuracia - ref$acuracia), 4)} ponto percentual; teste exato de McNemar com $p = 0{,}9121$, compatível com ruído amostral). A Figura~\ref{fig:contraste} torna explícito que o aparente contraste entre 59,43\% e 1,85\% decorre da mudança simultânea de numerador e denominador: a acurácia soma 29.053 verdadeiros negativos e 371 verdadeiros positivos sobre o total da amostra ($49.509$), ao passo que a sensibilidade contabiliza apenas os 371 verdadeiros positivos entre os 20.089 boletins de pico observados.
+A decomposição direta pelas contagens da Tabela~\ref{tab:confusao} explica a proximidade numérica na acurácia global: a referência constante classifica todos os boletins como fora do pico e acerta \Sexpr{f0(ref$acertos)} casos (\Sexpr{f_raw(100 * ref$acuracia, 2)}\%); a regressão logística acerta \Sexpr{f0(logit$acertos)} casos (\Sexpr{f_raw(100 * logit$acuracia, 2)}\%), obtendo saldo líquido de apenas quatro boletins adicionais (ganha 371 acertos positivos e perde 367 negativos, equivalente a \Sexpr{f_raw(100 * (logit$acuracia - ref$acuracia), 4)} ponto percentual). A Figura~\ref{fig:contraste} torna explícito que o aparente contraste entre 59,43\% e 1,85\% decorre da mudança simultânea de numerador e denominador: a acurácia soma 29.053 verdadeiros negativos e 371 verdadeiros positivos sobre o total da amostra ($49.509$), ao passo que a sensibilidade contabiliza apenas os 371 verdadeiros positivos entre os 20.089 boletins de pico observados.
 
 \begin{figure}[htbp]
   \centering
@@ -594,10 +570,10 @@ Para verificar a significância conjunta de cada fator no treino controlando a d
     align = c("l", "r", "r", "r", "r")
   )
   @
-  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026} (\texttt{testes.csv}).}
+  \fonte{Elaborada pelos autores a partir dos dados do Infosiga-SP \parencite{infosiga2026}.}
 \end{table}
 
-Quanto à incerteza da vantagem probabilística fora da amostra, o bootstrap circular em blocos de sete dias (1.000 reamostragens, condicional ao ajuste congelado de 2025, sem incorporar a incerteza de estimação do treino) estimou para o contraste $\mathrm{Brier}_{\mathrm{base}} - \mathrm{Brier}_{\text{logística}} = \text{\Sexpr{f_raw(inc$estimativa, 6)}}$ um intervalo de confiança de 95\% entre \Sexpr{f_raw(inc$ic95_inferior, 6)} e \Sexpr{f_raw(inc$ic95_superior, 6)}, confirmando ganho estatisticamente estável acima de zero embora de magnitude prática reduzida. Por fim, a Figura~\ref{fig:mes} acompanha a estabilidade mensal da AUC ao longo dos seis meses do teste de 2026, oscilando entre o mínimo de \Sexpr{f_raw(min(entrega2$por_mes$auc), 4)} em fevereiro e o máximo de \Sexpr{f_raw(max(entrega2$por_mes$auc), 4)} em maio, mantendo discriminação modesta e uniforme no período avaliado.
+Quanto à incerteza da vantagem probabilística fora da amostra, o bootstrap circular em blocos de sete dias (1.000 reamostragens, condicional ao ajuste congelado de 2025, sem incorporar a incerteza de estimação do treino) estimou para o contraste $\mathrm{Brier}_{\mathrm{base}} - \mathrm{Brier}_{\text{logística}} = \text{\Sexpr{f_raw(inc$estimativa, 6)}}$ um intervalo de confiança de 95\% entre \Sexpr{f_raw(inc$ic95_inferior, 6)} e \Sexpr{f_raw(inc$ic95_superior, 6)}, com ambos os limites acima de zero nesse esquema de reamostragem. Por fim, a Figura~\ref{fig:mes} acompanha a estabilidade mensal da AUC ao longo dos seis meses do teste de 2026, oscilando entre o mínimo de \Sexpr{f_raw(min(entrega2$por_mes$auc), 4)} em fevereiro e o máximo de \Sexpr{f_raw(max(entrega2$por_mes$auc), 4)} em maio, mantendo discriminação modesta e uniforme no período avaliado.
 
 \begin{figure}[htbp]
   \centering
@@ -612,32 +588,21 @@ Quanto à incerteza da vantagem probabilística fora da amostra, o bootstrap cir
 \section{Discussão}
 % ==============================================================================
 
-Os resultados demonstram de maneira empírica que uma acurácia global próxima de 60\% não garante capacidade de identificação da classe de interesse. Em termos estritos, o modelo não colapsa por desequilíbrio extremo de classes, pois os sinistros em horário de pico representam 40,58\% do conjunto de teste; o fator determinante da sensibilidade de 1,85\% é a baixa variância explicada pelas três preditoras contextuais, o que concentra 98,51\% das probabilidades estimadas abaixo da fronteira de decisão $\tau = 0{,}5$ (faixa total de $0{,}2834$ a $0{,}5178$, com mediana em $0{,}4131$). Conforme alertado por \textcite{bruce2019} e \textcite{lones2024}, a interpretação isolada de métricas globais ou a seleção retrospectiva de um ponto de corte sobre os próprios dados de teste mascararia essa limitação estrutural.
+Os resultados demonstram de maneira empírica que uma acurácia global próxima de 60\% não garante capacidade de identificação da classe de interesse. Em termos estritos, o modelo não colapsa por desequilíbrio extremo de classes, pois os sinistros em horário de pico representam 40,58\% do conjunto de teste; com o ajuste avaliado, observamos 98,51\% das probabilidades estimadas abaixo da fronteira de decisão $\tau = 0{,}5$ (faixa total de $0{,}2834$ a $0{,}5178$, com mediana em $0{,}4131$). Conforme alertado por \textcite{bruce2019} e \textcite{lones2024}, a interpretação isolada de métricas globais ou a seleção retrospectiva de um ponto de corte sobre os próprios dados de teste mascararia essa limitação estrutural.
 
-Do ponto de vista da especificação do modelo, a estrutura puramente aditiva de \texttt{via + dia + regiao} atribui exatamente a mesma probabilidade prevista a todos os boletins que compartilham essas três categorias, ignorando eventuais interações entre dia da semana e região (por exemplo, dinâmicas distintas de fim de semana entre áreas metropolitanas e turísticas como a Baixada Santista). Ainda que testes de hipótese agrupados confirmem que \texttt{dia} e \texttt{regiao} possuem associação estatisticamente não nula com a ocorrência no pico --- e o intervalo de bootstrap confirme redução estável no escore de Brier do modelo completo ---, significância estatística em grandes amostras ($n > 100.000$) não equivale à relevância preditiva ou operacional \parencite{james2021}. A redução de 0,003972 no escore de Brier traduz ganho probabilístico marginal insuficiente para subsidiar alocação automatizada de recursos baseada apenas nessas três variáveis.
+Do ponto de vista da especificação do modelo, a estrutura puramente aditiva de \texttt{via + dia + regiao} atribui exatamente a mesma probabilidade prevista a todos os boletins que compartilham essas três categorias, ignorando eventuais interações entre dia da semana e região (por exemplo, dinâmicas distintas de fim de semana entre áreas metropolitanas e turísticas como a Baixada Santista). Ainda que testes de hipótese agrupados indiquem que \texttt{dia} e \texttt{regiao} possuem associação estatisticamente não nula com a ocorrência no pico --- e o intervalo de bootstrap indique uma redução no escore de Brier do modelo completo ---, significância estatística em grandes amostras ($n > 100.000$) não equivale à relevância preditiva ou operacional \parencite{james2021}. A redução de 0,003972 no escore de Brier traduz ganho probabilístico marginal insuficiente para subsidiar alocação automatizada de recursos baseada apenas nessas três variáveis.
 
 Quatro limitações metodológicas principais circunscrevem a interpretação deste trabalho. Primeiro, a ausência de denominadores de fluxo veicular impede converter associações entre boletins em estimativas de risco relativo por veículo exposto \parencite{who2010}. Segundo, a auditoria das 658 exclusões expôs perda acentuada de boletins fatais (656 de 658), restringindo qualquer generalização ingênua para o universo de ocorrências letais sem dados completos de horário e via. Terceiro, a definição uniforme das janelas de pico em todo o território estadual pode não refletir especificidades locais de tráfego nas 16 regiões administrativas. Quarto, embora a divisão cronológica entre 2025 e 2026 respeite a ordem temporal, o contato prévio com o mesmo período de 2026 em etapas exploratórias da disciplina caracteriza validação retrospectiva e não prospectiva independente \parencite{lones2024,kapoor2024}.
 
-\pendenciahumana{Discussão aplicada a ser completada pelo grupo (Parágrafos finais da Seção 5)}{
-  \textbf{Instrução aos integrantes do Grupo APPA:} Redigir aqui 1 a 2 parágrafos de análise aplicada conectando os resultados estatísticos acima ao domínio real de mobilidade urbana e gestão de tráfego no Estado de São Paulo (com atenção ao contraste entre a Região Metropolitana de São Paulo, a Baixada Santista e o interior, bem como ao efeito dos dias úteis na razão de chances).\\
-  \textbf{Pontos a cobrir:} (1) Explicar como o resultado reforça que decisões operacionais de fiscalização não devem depender apenas de corte binário em $\tau = 0{,}5$ quando as probabilidades se concentram na faixa de $0{,}2834$ a $0{,}5178$ (98,51\% abaixo de $0{,}5$); (2) Discutir que dados complementares (volume de tráfego, infraestrutura local e séries temporais) seriam necessários para responder a demandas práticas de gestores públicos. Consultar sugestões detalhadas em \texttt{entregas/entrega-2/SUGESTAO\_CONCLUSAO\_E\_GUIA.md}.
-}
+O RMSE é a raiz quadrada do erro quadrático médio. Com a resposta codificada como 0 ou 1 e as probabilidades previstas como saída, ele equivale à raiz do Brier. No teste, o RMSE foi \Sexpr{f_raw(sqrt(met$brier[2]),6)} para a logística e \Sexpr{f_raw(sqrt(met$brier[1]),6)} para a referência constante. A diferença de \Sexpr{f_raw(sqrt(met$brier[1])-sqrt(met$brier[2]),6)} está na escala da probabilidade e resume um ganho modesto no erro probabilístico. Como o RMSE é uma transformação do Brier, as duas medidas dão a mesma ordem aos modelos. Para saber quantos boletins de pico foram reconhecidos, é preciso voltar às classificações e à matriz de confusão.
 
-% ==============================================================================
+Com o corte de 0,5, a logística acerta 29.424 boletins, quatro a mais que prever sempre fora do pico. Dos 20.089 boletins de pico, 19.718 ficam de fora. Se a tarefa exige identificar esses boletins, o desempenho observado é insuficiente para recomendar o modelo como ferramenta de classificação nesse corte. As probabilidades e os coeficientes continuam úteis para descrever como via, dia e região se associam ao horário entre os boletins analisados. Essa leitura se restringe à população selecionada, com exclusões concentradas em registros fatais, e à avaliação retrospectiva.
+
 \section{Considerações finais}
-% ==============================================================================
 
-\pendenciahumana{Seção 6 deixada em aberto para redação humana}{
-  \textbf{Instrução aos integrantes do Grupo APPA:} Substituir esta caixa pela redação final humana das \textbf{Considerações Finais} (3 a 4 parágrafos, sem inventar métricas além das reportadas na Seção 4).\\
-  \textbf{Estrutura recomendada:}
-  \begin{enumerate}
-    \item \textbf{Retomada do problema:} relembrar a pergunta de pesquisa sobre associações entre características contextuais e a ocorrência nos horários de pico, bem como o papel de uma única ferramenta supervisionada (regressão logística, treino em 2025 e teste em 2026).
-    \item \textbf{Síntese dos achados:} retomar os números centrais verificados (59,43\% de acurácia com saldo líquido de quatro acertos sobre a referência constante de 59,42\%, ante 1,85\% de sensibilidade com 371 de 20.089 boletins de pico, Brier de 0,237184 e AUC de 0,5757) e a associação positiva dos dias úteis contra a ausência de poder operacional isolado.
-    \item \textbf{Limitações e cautela:} reiterar a concentração de boletins fatais nas exclusões (656 de 658) e a impossibilidade de inferência causal ou estimativa de risco por viagem sem dados de fluxo veicular.
-    \item \textbf{Trabalhos futuros:} sugerir validação prospectiva em dados inéditos de períodos posteriores, incorporação de variáveis de exposição de tráfego e comparação controlada com modelos não lineares ou de contagem em protocolo independente.
-  \end{enumerate}
-  {\raggedright Uma \textbf{sugestão de texto-base completo} para adaptação humana encontra-se em \texttt{entregas/entrega-2/SUGESTAO\_CONCLUSAO\_E\_GUIA.md}.\par}
-}
+Quase seis em cada dez classificações ficaram corretas porque os acertos incluem os boletins fora do pico. Ao olhar somente os boletins de pico, a proporção de acertos cai para 1,85\%. Essa diferença mostra o que cada medida responde e por que avaliar a utilidade exige considerar a tarefa e o tipo de erro.
+
+A regressão logística oferece uma forma de comparar perfis de boletins e obteve erro probabilístico ligeiramente menor que o da referência. O ganho de quatro acertos e a quantidade de boletins de pico não identificados delimitam sua utilidade para classificar a 0,5. A análise descreve ocorrências registradas. Estimar risco no trânsito exigiria informações sobre exposição ao tráfego, e avaliar o uso futuro exigiria dados de um período ainda não explorado.
 
 % ==============================================================================
 % ELEMENTOS PÓS-TEXTUAIS (ABNT NBR 6022:2018 e NBR 6023:2018)
@@ -650,7 +615,7 @@ Quatro limitações metodológicas principais circunscrevem a interpretação de
 \begin{SingleSpace}
 \section*{APÊNDICE A -- RELATÓRIO DO AJUSTE NO R}
 \addcontentsline{toc}{section}{APÊNDICE A -- RELATÓRIO DO AJUSTE NO R}
-\noindent{\footnotesize O relatório a seguir reproduz integralmente a saída de \texttt{summary(modelo)} obtida exclusivamente sobre a partição de treino de 2025 ($n = 101.666$). Os erros-padrão e p-valores listados abaixo são os convencionais de máxima verossimilhança; os erros-padrão robustos HC1 agrupados por data e os intervalos de confiança constam no corpo do artigo e nos arquivos CSV do repositório.}
+\noindent{\footnotesize O relatório a seguir reproduz integralmente a saída de \texttt{summary(modelo)} obtida exclusivamente sobre a partição de treino de 2025 ($n = 101.666$). Os erros-padrão e p-valores listados abaixo são os convencionais de máxima verossimilhança; os erros-padrão robustos HC1 agrupados por data e os intervalos de confiança constam no corpo do artigo.}
 \begin{flushleft}\fontsize{7.4}{8.9}\selectfont
 <<relatorio, results='markup'>>=
 cat(paste(entrega2$relatorio, collapse = "\n"))
