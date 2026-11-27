@@ -29,7 +29,7 @@ Os scripts e resultados das atividades usam o prefixo de data e grupo `YYYY-MM-D
 
 A pasta [entregas/](entregas/) reúne a entrega final e os modelos da disciplina:
 
-- **[entregas/entrega-2/](entregas/entrega-2/README.md):** artigo científico da demonstração de regressão logística (15 páginas em PDF, formatação ABNT via `abntex2` + `biblatex-abnt` + `biber`), fontes Rnw/LaTeX, código R, banco preparado, tabelas/quadro IBGE, figuras, modelo da disciplina e discussão dos acertos e do RMSE. Treino em 2025 e teste em 2026; uma ferramenta principal.
+- **[entregas/entrega-2/](entregas/entrega-2/README.md):** artigo científico da demonstração de regressão logística (10 páginas em PDF, formatação ABNT estrita via `abntex2` + `biblatex-abnt` + `biber`), fontes Rnw/LaTeX, código R, banco preparado, tabelas IBGE, figuras, modelo da disciplina e discussão dos acertos e do RMSE. Treino em 2025 e teste em 2026; uma ferramenta principal.
 - **[entregas/apresentacao-final/](entregas/apresentacao-final/README.md):** 14 slides principais e cinco de apoio para 10–12 minutos, implementados em Remotion/React. HTML offline, PDF e todo o código para regenerar os arquivos. Interações de horário, perfil e limiar, além de notas, índice e teclado.
 
 - **[entregas/entrega-1/](entregas/entrega-1/):** versão final consolidada do grupo APPA:

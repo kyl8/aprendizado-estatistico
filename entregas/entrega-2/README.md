@@ -2,7 +2,7 @@
 
 **Grupo APPA:** Arthur Galvão, Pedro Henrique e Ailana Pereira Gonsalez. **Professor:** João Paulo Ferreira de Mello. Documento preparado para 18/11/2026.
 
-- **[Artigo em PDF](artigo-final.pdf)**: 15 páginas com fundamentação, auditoria das exclusões, resultados, discussão do RMSE, matriz de confusão e relatório do ajuste.
+- **[Artigo em PDF](artigo-final.pdf)**: 10 páginas em formatação ABNT estrita com fundamentação, auditoria das exclusões, resultados, discussão do RMSE, matriz de confusão, conclusão e relatório do ajuste.
 - [Fonte Rnw](artigo-final.Rnw), [LaTeX gerado](artigo-final.tex) e [referências](referencias.bib).
 - [Guia de redação da revisão anterior](SUGESTAO_CONCLUSAO_E_GUIA.md), mantido como registro histórico.
 - [Código de preparação e ajuste](entrega-2-banco.R) e [compilação](compilar-entrega-2.R).
