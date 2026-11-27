@@ -1,11 +1,11 @@
 {
   "mode": "simulacao tecnica acelerada, sem audio ou ensaio humano",
   "planned_seconds": 660,
-  "actual_technical_seconds": 1,
+  "actual_technical_seconds": 1.3,
   "role_seconds": {
-    "Arthur Galvão": 210,
-    "Ailana Pereira Gonsalez": 240,
-    "Pedro Henrique": 210
+    "Arthur Galvão": 220,
+    "Pedro Henrique": 280,
+    "Ailana Pereira Gonsalez": 160
   },
   "external_requests": [],
   "browser_errors": [],
@@ -20,14 +20,14 @@
     {
       "slide": 2,
       "kind": "missed",
-      "speaker": "Ailana Pereira Gonsalez",
+      "speaker": "Arthur Galvão",
       "start_seconds": 25,
       "end_seconds": 70
     },
     {
       "slide": 3,
       "kind": "question",
-      "speaker": "Pedro Henrique",
+      "speaker": "Arthur Galvão",
       "start_seconds": 70,
       "end_seconds": 110
     },
@@ -41,21 +41,21 @@
     {
       "slide": 5,
       "kind": "target",
-      "speaker": "Pedro Henrique",
+      "speaker": "Arthur Galvão",
       "start_seconds": 160,
       "end_seconds": 220
     },
     {
       "slide": 6,
       "kind": "predictors",
-      "speaker": "Arthur Galvão",
+      "speaker": "Pedro Henrique",
       "start_seconds": 220,
       "end_seconds": 270
     },
     {
       "slide": 7,
       "kind": "temporal",
-      "speaker": "Ailana Pereira Gonsalez",
+      "speaker": "Pedro Henrique",
       "start_seconds": 270,
       "end_seconds": 315
     },
@@ -69,14 +69,14 @@
     {
       "slide": 9,
       "kind": "threshold",
-      "speaker": "Ailana Pereira Gonsalez",
+      "speaker": "Pedro Henrique",
       "start_seconds": 380,
       "end_seconds": 450
     },
     {
       "slide": 10,
       "kind": "baseline",
-      "speaker": "Arthur Galvão",
+      "speaker": "Pedro Henrique",
       "start_seconds": 450,
       "end_seconds": 500
     },
@@ -90,14 +90,14 @@
     {
       "slide": 12,
       "kind": "association",
-      "speaker": "Pedro Henrique",
+      "speaker": "Ailana Pereira Gonsalez",
       "start_seconds": 555,
       "end_seconds": 600
     },
     {
       "slide": 13,
       "kind": "limits",
-      "speaker": "Arthur Galvão",
+      "speaker": "Ailana Pereira Gonsalez",
       "start_seconds": 600,
       "end_seconds": 635
     },

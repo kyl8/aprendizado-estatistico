@@ -4,7 +4,7 @@ Apresentação para **10–12 minutos**, com **14 slides principais e cinco de a
 
 Abra [apresentacao-final-appa.html](apresentacao-final-appa.html) no Chrome ou Edge. O arquivo contém código, dados e fontes e funciona sem internet. O [PDF](apresentacao-final-appa.pdf) é uma alternativa estática para projetar ou enviar; suas páginas foram renderizadas pelo Remotion.
 
-A narrativa parte de um contraste: acertar 59,43% dos boletins não equivale a identificar bem o pico. [Narrativa e dois níveis de roteiro](NARRATIVA_E_ROTEIRO.md), [arguição](ARGUICAO_APPA.md) e [diagnóstico da curadoria](../../CURADORIA_APPA.md) documentam as escolhas. O orçamento é de **11 minutos**: Arthur 3:30, Pedro 3:30 e Ailana 4:00. Trata-se de um planejamento para ensaio, sem medição de fala humana.
+A narrativa parte de um contraste: acertar 59,43% dos boletins não equivale a identificar bem o pico. [Narrativa e dois níveis de roteiro](NARRATIVA_E_ROTEIRO.md), [arguição](ARGUICAO_APPA.md) e [diagnóstico da curadoria](../../CURADORIA_APPA.md) documentam as escolhas. O orçamento é de **11 minutos**: Arthur nos slides 1 a 5 (3min40), Pedro nos slides 6 a 10 (4min40) e Ailana nos slides 11 a 14 (2min40). Os cinco slides de apoio ficam para perguntas. Trata-se de um planejamento para ensaio, sem medição de fala humana.
 
 ## Controles
 

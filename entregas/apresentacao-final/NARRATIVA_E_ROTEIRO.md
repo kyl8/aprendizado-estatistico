@@ -6,9 +6,9 @@
 
 ## Distribuição sugerida
 
-- Arthur Galvão: 3:30.
-- Ailana Pereira Gonsalez: 4:00.
-- Pedro Henrique: 3:30.
+- Arthur Galvão: 3:40.
+- Pedro Henrique: 4:40.
+- Ailana Pereira Gonsalez: 2:40.
 
 As participações incluem método, decisões e interpretação; a troca de pessoa acompanha a pergunta seguinte. Nenhum trecho depende de resposta da turma.
 
@@ -17,18 +17,18 @@ As participações incluem método, decisões e interpretação; a troca de pess
 | Slide | Responsável | Objetivo / mensagem central | Recurso visual | Tempo |
 |---|---|---|---|---|
 | 1. Acertar a maioria não é identificar o pico | Arthur Galvão | A acurácia precisa ser interpretada junto com os tipos de erro. | Capa acadêmica e barra proporcional de acertos/total. | 0:25 |
-| 2. Dos 20.089 boletins de pico, identificamos 371 | Ailana Pereira Gonsalez | A sensibilidade mostra o que a acurácia total esconde. | 371 VP e 19.718 FN em barra proporcional ao total de pico. | 0:45 |
-| 3. Estamos classificando boletins já registrados | Pedro Henrique | Pertencer ao pico entre boletins é diferente de risco por viagem. | Pergunta e relação entre boletim, características e classificação. | 0:40 |
+| 2. Dos 20.089 boletins de pico, identificamos 371 | Arthur Galvão | A sensibilidade mostra o que a acurácia total esconde. | 371 VP e 19.718 FN em barra proporcional ao total de pico. | 0:45 |
+| 3. Estamos classificando boletins já registrados | Arthur Galvão | Pertencer ao pico entre boletins é diferente de risco por viagem. | Pergunta e relação entre boletim, características e classificação. | 0:40 |
 | 4. O arquivo bruto e o banco do modelo têm tamanhos diferentes | Arthur Galvão | O recorte resulta de filtros explícitos; as exclusões não são neutras quanto à gravidade. | Fluxo de seleção, notificações e duas etapas de exclusão. | 0:50 |
-| 5. Às 06:29 é uma classe; às 06:30, outra | Pedro Henrique | A fronteira é uma decisão operacional, não uma detecção de congestionamento. | Relógio e botões 06:29/06:30, com três janelas. | 1:00 |
-| 6. Três características entram; a hora entrega a resposta | Arthur Galvão | Via, dia e região descrevem contexto; hora e turno revelam o alvo. | Três preditoras e relação hora → pico. | 0:50 |
-| 7. Montamos o modelo em 2025 e testamos em 2026 | Ailana Pereira Gonsalez | A ordem temporal não transforma um teste conhecido em validação prospectiva. | Linha do tempo com períodos, contagens e condição retrospectiva. | 0:45 |
+| 5. Às 06:29 é uma classe; às 06:30, outra | Arthur Galvão | A fronteira é uma decisão operacional, não uma detecção de congestionamento. | Relógio e botões 06:29/06:30, com três janelas. | 1:00 |
+| 6. Três características entram; a hora entrega a resposta | Pedro Henrique | Via, dia e região descrevem contexto; hora e turno revelam o alvo. | Três preditoras e relação hora → pico. | 0:50 |
+| 7. Montamos o modelo em 2025 e testamos em 2026 | Pedro Henrique | A ordem temporal não transforma um teste conhecido em validação prospectiva. | Linha do tempo com períodos, contagens e condição retrospectiva. | 0:45 |
 | 8. A logística produz a probabilidade; o limiar produz a classe | Pedro Henrique | Consultar outro perfil no mesmo ajuste não estima uma intervenção causal. | Três seletores, probabilidade, curva logística e classe em 0,5. | 1:05 |
-| 9. Em 0,5, poucos boletins recebem a classe pico | Ailana Pereira Gonsalez | Explorar o teste não seleciona validamente outro limiar para reportar desempenho. | Matriz observada × prevista, limiar e retorno explícito a 0,5. | 1:10 |
-| 10. A logística soma quatro acertos à referência | Arthur Galvão | 371 acertos positivos adicionais menos 367 negativos perdidos deixam saldo de quatro. | Totais e decomposição +371 −367 = +4, sem eixo ampliado. | 0:50 |
+| 9. Em 0,5, poucos boletins recebem a classe pico | Pedro Henrique | Explorar o teste não seleciona validamente outro limiar para reportar desempenho. | Matriz observada × prevista, limiar e retorno explícito a 0,5. | 1:10 |
+| 10. A logística soma quatro acertos à referência | Pedro Henrique | 371 acertos positivos adicionais menos 367 negativos perdidos deixam saldo de quatro. | Totais e decomposição +371 −367 = +4, sem eixo ampliado. | 0:50 |
 | 11. Quanto as probabilidades melhoraram? | Ailana Pereira Gonsalez | As métricas descrevem aspectos diferentes das mesmas probabilidades. | Tabela de erros e valor de AUC. | 0:55 |
-| 12. A razão de chances descreve uma associação condicionada | Pedro Henrique | A OR se refere a pertencer ao pico entre boletins, ajustando por dia e região. | Razão de chances, intervalo e referência em 1. | 0:45 |
-| 13. O alcance depende do recorte, da regra e do protocolo | Arthur Galvão | Limitações se conectam às decisões; não são uma lista genérica de ressalvas. | Exclusões → população; janelas → alvo; teste conhecido → alcance temporal. | 0:35 |
+| 12. A razão de chances descreve uma associação condicionada | Ailana Pereira Gonsalez | A OR se refere a pertencer ao pico entre boletins, ajustando por dia e região. | Razão de chances, intervalo e referência em 1. | 0:45 |
+| 13. O alcance depende do recorte, da regra e do protocolo | Ailana Pereira Gonsalez | Limitações se conectam às decisões; não são uma lista genérica de ressalvas. | Exclusões → população; janelas → alvo; teste conhecido → alcance temporal. | 0:35 |
 | 14. O que os acertos mostram | Ailana Pereira Gonsalez | A contribuição da etapa é interpretar a execução e seus limites. | Dois denominadores, pergunta inicial e acesso ao material. | 0:25 |
 
 ## Roteiro completo para ensaio
@@ -43,11 +43,11 @@ Fala proposta:
 
 Pausa / interação: Pausar dois segundos depois do número. Não pedir votação à turma.
 
-Transição: Ailana mostra o que acontece quando olhamos apenas os boletins de pico.
+Transição: Vamos olhar só para os boletins que realmente eram de pico.
 
 ### 2. Dos 20.089 boletins de pico, identificamos 371
 
-**Ailana Pereira Gonsalez · 0:25–1:10 (45 s)**
+**Arthur Galvão · 0:25–1:10 (45 s)**
 
 Fala proposta:
 
@@ -55,11 +55,11 @@ Fala proposta:
 
 Pausa / interação: Apontar total e segmentos, reservando cinco segundos à barra.
 
-Transição: Pedro delimita a pergunta que esse banco permite fazer.
+Transição: Para entender esses números, vamos voltar à pergunta do estudo.
 
 ### 3. Estamos classificando boletins já registrados
 
-**Pedro Henrique · 1:10–1:50 (40 s)**
+**Arthur Galvão · 1:10–1:50 (40 s)**
 
 Fala proposta:
 
@@ -67,7 +67,7 @@ Fala proposta:
 
 Pausa / interação: Pausa breve depois da distinção entre boletim e veículo.
 
-Transição: Arthur mostra quais registros chegaram ao ajuste.
+Transição: Agora mostro quais registros entraram na análise.
 
 ### 4. O arquivo bruto e o banco do modelo têm tamanhos diferentes
 
@@ -79,11 +79,11 @@ Fala proposta:
 
 Pausa / interação: Percorrer o fluxo e reservar cinco segundos à concentração das exclusões.
 
-Transição: Pedro mostra como a resposta foi definida antes do ajuste.
+Transição: Com a base pronta, faltava definir quais horários seriam pico.
 
 ### 5. Às 06:29 é uma classe; às 06:30, outra
 
-**Pedro Henrique · 2:40–3:40 (60 s)**
+**Arthur Galvão · 2:40–3:40 (60 s)**
 
 Fala proposta:
 
@@ -91,11 +91,11 @@ Fala proposta:
 
 Pausa / interação: Clicar 06:29, pausar, clicar 06:30 e indicar as outras janelas. Cerca de 20 segundos de interação; não aguardar resposta da turma.
 
-Transição: Arthur explica por que a mesma hora não pode entrar como preditora.
+Transição: Pedro explica quais informações o modelo usa para classificar os boletins.
 
 ### 6. Três características entram; a hora entrega a resposta
 
-**Arthur Galvão · 3:40–4:30 (50 s)**
+**Pedro Henrique · 3:40–4:30 (50 s)**
 
 Fala proposta:
 
@@ -103,11 +103,11 @@ Fala proposta:
 
 Pausa / interação: Distinguir três variáveis da quantidade de coeficientes.
 
-Transição: Ailana apresenta outra decisão: a separação dos períodos.
+Transição: Depois de escolher as informações, separamos os dois períodos.
 
 ### 7. Montamos o modelo em 2025 e testamos em 2026
 
-**Ailana Pereira Gonsalez · 4:30–5:15 (45 s)**
+**Pedro Henrique · 4:30–5:15 (45 s)**
 
 Fala proposta:
 
@@ -115,7 +115,7 @@ Fala proposta:
 
 Pausa / interação: Indicar o corte entre os anos.
 
-Transição: Pedro usa um perfil para separar probabilidade e classe.
+Transição: Vou usar um exemplo para mostrar como o modelo dá uma probabilidade.
 
 ### 8. A logística produz a probabilidade; o limiar produz a classe
 
@@ -127,11 +127,11 @@ Fala proposta:
 
 Pausa / interação: Mudar Segunda-feira para Domingo e retornar. Reservar cerca de 20 segundos à interação.
 
-Transição: Ailana mostra o efeito dessa conversão na matriz de confusão.
+Transição: Agora vamos ver o que acontece quando aplicamos o corte.
 
 ### 9. Em 0,5, poucos boletins recebem a classe pico
 
-**Ailana Pereira Gonsalez · 6:20–7:30 (70 s)**
+**Pedro Henrique · 6:20–7:30 (70 s)**
 
 Fala proposta:
 
@@ -139,11 +139,11 @@ Fala proposta:
 
 Pausa / interação: Aponte a linha de baixo. Se quiser demonstrar, mova para 0,35 e clique em Voltar a 0,5.
 
-Transição: Arthur compara essa matriz com o palpite constante.
+Transição: Vamos comparar esses acertos com a regra de marcar tudo como fora do pico.
 
 ### 10. A logística soma quatro acertos à referência
 
-**Arthur Galvão · 7:30–8:20 (50 s)**
+**Pedro Henrique · 7:30–8:20 (50 s)**
 
 Fala proposta:
 
@@ -151,7 +151,7 @@ Fala proposta:
 
 Pausa / interação: Ler a decomposição e pausar depois do saldo. Dez segundos para apontar os termos.
 
-Transição: Ailana distingue essas contagens das medidas sobre probabilidades.
+Transição: Ailana compara o erro das probabilidades e fecha com os limites do modelo.
 
 ### 11. Quanto as probabilidades melhoraram?
 
@@ -163,11 +163,11 @@ Fala proposta:
 
 Pausa / interação: Aponte os dois números da coluna RMSE. Explique Brier e AUC se perguntarem.
 
-Transição: Pedro mostra o alcance de uma associação estimada pelo modelo.
+Transição: Além do erro, o modelo permite comparar os perfis dos boletins.
 
 ### 12. A razão de chances descreve uma associação condicionada
 
-**Pedro Henrique · 9:15–10:00 (45 s)**
+**Ailana Pereira Gonsalez · 9:15–10:00 (45 s)**
 
 Fala proposta:
 
@@ -175,11 +175,11 @@ Fala proposta:
 
 Pausa / interação: Apontar 1 como referência e explicar o contraste antes do intervalo.
 
-Transição: Arthur reúne as condições que limitam essa leitura.
+Transição: Essa comparação tem alguns limites importantes.
 
 ### 13. O alcance depende do recorte, da regra e do protocolo
 
-**Arthur Galvão · 10:00–10:35 (35 s)**
+**Ailana Pereira Gonsalez · 10:00–10:35 (35 s)**
 
 Fala proposta:
 
@@ -187,7 +187,7 @@ Fala proposta:
 
 Pausa / interação: Pausa curta entre as três condições.
 
-Transição: Ailana retorna ao número com que começamos.
+Transição: Com esses limites em mente, voltamos ao número do início.
 
 ### 14. O que os acertos mostram
 
@@ -199,7 +199,7 @@ Fala proposta:
 
 Pausa / interação: Pausar antes das perguntas. O tempo principal termina aqui.
 
-Transição: Os próximos slides são apoio para a arguição, fora dos 11 minutos.
+Transição: Os próximos slides ficam para as perguntas.
 
 ## Roteiro compacto
 
