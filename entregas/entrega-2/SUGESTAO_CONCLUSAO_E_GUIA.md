@@ -14,8 +14,7 @@ Procure pelas marcações abaixo em `entregas/entrega-2/artigo-final.Rnw`:
    - `[Completar e-mail institucional]` → preencher o e-mail `@fatec.sp.gov.br` (ou institucional utilizado pelo grupo) de cada integrante.
 2. **Bloco de discussão aplicada no final da Seção 5 (`DISCUSSÃO`, linhas 621–624 de `artigo-final.Rnw`):**
    - Localizar `\pendenciahumana{Discussão aplicada a ser completada pelo grupo...}` e substituir toda a caixa `\pendenciahumana{...}{...}` por **1 a 2 parágrafos** redigidos pelo grupo.
-3. **Seção 6 (`CONSIDERAÇÕES FINAIS`, linhas 630–640 de `artigo-final.Rnw`):**
-   - Localizar `\pendenciahumana{Seção 6 deixada em aberto para redação humana}{...}` e substituir toda a caixa `\pendenciahumana{...}{...}` pelo texto final das Considerações Finais (3 a 4 parágrafos, usando como referência a sugestão-base na Seção 3 abaixo).
+3. **`[Concluído]` Seção 6 (`Conclusão`):** redação humana já inserida diretamente na Seção 6 de `entregas/entrega-2/artigo-final.Rnw` (a sugestão-base da Seção 3 abaixo é mantida apenas como histórico de referência).
 
 > **Atenção:** Após editar `artigo-final.Rnw`, **sempre recompile o PDF** (Seção 4) para que `artigo-final.tex` e `artigo-final.pdf` fiquem sincronizados antes de enviar o e-mail final ao professor.
 

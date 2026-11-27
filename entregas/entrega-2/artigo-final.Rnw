@@ -598,11 +598,13 @@ O RMSE é a raiz quadrada do erro quadrático médio. Com a resposta codificada 
 
 Com o corte de 0,5, a logística acerta 29.424 boletins, quatro a mais que prever sempre fora do pico. Dos 20.089 boletins de pico, 19.718 ficam de fora. Se a tarefa exige identificar esses boletins, o desempenho observado é insuficiente para recomendar o modelo como ferramenta de classificação nesse corte. As probabilidades e os coeficientes continuam úteis para descrever como via, dia e região se associam ao horário entre os boletins analisados. Essa leitura se restringe à população selecionada, com exclusões concentradas em registros fatais, e à avaliação retrospectiva.
 
-\section{Considerações finais}
+\section{Conclusão}
 
-Quase seis em cada dez classificações ficaram corretas porque os acertos incluem os boletins fora do pico. Ao olhar somente os boletins de pico, a proporção de acertos cai para 1,85\%. Essa diferença mostra o que cada medida responde e por que avaliar a utilidade exige considerar a tarefa e o tipo de erro.
+Este estudo avaliou a associação entre características contextuais básicas (tipo de via, dia da semana e região administrativa) e a ocorrência de sinistros de trânsito em horários de pico no Estado de São Paulo, utilizando 151.175 boletins policiais válidos do Infosiga-SP em uma regressão logística treinada em 2025 ($n = 101.666$) e testada no primeiro semestre de 2026 ($n = 49.509$).
 
-A regressão logística oferece uma forma de comparar perfis de boletins e obteve erro probabilístico ligeiramente menor que o da referência. O ganho de quatro acertos e a quantidade de boletins de pico não identificados delimitam sua utilidade para classificar a 0,5. A análise descreve ocorrências registradas. Estimar risco no trânsito exigiria informações sobre exposição ao tráfego, e avaliar o uso futuro exigiria dados de um período ainda não explorado.
+Embora os dias úteis apresentem associação estatisticamente detectável com os registros nos horários de pico em relação ao domingo, os resultados demonstram que a significância estatística em grandes amostras não se traduz em poder preditivo operacional. No teste temporal sob limiar de 0,5, o modelo obteve 59,43\% de acurácia --- apenas quatro acertos acima da referência constante de 59,42\% --- e apenas 1,85\% de sensibilidade (371 de 20.089 casos identificados), acompanhados por um ganho probabilístico modesto (AUC de 0,5757 e escore de Brier de 0,237184 ante 0,241157).
+
+Por fim, a ausência de dados de fluxo veicular impede estimar risco por veículo em circulação, e a perda concentrada de registros fatais nas exclusões (656 de 658) recomenda cautela na generalização dos achados. Assim, ações de fiscalização e gestão viária não devem se apoiar exclusivamente em um corte binário de 0,5 baseado apenas nessas variáveis, cabendo a estudos futuros incorporar métricas de exposição de tráfego e validações prospectivas em novos períodos.
 
 % ==============================================================================
 % ELEMENTOS PÓS-TEXTUAIS (ABNT NBR 6022:2018 e NBR 6023:2018)
